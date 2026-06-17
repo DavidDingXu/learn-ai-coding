@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>今日计划结果页</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Personal Productivity App</p>
+          <h1>今日计划</h1>
+          <p class="hero-copy">系统会把逾期未完成任务带回今天，并按每日容量给出可执行清单和顺延列表。</p>
+        </div>
+        <div class="date-card" aria-label="当前计划日期">
+          <span>计划日期</span>
+          <strong>2026-06-16</strong>
+        </div>
+      </section>
+
+      <section class="capacity-panel" aria-labelledby="capacity-title">
+        <div class="section-heading">
+          <div>
+            <h2 id="capacity-title">每日容量</h2>
+            <p>拖动容量，观察哪些任务进入今日计划，哪些任务被顺延。</p>
+          </div>
+          <strong id="capacity-value">90 分钟</strong>
+        </div>
+        <label class="slider-label" for="capacity">可投入时间</label>
+        <input id="capacity" type="range" min="30" max="150" step="15" value="90">
+        <div class="capacity-meter" aria-hidden="true">
+          <span id="capacity-progress"></span>
+        </div>
+        <div class="metrics">
+          <div>
+            <span>已安排</span>
+            <strong id="used-value">90 分钟</strong>
+          </div>
+          <div>
+            <span>剩余</span>
+            <strong id="remaining-value">0 分钟</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="result-grid" aria-label="今日计划结果">
+        <article class="result-column">
+          <div class="section-heading compact">
+            <div>
+              <h2>今日执行</h2>
+              <p>进入今天的任务。</p>
+            </div>
+          </div>
+          <ul id="scheduled-list" class="task-list"></ul>
+        </article>
+
+        <article class="result-column">
+          <div class="section-heading compact">
+            <div>
+              <h2>顺延列表</h2>
+              <p>候选任务里今天放不下的部分。</p>
+            </div>
+          </div>
+          <p id="empty-deferred" class="empty-state" hidden>当前容量足够，没有需要顺延的任务。</p>
+          <ul id="deferred-list" class="task-list"></ul>
+        </article>
+
+        <article class="result-column">
+          <div class="section-heading compact">
+            <div>
+              <h2>未进入计划</h2>
+              <p>已完成、阻塞或未来任务不会占用今日容量。</p>
+            </div>
+          </div>
+          <ul id="excluded-list" class="task-list muted"></ul>
+        </article>
+      </section>
+
+      <section class="source-panel" aria-labelledby="source-title">
+        <div class="section-heading">
+          <div>
+            <h2 id="source-title">输入任务</h2>
+            <p>页面直接调用 <code>buildTodayPlan</code>，下方任务就是本次计算的输入。</p>
+          </div>
+        </div>
+        <ul id="source-list" class="task-list source-list"></ul>
+      </section>
+    </main>
+    <script type="module" src="./src/ui.js"></script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "ai-coding-workflow-kit",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Repo-local tools for AI Coding context maps, task context packages, and verification ledgers.",
+  "scripts": {
+    "test": "node --test",
+    "codemap": "node src/cli.js codemap",
+    "task-context": "node src/cli.js task-context",
+    "context-pack": "node src/cli.js context-pack",
+    "verify-ledger": "node src/cli.js verify-ledger"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

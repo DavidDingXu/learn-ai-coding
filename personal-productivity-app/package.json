@@ -1,0 +1,10 @@
+{
+  "name": "personal-productivity-app",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "node scripts/serve-static.js",
+    "test": "node --test"
+  }
+}
