@@ -35,3 +35,9 @@ npm test
 保持改动聚焦，在说明中写清问题、改动和实际执行的验证。请保留已有来源和授权声明，不提交密钥、私人记录或未经脱敏的日志。提交内容按项目的 [许可说明](LICENSING.md) 提供。
 
 贡献的文章与插图采用 CC BY-NC-SA 4.0，贡献的代码采用 PolyForm Noncommercial 1.0.0；详见 [许可说明](LICENSING.md)。
+
+## 目录与内容维护
+
+`docs/course/` 存放课程正文，`docs/assets/` 存放插图；两个配套项目各自维护运行说明和测试；`site/`、`book/` 分别构建阅读站和电子书。
+
+文章顺序和链接以 `docs/course/catalog.json` 为准，根目录 README 展示每篇文章。修改文章后运行课程检查；书稿编排与电子书构建见 [电子书维护说明](book/README.md)。

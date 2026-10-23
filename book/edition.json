@@ -1,0 +1,131 @@
+{
+  "title": "程序员 AI Coding 进阶实战",
+  "subtitle": "真实代码库里的 AI 编程工作流",
+  "author": "好好用 AI",
+  "githubAuthor": "DavidDingXu",
+  "version": "1.0.0",
+  "date": "2026-10-23",
+  "language": "zh-CN",
+  "slug": "learn-ai-coding",
+  "english": "LEARN AI CODING",
+  "parts": [
+    {
+      "group": "00",
+      "title": "导读与学习地图",
+      "introduction": "先明确学习目标：把 AI 编程放进真实开发过程，理解每个阶段需要什么输入、产物和证据。",
+      "outcome": "能根据当前经验选择阅读顺序。"
+    },
+    {
+      "group": "01",
+      "title": "理解 AI 编程的工作方式",
+      "introduction": "从聊天式开发的局限出发，理解 Agent 如何读取上下文、调用工具和修改代码，以及不同任务的适用边界。",
+      "outcome": "能判断任务是否适合交给 AI，以及需要保留哪些人工判断。"
+    },
+    {
+      "group": "02",
+      "title": "组织自己的工具工作台",
+      "introduction": "工具界面服务于开发任务。比较 App、CLI、IDE 的分工，把代码、终端、测试和审查放进同一个工作过程。",
+      "outcome": "能为一次真实改动选择合适的工具入口。"
+    },
+    {
+      "group": "03",
+      "title": "上下文工程与代码库理解",
+      "introduction": "接手陌生仓库时，先找到入口、依赖和验证方式，再构建代码地图与任务上下文。关注检索依据、规则边界和停止条件。",
+      "outcome": "能让 Agent 有依据地理解代码，并控制上下文污染。"
+    },
+    {
+      "group": "04",
+      "title": "用规格约束需求变更",
+      "introduction": "把需求写成可核对的规格，再连接设计和小任务。通过 OpenSpec 案例理解文档产物怎样约束实现。",
+      "outcome": "能把一句需求推进为可实现、可验证的变更。"
+    },
+    {
+      "group": "05",
+      "title": "小步实现、测试与调试",
+      "introduction": "进入执行阶段后，用计划、小 diff、失败测试和排障证据限制不确定性。把页面、接口、数据和副作用一起纳入验证。",
+      "outcome": "能根据证据判断一次改动是否完成，以及失败是否来自本次变更。"
+    },
+    {
+      "group": "06",
+      "title": "把方法变成可复用能力",
+      "introduction": "先理解 Skill 如何承载流程，再讨论外部工具、多 Agent 和自动化。扩展能力之前，明确触发条件、权限和验证方式。",
+      "outcome": "能识别值得固化的流程，并给工具接入设置清晰边界。"
+    },
+    {
+      "group": "07",
+      "title": "串起一次完整交付",
+      "introduction": "通过真实需求连接上下文、规格、开发、验证与复盘。检查各阶段产物是否围绕同一个用户问题。",
+      "outcome": "能复盘一条完整需求，并提取有用的工程资产。"
+    },
+    {
+      "group": "08",
+      "title": "建立个人工程系统",
+      "introduction": "把规则、案例和验证习惯留下来，让下一次任务有可以复用的起点。工具升级时仍能保留自己的判断框架。",
+      "outcome": "能区分临时记录与长期规则，并安排持续维护。"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Agent",
+      "definition": "能够结合上下文和工具连续执行任务的系统。",
+      "chapter": "03"
+    },
+    {
+      "term": "代码地图",
+      "definition": "可复查的代码入口、模块关系与验证位置导航。",
+      "chapter": "09"
+    },
+    {
+      "term": "任务上下文包",
+      "definition": "为一个任务准备的范围、证据、相关代码与约束集合。",
+      "chapter": "12"
+    },
+    {
+      "term": "SDD",
+      "definition": "以规格明确预期行为，再推进设计、实现和验证的开发方式。",
+      "chapter": "15"
+    },
+    {
+      "term": "OpenSpec",
+      "definition": "把需求变更及其规格、设计、任务放入仓库管理的工具与流程。",
+      "chapter": "19"
+    },
+    {
+      "term": "小 diff",
+      "definition": "把修改限制在可以有效审查和验证的范围内。",
+      "chapter": "23"
+    },
+    {
+      "term": "TDD",
+      "definition": "先用失败测试表达预期，再实现并整理代码的反馈过程。",
+      "chapter": "24"
+    },
+    {
+      "term": "验证基线",
+      "definition": "变更前的已知结果，用于判断失败是否由当前改动引入。",
+      "chapter": "27"
+    },
+    {
+      "term": "Skill",
+      "definition": "具有触发条件、流程和产物要求的可复用能力说明。",
+      "chapter": "29"
+    },
+    {
+      "term": "MCP",
+      "definition": "将外部能力以一致接口提供给 AI 应用的互操作协议。",
+      "chapter": "33"
+    },
+    {
+      "term": "多 Agent",
+      "definition": "通过明确分工协作完成任务，需要考虑共享状态、依赖与整合成本。",
+      "chapter": "34"
+    }
+  ],
+  "imageAdaptations": [
+    {
+      "source": "docs/assets/diagrams/png/00-column-directory-map.png",
+      "kind": "reading-map-table",
+      "reason": "书籍目录已列出全部文章；将密集目录图重排为可在纸面阅读的学习路线表。"
+    }
+  ]
+}

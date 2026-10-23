@@ -7,7 +7,7 @@
   "description": "从接手陌生代码库，到完成一次真实需求。沿着上下文、规格、实现、测试和复盘，建立可重复的 AI Coding 工作流。",
   "pipelineTitle": "从一个需求，到一次可靠交付",
   "readingNote": "给清目标，保留证据，逐步交付。",
-  "curriculumNote": "42 篇完整文章，两个可运行项目。方法之后，立即动手。",
+  "curriculumNote": "42 篇完整文章，按问题和学习阶段组织；配套项目可按需使用。",
   "pipeline": [
     {
       "id": "14",

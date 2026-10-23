@@ -9,3 +9,6 @@ build/
 !.env.example
 site/dist/
 site/__pycache__/
+
+book/.cache/
+book/__pycache__/
