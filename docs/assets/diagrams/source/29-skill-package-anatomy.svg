@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#f5f3ff"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .title { font: 700 46px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 24px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #475569; }
+      .box { fill: #ffffff; stroke: #ddd6fe; stroke-width: 2; filter: url(#shadow); }
+      .inner { fill: #f5f3ff; stroke: #c4b5fd; stroke-width: 2; }
+      .label { font: 700 27px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #111827; }
+      .small { font: 400 20px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #334155; }
+      .mono { font: 700 20px "SFMono-Regular", Menlo, Consolas, monospace; fill: #5b21b6; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <text x="80" y="86" class="title">Skill 是可复用工作流包，不是提示词片段</text>
+  <text x="82" y="128" class="subtitle">一个可靠 Skill 通常包含触发说明、执行流程、参考资料、脚本和输出约束。</text>
+
+  <rect x="210" y="185" width="1180" height="610" rx="18" class="box"/>
+  <text x="270" y="255" class="mono">my-skill/</text>
+
+  <rect x="270" y="305" width="470" height="125" rx="14" class="inner"/>
+  <text x="310" y="352" class="mono">SKILL.md</text>
+  <text x="310" y="390" class="small">触发条件、角色、流程、禁区、输出格式</text>
+
+  <rect x="860" y="305" width="470" height="125" rx="14" class="inner"/>
+  <text x="900" y="352" class="mono">references/</text>
+  <text x="900" y="390" class="small">模板、检查清单、案例、领域规则</text>
+
+  <rect x="270" y="490" width="470" height="125" rx="14" class="inner"/>
+  <text x="310" y="537" class="mono">scripts/</text>
+  <text x="310" y="575" class="small">可复现命令、校验器、转换器、生成器</text>
+
+  <rect x="860" y="490" width="470" height="125" rx="14" class="inner"/>
+  <text x="900" y="537" class="mono">assets/</text>
+  <text x="900" y="575" class="small">固定模板、图片、样例文件、脚手架片段</text>
+
+  <rect x="430" y="675" width="740" height="72" rx="14" fill="#ffffff" stroke="#c4b5fd"/>
+  <text x="480" y="720" class="label">目标：让 Agent 每次按同一套证据和步骤工作</text>
+</svg>

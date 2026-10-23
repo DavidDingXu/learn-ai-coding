@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#ecfeff"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#0891b2"/>
+    </marker>
+    <style>
+      .title { font: 700 46px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 24px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #475569; }
+      .node { fill: #ffffff; stroke: #a5f3fc; stroke-width: 2; filter: url(#shadow); }
+      .guard { fill: #fef2f2; stroke: #fca5a5; stroke-width: 2; filter: url(#shadow); }
+      .label { font: 700 25px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #111827; }
+      .small { font: 400 19px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #334155; }
+      .mono { font: 700 19px "SFMono-Regular", Menlo, Consolas, monospace; fill: #155e75; }
+      .edge { stroke: #0891b2; stroke-width: 4; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <text x="80" y="86" class="title">小 diff 控制环</text>
+  <text x="82" y="128" class="subtitle">一次只授权一个可审查变化，完成后用 diff 和验证结果决定是否进入下一步。</text>
+
+  <rect x="130" y="265" width="275" height="150" rx="18" class="node"/>
+  <text x="168" y="320" class="label">授权一个步骤</text>
+  <text x="168" y="360" class="small">只执行 Task N</text>
+  <text x="168" y="392" class="small">限定文件和行为</text>
+
+  <rect x="510" y="220" width="300" height="230" rx="18" class="node"/>
+  <text x="550" y="280" class="label">Agent 修改</text>
+  <text x="550" y="322" class="small">不顺手重构</text>
+  <text x="550" y="354" class="small">不扩大范围</text>
+  <text x="550" y="386" class="small">完成后停止</text>
+
+  <rect x="915" y="250" width="300" height="170" rx="18" class="node"/>
+  <text x="955" y="310" class="label">检查 diff 半径</text>
+  <text x="955" y="352" class="mono">git diff --stat</text>
+  <text x="955" y="384" class="mono">git diff --name-only</text>
+
+  <rect x="1260" y="260" width="250" height="150" rx="18" class="node"/>
+  <text x="1295" y="315" class="label">跑对应验证</text>
+  <text x="1295" y="355" class="small">focused → module</text>
+
+  <rect x="910" y="575" width="305" height="145" rx="18" class="guard"/>
+  <text x="955" y="630" class="label">越界就停</text>
+  <text x="955" y="672" class="small">计划外文件</text>
+  <text x="955" y="704" class="small">无关重构或格式化</text>
+
+  <rect x="510" y="570" width="300" height="150" rx="18" class="node"/>
+  <text x="550" y="625" class="label">审查结果</text>
+  <text x="550" y="665" class="small">通过后进入下一步</text>
+  <text x="550" y="697" class="small">失败则回到计划</text>
+
+  <path d="M405 340 C445 340, 470 340, 510 340" class="edge"/>
+  <path d="M810 340 C855 340, 875 340, 915 340" class="edge"/>
+  <path d="M1215 340 C1230 340, 1245 340, 1260 340" class="edge"/>
+  <path d="M1385 410 C1365 545, 1265 635, 1215 645" class="edge"/>
+  <path d="M910 645 C865 645, 850 645, 810 645" class="edge"/>
+  <path d="M660 570 C660 505, 660 490, 660 450" class="edge"/>
+</svg>

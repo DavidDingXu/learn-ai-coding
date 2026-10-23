@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#fff7ed"/>
+      <stop offset="100%" stop-color="#eef2ff"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7c3aed"/>
+    </marker>
+    <style>
+      .title { font: 700 46px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 24px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #475569; }
+      .step { fill: #ffffff; stroke: #ddd6fe; stroke-width: 2; filter: url(#shadow); }
+      .check { fill: #fef3c7; stroke: #fbbf24; stroke-width: 2; filter: url(#shadow); }
+      .done { fill: #dcfce7; stroke: #86efac; stroke-width: 2; filter: url(#shadow); }
+      .num { font: 700 26px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #7c3aed; }
+      .stepTitle { font: 700 24px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .text { font: 400 19px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #334155; }
+      .line { stroke: #7c3aed; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .bottomTitle { font: 700 24px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #166534; }
+      .bottomText { font: 400 19px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #166534; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <text x="80" y="86" class="title">AI Coding 工作台反馈路径</text>
+  <text x="82" y="128" class="subtitle">一次改动从任务进入，到验证收口，每一步都留下可复查证据。</text>
+
+  <rect x="90" y="220" width="210" height="150" rx="18" class="step"/>
+  <text x="124" y="262" class="num">1</text>
+  <text x="160" y="262" class="stepTitle">任务分级</text>
+  <text x="126" y="304" class="text">判断授权级别</text>
+  <text x="126" y="338" class="text">识别高风险</text>
+
+  <rect x="355" y="220" width="210" height="150" rx="18" class="step"/>
+  <text x="389" y="262" class="num">2</text>
+  <text x="425" y="262" class="stepTitle">上下文</text>
+  <text x="391" y="304" class="text">规则、代码地图</text>
+  <text x="391" y="338" class="text">相关文件</text>
+
+  <rect x="620" y="220" width="210" height="150" rx="18" class="step"/>
+  <text x="654" y="262" class="num">3</text>
+  <text x="690" y="262" class="stepTitle">计划</text>
+  <text x="656" y="304" class="text">预计改动文件</text>
+  <text x="656" y="338" class="text">验证命令</text>
+
+  <rect x="885" y="220" width="210" height="150" rx="18" class="step"/>
+  <text x="919" y="262" class="num">4</text>
+  <text x="955" y="262" class="stepTitle">小 diff</text>
+  <text x="921" y="304" class="text">只做当前步骤</text>
+  <text x="921" y="338" class="text">看 Git diff</text>
+
+  <rect x="1150" y="220" width="210" height="150" rx="18" class="check"/>
+  <text x="1184" y="262" class="num">5</text>
+  <text x="1220" y="262" class="stepTitle">验证</text>
+  <text x="1186" y="304" class="text">测试、lint、build</text>
+  <text x="1186" y="338" class="text">浏览器路径</text>
+
+  <rect x="695" y="530" width="260" height="150" rx="18" class="done"/>
+  <text x="748" y="572" class="num">6</text>
+  <text x="784" y="572" class="stepTitle">收口</text>
+  <text x="735" y="614" class="text">完成报告</text>
+  <text x="735" y="648" class="text">剩余风险和资产更新</text>
+
+  <path d="M 300 295 L 355 295" class="line"/>
+  <path d="M 565 295 L 620 295" class="line"/>
+  <path d="M 830 295 L 885 295" class="line"/>
+  <path d="M 1095 295 L 1150 295" class="line"/>
+  <path d="M 1255 370 C 1220 470, 1060 575, 955 600" class="line"/>
+
+  <rect x="180" y="735" width="1240" height="92" rx="18" class="done"/>
+  <text x="220" y="775" class="bottomTitle">反馈结果写回仓库</text>
+  <text x="474" y="775" class="bottomText">规则、代码地图、任务上下文包、验证记录，都会成为下一次 AI Coding 的起点。</text>
+</svg>

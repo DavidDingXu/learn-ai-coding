@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#fdf2f8"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#db2777"/>
+    </marker>
+    <style>
+      .title { font: 700 46px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 24px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #475569; }
+      .node { fill: #ffffff; stroke: #fbcfe8; stroke-width: 2; filter: url(#shadow); }
+      .warn { fill: #fff7ed; stroke: #fed7aa; stroke-width: 2; filter: url(#shadow); }
+      .no { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 2; filter: url(#shadow); }
+      .label { font: 700 24px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #111827; }
+      .small { font: 400 19px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #334155; }
+      .edge { stroke: #db2777; stroke-width: 4; fill: none; marker-end: url(#arrow); }
+      .edge-gray { stroke: #64748b; stroke-width: 4; fill: none; marker-end: url(#arrow); }
+      .tag { font: 700 17px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #9d174d; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <text x="80" y="86" class="title">什么时候拆成多 Agent</text>
+  <text x="82" y="128" class="subtitle">能独立读上下文、独立产出、由主 Agent 合并的任务，才适合并行。</text>
+
+  <rect x="95" y="285" width="265" height="150" rx="18" class="node"/>
+  <text x="128" y="342" class="label">任务是否可独立？</text>
+  <text x="128" y="385" class="small">上下文和产出能拆开</text>
+
+  <rect x="485" y="185" width="265" height="150" rx="18" class="no"/>
+  <text x="520" y="242" class="label">否</text>
+  <text x="520" y="285" class="small">单 Agent 小步做</text>
+
+  <rect x="485" y="410" width="265" height="150" rx="18" class="node"/>
+  <text x="520" y="467" class="label">是否会改同一批文件？</text>
+  <text x="520" y="510" class="small">冲突风险是否高</text>
+
+  <rect x="875" y="185" width="275" height="150" rx="18" class="warn"/>
+  <text x="910" y="242" class="label">是</text>
+  <text x="910" y="285" class="small">不要并行实现</text>
+
+  <rect x="875" y="410" width="275" height="150" rx="18" class="node"/>
+  <text x="910" y="467" class="label">是否能独立验证？</text>
+  <text x="910" y="510" class="small">每个结果有证据</text>
+
+  <rect x="1265" y="185" width="250" height="150" rx="18" class="no"/>
+  <text x="1300" y="242" class="label">否</text>
+  <text x="1300" y="285" class="small">先写计划再拆</text>
+
+  <rect x="1265" y="410" width="250" height="150" rx="18" class="node"/>
+  <text x="1300" y="467" class="label">可以拆</text>
+  <text x="1300" y="510" class="small">主 Agent 负责合并</text>
+
+  <rect x="875" y="665" width="640" height="110" rx="18" class="warn"/>
+  <text x="915" y="722" class="label">并行只节省探索时间，不减少审查责任</text>
+  <text x="915" y="758" class="small">最终 diff、测试、风险和取舍仍由主 Agent 与程序员确认。</text>
+
+  <path d="M360 338 C420 300, 435 260, 485 260" class="edge-gray"/>
+  <text x="400" y="278" class="tag">否</text>
+  <path d="M360 382 C420 430, 435 485, 485 485" class="edge"/>
+  <text x="402" y="455" class="tag">是</text>
+  <path d="M750 465 C810 415, 825 270, 875 260" class="edge-gray"/>
+  <text x="795" y="335" class="tag">会</text>
+  <path d="M750 485 C810 485, 825 485, 875 485" class="edge"/>
+  <text x="795" y="470" class="tag">不会</text>
+  <path d="M1150 465 C1210 415, 1225 270, 1265 260" class="edge-gray"/>
+  <text x="1195" y="335" class="tag">否</text>
+  <path d="M1150 485 C1210 485, 1225 485, 1265 485" class="edge"/>
+  <text x="1195" y="470" class="tag">是</text>
+  <path d="M1390 560 C1390 620, 1290 665, 1195 665" class="edge"/>
+</svg>

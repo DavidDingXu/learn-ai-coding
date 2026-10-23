@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2560" height="1440" viewBox="0 0 2560 1440">
+  <rect width="2560" height="1440" fill="#f7f8fb"/>
+  <rect x="120" y="96" width="2320" height="1248" rx="32" fill="#ffffff" stroke="#d8dee9" stroke-width="3"/>
+  <text x="180" y="180" font-family="Arial, sans-serif" font-size="58" font-weight="700" fill="#111827">程序员用 AI Coding 的真正门槛</text>
+  <text x="180" y="238" font-family="Arial, sans-serif" font-size="30" fill="#4b5563">Prompt 只是入口。真实项目里，决定质量的是任务边界、上下文、规格、验证和复用。</text>
+
+  <g font-family="Arial, sans-serif">
+    <rect x="210" y="330" width="560" height="770" rx="24" fill="#fff1f2" stroke="#f1a2ad" stroke-width="4"/>
+    <text x="270" y="410" font-size="42" font-weight="700" fill="#9f1239">聊天式开发</text>
+    <text x="270" y="480" font-size="30" fill="#1f2937">1. 直接贴需求</text>
+    <text x="270" y="540" font-size="30" fill="#1f2937">2. 让 AI 自己读项目</text>
+    <text x="270" y="600" font-size="30" fill="#1f2937">3. 一次性生成大 diff</text>
+    <text x="270" y="660" font-size="30" fill="#1f2937">4. 失败后继续让它修</text>
+    <text x="270" y="720" font-size="30" fill="#1f2937">5. 看起来能跑就接受</text>
+    <line x1="270" y1="795" x2="710" y2="795" stroke="#f1a2ad" stroke-width="3"/>
+    <text x="270" y="860" font-size="28" fill="#7f1d1d">常见结果：</text>
+    <text x="270" y="920" font-size="26" fill="#4b5563">上下文漏读、改动越界、测试缺口、</text>
+    <text x="270" y="960" font-size="26" fill="#4b5563">失败归因不清、复用不了。</text>
+
+    <rect x="1000" y="330" width="560" height="770" rx="24" fill="#eef6ff" stroke="#86b7ff" stroke-width="4"/>
+    <text x="1060" y="410" font-size="42" font-weight="700" fill="#1d4ed8">工程式开发</text>
+    <text x="1060" y="480" font-size="30" fill="#1f2937">1. 判断任务风险</text>
+    <text x="1060" y="540" font-size="30" fill="#1f2937">2. 给出任务上下文包</text>
+    <text x="1060" y="600" font-size="30" fill="#1f2937">3. 先写计划或规格</text>
+    <text x="1060" y="660" font-size="30" fill="#1f2937">4. 小 diff 实现</text>
+    <text x="1060" y="720" font-size="30" fill="#1f2937">5. 用测试和证据确认</text>
+    <line x1="1060" y1="795" x2="1500" y2="795" stroke="#86b7ff" stroke-width="3"/>
+    <text x="1060" y="860" font-size="28" fill="#1e3a8a">交付结果：</text>
+    <text x="1060" y="920" font-size="26" fill="#4b5563">边界清楚、diff 可审、失败可追、</text>
+    <text x="1060" y="960" font-size="26" fill="#4b5563">验证可复查、经验可沉淀。</text>
+
+    <rect x="1790" y="330" width="540" height="770" rx="24" fill="#f0fdf4" stroke="#77c58a" stroke-width="4"/>
+    <text x="1850" y="410" font-size="42" font-weight="700" fill="#166534">核心能力</text>
+    <text x="1850" y="480" font-size="30" fill="#1f2937">任务判断</text>
+    <text x="1850" y="540" font-size="30" fill="#1f2937">上下文选择</text>
+    <text x="1850" y="600" font-size="30" fill="#1f2937">规格驱动</text>
+    <text x="1850" y="660" font-size="30" fill="#1f2937">小步实现</text>
+    <text x="1850" y="720" font-size="30" fill="#1f2937">验证记录</text>
+    <text x="1850" y="780" font-size="30" fill="#1f2937">工作流固化</text>
+    <line x1="1850" y1="855" x2="2260" y2="855" stroke="#77c58a" stroke-width="3"/>
+    <text x="1850" y="920" font-size="26" fill="#4b5563">Prompt 写得再漂亮，也替代不了这些</text>
+    <text x="1850" y="960" font-size="26" fill="#4b5563">工程控制点。</text>
+
+    <path d="M805 700 C870 700 910 700 970 700" stroke="#475569" stroke-width="6" fill="none"/>
+    <polygon points="970,700 940,682 940,718" fill="#475569"/>
+    <path d="M1595 700 C1660 700 1700 700 1760 700" stroke="#475569" stroke-width="6" fill="none"/>
+    <polygon points="1760,700 1730,682 1730,718" fill="#475569"/>
+
+    <rect x="350" y="1190" width="1860" height="84" rx="18" fill="#111827"/>
+    <text x="420" y="1245" font-size="32" fill="#f9fafb">判断标准：AI 写了多少代码不重要，重要的是这些改动能不能被审查、验证、回滚和复用。</text>
+  </g>
+</svg>

@@ -1,0 +1,469 @@
+{
+  "title": "程序员 AI Coding 进阶实战",
+  "repository": "DavidDingXu/learn-ai-coding",
+  "articleCount": 42,
+  "chapters": [
+    {
+      "id": "INTRO",
+      "title": "程序员 AI Coding 进阶实战",
+      "path": "docs/course/00-导读与学习地图/00-专栏介绍｜程序员-AI-Coding-进阶实战.md",
+      "group": "00",
+      "groupTitle": "导读与学习地图",
+      "practice": {
+        "label": "业务实践入口",
+        "path": "personal-productivity-app/README.md"
+      }
+    },
+    {
+      "id": "00",
+      "title": "程序员如何系统学习 AI Coding",
+      "path": "docs/course/00-导读与学习地图/00-程序员如何系统学习-AI-Coding.md",
+      "group": "00",
+      "groupTitle": "导读与学习地图",
+      "practice": {
+        "label": "业务样例与测试",
+        "path": "personal-productivity-app/README.md"
+      }
+    },
+    {
+      "id": "01",
+      "title": "程序员用 AI Coding，真正的门槛不是 Prompt",
+      "path": "docs/course/01-AI-Coding-底层心智/01-程序员用-AI-Coding-真正的门槛不是-Prompt.md",
+      "group": "01",
+      "groupTitle": "AI Coding 底层心智",
+      "practice": {
+        "label": "业务样例与测试",
+        "path": "personal-productivity-app/README.md"
+      }
+    },
+    {
+      "id": "02",
+      "title": "从聊天式开发到工程式开发",
+      "path": "docs/course/01-AI-Coding-底层心智/02-从聊天式开发到工程式开发.md",
+      "group": "01",
+      "groupTitle": "AI Coding 底层心智",
+      "practice": {
+        "label": "业务样例与测试",
+        "path": "personal-productivity-app/README.md"
+      }
+    },
+    {
+      "id": "03",
+      "title": "AI Coding 的底层工作模型",
+      "path": "docs/course/01-AI-Coding-底层心智/03-AI-Coding-的底层工作模型.md",
+      "group": "01",
+      "groupTitle": "AI Coding 底层心智",
+      "practice": {
+        "label": "业务样例与测试",
+        "path": "personal-productivity-app/README.md"
+      }
+    },
+    {
+      "id": "04",
+      "title": "AI 最擅长和最不擅长的开发任务",
+      "path": "docs/course/01-AI-Coding-底层心智/04-AI-最擅长和最不擅长的开发任务.md",
+      "group": "01",
+      "groupTitle": "AI Coding 底层心智",
+      "practice": {
+        "label": "业务样例与测试",
+        "path": "personal-productivity-app/README.md"
+      }
+    },
+    {
+      "id": "05",
+      "title": "Codex、Claude Code、Cursor、Copilot 怎么分工",
+      "path": "docs/course/02-程序员工具工作台/05-Codex-Claude-Code-Cursor-Copilot-怎么分工.md",
+      "group": "02",
+      "groupTitle": "程序员工具工作台",
+      "practice": {
+        "label": "业务样例与测试",
+        "path": "personal-productivity-app/README.md"
+      }
+    },
+    {
+      "id": "06",
+      "title": "一个程序员的 AI Coding 工作台怎么搭",
+      "path": "docs/course/02-程序员工具工作台/06-一个程序员的-AI-Coding-工作台怎么搭.md",
+      "group": "02",
+      "groupTitle": "程序员工具工作台",
+      "practice": {
+        "label": "业务样例与测试",
+        "path": "personal-productivity-app/README.md"
+      }
+    },
+    {
+      "id": "07",
+      "title": "App、CLI、IDE 怎么切换完成一次真实改动",
+      "path": "docs/course/02-程序员工具工作台/07-App-CLI-IDE-怎么组合完成一次真实改动.md",
+      "group": "02",
+      "groupTitle": "程序员工具工作台",
+      "practice": {
+        "label": "业务样例与测试",
+        "path": "personal-productivity-app/README.md"
+      }
+    },
+    {
+      "id": "08",
+      "title": "上下文工程：为什么不是塞越多代码越好",
+      "path": "docs/course/03-上下文工程与代码库理解/08-上下文工程-为什么不是塞越多代码越好.md",
+      "group": "03",
+      "groupTitle": "上下文工程与代码库理解",
+      "practice": {
+        "label": "陌生模块接手记录",
+        "path": "ai-coding-workflow-kit/dev-process/01-module-onboarding.md"
+      }
+    },
+    {
+      "id": "09",
+      "title": "代码地图不是手工文档：让 Agent 生成可检查的仓库导航",
+      "path": "docs/course/03-上下文工程与代码库理解/09-让-AI-接手陌生项目的第一步-代码地图.md",
+      "group": "03",
+      "groupTitle": "上下文工程与代码库理解",
+      "practice": {
+        "label": "陌生模块接手记录",
+        "path": "ai-coding-workflow-kit/dev-process/01-module-onboarding.md"
+      }
+    },
+    {
+      "id": "10",
+      "title": "让 Agent 做代码搜索：怎样约束搜索目标、证据和停止条件",
+      "path": "docs/course/03-上下文工程与代码库理解/10-代码搜索与上下文选择.md",
+      "group": "03",
+      "groupTitle": "上下文工程与代码库理解",
+      "practice": {
+        "label": "陌生模块接手记录",
+        "path": "ai-coding-workflow-kit/dev-process/01-module-onboarding.md"
+      }
+    },
+    {
+      "id": "11",
+      "title": "`AGENTS.md` / `CLAUDE.md` / Copilot Instructions",
+      "path": "docs/course/03-上下文工程与代码库理解/11-AGENTS-md-CLAUDE-md-Copilot-Instructions.md",
+      "group": "03",
+      "groupTitle": "上下文工程与代码库理解",
+      "practice": {
+        "label": "陌生模块接手记录",
+        "path": "ai-coding-workflow-kit/dev-process/01-module-onboarding.md"
+      }
+    },
+    {
+      "id": "12",
+      "title": "任务上下文包：一次需求到底该给 AI 什么",
+      "path": "docs/course/03-上下文工程与代码库理解/12-任务上下文包-一次需求到底该给-AI-什么.md",
+      "group": "03",
+      "groupTitle": "上下文工程与代码库理解",
+      "practice": {
+        "label": "陌生模块接手记录",
+        "path": "ai-coding-workflow-kit/dev-process/01-module-onboarding.md"
+      }
+    },
+    {
+      "id": "13",
+      "title": "上下文污染与上下文清理",
+      "path": "docs/course/03-上下文工程与代码库理解/13-上下文污染与上下文清理.md",
+      "group": "03",
+      "groupTitle": "上下文工程与代码库理解",
+      "practice": {
+        "label": "陌生模块接手记录",
+        "path": "ai-coding-workflow-kit/dev-process/01-module-onboarding.md"
+      }
+    },
+    {
+      "id": "14",
+      "title": "模块实战：让 AI 接手一个陌生代码模块",
+      "path": "docs/course/03-上下文工程与代码库理解/14-模块实战-让-AI-接手一个陌生代码模块.md",
+      "group": "03",
+      "groupTitle": "上下文工程与代码库理解",
+      "practice": {
+        "label": "陌生模块接手记录",
+        "path": "ai-coding-workflow-kit/dev-process/01-module-onboarding.md"
+      }
+    },
+    {
+      "id": "15",
+      "title": "SDD 是什么：先写规格，再写代码",
+      "path": "docs/course/04-SDD-与-OpenSpec-实战/15-SDD-是什么-先写规格再写代码.md",
+      "group": "04",
+      "groupTitle": "SDD 与 OpenSpec 实战",
+      "practice": {
+        "label": "OpenSpec 业务需求实战",
+        "path": "personal-productivity-app/dev-process/01-openspec-today-plan-rollover.md"
+      }
+    },
+    {
+      "id": "16",
+      "title": "从一句需求到 `requirements.md`",
+      "path": "docs/course/04-SDD-与-OpenSpec-实战/16-从一句需求到-requirements-md.md",
+      "group": "04",
+      "groupTitle": "SDD 与 OpenSpec 实战",
+      "practice": {
+        "label": "OpenSpec 业务需求实战",
+        "path": "personal-productivity-app/dev-process/01-openspec-today-plan-rollover.md"
+      }
+    },
+    {
+      "id": "17",
+      "title": "`design.md` 怎么写，AI 才不会补丁式开发",
+      "path": "docs/course/04-SDD-与-OpenSpec-实战/17-design-md-怎么写-AI-才不会补丁式开发.md",
+      "group": "04",
+      "groupTitle": "SDD 与 OpenSpec 实战",
+      "practice": {
+        "label": "OpenSpec 业务需求实战",
+        "path": "personal-productivity-app/dev-process/01-openspec-today-plan-rollover.md"
+      }
+    },
+    {
+      "id": "18",
+      "title": "`tasks.md` 怎么拆：把复杂需求变成小 diff",
+      "path": "docs/course/04-SDD-与-OpenSpec-实战/18-tasks-md-怎么拆-把复杂需求变成小-diff.md",
+      "group": "04",
+      "groupTitle": "SDD 与 OpenSpec 实战",
+      "practice": {
+        "label": "OpenSpec 业务需求实战",
+        "path": "personal-productivity-app/dev-process/01-openspec-today-plan-rollover.md"
+      }
+    },
+    {
+      "id": "19",
+      "title": "OpenSpec 实战：把需求变更放进 repo",
+      "path": "docs/course/04-SDD-与-OpenSpec-实战/19-OpenSpec-实战-把需求变更放进-repo.md",
+      "group": "04",
+      "groupTitle": "SDD 与 OpenSpec 实战",
+      "practice": {
+        "label": "OpenSpec 业务需求实战",
+        "path": "personal-productivity-app/dev-process/01-openspec-today-plan-rollover.md"
+      }
+    },
+    {
+      "id": "20",
+      "title": "OpenSpec、Spec Kit 与轻量 SDD 怎么选",
+      "path": "docs/course/04-SDD-与-OpenSpec-实战/20-OpenSpec-Spec-Kit-与轻量-SDD-怎么选.md",
+      "group": "04",
+      "groupTitle": "SDD 与 OpenSpec 实战",
+      "practice": {
+        "label": "OpenSpec 业务需求实战",
+        "path": "personal-productivity-app/dev-process/01-openspec-today-plan-rollover.md"
+      }
+    },
+    {
+      "id": "21",
+      "title": "模块实战：用 OpenSpec CLI 推进一次真实产品需求",
+      "path": "docs/course/04-SDD-与-OpenSpec-实战/21-模块实战-用-OpenSpec-CLI-推进一次真实产品需求.md",
+      "group": "04",
+      "groupTitle": "SDD 与 OpenSpec 实战",
+      "practice": {
+        "label": "OpenSpec 业务需求实战",
+        "path": "personal-productivity-app/dev-process/01-openspec-today-plan-rollover.md"
+      }
+    },
+    {
+      "id": "22",
+      "title": "计划先行：让 AI 先解释它准备怎么改",
+      "path": "docs/course/05-小步开发测试与调试闭环/22-计划先行-让-AI-先解释它准备怎么改.md",
+      "group": "05",
+      "groupTitle": "小步开发测试与调试闭环",
+      "practice": {
+        "label": "业务样例与测试",
+        "path": "personal-productivity-app/README.md"
+      }
+    },
+    {
+      "id": "23",
+      "title": "小步开发：为什么要限制 AI 一次改动范围",
+      "path": "docs/course/05-小步开发测试与调试闭环/23-小步开发-为什么要限制-AI-一次改动范围.md",
+      "group": "05",
+      "groupTitle": "小步开发测试与调试闭环",
+      "practice": {
+        "label": "业务样例与测试",
+        "path": "personal-productivity-app/README.md"
+      }
+    },
+    {
+      "id": "24",
+      "title": "TDD + AI Coding：先让失败测试约束模型",
+      "path": "docs/course/05-小步开发测试与调试闭环/24-TDD-AI-Coding-先让失败测试约束模型.md",
+      "group": "05",
+      "groupTitle": "小步开发测试与调试闭环",
+      "practice": {
+        "label": "业务样例与测试",
+        "path": "personal-productivity-app/README.md"
+      }
+    },
+    {
+      "id": "25",
+      "title": "系统化调试：让 AI 基于证据排障",
+      "path": "docs/course/05-小步开发测试与调试闭环/25-系统化调试-让-AI-基于证据排障.md",
+      "group": "05",
+      "groupTitle": "小步开发测试与调试闭环",
+      "practice": {
+        "label": "业务样例与测试",
+        "path": "personal-productivity-app/README.md"
+      }
+    },
+    {
+      "id": "26",
+      "title": "前后端验证闭环：页面、接口、数据库和副作用怎么一起验",
+      "path": "docs/course/05-小步开发测试与调试闭环/26-前后端验证闭环-页面接口数据库和副作用怎么一起验.md",
+      "group": "05",
+      "groupTitle": "小步开发测试与调试闭环",
+      "practice": {
+        "label": "业务样例与测试",
+        "path": "personal-productivity-app/README.md"
+      }
+    },
+    {
+      "id": "27",
+      "title": "AI 说“测试失败无关”时，程序员该怎么判断",
+      "path": "docs/course/05-小步开发测试与调试闭环/27-AI-说测试失败无关时程序员该怎么判断.md",
+      "group": "05",
+      "groupTitle": "小步开发测试与调试闭环",
+      "practice": {
+        "label": "业务样例与测试",
+        "path": "personal-productivity-app/README.md"
+      }
+    },
+    {
+      "id": "28",
+      "title": "模块实战：用 AI 完成一次 CLI 交互改造",
+      "path": "docs/course/05-小步开发测试与调试闭环/28-模块实战-用-AI-完成一次-CLI-交互改造.md",
+      "group": "05",
+      "groupTitle": "小步开发测试与调试闭环",
+      "practice": {
+        "label": "CLI 交互改造记录",
+        "path": "ai-coding-workflow-kit/dev-process/02-cli-contract-change.md"
+      }
+    },
+    {
+      "id": "29",
+      "title": "Skill 是什么：从提示词到可复用工作流",
+      "path": "docs/course/06-Skill-Superpowers-与工作流固化/29-Skill-是什么-从提示词到可复用工作流.md",
+      "group": "06",
+      "groupTitle": "Skill Superpowers 与工作流固化",
+      "practice": {
+        "label": "Superpowers 业务工作流",
+        "path": "personal-productivity-app/dev-process/02-superpowers-today-plan-workflow.md"
+      }
+    },
+    {
+      "id": "30",
+      "title": "Skill 原理解析：它如何约束 Agent 行为",
+      "path": "docs/course/06-Skill-Superpowers-与工作流固化/30-Skill-原理解析-它如何约束-Agent-行为.md",
+      "group": "06",
+      "groupTitle": "Skill Superpowers 与工作流固化",
+      "practice": {
+        "label": "Superpowers 业务工作流",
+        "path": "personal-productivity-app/dev-process/02-superpowers-today-plan-workflow.md"
+      }
+    },
+    {
+      "id": "31",
+      "title": "Superpowers 工作流拆解：把工程纪律变成 Skill 链",
+      "path": "docs/course/06-Skill-Superpowers-与工作流固化/31-Superpowers-工作流拆解-把工程纪律变成-Skill-链.md",
+      "group": "06",
+      "groupTitle": "Skill Superpowers 与工作流固化",
+      "practice": {
+        "label": "Superpowers 业务工作流",
+        "path": "personal-productivity-app/dev-process/02-superpowers-today-plan-workflow.md"
+      }
+    },
+    {
+      "id": "32",
+      "title": "自定义 Skill：把你的经验固化成个人能力",
+      "path": "docs/course/06-Skill-Superpowers-与工作流固化/32-自定义-Skill-把你的经验固化成个人能力.md",
+      "group": "06",
+      "groupTitle": "Skill Superpowers 与工作流固化",
+      "practice": {
+        "label": "Superpowers 业务工作流",
+        "path": "personal-productivity-app/dev-process/02-superpowers-today-plan-workflow.md"
+      }
+    },
+    {
+      "id": "33",
+      "title": "外部工具接入：MCP 在 AI Coding 里到底有什么用",
+      "path": "docs/course/06-Skill-Superpowers-与工作流固化/33-外部工具接入-MCP-在-AI-Coding-里到底有什么用.md",
+      "group": "06",
+      "groupTitle": "Skill Superpowers 与工作流固化",
+      "practice": {
+        "label": "Superpowers 业务工作流",
+        "path": "personal-productivity-app/dev-process/02-superpowers-today-plan-workflow.md"
+      }
+    },
+    {
+      "id": "34",
+      "title": "多 Agent 与自动化：什么时候拆，什么时候不要拆",
+      "path": "docs/course/06-Skill-Superpowers-与工作流固化/34-多-Agent-与自动化-什么时候拆什么时候不要拆.md",
+      "group": "06",
+      "groupTitle": "Skill Superpowers 与工作流固化",
+      "practice": {
+        "label": "Superpowers 业务工作流",
+        "path": "personal-productivity-app/dev-process/02-superpowers-today-plan-workflow.md"
+      }
+    },
+    {
+      "id": "35",
+      "title": "模块实战：用 Superpowers 固化一次业务需求的调试和评审",
+      "path": "docs/course/06-Skill-Superpowers-与工作流固化/35-模块实战-用-Superpowers-固化调试和评审流程.md",
+      "group": "06",
+      "groupTitle": "Skill Superpowers 与工作流固化",
+      "practice": {
+        "label": "Superpowers 业务工作流",
+        "path": "personal-productivity-app/dev-process/02-superpowers-today-plan-workflow.md"
+      }
+    },
+    {
+      "id": "36",
+      "title": "模块实战：给 AI 接一个只读项目工具",
+      "path": "docs/course/06-Skill-Superpowers-与工作流固化/36-模块实战-给-AI-接一个只读项目工具.md",
+      "group": "06",
+      "groupTitle": "Skill Superpowers 与工作流固化",
+      "practice": {
+        "label": "只读工具边界实战",
+        "path": "ai-coding-workflow-kit/dev-process/05-readonly-tool-boundary.md"
+      }
+    },
+    {
+      "id": "37",
+      "title": "综合实战：一个真实需求的 AI Coding 最佳实践",
+      "path": "docs/course/07-综合实战与资产沉淀/37-综合实战-一个真实需求的-AI-Coding-最佳实践.md",
+      "group": "07",
+      "groupTitle": "综合实战与资产沉淀",
+      "practice": {
+        "label": "完整业务需求交付",
+        "path": "personal-productivity-app/dev-process/03-end-to-end-today-plan-delivery.md"
+      }
+    },
+    {
+      "id": "38",
+      "title": "综合实战：从一次交付沉淀个人规则库",
+      "path": "docs/course/07-综合实战与资产沉淀/38-综合实战-从一次交付沉淀个人规则库.md",
+      "group": "07",
+      "groupTitle": "综合实战与资产沉淀",
+      "practice": {
+        "label": "个人规则沉淀实战",
+        "path": "personal-productivity-app/dev-process/04-rule-asset-sedimentation.md"
+      }
+    },
+    {
+      "id": "39",
+      "title": "从个人提效到个人工程系统",
+      "path": "docs/course/08-个人工程资产/39-从个人提效到个人工程系统.md",
+      "group": "08",
+      "groupTitle": "个人工程资产",
+      "practice": {
+        "label": "个人规则沉淀实战",
+        "path": "personal-productivity-app/dev-process/04-rule-asset-sedimentation.md"
+      }
+    },
+    {
+      "id": "END",
+      "title": "写在专栏结束时：把 AI Coding 留在日常工程里",
+      "path": "docs/course/08-个人工程资产/END-写在专栏结束时-把-AI-Coding-留在日常工程里.md",
+      "group": "08",
+      "groupTitle": "个人工程资产",
+      "practice": {
+        "label": "业务实践入口",
+        "path": "personal-productivity-app/README.md"
+      }
+    }
+  ]
+}

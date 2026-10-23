@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#eff6ff"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .title { font: 700 46px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 24px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #475569; }
+      .panel { fill: #ffffff; stroke: #bfdbfe; stroke-width: 2; filter: url(#shadow); }
+      .head { fill: #dbeafe; stroke: #93c5fd; stroke-width: 2; }
+      .row { fill: #f8fafc; stroke: #e2e8f0; stroke-width: 1.5; }
+      .label { font: 700 24px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #111827; }
+      .small { font: 400 20px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #334155; }
+      .bad { font: 700 20px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #b91c1c; }
+      .good { font: 700 20px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #15803d; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <text x="80" y="86" class="title">计划质量看 6 个维度</text>
+  <text x="82" y="128" class="subtitle">只要有一项说不清，就不要让 Agent 开始大范围改代码。</text>
+
+  <rect x="90" y="185" width="1420" height="610" rx="18" class="panel"/>
+  <rect x="130" y="235" width="300" height="70" rx="12" class="head"/>
+  <rect x="430" y="235" width="500" height="70" rx="12" class="head"/>
+  <rect x="930" y="235" width="540" height="70" rx="12" class="head"/>
+  <text x="165" y="280" class="label">维度</text>
+  <text x="470" y="280" class="label">危险计划</text>
+  <text x="970" y="280" class="label">可执行计划</text>
+
+  <g>
+    <rect x="130" y="325" width="300" height="68" class="row"/>
+    <rect x="430" y="325" width="500" height="68" class="row"/>
+    <rect x="930" y="325" width="540" height="68" class="row"/>
+    <text x="165" y="368" class="small">上下文</text>
+    <text x="470" y="368" class="bad">“我会阅读相关代码”</text>
+    <text x="970" y="368" class="good">列出入口、调用点、测试文件</text>
+  </g>
+
+  <g>
+    <rect x="130" y="405" width="300" height="68" class="row"/>
+    <rect x="430" y="405" width="500" height="68" class="row"/>
+    <rect x="930" y="405" width="540" height="68" class="row"/>
+    <text x="165" y="448" class="small">改动范围</text>
+    <text x="470" y="448" class="bad">“实现完整功能”</text>
+    <text x="970" y="448" class="good">明确改哪些文件，不改哪些文件</text>
+  </g>
+
+  <g>
+    <rect x="130" y="485" width="300" height="68" class="row"/>
+    <rect x="430" y="485" width="500" height="68" class="row"/>
+    <rect x="930" y="485" width="540" height="68" class="row"/>
+    <text x="165" y="528" class="small">实现顺序</text>
+    <text x="470" y="528" class="bad">测试、实现、重构混在一起</text>
+    <text x="970" y="528" class="good">先证据，再最小实现，再扩大验证</text>
+  </g>
+
+  <g>
+    <rect x="130" y="565" width="300" height="68" class="row"/>
+    <rect x="430" y="565" width="500" height="68" class="row"/>
+    <rect x="930" y="565" width="540" height="68" class="row"/>
+    <text x="165" y="608" class="small">验证路径</text>
+    <text x="470" y="608" class="bad">“运行测试”</text>
+    <text x="970" y="608" class="good">命令、覆盖范围、预期失败/通过</text>
+  </g>
+
+  <g>
+    <rect x="130" y="645" width="300" height="68" class="row"/>
+    <rect x="430" y="645" width="500" height="68" class="row"/>
+    <rect x="930" y="645" width="540" height="68" class="row"/>
+    <text x="165" y="688" class="small">风险假设</text>
+    <text x="470" y="688" class="bad">默认依赖和接口都存在</text>
+    <text x="970" y="688" class="good">列出需先核对的事实和接口</text>
+  </g>
+
+  <g>
+    <rect x="130" y="725" width="300" height="68" class="row"/>
+    <rect x="430" y="725" width="500" height="68" class="row"/>
+    <rect x="930" y="725" width="540" height="68" class="row"/>
+    <text x="165" y="768" class="small">停止条件</text>
+    <text x="470" y="768" class="bad">失败后继续尝试修</text>
+    <text x="970" y="768" class="good">baseline 异常、接口变更、范围扩大即停</text>
+  </g>
+</svg>

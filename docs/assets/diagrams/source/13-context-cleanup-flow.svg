@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#ecfdf5"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#16a34a"/>
+    </marker>
+    <style>
+      .title { font: 700 46px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 24px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #475569; }
+      .step { fill: #ffffff; stroke: #bbf7d0; stroke-width: 2; filter: url(#shadow); }
+      .warn { fill: #fee2e2; stroke: #fca5a5; stroke-width: 2; filter: url(#shadow); }
+      .done { fill: #166534; filter: url(#shadow); }
+      .stepTitle { font: 700 23px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .text { font: 400 18px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #334155; }
+      .doneTitle { font: 700 25px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #ffffff; }
+      .doneText { font: 400 19px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #dcfce7; }
+      .line { stroke: #16a34a; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <text x="80" y="86" class="title">上下文清理流程</text>
+  <text x="82" y="128" class="subtitle">发现污染信号后，先停止编辑，把材料分成事实、假设、约束和下一步。</text>
+
+  <rect x="90" y="260" width="240" height="130" rx="18" class="warn"/>
+  <text x="130" y="312" class="stepTitle">污染信号</text>
+  <text x="130" y="350" class="text">旧假设、diff 变大、测试失败</text>
+
+  <rect x="405" y="260" width="240" height="130" rx="18" class="step"/>
+  <text x="445" y="312" class="stepTitle">停止编辑</text>
+  <text x="445" y="350" class="text">只读、分类、整理</text>
+
+  <rect x="720" y="260" width="240" height="130" rx="18" class="step"/>
+  <text x="760" y="312" class="stepTitle">事实分类</text>
+  <text x="760" y="350" class="text">Confirmed / Excluded / Unverified</text>
+
+  <rect x="1035" y="260" width="240" height="130" rx="18" class="step"/>
+  <text x="1075" y="312" class="stepTitle">约束重申</text>
+  <text x="1075" y="350" class="text">硬边界和当前 diff</text>
+
+  <rect x="620" y="560" width="360" height="140" rx="22" class="done"/>
+  <text x="700" y="615" class="doneTitle">干净上下文</text>
+  <text x="674" y="656" class="doneText">下一步最小验证动作或小步实现</text>
+
+  <path d="M 330 325 L 405 325" class="line"/>
+  <path d="M 645 325 L 720 325" class="line"/>
+  <path d="M 960 325 L 1035 325" class="line"/>
+  <path d="M 1155 390 C 1080 505, 950 555, 800 560" class="line"/>
+</svg>

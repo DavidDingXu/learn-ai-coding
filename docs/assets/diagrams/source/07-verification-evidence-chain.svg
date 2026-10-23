@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f0fdf4"/>
+      <stop offset="100%" stop-color="#eff6ff"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#16a34a"/>
+    </marker>
+    <style>
+      .title { font: 700 46px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 24px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #475569; }
+      .node { fill: #ffffff; stroke: #bbf7d0; stroke-width: 2; filter: url(#shadow); }
+      .final { fill: #166534; filter: url(#shadow); }
+      .warn { fill: #fff7ed; stroke: #fed7aa; stroke-width: 2; filter: url(#shadow); }
+      .nodeTitle { font: 700 24px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .text { font: 400 19px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #334155; }
+      .finalTitle { font: 700 28px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #ffffff; }
+      .finalText { font: 400 20px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #dcfce7; }
+      .line { stroke: #16a34a; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <text x="80" y="86" class="title">一次改动的验证证据链</text>
+  <text x="82" y="128" class="subtitle">完成不是一句话，而是从基线、diff、命令、浏览器到剩余风险的证据组合。</text>
+
+  <rect x="120" y="230" width="250" height="130" rx="18" class="node"/>
+  <text x="162" y="280" class="nodeTitle">Baseline</text>
+  <text x="162" y="318" class="text">改前复现或已知失败</text>
+
+  <rect x="440" y="230" width="250" height="130" rx="18" class="node"/>
+  <text x="482" y="280" class="nodeTitle">Diff</text>
+  <text x="482" y="318" class="text">改了哪些文件</text>
+
+  <rect x="760" y="230" width="250" height="130" rx="18" class="node"/>
+  <text x="802" y="280" class="nodeTitle">Commands</text>
+  <text x="802" y="318" class="text">测试、类型、lint、构建</text>
+
+  <rect x="1080" y="230" width="250" height="130" rx="18" class="node"/>
+  <text x="1122" y="280" class="nodeTitle">Browser/API</text>
+  <text x="1122" y="318" class="text">用户路径和外部行为</text>
+
+  <path d="M 370 295 L 440 295" class="line"/>
+  <path d="M 690 295 L 760 295" class="line"/>
+  <path d="M 1010 295 L 1080 295" class="line"/>
+
+  <rect x="330" y="520" width="320" height="150" rx="18" class="warn"/>
+  <text x="380" y="574" class="nodeTitle">未覆盖风险</text>
+  <text x="380" y="614" class="text">第三方、线上数据、兼容性</text>
+
+  <rect x="770" y="520" width="420" height="150" rx="18" class="final"/>
+  <text x="844" y="574" class="finalTitle">Verification Ledger</text>
+  <text x="828" y="618" class="finalText">命令、结果、证据和剩余风险一起收口</text>
+
+  <path d="M 1205 360 C 1190 455, 1110 505, 1020 520" class="line"/>
+  <path d="M 650 595 L 770 595" class="line"/>
+</svg>

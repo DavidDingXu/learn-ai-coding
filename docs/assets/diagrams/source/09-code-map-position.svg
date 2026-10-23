@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#fefce8"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#ca8a04"/>
+    </marker>
+    <style>
+      .title { font: 700 46px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 24px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #475569; }
+      .repo { fill: #1e293b; filter: url(#shadow); }
+      .map { fill: #fef3c7; stroke: #facc15; stroke-width: 3; filter: url(#shadow); }
+      .node { fill: #ffffff; stroke: #fde68a; stroke-width: 2; filter: url(#shadow); }
+      .out { fill: #dcfce7; stroke: #86efac; stroke-width: 2; filter: url(#shadow); }
+      .repoTitle { font: 700 30px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #ffffff; }
+      .repoText { font: 400 20px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #e2e8f0; }
+      .nodeTitle { font: 700 25px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .text { font: 400 20px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #334155; }
+      .line { stroke: #ca8a04; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <text x="80" y="86" class="title">可检查的仓库导航</text>
+  <text x="82" y="128" class="subtitle">Agent 先生成入口、测试、规则和风险索引，程序员复核关键边界。</text>
+
+  <rect x="95" y="300" width="330" height="220" rx="26" class="repo"/>
+  <text x="172" y="370" class="repoTitle">真实仓库</text>
+  <text x="142" y="420" class="repoText">source / tests / docs</text>
+  <text x="142" y="460" class="repoText">config / generated</text>
+
+  <rect x="590" y="250" width="420" height="320" rx="28" class="map"/>
+  <text x="700" y="322" class="nodeTitle">Code Map</text>
+  <text x="650" y="372" class="text">运行入口</text>
+  <text x="650" y="414" class="text">核心模块</text>
+  <text x="650" y="456" class="text">测试和验证命令</text>
+  <text x="650" y="498" class="text">配置和禁止修改目录</text>
+
+  <rect x="1180" y="185" width="300" height="130" rx="20" class="node"/>
+  <text x="1226" y="238" class="nodeTitle">上下文侦察</text>
+  <text x="1226" y="276" class="text">按地图找入口</text>
+
+  <rect x="1180" y="385" width="300" height="130" rx="20" class="node"/>
+  <text x="1226" y="438" class="nodeTitle">任务计划</text>
+  <text x="1226" y="476" class="text">列出允许修改文件</text>
+
+  <rect x="1180" y="585" width="300" height="130" rx="20" class="out"/>
+  <text x="1226" y="638" class="nodeTitle">小 diff + 验证</text>
+  <text x="1226" y="676" class="text">按命令证明结果</text>
+
+  <path d="M 425 410 C 500 410, 540 410, 590 410" class="line"/>
+  <path d="M 1010 350 C 1080 300, 1120 255, 1180 245" class="line"/>
+  <path d="M 1010 420 C 1085 430, 1120 445, 1180 450" class="line"/>
+  <path d="M 1010 500 C 1080 570, 1120 630, 1180 650" class="line"/>
+</svg>

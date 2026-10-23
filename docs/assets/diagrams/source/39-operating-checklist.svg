@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#fbfbf8"/>
+  <text x="80" y="82" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#1f2937">个人 AI Coding 运行清单</text>
+  <text x="80" y="124" font-family="Arial, sans-serif" font-size="18" fill="#64748b">每次任务前、中、后只问少数关键问题</text>
+  <g font-family="Arial, sans-serif">
+    <rect x="130" y="200" width="390" height="470" rx="18" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="175" y="255" font-size="25" font-weight="700" fill="#111827">开始前</text>
+    <text x="175" y="315" font-size="18" fill="#374151">任务是否适合 AI</text>
+    <text x="175" y="365" font-size="18" fill="#374151">上下文是否足够小</text>
+    <text x="175" y="415" font-size="18" fill="#374151">规格和边界是否写清</text>
+    <text x="175" y="465" font-size="18" fill="#374151">验证命令是否明确</text>
+
+    <rect x="605" y="200" width="390" height="470" rx="18" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="650" y="255" font-size="25" font-weight="700" fill="#111827">执行中</text>
+    <text x="650" y="315" font-size="18" fill="#374151">diff 是否小</text>
+    <text x="650" y="365" font-size="18" fill="#374151">AI 是否越界改文件</text>
+    <text x="650" y="415" font-size="18" fill="#374151">测试是否先约束行为</text>
+    <text x="650" y="465" font-size="18" fill="#374151">失败是否基于证据排查</text>
+
+    <rect x="1080" y="200" width="390" height="470" rx="18" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="1125" y="255" font-size="25" font-weight="700" fill="#111827">完成后</text>
+    <text x="1125" y="315" font-size="18" fill="#374151">命令是否跑过</text>
+    <text x="1125" y="365" font-size="18" fill="#374151">证据是否可复查</text>
+    <text x="1125" y="415" font-size="18" fill="#374151">风险是否写清</text>
+    <text x="1125" y="465" font-size="18" fill="#374151">经验是否需要沉淀</text>
+  </g>
+  <rect x="230" y="735" width="1140" height="70" rx="16" fill="#ffffff" stroke="#d6d3d1"/>
+  <text x="270" y="779" font-family="Arial, sans-serif" font-size="20" fill="#44403c">这套清单越短越好。能长期执行，比一次性覆盖所有风险更重要。</text>
+</svg>

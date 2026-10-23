@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#f0fdfa"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .title { font: 700 46px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 24px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #475569; }
+      .panel { fill: #ffffff; stroke: #99f6e4; stroke-width: 2; filter: url(#shadow); }
+      .section { fill: #f0fdfa; stroke: #5eead4; stroke-width: 1.8; }
+      .label { font: 700 25px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #111827; }
+      .small { font: 400 20px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #334155; }
+      .mono { font: 700 20px "SFMono-Regular", Menlo, Consolas, monospace; fill: #0f766e; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <text x="80" y="86" class="title">Verification ledger 记录什么</text>
+  <text x="82" y="128" class="subtitle">它不是总结，而是防止 AI 把未验证、旧失败和本次失败混在一起。</text>
+
+  <rect x="210" y="185" width="1180" height="620" rx="18" class="panel"/>
+
+  <rect x="270" y="245" width="460" height="100" rx="14" class="section"/>
+  <text x="310" y="288" class="label">Baseline</text>
+  <text x="310" y="325" class="small">改前命令、旧失败、预期红灯</text>
+
+  <rect x="870" y="245" width="460" height="100" rx="14" class="section"/>
+  <text x="910" y="288" class="label">Change Summary</text>
+  <text x="910" y="325" class="small">本次到底改了什么，不写泛泛总结</text>
+
+  <rect x="270" y="390" width="460" height="100" rx="14" class="section"/>
+  <text x="310" y="433" class="label">Verification Commands</text>
+  <text x="310" y="470" class="mono">npm test -- order-cancel</text>
+
+  <rect x="870" y="390" width="460" height="100" rx="14" class="section"/>
+  <text x="910" y="433" class="label">Evidence</text>
+  <text x="910" y="470" class="small">PASS / FAIL、截图、日志、CI 链接</text>
+
+  <rect x="270" y="535" width="460" height="100" rx="14" class="section"/>
+  <text x="310" y="578" class="label">Failure Classification</text>
+  <text x="310" y="615" class="small">本次引入、baseline、预期、环境</text>
+
+  <rect x="870" y="535" width="460" height="100" rx="14" class="section"/>
+  <text x="910" y="578" class="label">Residual Risk</text>
+  <text x="910" y="615" class="small">没验证什么，后续在哪里补</text>
+
+  <rect x="420" y="690" width="760" height="70" rx="14" fill="#ffffff" stroke="#ccfbf1"/>
+  <text x="465" y="735" class="small">核心要求：每个结论都要能回到命令、输出、diff 或人工检查。</text>
+</svg>
