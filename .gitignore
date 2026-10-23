@@ -7,3 +7,5 @@ build/
 .env
 .env.*
 !.env.example
+site/dist/
+site/__pycache__/
