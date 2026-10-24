@@ -7,8 +7,15 @@ build/
 .env
 .env.*
 !.env.example
-site/dist/
-site/__pycache__/
+tools/site/dist/
+tools/site/__pycache__/
 
-book/.cache/
-book/__pycache__/
+tools/book/.cache/
+tools/book/__pycache__/
+
+# Local publishing outputs and environments
+__pycache__/
+*.py[cod]
+.venv/
+*.pdf
+*.epub

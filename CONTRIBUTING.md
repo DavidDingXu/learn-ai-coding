@@ -38,6 +38,6 @@ npm test
 
 ## 目录与内容维护
 
-`docs/course/` 存放课程正文，`docs/assets/` 存放插图；两个配套项目各自维护运行说明和测试；`site/`、`book/` 分别构建阅读站和电子书。
+`docs/course/` 存放课程正文，`docs/assets/` 存放插图；两个配套项目各自维护运行说明和测试；`tools/site/`、`tools/book/` 分别构建阅读站和电子书。
 
-文章顺序和链接以 `docs/course/catalog.json` 为准，根目录 README 展示每篇文章。修改文章后运行课程检查；书稿编排与电子书构建见 [电子书维护说明](book/README.md)。
+文章顺序和链接以 `docs/course/catalog.json` 为准，根目录 README 展示每篇文章。修改文章后运行课程检查；书稿编排与电子书构建见 [网站与电子书构建说明](docs/BUILD.md)。
