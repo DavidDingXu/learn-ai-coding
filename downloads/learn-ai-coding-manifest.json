@@ -202,7 +202,7 @@
   "tables": 24,
   "code_blocks": 1474,
   "diagrams": 0,
-  "publishing_sha256": "17235ac2a7fc2181e2b537ad4c615fdcefc45d848b4a91b0214cceba93985dd6",
+  "publishing_sha256": "a79b66a78d3855095fa87004f7ffccd6b835e54ef4767cab4a1c96ff3ba45d84",
   "content_sha256": "35069afa2971316db6296ee359b66b4a92e4468bf761cad4a552d3fa400cc4f6",
   "pdf_pages": 741,
   "tools": {
@@ -211,6 +211,6 @@
   },
   "files": {
     "learn-ai-coding.pdf": "e747374e44a53cc4e530b45427a525c4e17717fb06867c706e6d4f878a6973c2",
-    "learn-ai-coding.epub": "34c3abfc9dc22900505f4896a24aeb01acdc131ed4e0c8a4dbf18f327f9a03ef"
+    "learn-ai-coding.epub": "044d328e7adb8bdb94967237f2ad9a45571583c06ef20d7b403192debaac0d55"
   }
 }
