@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#eef2ff"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .title { font: 700 46px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 24px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #475569; }
+      .layer { filter: url(#shadow); }
+      .layerText { font: 700 28px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .desc { font: 400 21px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #334155; }
+      .side { fill: #ffffff; stroke: #c7d2fe; stroke-width: 2; filter: url(#shadow); }
+      .sideTitle { font: 700 24px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #1e1b4b; }
+      .sideText { font: 400 19px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #334155; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <text x="80" y="86" class="title">AI Coding 项目规则分层</text>
+  <text x="82" y="128" class="subtitle">长期规则、项目导航和单次任务上下文不能混在一个文件里。</text>
+
+  <rect x="350" y="205" width="900" height="120" rx="22" fill="#e0e7ff" class="layer"/>
+  <text x="430" y="255" class="layerText">全局规则</text>
+  <text x="430" y="292" class="desc">个人工作方式：语言、验证优先、不要覆盖用户改动</text>
+
+  <rect x="430" y="350" width="740" height="120" rx="22" fill="#c7d2fe" class="layer"/>
+  <text x="510" y="400" class="layerText">项目规则</text>
+  <text x="510" y="437" class="desc">命令、目录、依赖、生成文件、完成报告</text>
+
+  <rect x="510" y="495" width="580" height="120" rx="22" fill="#a5b4fc" class="layer"/>
+  <text x="590" y="545" class="layerText">目录规则</text>
+  <text x="590" y="582" class="desc">前端、后端、移动端等局部差异</text>
+
+  <rect x="590" y="640" width="420" height="120" rx="22" fill="#818cf8" class="layer"/>
+  <text x="670" y="690" class="layerText">任务上下文</text>
+  <text x="670" y="727" class="desc">本次目标、范围、文件、验证</text>
+
+  <rect x="90" y="360" width="260" height="210" rx="20" class="side"/>
+  <text x="130" y="414" class="sideTitle">长期规则</text>
+  <text x="130" y="454" class="sideText">可执行</text>
+  <text x="130" y="488" class="sideText">可验证</text>
+  <text x="130" y="522" class="sideText">长期有效</text>
+
+  <rect x="1250" y="360" width="260" height="210" rx="20" class="side"/>
+  <text x="1290" y="414" class="sideTitle">临时信息</text>
+  <text x="1290" y="454" class="sideText">放任务卡</text>
+  <text x="1290" y="488" class="sideText">放 issue</text>
+  <text x="1290" y="522" class="sideText">不要污染规则</text>
+</svg>

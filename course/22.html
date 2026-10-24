@@ -1,0 +1,540 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>计划先行：让 AI 先解释它准备怎么改 · Learn AI Coding</title><meta name="description" content="从接手陌生代码库，到完成一次真实需求。沿着上下文、规格、实现、测试和复盘，建立可重复的 AI Coding 工作流。"><meta name="source-sha256" content="87b9de102317ffd1d27d12fa9a0c7177e243bfd8a9ee9604c1ddd52909f3e6b0">
+<link rel="canonical" href="https://daviddingxu.github.io/learn-ai-coding/course/22.html"><link rel="icon" href="../assets/brand.png">
+<script>try{const t=localStorage.getItem('haohai-course-theme');document.documentElement.dataset.theme=t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light'}catch(_){document.documentElement.dataset.theme='light'}</script>
+<link rel="stylesheet" href="../assets/site.css"><script defer src="../assets/search-index.js"></script><script defer src="../assets/site.js"></script></head><body class="article-page" data-root="../" data-page="22"><a class="skip-link" href="#main-content">跳到正文</a><header class="site-header"><div class="header-inner"><button class="icon-button menu-toggle js-only" type="button" aria-label="打开课程目录" aria-controls="course-sidebar" aria-expanded="false"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+<a class="brand" href="../index.html" aria-label="Learn AI Coding · 学习站首页"><img src="../assets/brand.png" alt="" width="36" height="36"><span><strong>Learn AI Coding</strong><small>程序员 AI Coding 进阶实战</small></span></a>
+<nav class="header-nav" aria-label="主导航"><a href="../index.html#curriculum">课程目录</a><a href="../index.html#downloads">离线阅读</a><a href="https://github.com/DavidDingXu/learn-ai-coding" target="_blank" rel="noopener">GitHub <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></nav>
+<div class="header-controls"><button class="icon-button theme-toggle js-only" type="button" aria-label="切换到深色主题" title="切换到深色主题"><span class="theme-light-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A9 9 0 0 1 9.5 3.5a9 9 0 1 0 11 11Z"/></svg></span><span class="theme-dark-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></span></button><button class="search-trigger js-only" type="button" aria-label="搜索课程"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg><span>搜索课程</span><kbd>⌘ K</kbd></button></div></div><div class="reading-progress" aria-hidden="true"><span id="reading-progress-bar"></span></div></header><div class="sidebar-scrim" hidden></div><div class="reader-layout"><aside class="course-sidebar" id="course-sidebar" aria-label="课程目录"><div class="sidebar-heading"><a href="../index.html#curriculum">课程目录</a><button class="icon-button menu-close js-only" type="button" aria-label="关闭课程目录"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><nav aria-label="全部文章"><details class="sidebar-stage"><summary><span class="stage-index">模块 00</span>导读与学习地图</summary><a class="lesson-link" data-lesson="INTRO" href="introduction.html"><span class="lesson-number">·</span><span>程序员 AI Coding 进阶实战</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="00" href="00.html"><span class="lesson-number">00</span><span>程序员如何系统学习 AI Coding</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 01</span>AI Coding 底层心智</summary><a class="lesson-link" data-lesson="01" href="01.html"><span class="lesson-number">01</span><span>程序员用 AI Coding，真正的门槛不是 Prompt</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="02" href="02.html"><span class="lesson-number">02</span><span>从聊天式开发到工程式开发</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="03" href="03.html"><span class="lesson-number">03</span><span>AI Coding 的底层工作模型</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="04" href="04.html"><span class="lesson-number">04</span><span>AI 最擅长和最不擅长的开发任务</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 02</span>程序员工具工作台</summary><a class="lesson-link" data-lesson="05" href="05.html"><span class="lesson-number">05</span><span>Codex、Claude Code、Cursor、Copilot 怎么分工</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="06" href="06.html"><span class="lesson-number">06</span><span>一个程序员的 AI Coding 工作台怎么搭</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="07" href="07.html"><span class="lesson-number">07</span><span>App、CLI、IDE 怎么切换完成一次真实改动</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 03</span>上下文工程与代码库理解</summary><a class="lesson-link" data-lesson="08" href="08.html"><span class="lesson-number">08</span><span>上下文工程：为什么不是塞越多代码越好</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="09" href="09.html"><span class="lesson-number">09</span><span>代码地图不是手工文档：让 Agent 生成可检查的仓库导航</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="10" href="10.html"><span class="lesson-number">10</span><span>让 Agent 做代码搜索：怎样约束搜索目标、证据和停止条件</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="11" href="11.html"><span class="lesson-number">11</span><span>AGENTS.md / CLAUDE.md / Copilot Instructions</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="12" href="12.html"><span class="lesson-number">12</span><span>任务上下文包：一次需求到底该给 AI 什么</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="13" href="13.html"><span class="lesson-number">13</span><span>上下文污染与上下文清理</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="14" href="14.html"><span class="lesson-number">14</span><span>模块实战：让 AI 接手一个陌生代码模块</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 04</span>SDD 与 OpenSpec 实战</summary><a class="lesson-link" data-lesson="15" href="15.html"><span class="lesson-number">15</span><span>SDD 是什么：先写规格，再写代码</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="16" href="16.html"><span class="lesson-number">16</span><span>从一句需求到 requirements.md</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="17" href="17.html"><span class="lesson-number">17</span><span>design.md 怎么写，AI 才不会补丁式开发</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="18" href="18.html"><span class="lesson-number">18</span><span>tasks.md 怎么拆：把复杂需求变成小 diff</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="19" href="19.html"><span class="lesson-number">19</span><span>OpenSpec 实战：把需求变更放进 repo</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="20" href="20.html"><span class="lesson-number">20</span><span>OpenSpec、Spec Kit 与轻量 SDD 怎么选</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="21" href="21.html"><span class="lesson-number">21</span><span>模块实战：用 OpenSpec CLI 推进一次真实产品需求</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage" open><summary><span class="stage-index">模块 05</span>小步开发测试与调试闭环</summary><a class="lesson-link" data-lesson="22" href="22.html" aria-current="page"><span class="lesson-number">22</span><span>计划先行：让 AI 先解释它准备怎么改</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="23" href="23.html"><span class="lesson-number">23</span><span>小步开发：为什么要限制 AI 一次改动范围</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="24" href="24.html"><span class="lesson-number">24</span><span>TDD + AI Coding：先让失败测试约束模型</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="25" href="25.html"><span class="lesson-number">25</span><span>系统化调试：让 AI 基于证据排障</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="26" href="26.html"><span class="lesson-number">26</span><span>前后端验证闭环：页面、接口、数据库和副作用怎么一起验</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="27" href="27.html"><span class="lesson-number">27</span><span>AI 说“测试失败无关”时，程序员该怎么判断</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="28" href="28.html"><span class="lesson-number">28</span><span>模块实战：用 AI 完成一次 CLI 交互改造</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 06</span>Skill Superpowers 与工作流固化</summary><a class="lesson-link" data-lesson="29" href="29.html"><span class="lesson-number">29</span><span>Skill 是什么：从提示词到可复用工作流</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="30" href="30.html"><span class="lesson-number">30</span><span>Skill 原理解析：它如何约束 Agent 行为</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="31" href="31.html"><span class="lesson-number">31</span><span>Superpowers 工作流拆解：把工程纪律变成 Skill 链</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="32" href="32.html"><span class="lesson-number">32</span><span>自定义 Skill：把你的经验固化成个人能力</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="33" href="33.html"><span class="lesson-number">33</span><span>外部工具接入：MCP 在 AI Coding 里到底有什么用</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="34" href="34.html"><span class="lesson-number">34</span><span>多 Agent 与自动化：什么时候拆，什么时候不要拆</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="35" href="35.html"><span class="lesson-number">35</span><span>模块实战：用 Superpowers 固化一次业务需求的调试和评审</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="36" href="36.html"><span class="lesson-number">36</span><span>模块实战：给 AI 接一个只读项目工具</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 07</span>综合实战与资产沉淀</summary><a class="lesson-link" data-lesson="37" href="37.html"><span class="lesson-number">37</span><span>综合实战：一个真实需求的 AI Coding 最佳实践</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="38" href="38.html"><span class="lesson-number">38</span><span>综合实战：从一次交付沉淀个人规则库</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 08</span>个人工程资产</summary><a class="lesson-link" data-lesson="39" href="39.html"><span class="lesson-number">39</span><span>从个人提效到个人工程系统</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="END" href="closing.html"><span class="lesson-number">·</span><span>写在专栏结束时：把 AI Coding 留在日常工程里</span><span class="lesson-state" aria-hidden="true"></span></a></details></nav><p class="sidebar-note">给清目标，保留证据，逐步交付。</p></aside><main class="reader-main" id="main-content"><div class="article-context"><span>小步开发测试与调试闭环</span><div class="reading-tools js-only"><div class="font-controls" role="group" aria-label="正文字号"><button type="button" data-font="-1" aria-label="减小正文字号">A−</button><span id="font-size-label" aria-live="polite">18</span><button type="button" data-font="1" aria-label="增大正文字号">A+</button></div><button type="button" class="focus-toggle" aria-pressed="false"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg><span>专注阅读</span></button></div></div><div class="mobile-context"><nav class="reading-route" aria-label="本篇路线"><details><summary>本篇路线</summary><div class="toc">
+<ul>
+<li><a href="#为什么直接实现会产生大-diff">为什么直接实现会产生大 diff</a></li>
+<li><a href="#好计划应该长什么样">好计划应该长什么样</a></li>
+<li><a href="#计划不是让-ai-自由发挥">计划不是让 AI 自由发挥</a></li>
+<li><a href="#计划质量看-6-个维度">计划质量看 6 个维度</a></li>
+<li><a href="#计划要和任务粒度绑定">计划要和任务粒度绑定</a></li>
+<li><a href="#让-ai-在计划里写不会做什么">让 AI 在计划里写“不会做什么”</a></li>
+<li><a href="#计划里要写-baseline">计划里要写 baseline</a></li>
+<li><a href="#计划可以暴露上下文不足">计划可以暴露上下文不足</a></li>
+<li><a href="#计划不应该替代设计">计划不应该替代设计</a></li>
+<li><a href="#计划通过后要变成授权记录">计划通过后，要变成授权记录</a></li>
+<li><a href="#计划要写出证据来源">计划要写出证据来源</a></li>
+<li><a href="#计划变更也要重新审">计划变更也要重新审</a></li>
+<li><a href="#plan-first-的适用边界">plan-first 的适用边界</a></li>
+<li><a href="#把坏计划改成可执行计划">把坏计划改成可执行计划</a></li>
+<li><a href="#计划要先看工作区状态">计划要先看工作区状态</a></li>
+<li><a href="#计划要写-ci-之后还要看什么">计划要写 CI 之后还要看什么</a></li>
+<li><a href="#一个可直接复用的-plan-first-模板">一个可直接复用的 plan-first 模板</a></li>
+<li><a href="#常见错误">常见错误</a></li>
+<li><a href="#改完后重点看几个结果">改完后重点看几个结果</a></li>
+<li><a href="#常见问题">常见问题</a></li>
+<li><a href="#可复查资料">可复查资料</a></li>
+</ul>
+</div>
+</details></nav></div><article id="article-body"><h1 id="计划先行让-ai-先解释它准备怎么改">计划先行：让 AI 先解释它准备怎么改</h1>
+<p>很多 AI Coding 事故，不是模型不会写代码，而是它太快开始写代码。</p>
+<p>你给它一句需求：</p>
+<pre><code class="language-text">把已支付订单取消改成走退款流程，补一下测试。
+</code></pre>
+<p>它马上改 <code>OrderCancelService</code>、状态机、退款服务、接口返回、测试、甚至顺手整理一些命名。最后测试可能跑过，但你打开 diff 会发现一个问题：这个改动已经很难审了。</p>
+<p>你不知道它为什么改了这些文件，不知道它有没有先看旧行为，不知道它有没有保留 shipped 订单拒绝取消，不知道它有没有把支付回调也带进来。测试一旦失败，它还可能继续自己修，越修越远。</p>
+<p>计划先行要解决的就是这个问题。</p>
+<p>不是让 AI 写一段漂亮计划，也不是多一个形式步骤。计划要在动代码之前暴露五件事：上下文选择、改动范围、实现顺序、验证路径和停止条件。</p>
+<p>计划能被人审，diff 才能被人控。</p>
+<p><img alt="Plan-first 审查循环" src="../assets/content/docs/assets/diagrams/source/22-plan-first-loop.svg" /></p>
+<h2 id="为什么直接实现会产生大-diff">为什么直接实现会产生大 diff</h2>
+<p>AI 接到任务后，会自然补全缺失信息。</p>
+<p>人类程序员听到“已支付订单取消走退款流程”，会先问：</p>
+<ul>
+<li>当前订单状态有哪些。</li>
+<li>paid 取消现在怎么处理。</li>
+<li>退款请求是否已有服务。</li>
+<li>状态更新和退款创建是否需要事务。</li>
+<li>duplicate cancel 怎么办。</li>
+<li>API 返回是否兼容。</li>
+<li>哪些测试能证明行为没坏。</li>
+</ul>
+<p>Agent 如果没有被要求先计划，它可能也会搜索代码，但搜索结果和推理过程不会稳定地变成你能审查的东西。它会在写代码过程中边看边改。</p>
+<p>这会带来三个问题。</p>
+<p>第一，文件范围提前失控。</p>
+<p>模型看到一个调用点，就可能顺手改调用点；看到一个旧测试，就可能顺手重写测试；看到一段风格不统一的代码，就可能顺手整理。每个动作单看都合理，合起来就变成大 diff。</p>
+<p>第二，需求和实现混在一起。</p>
+<p>如果它先写实现，再补测试，测试往往会贴着实现走。你看到的是“测试通过”，但不一定是需求被锁住。</p>
+<p>第三，失败后没有停机点。</p>
+<p>测试失败时，模型会继续猜原因。它可能把失败归因于测试写错，也可能改动更底层的逻辑。没有计划里的 Stop 条件，它不知道什么时候该停下来把问题交回给人。</p>
+<p>计划先行不是降低 AI 的能力，而是把它的能力放进可审查路径。</p>
+<h2 id="好计划应该长什么样">好计划应该长什么样</h2>
+<p>一个合格计划不需要长，但必须具体。</p>
+<p>危险计划通常长这样：</p>
+<pre><code class="language-text">我会先分析代码结构，然后实现退款流程，补充测试并运行验证。
+</code></pre>
+<p>这句话没有任何工程价值。</p>
+<p>它没有说读哪些文件，没有说改哪些文件，没有说不改哪些地方，没有说先加什么测试，没有说验证命令，也没有说遇到什么情况停下。</p>
+<p>可执行计划应该长这样：</p>
+<pre><code class="language-markdown">Plan
+
+Context to inspect:
+- `src/order/order-cancel-service.ts`
+- `src/order/order-status-transition.ts`
+- `src/refund/refund-request-service.ts`
+- `test/order/order-cancel.test.ts`
+
+Intended change:
+1. Add focused tests for paid cancellation, duplicate paid cancellation and refund creation failure.
+2. Add paid -&gt; refund_requested transition in `order-status-transition.ts`.
+3. Wire refund request creation in `order-cancel-service.ts`.
+4. Keep pending and shipped cancellation behavior unchanged.
+
+Out of scope:
+- public API response shape
+- payment provider callback flow
+- database schema migration
+
+Verification:
+- `npm test -- order-cancel`
+- `npm test -- order`
+
+Stop if:
+- existing pending or shipped tests fail before implementation.
+- refund request requires callback changes.
+- public API response shape must change.
+</code></pre>
+<p>这个计划不是“口头承诺”，它已经能被审查。</p>
+<p>你可以马上指出：</p>
+<ul>
+<li>少看了 repository 层。</li>
+<li>duplicate cancel 需要先查是否已有幂等键。</li>
+<li><code>npm test -- order</code> 太慢，先跑 focused test。</li>
+<li>API response shape 如果必须改，需要先回到需求。</li>
+</ul>
+<p>plan-first 的价值在这里：错误会先暴露在计划里，而不是混进 diff 里。</p>
+<h2 id="计划不是让-ai-自由发挥">计划不是让 AI 自由发挥</h2>
+<p>计划阶段也要给边界。</p>
+<p>不要只说：</p>
+<pre><code class="language-text">先给我一个计划。
+</code></pre>
+<p>这种输入太宽，AI 可能写出一份项目管理式计划。</p>
+<p>把计划要求写具体：</p>
+<pre><code class="language-text">先不要改代码。
+
+请基于当前 repo，给出一个可执行修改计划。
+
+要求：
+- 先列出你准备读取的文件和原因。
+- 再列出你预计修改的文件。
+- 明确不修改的范围。
+- 按小 diff 顺序拆步骤。
+- 每一步写验证命令。
+- 写 Stop if 条件。
+- 如果信息不足，先列出需要核对的问题，不要假设。
+</code></pre>
+<p>这段话的关键是“先不要改代码”和“如果信息不足，不要假设”。</p>
+<p>很多 Agent 的默认行为是边读边改。你要明确把它拉回只读状态，让它先建立计划。</p>
+<p>如果工具支持只读模式、计划模式或审批机制，可以配合使用。不同工具的名称不一样，但工程意图相同：计划阶段只读，执行阶段再授权写入。</p>
+<h2 id="计划质量看-6-个维度">计划质量看 6 个维度</h2>
+<p><img alt="计划质量矩阵" src="../assets/content/docs/assets/diagrams/source/22-plan-review-matrix.svg" /></p>
+<p>审 AI 的计划，不要只看它是否“看起来完整”。</p>
+<p>重点看六个维度。</p>
+<p><strong>上下文是否具体。</strong></p>
+<p>坏计划写“阅读相关代码”。好计划写具体文件、入口、调用点、测试文件。</p>
+<p>如果它列不出文件，说明它还没真正理解任务。可以让它先做代码搜索：</p>
+<pre><code class="language-bash">rg -n &quot;cancel|refund_requested|RefundRequest|order status&quot; src test
+</code></pre>
+<p>然后基于搜索结果重写计划。</p>
+<p><strong>改动范围是否收敛。</strong></p>
+<p>坏计划写“实现完整退款流程”。好计划写“只改状态转换、取消编排和 focused test，不改支付回调、不改 API response shape”。</p>
+<p>AI Coding 最怕范围不清。范围不清时，模型会把所有看起来相关的东西都纳入改动。</p>
+<p><strong>实现顺序是否能小步验证。</strong></p>
+<p>坏计划把测试、实现、重构混在一起。好计划先写 focused test，再改最小实现，再扩大验证。</p>
+<p>对复杂需求，顺序比速度重要。你要让每一步都能解释 diff。</p>
+<p><strong>验证路径是否有命令。</strong></p>
+<p>坏计划写“运行测试”。好计划写具体命令、覆盖范围和预期结果。</p>
+<p>例如：</p>
+<pre><code class="language-text">Task 1:
+- `npm test -- order-cancel`
+- before implementation: paid cancellation test fails, existing pending/shipped tests pass
+
+Task 2:
+- `npm test -- order-cancel`
+- after implementation: focused tests pass
+
+Final:
+- `npm test -- order`
+- covers broader module impact
+</code></pre>
+<p>没有命令的验证，是不可审查的验证。</p>
+<p><strong>风险假设是否被列出。</strong></p>
+<p>AI 经常默认某个 service、字段、状态、接口存在。计划里应该写哪些事实需要先核对。</p>
+<p>例如：</p>
+<pre><code class="language-text">Need to verify:
+- whether refund request creation already has idempotency support.
+- whether order status is persisted before or after side effects.
+- whether cancel API response shape is covered by snapshot or contract tests.
+</code></pre>
+<p>这些不是废话。它们决定实现是不是会越界。</p>
+<p><strong>停止条件是否明确。</strong></p>
+<p>Stop 条件不是给 AI 泼冷水，而是防止错误扩散。</p>
+<p>例如：</p>
+<pre><code class="language-text">Stop if:
+- baseline tests fail before implementation.
+- existing code has no refund request service.
+- implementation requires database schema changes.
+- public API response shape must change.
+- payment callback needs to be modified.
+</code></pre>
+<p>一旦触发 Stop，就不要让它继续“顺手解决”。停下来重新审需求、设计或任务范围。</p>
+<h2 id="计划要和任务粒度绑定">计划要和任务粒度绑定</h2>
+<p>计划不是一个大纲。它应该直接决定执行粒度。</p>
+<p>错误方式：</p>
+<pre><code class="language-text">计划看起来可以，开始实现。
+</code></pre>
+<p>授权时只放开一步：</p>
+<pre><code class="language-text">计划通过。现在只执行 Step 1：新增 focused tests。
+
+要求：
+- 不改实现代码。
+- 只修改 `test/order/order-cancel.test.ts`。
+- 运行 `npm test -- order-cancel`。
+- 预期 paid cancellation 用例失败，pending/shipped 用例通过。
+- 完成后停止，输出 diff 摘要和命令结果。
+</code></pre>
+<p>Step 1 完成后，你看 diff 和测试结果，再授权 Step 2。</p>
+<p>这能避免一个常见问题：AI 计划写得很好，执行时又一次性改完整个任务。</p>
+<p>计划必须和授权机制绑定。没有分步授权，计划只是开场白。</p>
+<h2 id="让-ai-在计划里写不会做什么">让 AI 在计划里写“不会做什么”</h2>
+<p>很多计划的问题，不在于它少写“会做什么”，而在于没写“不会做什么”。</p>
+<p>对真实项目，out of scope 非常重要。</p>
+<p>例如订单取消需求里，要明确：</p>
+<pre><code class="language-text">Out of scope:
+- payment provider callback flow
+- public API response shape
+- database migration
+- UI display copy
+- refund settlement job
+</code></pre>
+<p>为什么要写这些？</p>
+<p>因为 AI 会把语义相近的工作自动串起来。你说“退款流程”，它可能想到支付回调；你说“订单取消”，它可能想到前端订单详情页；你说“状态改成 refund_requested”，它可能想到数据库枚举迁移。</p>
+<p>这些可能最终确实要做，但不一定在这个 diff 里做。</p>
+<p>一个程序员要控制的不是 AI 是否“想得全面”，而是每个 diff 是否有边界。</p>
+<h2 id="计划里要写-baseline">计划里要写 baseline</h2>
+<p>很多测试失败不是这次改动导致的。</p>
+<p>如果没有 baseline，AI 看到失败会直接修。修着修着，就把旧问题也混进当前 diff。</p>
+<p>计划里可以要求：</p>
+<pre><code class="language-text">Before implementation:
+- run `npm test -- order-cancel` if existing focused tests exist.
+- record existing failures.
+- if unrelated baseline failure appears, stop before implementation.
+</code></pre>
+<p>如果 focused test 还不存在，也要写清预期：</p>
+<pre><code class="language-text">After adding tests but before implementation:
+- pending and shipped cancellation tests should pass.
+- paid cancellation and duplicate cancellation tests should fail.
+</code></pre>
+<p>这个信息非常关键。它告诉 AI：某些失败是预期失败，不要在 Task 1 里偷偷改实现让它通过。</p>
+<h2 id="计划可以暴露上下文不足">计划可以暴露上下文不足</h2>
+<p>计划阶段最有价值的输出之一，是发现信息不够。</p>
+<p>一个合格 Agent 应该敢写：</p>
+<pre><code class="language-text">I cannot produce an implementation plan yet because I need to inspect:
+- current order status enum
+- cancel service orchestration
+- refund request creation API
+- existing order cancellation tests
+</code></pre>
+<p>这比直接给出一个自信计划更好。</p>
+<p>你可以让它先做只读探索：</p>
+<pre><code class="language-text">先只做代码探索，不改文件。
+
+请使用 `rg` 找到：
+- 订单取消入口
+- 订单状态定义
+- 退款请求创建逻辑
+- 现有取消测试
+
+输出文件路径、关键函数、你对当前行为的判断，以及仍然不确定的地方。
+</code></pre>
+<p>探索完成后再生成计划。</p>
+<p>真实项目里，计划通常不是一次生成就能用。它应该经历：</p>
+<pre><code class="language-text">只读探索 -&gt; 初版计划 -&gt; 人审 -&gt; 修订计划 -&gt; 分步执行
+</code></pre>
+<p>如果跳过只读探索，计划很容易变成模型凭项目常识写出来的模板。</p>
+<h2 id="计划不应该替代设计">计划不应该替代设计</h2>
+<p>计划和设计容易混。</p>
+<p><code>design.md</code> 负责解释技术方案、架构边界、数据流、兼容性和风险取舍。</p>
+<p>Plan 负责解释这次执行准备怎么走。</p>
+<p>两者可以这样分工：</p>
+<pre><code class="language-text">design.md:
+- paid -&gt; refund_requested 的状态规则
+- 退款请求创建和状态更新的事务边界
+- 幂等策略
+- 不改 API response shape 的兼容性要求
+
+Plan:
+- 先读哪些文件
+- 先补哪些测试
+- 第一步改哪个文件
+- 每步跑什么命令
+- 遇到什么情况停止
+</code></pre>
+<p>设计回答“方案是否合理”。</p>
+<p>计划回答“执行是否可控”。</p>
+<p>一个常见坏味道是：AI 在 plan 里重新设计一套更复杂的架构。看到这种计划，要让它回到已有 design，或者先产出 design 供人审。</p>
+<h2 id="计划通过后要变成授权记录">计划通过后，要变成授权记录</h2>
+<p>很多人做了 plan-first，但执行时仍然失控，原因是计划没有变成授权记录。</p>
+<p>AI 给出计划后，你不应该只回复：</p>
+<pre><code class="language-text">可以，开始吧。
+</code></pre>
+<p>这会让它默认整个计划都被授权。</p>
+<p>更好的回复是：</p>
+<pre><code class="language-text">计划通过。现在只授权 Step 1。
+
+Step 1 scope:
+- 只读或只改测试，按计划执行。
+- 不改实现文件。
+- 不执行 Step 2。
+
+完成后输出：
+- changed files
+- verification command and result
+- whether any Stop condition was hit
+</code></pre>
+<p>授权记录的价值在于：执行出问题时，你能判断 Agent 是计划错了、执行越界，还是任务本身出现新事实。</p>
+<p>如果 Step 1 执行中发现必须改实现，Agent 应该停下来报告，而不是自己扩大范围。计划先行的真正控制点就在这里。</p>
+<h2 id="计划要写出证据来源">计划要写出证据来源</h2>
+<p>一个计划只列“准备改哪些文件”还不够，它还要说明这些文件是怎么来的。</p>
+<p>可以要求 Agent 在计划里加一段：</p>
+<pre><code class="language-markdown">Evidence used:
+- `rg -n &quot;cancelOrder|RefundRequest|refund_requested&quot; src test`
+- `src/order/order-cancel-service.ts`: current cancel orchestration
+- `test/order/order-cancel.test.ts`: existing pending/shipped behavior tests
+- `src/refund/refund-request-service.ts`: refund request creation API
+</code></pre>
+<p>这能防止它凭常识写计划。</p>
+<p>如果 evidence 里只有笼统描述，没有路径、命令和搜索结果，就说明计划还没站稳。让它先回到只读探索。</p>
+<p>生产项目里尤其要警惕“看起来合理”的计划。AI 可能会写：</p>
+<pre><code class="language-text">我会修改订单服务、退款服务和前端状态展示。
+</code></pre>
+<p>但如果当前需求没有前端展示范围，或者前端在另一个 repo，这个计划就是扩大范围。证据来源能帮你发现它是不是读了真实代码，还是在按通用电商系统想象。</p>
+<h2 id="计划变更也要重新审">计划变更也要重新审</h2>
+<p>执行过程中发现新事实很正常。比如计划里以为已有 <code>RefundRequestService</code>，读代码后发现只有支付网关回调，没有独立退款请求表。</p>
+<p>这时不要让 Agent 直接改实现。应该要求它更新计划：</p>
+<pre><code class="language-text">当前计划假设不成立。
+请先更新计划，不要改代码。
+
+更新内容：
+- 哪个假设不成立。
+- 新证据是什么。
+- 是否影响 requirements 或 design。
+- 原 Step 2 是否还能执行。
+- 需要新增哪些 Stop 条件。
+</code></pre>
+<p>计划更新后再授权下一步。</p>
+<p>这不是拖流程。它是在防止任务从“订单取消状态改造”滑向“退款系统建模”。真实项目里的大事故，很多都是从一个未审的计划变更开始的。</p>
+<h2 id="plan-first-的适用边界">plan-first 的适用边界</h2>
+<p>计划先行不是所有任务都要用。</p>
+<p>可以跳过 plan-first 的任务：</p>
+<ul>
+<li>typo、文案、注释小修。</li>
+<li>单个测试期望值修正，且原因明确。</li>
+<li>明确的一行配置改动。</li>
+<li>只读查询、生成报告、整理已有输出。</li>
+</ul>
+<p>必须使用 plan-first 的任务：</p>
+<ul>
+<li>行为变化。</li>
+<li>跨模块改动。</li>
+<li>涉及状态机、权限、支付、持久化、任务调度。</li>
+<li>需要新增或修改测试。</li>
+<li>可能影响 public API、数据库 schema、事件、队列、缓存。</li>
+<li>用户让 Agent “顺便”处理多个问题。</li>
+</ul>
+<p>这条边界很重要。所有事情都要求计划，会让团队讨厌计划；高风险事情不计划，会让 AI diff 失控。</p>
+<h2 id="把坏计划改成可执行计划">把坏计划改成可执行计划</h2>
+<p>看一个常见坏计划：</p>
+<pre><code class="language-markdown">Plan:
+1. Analyze the code.
+2. Implement refund flow.
+3. Add tests.
+4. Run tests.
+</code></pre>
+<p>这份计划没有办法审。它没有证据、没有文件、没有边界、没有验证半径。</p>
+<p>可以改成：</p>
+<pre><code class="language-markdown">Plan:
+
+Read first:
+- `src/order/order-cancel-service.ts`: cancel orchestration
+- `src/order/order-status-transition.ts`: allowed transitions
+- `src/refund/refund-request-service.ts`: refund request creation
+- `test/order/order-cancel.test.ts`: existing behavior tests
+
+Expected changes:
+1. Add focused tests for paid, duplicate paid and refund failure paths.
+2. Add paid -&gt; refund_requested transition.
+3. Wire refund request creation after transition.
+4. Run focused and module-level verification.
+
+Out of scope:
+- payment provider callback
+- public API response shape
+- database migration
+- UI display
+
+Verification:
+- after tests are added: `npm test -- order-cancel`, new paid tests fail and existing tests pass
+- after implementation: `npm test -- order-cancel`, focused tests pass
+- before handoff: `npm test -- order`
+
+Stop if:
+- existing pending or shipped behavior fails before implementation
+- implementation needs schema migration
+- refund service does not exist
+- API response shape must change
+</code></pre>
+<p>这份计划仍然不长，但已经能审。</p>
+<p>你可以指出：UI display 不在范围内是否符合需求？refund failure 是否需要先确认错误 envelope？<code>npm test -- order</code> 是否太慢，需要换成更聚焦命令？这些问题都能在写代码前讨论。</p>
+<p>计划的好坏，不看它像不像“计划”，看它能不能阻止错误 diff。</p>
+<h2 id="计划要先看工作区状态">计划要先看工作区状态</h2>
+<p>计划阶段还要看一个经常被忽略的东西：当前工作区是不是干净。</p>
+<p>在共享工作区里，可能已经有用户改动、上一轮 Agent 改动、生成文件、未提交测试结果。计划如果不考虑这些，就可能把别人的改动当成自己可以重写的上下文。</p>
+<p>计划前至少看：</p>
+<pre><code class="language-bash">git status --short
+</code></pre>
+<p>如果有未提交改动，计划里要说明：</p>
+<pre><code class="language-markdown">Workspace state:
+- `src/order/order-cancel-service.ts` already modified before this task.
+- I will read the current file and avoid reverting unrelated changes.
+- Any new diff must be attributable to the current authorized step.
+</code></pre>
+<p>这条规则对 AI Coding 很重要。Agent 很容易用“恢复文件”“重写实现”来解决冲突，但那可能会覆盖用户已有工作。</p>
+<p>如果工作区很乱，计划应该先建议隔离：</p>
+<pre><code class="language-text">Current workspace has unrelated changes.
+Recommended:
+- continue only on files required for this task, or
+- create a branch/worktree before implementation, or
+- ask which existing changes belong to this task.
+</code></pre>
+<p>不要在未知工作区状态下让 AI 大范围改代码。</p>
+<h2 id="计划要写-ci-之后还要看什么">计划要写 CI 之后还要看什么</h2>
+<p>计划里的验证命令不只包括本地命令。生产交付还要考虑 CI。</p>
+<p>可以写：</p>
+<pre><code class="language-markdown">Verification plan:
+
+Local:
+- `npm test -- order-cancel`
+- `npm test -- order`
+- `npm run typecheck`
+
+CI:
+- wait for required checks.
+- inspect failed job logs before changing code.
+- do not mark broad verification complete if CI fails in affected module.
+
+Human review:
+- check response shape compatibility.
+- check no payment callback changes.
+- check residual risk for old clients.
+</code></pre>
+<p>CI 失败时，不要让 Agent 直接“修 CI”。先读日志、分类失败，再决定是否属于当前 diff。计划阶段写清这一点，后面才不会被一句“CI 失败无关”带偏。</p>
+<h2 id="一个可直接复用的-plan-first-模板">一个可直接复用的 plan-first 模板</h2>
+<p>可以把这段放进你的项目规则或个人片段里：</p>
+<pre><code class="language-text">Before editing files, produce a plan and wait for approval.
+
+The plan must include:
+1. Files to inspect and why.
+2. Files expected to change.
+3. Files and behaviors explicitly out of scope.
+4. Step-by-step implementation order, each step producing a reviewable diff.
+5. Verification command for each step.
+6. Expected failing tests before implementation, if tests are added first.
+7. Stop conditions.
+8. Open questions and assumptions.
+
+Do not start implementation until the plan is approved.
+If the required context is missing, perform read-only exploration first and update the plan.
+</code></pre>
+<p>如果你不想每次都手敲，可以把它写进 <code>AGENTS.md</code>：</p>
+<pre><code class="language-markdown">## Plan-first Changes
+
+For non-trivial changes:
+- inspect the code before planning.
+- produce a plan before editing files.
+- include expected changed files, verification commands, and stop conditions.
+- do not implement until the current task step is authorized.
+- stop if the change requires broader scope than requested.
+</code></pre>
+<p>注意，规则不要写得过大。所有小改动都强制计划，会拖慢工作。可以写“non-trivial changes”，再定义触发条件：</p>
+<pre><code class="language-markdown">Plan-first is required when:
+- behavior changes.
+- more than one module may be touched.
+- tests need to be added or changed.
+- public API, persistence, auth, payment, job, or state machine code is involved.
+</code></pre>
+<p>这样规则才不会变成负担。</p>
+<h2 id="常见错误">常见错误</h2>
+<p><strong>错误一：计划太抽象。</strong></p>
+<p>“分析代码、实现功能、运行测试”不是计划。它没有任何可审查信息。</p>
+<p><strong>错误二：计划和实现一起做。</strong></p>
+<p>AI 一边写计划一边改代码，等于没计划。计划阶段必须只读。</p>
+<p><strong>错误三：计划里没有 out of scope。</strong></p>
+<p>没有不改什么，就很难阻止相关代码被顺手修改。</p>
+<p><strong>错误四：计划没有验证命令。</strong></p>
+<p>没有命令，就无法判断每一步是不是真的完成。</p>
+<p><strong>错误五：计划通过后一次性执行完。</strong></p>
+<p>计划必须绑定分步授权。复杂任务一次性执行，还是会变成大 diff。</p>
+<p><strong>错误六：人只看计划是否顺眼。</strong></p>
+<p>审计划要像审设计一样具体。看文件、顺序、验证、风险、停机点，不看文字是否完整。</p>
+<h2 id="改完后重点看几个结果">改完后重点看几个结果</h2>
+<p>一次 plan-first 执行结束后，不要只看测试通过。</p>
+<p>重点看：</p>
+<ul>
+<li>实际改动文件是否和计划一致。</li>
+<li>是否有计划外文件被修改。</li>
+<li>每一步验证命令是否真实运行。</li>
+<li>Stop 条件是否被触发过，触发后是否停住。</li>
+<li>计划里的假设是否在代码中得到验证。</li>
+<li>最终 diff 是否能按计划步骤解释。</li>
+</ul>
+<p>如果实际 diff 和计划对不上，要追问原因。原因合理，就更新计划；原因不合理，就回滚越界改动。</p>
+<p>计划先行不是为了让流程看起来更严谨，而是为了让 AI 写代码这件事可控。</p>
+<h2 id="常见问题">常见问题</h2>
+<p><strong>小改动也要 plan-first 吗？</strong></p>
+<p>不需要。改 typo、改一行配置、补一个明确测试，可以直接做。plan-first 用在行为变化、跨模块改动、状态机、权限、支付、持久化、任务调度这类风险更高的任务上。</p>
+<p><strong>计划会不会浪费 token？</strong></p>
+<p>会消耗一些上下文，但通常比大 diff 返工便宜。关键是计划要短而具体，不要让 AI 写项目管理文档。</p>
+<p><strong>AI 计划写错了怎么办？</strong></p>
+<p>这正是 plan-first 的价值。计划写错，比代码写错便宜。让它补充只读探索，然后重写计划。</p>
+<p><strong>计划通过后 AI 仍然越界怎么办？</strong></p>
+<p>把“只执行当前 step，完成后停止”写进执行指令。必要时在工具层使用审批、只读、分支或 worktree 隔离。完成后用 <code>git diff --stat</code> 和文件列表核对。</p>
+<p><strong>计划和 <code>tasks.md</code> 是不是重复？</strong></p>
+<p>不完全重复。<code>tasks.md</code> 是需求拆分后的任务合同，plan 是当前执行会怎么落某个任务。简单任务可以合并；复杂任务建议分开。</p>
+<h2 id="可复查资料">可复查资料</h2>
+<ul>
+<li>OpenAI Codex best practices：<a href="https://developers.openai.com/codex/learn/best-practices">https://developers.openai.com/codex/learn/best-practices</a></li>
+<li>OpenAI AGENTS.md guide：<a href="https://developers.openai.com/codex/guides/agents-md">https://developers.openai.com/codex/guides/agents-md</a></li>
+<li>Claude Code common workflows：<a href="https://code.claude.com/docs/en/common-workflows">https://code.claude.com/docs/en/common-workflows</a></li>
+<li>GitHub Copilot coding agent best practices：<a href="https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results">https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results</a></li>
+</ul></article><div class="practice-link"><a href="https://github.com/DavidDingXu/learn-ai-coding/blob/main/personal-productivity-app/README.md" target="_blank" rel="noopener"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5M14 4l-4 16"/></svg> 业务样例与测试 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></div><nav class="chapter-nav" aria-label="前后篇"><a href="21.html"><span>上一篇 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg></span><strong>模块实战：用 OpenSpec CLI 推进一次真实产品需求</strong></a><a href="23.html"><span>下一篇 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><strong>小步开发：为什么要限制 AI 一次改动范围</strong></a></nav><footer class="reader-footer">程序员 AI Coding 进阶实战 · <a href="../license.html">非商业使用</a><details class="community-mini"><summary>关注与交流 · 好好用 AI</summary><div class="community-section"><div><p>交流学习中的问题与实践心得。</p><p>代码问题和勘误，欢迎在 <a href="https://github.com/DavidDingXu/learn-ai-coding/issues" target="_blank" rel="noopener">GitHub 提交 Issue</a>。</p></div><a class="qr-link" href="../assets/wechat-official-account.jpg" target="_blank" rel="noopener" aria-label="查看好好用 AI 公众号二维码原图"><img src="../assets/wechat-official-account.jpg" alt="好好用 AI 微信公众号二维码" width="130" height="130" loading="lazy"><p class="qr-caption">微信扫码 · 点击查看原图</p></a></div></details></footer></main><aside class="context-sidebar" aria-label="本篇辅助导航"><div class="context-inner"><nav class="reading-route" aria-label="本篇路线"><details open><summary>本篇路线</summary><div class="toc">
+<ul>
+<li><a href="#为什么直接实现会产生大-diff">为什么直接实现会产生大 diff</a></li>
+<li><a href="#好计划应该长什么样">好计划应该长什么样</a></li>
+<li><a href="#计划不是让-ai-自由发挥">计划不是让 AI 自由发挥</a></li>
+<li><a href="#计划质量看-6-个维度">计划质量看 6 个维度</a></li>
+<li><a href="#计划要和任务粒度绑定">计划要和任务粒度绑定</a></li>
+<li><a href="#让-ai-在计划里写不会做什么">让 AI 在计划里写“不会做什么”</a></li>
+<li><a href="#计划里要写-baseline">计划里要写 baseline</a></li>
+<li><a href="#计划可以暴露上下文不足">计划可以暴露上下文不足</a></li>
+<li><a href="#计划不应该替代设计">计划不应该替代设计</a></li>
+<li><a href="#计划通过后要变成授权记录">计划通过后，要变成授权记录</a></li>
+<li><a href="#计划要写出证据来源">计划要写出证据来源</a></li>
+<li><a href="#计划变更也要重新审">计划变更也要重新审</a></li>
+<li><a href="#plan-first-的适用边界">plan-first 的适用边界</a></li>
+<li><a href="#把坏计划改成可执行计划">把坏计划改成可执行计划</a></li>
+<li><a href="#计划要先看工作区状态">计划要先看工作区状态</a></li>
+<li><a href="#计划要写-ci-之后还要看什么">计划要写 CI 之后还要看什么</a></li>
+<li><a href="#一个可直接复用的-plan-first-模板">一个可直接复用的 plan-first 模板</a></li>
+<li><a href="#常见错误">常见错误</a></li>
+<li><a href="#改完后重点看几个结果">改完后重点看几个结果</a></li>
+<li><a href="#常见问题">常见问题</a></li>
+<li><a href="#可复查资料">可复查资料</a></li>
+</ul>
+</div>
+</details></nav></div></aside></div><dialog class="search-dialog" id="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label for="course-search" id="search-label"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>搜索课程</label><button class="icon-button" aria-label="关闭搜索"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></form><input id="course-search" type="search" placeholder="搜索概念、代码或问题…" autocomplete="off" spellcheck="false"><p class="search-status" id="search-status" role="status">搜索全部 42 篇文章。</p><div class="search-results" id="search-results"></div><footer>↑ ↓ 选择结果 <span>Enter 打开 · Esc 关闭</span></footer></dialog>
+<dialog class="image-viewer" id="image-viewer" aria-label="放大配图"><header><span>查看配图</span><div class="image-actions"><button type="button" id="image-size">原尺寸</button><button type="button" id="close-image" autofocus>关闭</button></div></header><div class="image-canvas"><img id="large-image" alt=""></div><footer><p id="image-description"></p><a id="original-image" target="_blank" rel="noopener">打开原图 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></footer></dialog><div class="toast" id="toast" role="status"></div></body></html>

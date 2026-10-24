@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <rect width="1600" height="900" fill="#f8fafc"/>
+  <text x="80" y="82" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#172033">一次端到端 AI Coding 交付：业务需求证据链</text>
+  <text x="80" y="124" font-family="Arial, sans-serif" font-size="18" fill="#64748b">今日计划逾期顺延：从需求、上下文、规格、实现、测试到规则沉淀</text>
+  <g font-family="Arial, sans-serif">
+    <rect x="70" y="250" width="190" height="120" rx="16" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="110" y="302" font-size="22" font-weight="700" fill="#111827">需求</text>
+    <text x="110" y="338" font-size="16" fill="#475569">逾期顺延</text>
+    <rect x="300" y="250" width="190" height="120" rx="16" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="340" y="302" font-size="22" font-weight="700" fill="#111827">上下文</text>
+    <text x="340" y="338" font-size="16" fill="#475569">README / tests</text>
+    <rect x="530" y="250" width="190" height="120" rx="16" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="570" y="302" font-size="22" font-weight="700" fill="#111827">规格</text>
+    <text x="570" y="338" font-size="16" fill="#475569">OpenSpec change</text>
+    <rect x="760" y="250" width="190" height="120" rx="16" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="800" y="302" font-size="22" font-weight="700" fill="#111827">实现</text>
+    <text x="800" y="338" font-size="16" fill="#475569">today-plan.js</text>
+    <rect x="990" y="250" width="190" height="120" rx="16" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="1030" y="302" font-size="22" font-weight="700" fill="#111827">验证</text>
+    <text x="1030" y="338" font-size="16" fill="#475569">pass 5 / validate</text>
+    <rect x="1220" y="250" width="190" height="120" rx="16" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="1260" y="302" font-size="22" font-weight="700" fill="#111827">复盘</text>
+    <text x="1260" y="338" font-size="16" fill="#475569">规则沉淀</text>
+
+    <path d="M260 310 L300 310" stroke="#64748b" stroke-width="4" marker-end="url(#a37)"/>
+    <path d="M490 310 L530 310" stroke="#64748b" stroke-width="4" marker-end="url(#a37)"/>
+    <path d="M720 310 L760 310" stroke="#64748b" stroke-width="4" marker-end="url(#a37)"/>
+    <path d="M950 310 L990 310" stroke="#64748b" stroke-width="4" marker-end="url(#a37)"/>
+    <path d="M1180 310 L1220 310" stroke="#64748b" stroke-width="4" marker-end="url(#a37)"/>
+  </g>
+  <rect x="180" y="520" width="1240" height="170" rx="18" fill="#ffffff" stroke="#d1d5db"/>
+  <text x="225" y="575" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#1f2937">交付证据</text>
+  <text x="225" y="618" font-family="Arial, sans-serif" font-size="18" fill="#4b5563">dev-process / openspec change / src/today-plan.js / test/today-plan.test.js / npm test / openspec validate</text>
+  <text x="225" y="654" font-family="Arial, sans-serif" font-size="18" fill="#4b5563">没有业务行为和新鲜验证证据的“已完成”，不能进入交付复盘。</text>
+  <defs>
+    <marker id="a37" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#64748b"/>
+    </marker>
+  </defs>
+</svg>

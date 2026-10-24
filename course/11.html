@@ -1,0 +1,529 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AGENTS.md / CLAUDE.md / Copilot Instructions · Learn AI Coding</title><meta name="description" content="从接手陌生代码库，到完成一次真实需求。沿着上下文、规格、实现、测试和复盘，建立可重复的 AI Coding 工作流。"><meta name="source-sha256" content="0c6152dbbf36c07077faa8c844837ae08962bd100f1b7428a8d02793a40f3633">
+<link rel="canonical" href="https://daviddingxu.github.io/learn-ai-coding/course/11.html"><link rel="icon" href="../assets/brand.png">
+<script>try{const t=localStorage.getItem('haohai-course-theme');document.documentElement.dataset.theme=t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light'}catch(_){document.documentElement.dataset.theme='light'}</script>
+<link rel="stylesheet" href="../assets/site.css"><script defer src="../assets/search-index.js"></script><script defer src="../assets/site.js"></script></head><body class="article-page" data-root="../" data-page="11"><a class="skip-link" href="#main-content">跳到正文</a><header class="site-header"><div class="header-inner"><button class="icon-button menu-toggle js-only" type="button" aria-label="打开课程目录" aria-controls="course-sidebar" aria-expanded="false"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+<a class="brand" href="../index.html" aria-label="Learn AI Coding · 学习站首页"><img src="../assets/brand.png" alt="" width="36" height="36"><span><strong>Learn AI Coding</strong><small>程序员 AI Coding 进阶实战</small></span></a>
+<nav class="header-nav" aria-label="主导航"><a href="../index.html#curriculum">课程目录</a><a href="../index.html#downloads">离线阅读</a><a href="https://github.com/DavidDingXu/learn-ai-coding" target="_blank" rel="noopener">GitHub <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></nav>
+<div class="header-controls"><button class="icon-button theme-toggle js-only" type="button" aria-label="切换到深色主题" title="切换到深色主题"><span class="theme-light-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A9 9 0 0 1 9.5 3.5a9 9 0 1 0 11 11Z"/></svg></span><span class="theme-dark-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></span></button><button class="search-trigger js-only" type="button" aria-label="搜索课程"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg><span>搜索课程</span><kbd>⌘ K</kbd></button></div></div><div class="reading-progress" aria-hidden="true"><span id="reading-progress-bar"></span></div></header><div class="sidebar-scrim" hidden></div><div class="reader-layout"><aside class="course-sidebar" id="course-sidebar" aria-label="课程目录"><div class="sidebar-heading"><a href="../index.html#curriculum">课程目录</a><button class="icon-button menu-close js-only" type="button" aria-label="关闭课程目录"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><nav aria-label="全部文章"><details class="sidebar-stage"><summary><span class="stage-index">模块 00</span>导读与学习地图</summary><a class="lesson-link" data-lesson="INTRO" href="introduction.html"><span class="lesson-number">·</span><span>程序员 AI Coding 进阶实战</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="00" href="00.html"><span class="lesson-number">00</span><span>程序员如何系统学习 AI Coding</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 01</span>AI Coding 底层心智</summary><a class="lesson-link" data-lesson="01" href="01.html"><span class="lesson-number">01</span><span>程序员用 AI Coding，真正的门槛不是 Prompt</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="02" href="02.html"><span class="lesson-number">02</span><span>从聊天式开发到工程式开发</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="03" href="03.html"><span class="lesson-number">03</span><span>AI Coding 的底层工作模型</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="04" href="04.html"><span class="lesson-number">04</span><span>AI 最擅长和最不擅长的开发任务</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 02</span>程序员工具工作台</summary><a class="lesson-link" data-lesson="05" href="05.html"><span class="lesson-number">05</span><span>Codex、Claude Code、Cursor、Copilot 怎么分工</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="06" href="06.html"><span class="lesson-number">06</span><span>一个程序员的 AI Coding 工作台怎么搭</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="07" href="07.html"><span class="lesson-number">07</span><span>App、CLI、IDE 怎么切换完成一次真实改动</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage" open><summary><span class="stage-index">模块 03</span>上下文工程与代码库理解</summary><a class="lesson-link" data-lesson="08" href="08.html"><span class="lesson-number">08</span><span>上下文工程：为什么不是塞越多代码越好</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="09" href="09.html"><span class="lesson-number">09</span><span>代码地图不是手工文档：让 Agent 生成可检查的仓库导航</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="10" href="10.html"><span class="lesson-number">10</span><span>让 Agent 做代码搜索：怎样约束搜索目标、证据和停止条件</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="11" href="11.html" aria-current="page"><span class="lesson-number">11</span><span>AGENTS.md / CLAUDE.md / Copilot Instructions</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="12" href="12.html"><span class="lesson-number">12</span><span>任务上下文包：一次需求到底该给 AI 什么</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="13" href="13.html"><span class="lesson-number">13</span><span>上下文污染与上下文清理</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="14" href="14.html"><span class="lesson-number">14</span><span>模块实战：让 AI 接手一个陌生代码模块</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 04</span>SDD 与 OpenSpec 实战</summary><a class="lesson-link" data-lesson="15" href="15.html"><span class="lesson-number">15</span><span>SDD 是什么：先写规格，再写代码</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="16" href="16.html"><span class="lesson-number">16</span><span>从一句需求到 requirements.md</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="17" href="17.html"><span class="lesson-number">17</span><span>design.md 怎么写，AI 才不会补丁式开发</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="18" href="18.html"><span class="lesson-number">18</span><span>tasks.md 怎么拆：把复杂需求变成小 diff</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="19" href="19.html"><span class="lesson-number">19</span><span>OpenSpec 实战：把需求变更放进 repo</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="20" href="20.html"><span class="lesson-number">20</span><span>OpenSpec、Spec Kit 与轻量 SDD 怎么选</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="21" href="21.html"><span class="lesson-number">21</span><span>模块实战：用 OpenSpec CLI 推进一次真实产品需求</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 05</span>小步开发测试与调试闭环</summary><a class="lesson-link" data-lesson="22" href="22.html"><span class="lesson-number">22</span><span>计划先行：让 AI 先解释它准备怎么改</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="23" href="23.html"><span class="lesson-number">23</span><span>小步开发：为什么要限制 AI 一次改动范围</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="24" href="24.html"><span class="lesson-number">24</span><span>TDD + AI Coding：先让失败测试约束模型</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="25" href="25.html"><span class="lesson-number">25</span><span>系统化调试：让 AI 基于证据排障</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="26" href="26.html"><span class="lesson-number">26</span><span>前后端验证闭环：页面、接口、数据库和副作用怎么一起验</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="27" href="27.html"><span class="lesson-number">27</span><span>AI 说“测试失败无关”时，程序员该怎么判断</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="28" href="28.html"><span class="lesson-number">28</span><span>模块实战：用 AI 完成一次 CLI 交互改造</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 06</span>Skill Superpowers 与工作流固化</summary><a class="lesson-link" data-lesson="29" href="29.html"><span class="lesson-number">29</span><span>Skill 是什么：从提示词到可复用工作流</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="30" href="30.html"><span class="lesson-number">30</span><span>Skill 原理解析：它如何约束 Agent 行为</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="31" href="31.html"><span class="lesson-number">31</span><span>Superpowers 工作流拆解：把工程纪律变成 Skill 链</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="32" href="32.html"><span class="lesson-number">32</span><span>自定义 Skill：把你的经验固化成个人能力</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="33" href="33.html"><span class="lesson-number">33</span><span>外部工具接入：MCP 在 AI Coding 里到底有什么用</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="34" href="34.html"><span class="lesson-number">34</span><span>多 Agent 与自动化：什么时候拆，什么时候不要拆</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="35" href="35.html"><span class="lesson-number">35</span><span>模块实战：用 Superpowers 固化一次业务需求的调试和评审</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="36" href="36.html"><span class="lesson-number">36</span><span>模块实战：给 AI 接一个只读项目工具</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 07</span>综合实战与资产沉淀</summary><a class="lesson-link" data-lesson="37" href="37.html"><span class="lesson-number">37</span><span>综合实战：一个真实需求的 AI Coding 最佳实践</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="38" href="38.html"><span class="lesson-number">38</span><span>综合实战：从一次交付沉淀个人规则库</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 08</span>个人工程资产</summary><a class="lesson-link" data-lesson="39" href="39.html"><span class="lesson-number">39</span><span>从个人提效到个人工程系统</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="END" href="closing.html"><span class="lesson-number">·</span><span>写在专栏结束时：把 AI Coding 留在日常工程里</span><span class="lesson-state" aria-hidden="true"></span></a></details></nav><p class="sidebar-note">给清目标，保留证据，逐步交付。</p></aside><main class="reader-main" id="main-content"><div class="article-context"><span>上下文工程与代码库理解</span><div class="reading-tools js-only"><div class="font-controls" role="group" aria-label="正文字号"><button type="button" data-font="-1" aria-label="减小正文字号">A−</button><span id="font-size-label" aria-live="polite">18</span><button type="button" data-font="1" aria-label="增大正文字号">A+</button></div><button type="button" class="focus-toggle" aria-pressed="false"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg><span>专注阅读</span></button></div></div><div class="mobile-context"><nav class="reading-route" aria-label="本篇路线"><details><summary>本篇路线</summary><div class="toc">
+<ul>
+<li><a href="#规则文件解决什么问题">规则文件解决什么问题</a></li>
+<li><a href="#规则文件不应该写什么">规则文件不应该写什么</a></li>
+<li><a href="#好规则和坏规则的区别">好规则和坏规则的区别</a></li>
+<li><a href="#规则必须绑定证据">规则必须绑定证据</a></li>
+<li><a href="#一份项目规则的基本结构">一份项目规则的基本结构</a></li>
+<li><a href="#规则分层全局项目目录任务">规则分层：全局、项目、目录、任务</a></li>
+<li><a href="#规则筛选流程">规则筛选流程</a></li>
+<li><a href="#一个可直接迁移的-agentsmd">一个可直接迁移的 AGENTS.md</a></li>
+<li><a href="#claudemd-怎么写">CLAUDE.md 怎么写</a></li>
+<li><a href="#copilot-instructions-怎么写">Copilot Instructions 怎么写</a></li>
+<li><a href="#多工具规则如何避免冲突">多工具规则如何避免冲突</a></li>
+<li><a href="#规则太多会怎样">规则太多会怎样</a></li>
+<li><a href="#规则文件如何验证有效">规则文件如何验证有效</a></li>
+<li><a href="#规则如何进入一次任务">规则如何进入一次任务</a></li>
+<li><a href="#规则没有生效时怎么排查">规则没有生效时怎么排查</a></li>
+<li><a href="#常见错误">常见错误</a></li>
+<li><a href="#今天可以先加的五条规则">今天可以先加的五条规则</a></li>
+<li><a href="#迁移建议">迁移建议</a></li>
+<li><a href="#常见问题">常见问题</a></li>
+<li><a href="#可复查资料">可复查资料</a></li>
+</ul>
+</div>
+</details></nav></div><article id="article-body"><h1 id="agentsmd-claudemd-copilot-instructions"><code>AGENTS.md</code> / <code>CLAUDE.md</code> / Copilot Instructions</h1>
+<p>AI Coding 里，项目规则文件不是给 AI 写的“温馨提示”。</p>
+<p>它的作用更具体：把每次都要遵守的工程约束放到仓库里，让 Agent 在读代码、改文件、跑命令、写完成报告时有稳定边界。</p>
+<p>不同工具叫法不一样。Codex 有 <code>AGENTS.md</code>，Claude Code 常用 <code>CLAUDE.md</code> 承接项目记忆和约定，GitHub Copilot 支持 repository instructions 和自定义指令。文件名和加载规则会随工具变化，写作前要看官方文档；但背后的工程问题一致：</p>
+<p>什么规则应该长期放在项目里？什么信息只属于单次任务？规则文件怎样写，才能真正约束 Agent，而不是制造更多噪音？</p>
+<p><img alt="AI Coding 项目规则分层" src="../assets/content/docs/assets/diagrams/source/11-rule-layering.svg" /></p>
+<h2 id="规则文件解决什么问题">规则文件解决什么问题</h2>
+<p>没有规则文件时，每次任务都要重复交代：</p>
+<pre><code class="language-text">先看测试。
+不要改生成文件。
+不要新增依赖。
+不要做无关重构。
+改完跑 npm test。
+如果测试失败先分类。
+</code></pre>
+<p>重复几次以后，人会省略，Agent 会忘，结果又回到聊天式开发。</p>
+<p>项目规则文件把这些稳定约束放进仓库。它解决四类问题：</p>
+<p>第一，减少重复说明。</p>
+<p>安装命令、测试命令、禁止修改目录、完成报告格式，不应该每次都靠人重新输入。</p>
+<p>第二，限制 Agent 的默认行为。</p>
+<p>Agent 遇到测试失败、生成文件、依赖缺失、格式化大文件时，如果没有规则，可能会按最容易完成的方向改。</p>
+<p>第三，保持工具切换时的一致性。</p>
+<p>你可能在 Codex、Claude Code、Cursor、Copilot 之间切换。规则文件能让项目约束留在仓库里，而不是留在某个聊天窗口。</p>
+<p>第四，把事故沉淀成防线。</p>
+<p>AI 曾经改错过生成文件，就写“不要改 generated”；曾经为了测试通过删断言，就写“不要删除断言来绕过失败”；曾经新增依赖没说明，就写“新增依赖先确认”。</p>
+<p>规则文件不是写给未来的理想流程，而是写给真实踩坑后的下一次任务。</p>
+<h2 id="规则文件不应该写什么">规则文件不应该写什么</h2>
+<p>规则文件最容易变成垃圾桶。</p>
+<p>这些内容不应该长期放进去：</p>
+<ul>
+<li>单次任务背景。</li>
+<li>临时需求讨论。</li>
+<li>某次 bug 的排查过程。</li>
+<li>已经过期的方案争论。</li>
+<li>大段产品 PRD。</li>
+<li>个人猜测。</li>
+<li>“请认真”“代码要优雅”这类空话。</li>
+<li>工具使用心得流水账。</li>
+</ul>
+<p>例如，不要写：</p>
+<pre><code class="language-markdown">- 最近我们在修登录问题，可能和 refresh token 有关。
+- 这个项目最好尽量优化用户体验。
+- AI 修改代码时要小心。
+- 如果有机会，可以顺便重构 auth 模块。
+</code></pre>
+<p>这些话要么过期，要么不可执行，要么会诱导 Agent 扩大范围。</p>
+<p>长期规则应该满足四个条件：</p>
+<pre><code class="language-text">长期有效
+可执行
+可验证
+能减少真实风险
+</code></pre>
+<p>如果一条规则不满足这四点，就应该放到任务上下文包、issue、PR 描述或临时计划里。</p>
+<h2 id="好规则和坏规则的区别">好规则和坏规则的区别</h2>
+<p>坏规则：</p>
+<pre><code class="language-markdown">- 写高质量代码。
+- 使用最佳实践。
+- 注意不要出错。
+- 尽量提升可维护性。
+</code></pre>
+<p>这类规则的问题是没有动作。Agent 看完也不知道该改什么、不该改什么、跑什么命令。</p>
+<p>好规则：</p>
+<pre><code class="language-markdown">- Run `git status --short` before editing.
+- Do not edit files under `src/generated/`; update the schema and run generation instead.
+- Do not add runtime dependencies without approval.
+- Bug fixes must stay scoped to the failing behavior; do not mix refactor with bug fix.
+- For behavior changes, run the focused test first and report the exact command output.
+- If a test fails, classify it before editing again: baseline failure, introduced failure, environment failure, or requirement conflict.
+</code></pre>
+<p>这些规则有共同点：</p>
+<ul>
+<li>能执行。</li>
+<li>能检查。</li>
+<li>能阻止常见误改。</li>
+<li>不依赖抽象价值判断。</li>
+</ul>
+<p>规则文件不是价值观文档。它是 Agent 工作边界。</p>
+<h2 id="规则必须绑定证据">规则必须绑定证据</h2>
+<p>一条规则如果没有证据出口，很容易变成口号。</p>
+<p>比如：</p>
+<pre><code class="language-markdown">- Run tests before completion.
+</code></pre>
+<p>这句话看起来没问题，但它没有说清楚跑什么、什么时候跑、怎么报告。Agent 很可能跑一个最轻的命令，然后写“测试通过”。</p>
+<p>可以改成：</p>
+<pre><code class="language-markdown">- For behavior changes, run one focused test that covers the changed path.
+- If shared code changed, run the broader module test.
+- Completion report must include exact command, exit result, and unverified paths.
+</code></pre>
+<p>这样规则就绑定了证据。</p>
+<p>再比如：</p>
+<pre><code class="language-markdown">- Keep changes scoped.
+</code></pre>
+<p>这句话也太虚。可以改成：</p>
+<pre><code class="language-markdown">- Before editing, list expected files.
+- If a new file must be edited, stop and explain why scope changed.
+- Completion report must mention every changed file and reason.
+</code></pre>
+<p>AI Coding 里的规则不是为了表达态度，而是为了改变 Agent 的下一步动作。</p>
+<h2 id="一份项目规则的基本结构">一份项目规则的基本结构</h2>
+<p>可以从这个结构开始：</p>
+<pre><code class="language-markdown"># Project Agent Instructions
+
+## Project Shape
+
+- Runtime entry:
+- Main modules:
+- Test directories:
+- Generated directories:
+
+## Commands
+
+- Install:
+- Focused test:
+- Full test:
+- Lint:
+- Type check:
+- Build:
+
+## Worktree Rules
+
+- Run `git status --short` before editing.
+- Do not overwrite user changes.
+- Keep changes scoped to the task.
+
+## Change Rules
+
+- Do not add dependencies without approval.
+- Do not edit generated files directly.
+- Do not mix refactor with behavior change.
+- If scope must expand, stop and explain.
+
+## Verification
+
+- Report exact commands and results.
+- Explain what each command covers.
+- List residual risks before completion.
+
+## Reporting
+
+- Changed files.
+- Why they changed.
+- Commands run.
+- Unverified paths.
+</code></pre>
+<p>这不是固定模板。不同项目可以删减。</p>
+<p>文档项目可以不写 build。后端服务要写启动命令和测试命令。前端项目要写浏览器验证。老项目要写手动验证和覆盖缺口。</p>
+<p>关键是别把规则文件写得像项目百科。它只需要覆盖 Agent 工作时最容易出错的边界。</p>
+<h2 id="规则分层全局项目目录任务">规则分层：全局、项目、目录、任务</h2>
+<p>AI Coding 的规则不是一层。</p>
+<p>可以按四层理解：</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>层级</th>
+<th>内容</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全局规则</td>
+<td>个人长期偏好和工作方式</td>
+<td>回复语言、不要覆盖用户改动、验证优先</td>
+</tr>
+<tr>
+<td>项目规则</td>
+<td>当前仓库长期约束</td>
+<td>命令、目录、依赖、完成报告</td>
+</tr>
+<tr>
+<td>目录规则</td>
+<td>模块差异明显时的局部约束</td>
+<td>前端目录、后端目录、移动端目录</td>
+</tr>
+<tr>
+<td>任务上下文</td>
+<td>单次任务目标、风险、相关文件</td>
+<td>这次修什么、不能改什么、怎么验证</td>
+</tr>
+</tbody>
+</table></div>
+<p>项目规则不要承担任务上下文的职责。</p>
+<p>比如“这次修 session 过期后首次提交失败”，不应该写进长期规则；它属于任务上下文。</p>
+<p>而“不要改变登录接口协议，除非任务明确要求”，如果这是项目长期约束，可以放进规则文件。</p>
+<p>目录规则也不要过早拆。只有当目录之间命令、风险和开发方式明显不同，才值得分目录写。例如：</p>
+<pre><code class="language-text">frontend/AGENTS.md
+backend/AGENTS.md
+mobile/AGENTS.md
+</code></pre>
+<p>如果只是为了显得细，就别拆。规则层级越多，冲突和过期风险越高。</p>
+<h2 id="规则筛选流程">规则筛选流程</h2>
+<p>每次想把一句话写进规则文件前，先过这张流程。</p>
+<p><img alt="规则应该放在哪里" src="../assets/content/docs/assets/diagrams/source/11-rule-filter-flow.svg" /></p>
+<p>第一问：这条规则是不是长期有效？</p>
+<p>如果只对本次任务有效，放任务上下文。</p>
+<p>第二问：它能不能执行？</p>
+<p>“代码要优雅”不能执行。“不要混合重构和 bug fix”可以执行。</p>
+<p>第三问：能不能验证？</p>
+<p>“运行 <code>npm test -- auth-refresh</code> 并报告结果”能验证。“保证没有问题”不能验证。</p>
+<p>第四问：它是否减少真实风险？</p>
+<p>如果只是偏好，不要写太多。规则越多，Agent 越难抓住重点。</p>
+<p>第五问：是否已有更合适的位置？</p>
+<p>架构说明放 docs，接口契约放 spec，任务细节放 issue，规则文件只放 Agent 工作约束。</p>
+<h2 id="一个可直接迁移的-agentsmd">一个可直接迁移的 <code>AGENTS.md</code></h2>
+<p>下面是一份精简版本：</p>
+<pre><code class="language-markdown"># Project Agent Instructions
+
+## Commands
+
+- Install: `npm install`
+- Focused test: `npm test -- &lt;pattern&gt;`
+- Full test: `npm test`
+- Lint: `npm run lint`
+- Type check: `npm run typecheck`
+
+## Worktree
+
+- Run `git status --short` before editing.
+- Do not overwrite user changes.
+- Do not edit generated files under `src/generated/` or build outputs under `dist/`.
+
+## Change Scope
+
+- Keep bug fixes scoped to the failing behavior.
+- Do not mix refactor with behavior changes.
+- Do not add runtime dependencies without approval.
+- If the task requires changing public API, stop and explain the impact first.
+
+## Verification
+
+- For behavior changes, run the focused test first.
+- If shared code changed, run broader tests.
+- Report exact commands and results.
+- If a command cannot run, explain why and what evidence is missing.
+
+## Failure Handling
+
+- Do not edit code immediately after a test failure.
+- First classify the failure: baseline, introduced, environment, or requirement conflict.
+- Do not delete tests or weaken assertions to make tests pass.
+
+## Completion Report
+
+- Changed files.
+- Why each file changed.
+- Commands run.
+- Result.
+- Residual risk.
+</code></pre>
+<p>这份规则不长，但已经能约束很多常见问题。</p>
+<p>你可以按项目改：</p>
+<ul>
+<li>Java 项目把命令换成 <code>./mvnw test</code> 或 <code>./gradlew test</code>。</li>
+<li>Go 项目换成 <code>go test ./...</code>。</li>
+<li>前端项目补浏览器验证。</li>
+<li>老项目补手动验证路径和覆盖缺口。</li>
+</ul>
+<h2 id="claudemd-怎么写"><code>CLAUDE.md</code> 怎么写</h2>
+<p>Claude Code 的 memory 文档把 <code>CLAUDE.md</code> 用作项目记忆和约定入口。写法上，原则和 <code>AGENTS.md</code> 很接近：放项目长期有效的开发约束、命令、结构、偏好。</p>
+<p>可以这样组织：</p>
+<pre><code class="language-markdown"># Project Memory
+
+## Useful Commands
+
+- `npm test`
+- `npm run lint`
+- `npm run typecheck`
+
+## Architecture Notes
+
+- Auth refresh logic lives in `src/auth/request.ts`.
+- Generated API client lives in `src/generated/`; do not edit directly.
+
+## Coding Rules
+
+- Keep bug fixes scoped.
+- Do not add dependencies without approval.
+- Prefer existing test style.
+
+## Verification
+
+- Report commands and residual risk.
+</code></pre>
+<p>注意，不要把 <code>CLAUDE.md</code> 写成长期聊天记录。</p>
+<p>如果一段信息只对当前 bug 有用，放任务上下文；如果是项目长期导航，才放 <code>CLAUDE.md</code>。</p>
+<h2 id="copilot-instructions-怎么写">Copilot Instructions 怎么写</h2>
+<p>GitHub Copilot 的 repository instructions 和 custom instructions 适合给 Copilot 提供项目上下文和编码约束。</p>
+<p>这里同样不要写大段背景。适合写：</p>
+<ul>
+<li>项目使用的语言和框架。</li>
+<li>测试命令和代码风格。</li>
+<li>常见目录和生成文件。</li>
+<li>不要新增依赖或改接口的约束。</li>
+<li>PR 或 review 时要重点检查的内容。</li>
+</ul>
+<p>例如：</p>
+<pre><code class="language-markdown">This repository is a React + TypeScript application.
+
+Guidelines:
+- Use existing component and test patterns.
+- Do not edit generated API client files under `src/generated/`.
+- Do not add runtime dependencies without approval.
+- For behavior changes, include or update focused tests.
+- Keep bug fixes scoped; do not include unrelated refactors.
+</code></pre>
+<p>Copilot instructions 往往更贴近 IDE 和 GitHub 工作流。它不一定替代 <code>AGENTS.md</code>，而是服务 Copilot 使用场景。</p>
+<p>如果项目同时使用多种工具，建议先维护一份主规则，再按工具格式同步精简版本。不要让不同工具的规则互相冲突。</p>
+<p>同步时还要保留差异。</p>
+<p>比如 Codex 场景里，规则更强调仓库读取、命令验证、diff 和完成报告。Claude Code 场景里，<code>CLAUDE.md</code> 往往还会承担项目记忆作用。Copilot instructions 更贴近 IDE、PR 和 GitHub 工作流。Cursor rules 可能更贴近编辑器内的代码生成和目录规则。</p>
+<p>所以不要把一份长规则原样复制到所有工具里。</p>
+<p>合理做法是：</p>
+<pre><code class="language-text">主规则：项目事实、禁止事项、验证要求、完成报告。
+Codex：保留命令、diff、验证、权限边界。
+Claude Code：保留项目记忆、架构入口、命令、长期约束。
+Copilot：保留编码风格、测试模式、PR/review 重点。
+Cursor：保留目录规则、生成文件限制、当前技术栈模式。
+</code></pre>
+<p>核心约束一致，工具细节分开。这样既不会冲突，也不会让某个工具读到大量无关信息。</p>
+<h2 id="多工具规则如何避免冲突">多工具规则如何避免冲突</h2>
+<p>很多程序员会同时用 Codex、Claude Code、Cursor、Copilot。问题不是不能多工具，而是规则不能多套互相打架。</p>
+<p>建议建立一个“主规则源”。</p>
+<pre><code class="language-text">AGENTS.md 或 docs/ai-coding/project-rules.md
+</code></pre>
+<p>然后按工具需要派生：</p>
+<pre><code class="language-text">CLAUDE.md
+.github/copilot-instructions.md
+Cursor rules
+</code></pre>
+<p>同步时遵守三点：</p>
+<p>第一，核心约束一致。</p>
+<p>比如“不要改生成文件”“新增依赖先确认”“bug fix 不混重构”，所有工具都应该一致。</p>
+<p>第二，工具特有能力单独写。</p>
+<p>Claude Code 的 hooks、Codex 的配置、Copilot 的 PR 场景，可以写在对应文件里，不要硬塞到所有规则。</p>
+<p>第三，定期删旧规则。</p>
+<p>规则文件不是只增不删。项目结构变了，命令变了，工具能力变了，旧规则要清理。</p>
+<p>可以每月做一次 10 分钟检查：</p>
+<pre><code class="language-bash">git grep -n &quot;npm test\\|pnpm test\\|mvn test\\|generated\\|dist/&quot; AGENTS.md CLAUDE.md .github 2&gt;/dev/null
+</code></pre>
+<p>这类命令不是为了机械找词，而是快速发现规则里是否还写着过期命令、过期目录和互相冲突的工具约束。</p>
+<h2 id="规则太多会怎样">规则太多会怎样</h2>
+<p>规则太多会产生三个问题。</p>
+<p>第一，Agent 抓不住重点。</p>
+<p>如果规则文件几千行，真正关键的“不要改生成文件”可能被淹没。</p>
+<p>第二，规则冲突。</p>
+<p>前面写“保持最小 diff”，后面又写“顺便优化代码结构”，Agent 会自己选择。</p>
+<p>第三，过期信息污染上下文。</p>
+<p>旧命令、旧目录、旧架构说明，会把 Agent 带到错误路径。</p>
+<p>所以规则文件要定期做瘦身。</p>
+<p>可以用这个检查：</p>
+<pre><code class="language-markdown">## Rule Review
+
+- 这条规则过去一个月是否仍然有效？
+- 是否能被执行或验证？
+- 是否和其他规则重复或冲突？
+- 是否更适合放到代码地图、任务上下文或 docs？
+- 是否来自真实事故或高频风险？
+</code></pre>
+<p>删规则和加规则一样重要。</p>
+<h2 id="规则文件如何验证有效">规则文件如何验证有效</h2>
+<p>写了规则，不代表 Agent 会稳定遵守。</p>
+<p>可以用一个低风险任务试跑：</p>
+<pre><code class="language-text">请读取项目规则，然后完成一个小 bug fix。
+实现前先输出：
+- 你读到了哪些规则。
+- 这些规则如何影响你的计划。
+- 哪些文件不能改。
+- 需要跑哪些命令。
+</code></pre>
+<p>如果 Agent 输出里完全没有提到关键规则，说明规则写法或加载方式有问题。</p>
+<p>也可以故意观察它是否会踩线：</p>
+<ul>
+<li>它是否尝试修改 generated。</li>
+<li>它是否直接新增依赖。</li>
+<li>它是否把 refactor 混进 bug fix。</li>
+<li>它是否跑了错误命令。</li>
+<li>它是否没有报告剩余风险。</li>
+</ul>
+<p>这些不是要为难 Agent，而是验证规则是否真的进入工作流。</p>
+<h2 id="规则如何进入一次任务">规则如何进入一次任务</h2>
+<p>规则文件写好了，还要让它进入当前任务。</p>
+<p>实际操作可以很简单：</p>
+<pre><code class="language-text">请先读取项目规则文件，不要改代码。
+
+输出：
+- 本任务必须遵守的规则。
+- 这些规则会影响哪些文件和命令。
+- 哪些动作需要先获得确认。
+- 如果规则和任务冲突，先指出冲突，不要自行取舍。
+</code></pre>
+<p>这一步适合中高风险任务。低风险任务不用每次都复述规则。</p>
+<p>如果 Agent 读完规则后只输出“我会遵守项目规范”，说明规则没有变成执行计划。你要让它具体到文件、命令、限制和停止条件。</p>
+<p>例如前端改动：</p>
+<pre><code class="language-text">规则影响：
+- 不能改 generated client。
+- UI 改动需要浏览器验证。
+- 只允许修改 `src/pages/order/` 和对应测试。
+- 如果需要改 API response shape，先停止。
+</code></pre>
+<p>这种输出才有用。</p>
+<h2 id="规则没有生效时怎么排查">规则没有生效时怎么排查</h2>
+<p>规则写了但 Agent 没遵守，先不要急着把规则写得更长。</p>
+<p>按顺序查四件事。</p>
+<p>第一，工具是否真的加载了规则。不同工具的文件名、位置和作用范围不同，<code>AGENTS.md</code>、<code>CLAUDE.md</code>、repository instructions 不一定互相识别。先看官方文档和当前工具输出，不要凭印象判断。</p>
+<p>第二，规则是否太抽象。比如“保持高质量”不会改变行动，“如果测试失败，先分类 baseline、introduced、environment、requirement conflict”才会。</p>
+<p>第三，规则是否冲突。前面写“不要改 public API”，后面又写“必要时调整接口更合理”，Agent 会自己取一个看起来顺手的方向。</p>
+<p>第四，任务上下文是否覆盖了规则。一次任务里如果写“可以自由重构”，就会和项目规则里的“小 diff”冲突。冲突时应该先停下来让人确认，而不是让 Agent 自行取舍。</p>
+<p>很多时候，修规则不是加一段说明，而是删掉冲突、改成动作、补上验证出口。</p>
+<h2 id="常见错误">常见错误</h2>
+<p><strong>错误一：规则文件写成愿望清单。</strong></p>
+<p>“提高质量”“保持优雅”“遵循最佳实践”都太虚。换成具体动作。</p>
+<p><strong>错误二：把任务背景写进长期规则。</strong></p>
+<p>一次 bug 的上下文应该放任务上下文包。长期规则只放稳定约束。</p>
+<p><strong>错误三：不写验证命令。</strong></p>
+<p>没有命令，Agent 就会猜。至少写 focused test、full test、lint 或手动验证路径。</p>
+<p><strong>错误四：规则文件从不更新。</strong></p>
+<p>项目命令变了，目录变了，生成文件路径变了，规则也要变。</p>
+<p><strong>错误五：多工具规则不一致。</strong></p>
+<p>一个工具允许改 generated，另一个工具禁止改 generated，最后一定出问题。核心约束要统一。</p>
+<p><strong>错误六：把规则写成给人的项目文档。</strong></p>
+<p>架构背景、业务解释、接口历史可以放 docs 或 spec。规则文件只保留 Agent 工作时必须遵守的边界。</p>
+<p><strong>错误七：只写禁止，不写替代路径。</strong></p>
+<p>不要只写“不能改 generated”。还要写“应该改 schema，然后运行生成命令”。否则 Agent 知道不能做什么，却不知道该怎么做。</p>
+<h2 id="今天可以先加的五条规则">今天可以先加的五条规则</h2>
+<p>如果你的项目还没有规则文件，先从五条开始：</p>
+<pre><code class="language-markdown"># Project Agent Instructions
+
+- Run `git status --short` before editing.
+- Do not overwrite user changes.
+- Do not add dependencies without approval.
+- Do not edit generated files or build outputs.
+- For behavior changes, run a focused verification command and report the result.
+</code></pre>
+<p>然后根据最近一次 AI Coding 事故补一条：</p>
+<pre><code class="language-markdown">- Do not delete tests or weaken assertions to make tests pass.
+</code></pre>
+<p>或者：</p>
+<pre><code class="language-markdown">- If a fix touches payment, order status, or auth, stop and ask for explicit plan approval first.
+</code></pre>
+<p>规则要从真实风险长出来。</p>
+<h2 id="迁移建议">迁移建议</h2>
+<p>把规则文件落到项目里后，下一次任务先让 Agent 读它：</p>
+<pre><code class="language-text">请先读取项目规则文件。
+不要改代码。
+
+输出：
+- 你读到的关键规则。
+- 本任务需要遵守的硬约束。
+- 计划中哪些动作受这些规则影响。
+</code></pre>
+<p>如果它读完规则还能给出合理计划，说明规则文件开始发挥作用。</p>
+<p>如果它读完只复述空话，说明规则还不够可执行。</p>
+<p>项目规则解决的是长期约束。单次任务还需要自己的上下文包：目标、范围、相关文件、验证命令和开放问题。接下来就讲一次需求到底该给 AI 什么。</p>
+<h2 id="常见问题">常见问题</h2>
+<h3 id="agentsmd-和-claudemd-要不要同时维护"><code>AGENTS.md</code> 和 <code>CLAUDE.md</code> 要不要同时维护？</h3>
+<p>看工具使用情况。</p>
+<p>如果项目主要用 Codex，先维护 <code>AGENTS.md</code>。如果主要用 Claude Code，先维护 <code>CLAUDE.md</code>。如果两个工具都高频使用，可以维护一份主规则，再同步精简版本。不要为了“兼容所有工具”复制多份没人维护的长文档。</p>
+<h3 id="规则文件应该写中文还是英文">规则文件应该写中文还是英文？</h3>
+<p>看团队和工具习惯。</p>
+<p>中文项目、中文协作可以写中文；工具关键词、命令、路径、错误分类建议保留英文。关键不是语言，而是规则是否具体、可执行、可验证。</p>
+<h3 id="规则越详细agent-表现越好吗">规则越详细，Agent 表现越好吗？</h3>
+<p>不是。</p>
+<p>过长规则会占上下文，也会让关键约束被淹没。规则应该少而硬：命令、禁止目录、依赖策略、验证要求、完成报告、失败处理。一次性背景不要放进去。</p>
+<h3 id="工具官方规则变化怎么办">工具官方规则变化怎么办？</h3>
+<p>工具能力和加载规则变化很快，涉及 <code>AGENTS.md</code>、<code>CLAUDE.md</code>、Copilot instructions、hooks、Skill、subagents 时，写作和改项目之前都应该看当前官方文档。不要凭几个月前的印象写死。</p>
+<h3 id="规则文件能替代代码审查吗">规则文件能替代代码审查吗？</h3>
+<p>不能。</p>
+<p>规则文件能减少重复错误，但它不会理解业务取舍。AI 生成的 diff 仍然要审查，尤其是公共接口、测试断言、依赖、数据和权限相关改动。</p>
+<h2 id="可复查资料">可复查资料</h2>
+<ul>
+<li>OpenAI Codex <code>AGENTS.md</code> 指南：<a href="https://developers.openai.com/codex/guides/agents-md">https://developers.openai.com/codex/guides/agents-md</a></li>
+<li>Anthropic Claude Code memory：<a href="https://code.claude.com/docs/en/memory">https://code.claude.com/docs/en/memory</a></li>
+<li>GitHub Copilot repository instructions：<a href="https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/add-custom-instructions/add-repository-instructions">https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/add-custom-instructions/add-repository-instructions</a></li>
+</ul></article><div class="practice-link"><a href="https://github.com/DavidDingXu/learn-ai-coding/blob/main/ai-coding-workflow-kit/dev-process/01-module-onboarding.md" target="_blank" rel="noopener"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5M14 4l-4 16"/></svg> 陌生模块接手记录 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></div><nav class="chapter-nav" aria-label="前后篇"><a href="10.html"><span>上一篇 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg></span><strong>让 Agent 做代码搜索：怎样约束搜索目标、证据和停止条件</strong></a><a href="12.html"><span>下一篇 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><strong>任务上下文包：一次需求到底该给 AI 什么</strong></a></nav><footer class="reader-footer">程序员 AI Coding 进阶实战 · <a href="../license.html">非商业使用</a><details class="community-mini"><summary>关注与交流 · 好好用 AI</summary><div class="community-section"><div><p>交流学习中的问题与实践心得。</p><p>代码问题和勘误，欢迎在 <a href="https://github.com/DavidDingXu/learn-ai-coding/issues" target="_blank" rel="noopener">GitHub 提交 Issue</a>。</p></div><a class="qr-link" href="../assets/wechat-official-account.jpg" target="_blank" rel="noopener" aria-label="查看好好用 AI 公众号二维码原图"><img src="../assets/wechat-official-account.jpg" alt="好好用 AI 微信公众号二维码" width="130" height="130" loading="lazy"><p class="qr-caption">微信扫码 · 点击查看原图</p></a></div></details></footer></main><aside class="context-sidebar" aria-label="本篇辅助导航"><div class="context-inner"><nav class="reading-route" aria-label="本篇路线"><details open><summary>本篇路线</summary><div class="toc">
+<ul>
+<li><a href="#规则文件解决什么问题">规则文件解决什么问题</a></li>
+<li><a href="#规则文件不应该写什么">规则文件不应该写什么</a></li>
+<li><a href="#好规则和坏规则的区别">好规则和坏规则的区别</a></li>
+<li><a href="#规则必须绑定证据">规则必须绑定证据</a></li>
+<li><a href="#一份项目规则的基本结构">一份项目规则的基本结构</a></li>
+<li><a href="#规则分层全局项目目录任务">规则分层：全局、项目、目录、任务</a></li>
+<li><a href="#规则筛选流程">规则筛选流程</a></li>
+<li><a href="#一个可直接迁移的-agentsmd">一个可直接迁移的 AGENTS.md</a></li>
+<li><a href="#claudemd-怎么写">CLAUDE.md 怎么写</a></li>
+<li><a href="#copilot-instructions-怎么写">Copilot Instructions 怎么写</a></li>
+<li><a href="#多工具规则如何避免冲突">多工具规则如何避免冲突</a></li>
+<li><a href="#规则太多会怎样">规则太多会怎样</a></li>
+<li><a href="#规则文件如何验证有效">规则文件如何验证有效</a></li>
+<li><a href="#规则如何进入一次任务">规则如何进入一次任务</a></li>
+<li><a href="#规则没有生效时怎么排查">规则没有生效时怎么排查</a></li>
+<li><a href="#常见错误">常见错误</a></li>
+<li><a href="#今天可以先加的五条规则">今天可以先加的五条规则</a></li>
+<li><a href="#迁移建议">迁移建议</a></li>
+<li><a href="#常见问题">常见问题</a></li>
+<li><a href="#可复查资料">可复查资料</a></li>
+</ul>
+</div>
+</details></nav></div></aside></div><dialog class="search-dialog" id="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label for="course-search" id="search-label"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>搜索课程</label><button class="icon-button" aria-label="关闭搜索"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></form><input id="course-search" type="search" placeholder="搜索概念、代码或问题…" autocomplete="off" spellcheck="false"><p class="search-status" id="search-status" role="status">搜索全部 42 篇文章。</p><div class="search-results" id="search-results"></div><footer>↑ ↓ 选择结果 <span>Enter 打开 · Esc 关闭</span></footer></dialog>
+<dialog class="image-viewer" id="image-viewer" aria-label="放大配图"><header><span>查看配图</span><div class="image-actions"><button type="button" id="image-size">原尺寸</button><button type="button" id="close-image" autofocus>关闭</button></div></header><div class="image-canvas"><img id="large-image" alt=""></div><footer><p id="image-description"></p><a id="original-image" target="_blank" rel="noopener">打开原图 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></footer></dialog><div class="toast" id="toast" role="status"></div></body></html>

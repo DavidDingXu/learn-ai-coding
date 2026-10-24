@@ -1,0 +1,257 @@
+{
+  "repository": "DavidDingXu/learn-ai-coding",
+  "articles": [
+    {
+      "id": "INTRO",
+      "title": "程序员 AI Coding 进阶实战",
+      "url": "course/introduction.html",
+      "source": "docs/course/00-导读与学习地图/00-专栏介绍｜程序员-AI-Coding-进阶实战.md"
+    },
+    {
+      "id": "00",
+      "title": "程序员如何系统学习 AI Coding",
+      "url": "course/00.html",
+      "source": "docs/course/00-导读与学习地图/00-程序员如何系统学习-AI-Coding.md"
+    },
+    {
+      "id": "01",
+      "title": "程序员用 AI Coding，真正的门槛不是 Prompt",
+      "url": "course/01.html",
+      "source": "docs/course/01-AI-Coding-底层心智/01-程序员用-AI-Coding-真正的门槛不是-Prompt.md"
+    },
+    {
+      "id": "02",
+      "title": "从聊天式开发到工程式开发",
+      "url": "course/02.html",
+      "source": "docs/course/01-AI-Coding-底层心智/02-从聊天式开发到工程式开发.md"
+    },
+    {
+      "id": "03",
+      "title": "AI Coding 的底层工作模型",
+      "url": "course/03.html",
+      "source": "docs/course/01-AI-Coding-底层心智/03-AI-Coding-的底层工作模型.md"
+    },
+    {
+      "id": "04",
+      "title": "AI 最擅长和最不擅长的开发任务",
+      "url": "course/04.html",
+      "source": "docs/course/01-AI-Coding-底层心智/04-AI-最擅长和最不擅长的开发任务.md"
+    },
+    {
+      "id": "05",
+      "title": "Codex、Claude Code、Cursor、Copilot 怎么分工",
+      "url": "course/05.html",
+      "source": "docs/course/02-程序员工具工作台/05-Codex-Claude-Code-Cursor-Copilot-怎么分工.md"
+    },
+    {
+      "id": "06",
+      "title": "一个程序员的 AI Coding 工作台怎么搭",
+      "url": "course/06.html",
+      "source": "docs/course/02-程序员工具工作台/06-一个程序员的-AI-Coding-工作台怎么搭.md"
+    },
+    {
+      "id": "07",
+      "title": "App、CLI、IDE 怎么切换完成一次真实改动",
+      "url": "course/07.html",
+      "source": "docs/course/02-程序员工具工作台/07-App-CLI-IDE-怎么组合完成一次真实改动.md"
+    },
+    {
+      "id": "08",
+      "title": "上下文工程：为什么不是塞越多代码越好",
+      "url": "course/08.html",
+      "source": "docs/course/03-上下文工程与代码库理解/08-上下文工程-为什么不是塞越多代码越好.md"
+    },
+    {
+      "id": "09",
+      "title": "代码地图不是手工文档：让 Agent 生成可检查的仓库导航",
+      "url": "course/09.html",
+      "source": "docs/course/03-上下文工程与代码库理解/09-让-AI-接手陌生项目的第一步-代码地图.md"
+    },
+    {
+      "id": "10",
+      "title": "让 Agent 做代码搜索：怎样约束搜索目标、证据和停止条件",
+      "url": "course/10.html",
+      "source": "docs/course/03-上下文工程与代码库理解/10-代码搜索与上下文选择.md"
+    },
+    {
+      "id": "11",
+      "title": "AGENTS.md / CLAUDE.md / Copilot Instructions",
+      "url": "course/11.html",
+      "source": "docs/course/03-上下文工程与代码库理解/11-AGENTS-md-CLAUDE-md-Copilot-Instructions.md"
+    },
+    {
+      "id": "12",
+      "title": "任务上下文包：一次需求到底该给 AI 什么",
+      "url": "course/12.html",
+      "source": "docs/course/03-上下文工程与代码库理解/12-任务上下文包-一次需求到底该给-AI-什么.md"
+    },
+    {
+      "id": "13",
+      "title": "上下文污染与上下文清理",
+      "url": "course/13.html",
+      "source": "docs/course/03-上下文工程与代码库理解/13-上下文污染与上下文清理.md"
+    },
+    {
+      "id": "14",
+      "title": "模块实战：让 AI 接手一个陌生代码模块",
+      "url": "course/14.html",
+      "source": "docs/course/03-上下文工程与代码库理解/14-模块实战-让-AI-接手一个陌生代码模块.md"
+    },
+    {
+      "id": "15",
+      "title": "SDD 是什么：先写规格，再写代码",
+      "url": "course/15.html",
+      "source": "docs/course/04-SDD-与-OpenSpec-实战/15-SDD-是什么-先写规格再写代码.md"
+    },
+    {
+      "id": "16",
+      "title": "从一句需求到 requirements.md",
+      "url": "course/16.html",
+      "source": "docs/course/04-SDD-与-OpenSpec-实战/16-从一句需求到-requirements-md.md"
+    },
+    {
+      "id": "17",
+      "title": "design.md 怎么写，AI 才不会补丁式开发",
+      "url": "course/17.html",
+      "source": "docs/course/04-SDD-与-OpenSpec-实战/17-design-md-怎么写-AI-才不会补丁式开发.md"
+    },
+    {
+      "id": "18",
+      "title": "tasks.md 怎么拆：把复杂需求变成小 diff",
+      "url": "course/18.html",
+      "source": "docs/course/04-SDD-与-OpenSpec-实战/18-tasks-md-怎么拆-把复杂需求变成小-diff.md"
+    },
+    {
+      "id": "19",
+      "title": "OpenSpec 实战：把需求变更放进 repo",
+      "url": "course/19.html",
+      "source": "docs/course/04-SDD-与-OpenSpec-实战/19-OpenSpec-实战-把需求变更放进-repo.md"
+    },
+    {
+      "id": "20",
+      "title": "OpenSpec、Spec Kit 与轻量 SDD 怎么选",
+      "url": "course/20.html",
+      "source": "docs/course/04-SDD-与-OpenSpec-实战/20-OpenSpec-Spec-Kit-与轻量-SDD-怎么选.md"
+    },
+    {
+      "id": "21",
+      "title": "模块实战：用 OpenSpec CLI 推进一次真实产品需求",
+      "url": "course/21.html",
+      "source": "docs/course/04-SDD-与-OpenSpec-实战/21-模块实战-用-OpenSpec-CLI-推进一次真实产品需求.md"
+    },
+    {
+      "id": "22",
+      "title": "计划先行：让 AI 先解释它准备怎么改",
+      "url": "course/22.html",
+      "source": "docs/course/05-小步开发测试与调试闭环/22-计划先行-让-AI-先解释它准备怎么改.md"
+    },
+    {
+      "id": "23",
+      "title": "小步开发：为什么要限制 AI 一次改动范围",
+      "url": "course/23.html",
+      "source": "docs/course/05-小步开发测试与调试闭环/23-小步开发-为什么要限制-AI-一次改动范围.md"
+    },
+    {
+      "id": "24",
+      "title": "TDD + AI Coding：先让失败测试约束模型",
+      "url": "course/24.html",
+      "source": "docs/course/05-小步开发测试与调试闭环/24-TDD-AI-Coding-先让失败测试约束模型.md"
+    },
+    {
+      "id": "25",
+      "title": "系统化调试：让 AI 基于证据排障",
+      "url": "course/25.html",
+      "source": "docs/course/05-小步开发测试与调试闭环/25-系统化调试-让-AI-基于证据排障.md"
+    },
+    {
+      "id": "26",
+      "title": "前后端验证闭环：页面、接口、数据库和副作用怎么一起验",
+      "url": "course/26.html",
+      "source": "docs/course/05-小步开发测试与调试闭环/26-前后端验证闭环-页面接口数据库和副作用怎么一起验.md"
+    },
+    {
+      "id": "27",
+      "title": "AI 说“测试失败无关”时，程序员该怎么判断",
+      "url": "course/27.html",
+      "source": "docs/course/05-小步开发测试与调试闭环/27-AI-说测试失败无关时程序员该怎么判断.md"
+    },
+    {
+      "id": "28",
+      "title": "模块实战：用 AI 完成一次 CLI 交互改造",
+      "url": "course/28.html",
+      "source": "docs/course/05-小步开发测试与调试闭环/28-模块实战-用-AI-完成一次-CLI-交互改造.md"
+    },
+    {
+      "id": "29",
+      "title": "Skill 是什么：从提示词到可复用工作流",
+      "url": "course/29.html",
+      "source": "docs/course/06-Skill-Superpowers-与工作流固化/29-Skill-是什么-从提示词到可复用工作流.md"
+    },
+    {
+      "id": "30",
+      "title": "Skill 原理解析：它如何约束 Agent 行为",
+      "url": "course/30.html",
+      "source": "docs/course/06-Skill-Superpowers-与工作流固化/30-Skill-原理解析-它如何约束-Agent-行为.md"
+    },
+    {
+      "id": "31",
+      "title": "Superpowers 工作流拆解：把工程纪律变成 Skill 链",
+      "url": "course/31.html",
+      "source": "docs/course/06-Skill-Superpowers-与工作流固化/31-Superpowers-工作流拆解-把工程纪律变成-Skill-链.md"
+    },
+    {
+      "id": "32",
+      "title": "自定义 Skill：把你的经验固化成个人能力",
+      "url": "course/32.html",
+      "source": "docs/course/06-Skill-Superpowers-与工作流固化/32-自定义-Skill-把你的经验固化成个人能力.md"
+    },
+    {
+      "id": "33",
+      "title": "外部工具接入：MCP 在 AI Coding 里到底有什么用",
+      "url": "course/33.html",
+      "source": "docs/course/06-Skill-Superpowers-与工作流固化/33-外部工具接入-MCP-在-AI-Coding-里到底有什么用.md"
+    },
+    {
+      "id": "34",
+      "title": "多 Agent 与自动化：什么时候拆，什么时候不要拆",
+      "url": "course/34.html",
+      "source": "docs/course/06-Skill-Superpowers-与工作流固化/34-多-Agent-与自动化-什么时候拆什么时候不要拆.md"
+    },
+    {
+      "id": "35",
+      "title": "模块实战：用 Superpowers 固化一次业务需求的调试和评审",
+      "url": "course/35.html",
+      "source": "docs/course/06-Skill-Superpowers-与工作流固化/35-模块实战-用-Superpowers-固化调试和评审流程.md"
+    },
+    {
+      "id": "36",
+      "title": "模块实战：给 AI 接一个只读项目工具",
+      "url": "course/36.html",
+      "source": "docs/course/06-Skill-Superpowers-与工作流固化/36-模块实战-给-AI-接一个只读项目工具.md"
+    },
+    {
+      "id": "37",
+      "title": "综合实战：一个真实需求的 AI Coding 最佳实践",
+      "url": "course/37.html",
+      "source": "docs/course/07-综合实战与资产沉淀/37-综合实战-一个真实需求的-AI-Coding-最佳实践.md"
+    },
+    {
+      "id": "38",
+      "title": "综合实战：从一次交付沉淀个人规则库",
+      "url": "course/38.html",
+      "source": "docs/course/07-综合实战与资产沉淀/38-综合实战-从一次交付沉淀个人规则库.md"
+    },
+    {
+      "id": "39",
+      "title": "从个人提效到个人工程系统",
+      "url": "course/39.html",
+      "source": "docs/course/08-个人工程资产/39-从个人提效到个人工程系统.md"
+    },
+    {
+      "id": "END",
+      "title": "写在专栏结束时：把 AI Coding 留在日常工程里",
+      "url": "course/closing.html",
+      "source": "docs/course/08-个人工程资产/END-写在专栏结束时-把-AI-Coding-留在日常工程里.md"
+    }
+  ]
+}

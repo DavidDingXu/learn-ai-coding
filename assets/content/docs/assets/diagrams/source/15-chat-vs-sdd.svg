@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#fff7ed"/>
+      <stop offset="100%" stop-color="#eff6ff"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .title { font: 700 46px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 24px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #475569; }
+      .bad { fill: #fee2e2; stroke: #fca5a5; stroke-width: 2; filter: url(#shadow); }
+      .good { fill: #dcfce7; stroke: #86efac; stroke-width: 2; filter: url(#shadow); }
+      .headBad { font: 700 30px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #991b1b; }
+      .headGood { font: 700 30px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #166534; }
+      .item { font: 400 22px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #334155; }
+      .arrow { font: 700 24px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #475569; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <text x="80" y="86" class="title">聊天式需求和 SDD 的差别</text>
+  <text x="82" y="128" class="subtitle">SDD 不是多写文档，而是把风险控制点放到实现之前。</text>
+
+  <rect x="100" y="210" width="620" height="520" rx="24" class="bad"/>
+  <text x="160" y="280" class="headBad">聊天式需求</text>
+  <text x="160" y="350" class="item">一句话需求</text>
+  <text x="160" y="390" class="arrow">↓</text>
+  <text x="160" y="440" class="item">AI 搜代码并直接改</text>
+  <text x="160" y="480" class="arrow">↓</text>
+  <text x="160" y="530" class="item">测试失败后继续修</text>
+  <text x="160" y="570" class="arrow">↓</text>
+  <text x="160" y="620" class="item">大 diff 后才暴露边界问题</text>
+
+  <rect x="880" y="210" width="620" height="520" rx="24" class="good"/>
+  <text x="940" y="280" class="headGood">SDD</text>
+  <text x="940" y="350" class="item">requirements 写行为和验收</text>
+  <text x="940" y="390" class="arrow">↓</text>
+  <text x="940" y="440" class="item">design 写方案、非目标和风险</text>
+  <text x="940" y="480" class="arrow">↓</text>
+  <text x="940" y="530" class="item">tasks 拆小 diff 和验证</text>
+  <text x="940" y="570" class="arrow">↓</text>
+  <text x="940" y="620" class="item">AI 按规格小步实现</text>
+</svg>

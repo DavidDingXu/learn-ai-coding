@@ -1,0 +1,531 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>小步开发：为什么要限制 AI 一次改动范围 · Learn AI Coding</title><meta name="description" content="从接手陌生代码库，到完成一次真实需求。沿着上下文、规格、实现、测试和复盘，建立可重复的 AI Coding 工作流。"><meta name="source-sha256" content="005343c04e1a4a5513a93a3aa947da37560a80feae0c2055aeb7236881d968be">
+<link rel="canonical" href="https://daviddingxu.github.io/learn-ai-coding/course/23.html"><link rel="icon" href="../assets/brand.png">
+<script>try{const t=localStorage.getItem('haohai-course-theme');document.documentElement.dataset.theme=t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light'}catch(_){document.documentElement.dataset.theme='light'}</script>
+<link rel="stylesheet" href="../assets/site.css"><script defer src="../assets/search-index.js"></script><script defer src="../assets/site.js"></script></head><body class="article-page" data-root="../" data-page="23"><a class="skip-link" href="#main-content">跳到正文</a><header class="site-header"><div class="header-inner"><button class="icon-button menu-toggle js-only" type="button" aria-label="打开课程目录" aria-controls="course-sidebar" aria-expanded="false"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+<a class="brand" href="../index.html" aria-label="Learn AI Coding · 学习站首页"><img src="../assets/brand.png" alt="" width="36" height="36"><span><strong>Learn AI Coding</strong><small>程序员 AI Coding 进阶实战</small></span></a>
+<nav class="header-nav" aria-label="主导航"><a href="../index.html#curriculum">课程目录</a><a href="../index.html#downloads">离线阅读</a><a href="https://github.com/DavidDingXu/learn-ai-coding" target="_blank" rel="noopener">GitHub <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></nav>
+<div class="header-controls"><button class="icon-button theme-toggle js-only" type="button" aria-label="切换到深色主题" title="切换到深色主题"><span class="theme-light-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A9 9 0 0 1 9.5 3.5a9 9 0 1 0 11 11Z"/></svg></span><span class="theme-dark-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></span></button><button class="search-trigger js-only" type="button" aria-label="搜索课程"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg><span>搜索课程</span><kbd>⌘ K</kbd></button></div></div><div class="reading-progress" aria-hidden="true"><span id="reading-progress-bar"></span></div></header><div class="sidebar-scrim" hidden></div><div class="reader-layout"><aside class="course-sidebar" id="course-sidebar" aria-label="课程目录"><div class="sidebar-heading"><a href="../index.html#curriculum">课程目录</a><button class="icon-button menu-close js-only" type="button" aria-label="关闭课程目录"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><nav aria-label="全部文章"><details class="sidebar-stage"><summary><span class="stage-index">模块 00</span>导读与学习地图</summary><a class="lesson-link" data-lesson="INTRO" href="introduction.html"><span class="lesson-number">·</span><span>程序员 AI Coding 进阶实战</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="00" href="00.html"><span class="lesson-number">00</span><span>程序员如何系统学习 AI Coding</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 01</span>AI Coding 底层心智</summary><a class="lesson-link" data-lesson="01" href="01.html"><span class="lesson-number">01</span><span>程序员用 AI Coding，真正的门槛不是 Prompt</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="02" href="02.html"><span class="lesson-number">02</span><span>从聊天式开发到工程式开发</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="03" href="03.html"><span class="lesson-number">03</span><span>AI Coding 的底层工作模型</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="04" href="04.html"><span class="lesson-number">04</span><span>AI 最擅长和最不擅长的开发任务</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 02</span>程序员工具工作台</summary><a class="lesson-link" data-lesson="05" href="05.html"><span class="lesson-number">05</span><span>Codex、Claude Code、Cursor、Copilot 怎么分工</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="06" href="06.html"><span class="lesson-number">06</span><span>一个程序员的 AI Coding 工作台怎么搭</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="07" href="07.html"><span class="lesson-number">07</span><span>App、CLI、IDE 怎么切换完成一次真实改动</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 03</span>上下文工程与代码库理解</summary><a class="lesson-link" data-lesson="08" href="08.html"><span class="lesson-number">08</span><span>上下文工程：为什么不是塞越多代码越好</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="09" href="09.html"><span class="lesson-number">09</span><span>代码地图不是手工文档：让 Agent 生成可检查的仓库导航</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="10" href="10.html"><span class="lesson-number">10</span><span>让 Agent 做代码搜索：怎样约束搜索目标、证据和停止条件</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="11" href="11.html"><span class="lesson-number">11</span><span>AGENTS.md / CLAUDE.md / Copilot Instructions</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="12" href="12.html"><span class="lesson-number">12</span><span>任务上下文包：一次需求到底该给 AI 什么</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="13" href="13.html"><span class="lesson-number">13</span><span>上下文污染与上下文清理</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="14" href="14.html"><span class="lesson-number">14</span><span>模块实战：让 AI 接手一个陌生代码模块</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 04</span>SDD 与 OpenSpec 实战</summary><a class="lesson-link" data-lesson="15" href="15.html"><span class="lesson-number">15</span><span>SDD 是什么：先写规格，再写代码</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="16" href="16.html"><span class="lesson-number">16</span><span>从一句需求到 requirements.md</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="17" href="17.html"><span class="lesson-number">17</span><span>design.md 怎么写，AI 才不会补丁式开发</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="18" href="18.html"><span class="lesson-number">18</span><span>tasks.md 怎么拆：把复杂需求变成小 diff</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="19" href="19.html"><span class="lesson-number">19</span><span>OpenSpec 实战：把需求变更放进 repo</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="20" href="20.html"><span class="lesson-number">20</span><span>OpenSpec、Spec Kit 与轻量 SDD 怎么选</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="21" href="21.html"><span class="lesson-number">21</span><span>模块实战：用 OpenSpec CLI 推进一次真实产品需求</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage" open><summary><span class="stage-index">模块 05</span>小步开发测试与调试闭环</summary><a class="lesson-link" data-lesson="22" href="22.html"><span class="lesson-number">22</span><span>计划先行：让 AI 先解释它准备怎么改</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="23" href="23.html" aria-current="page"><span class="lesson-number">23</span><span>小步开发：为什么要限制 AI 一次改动范围</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="24" href="24.html"><span class="lesson-number">24</span><span>TDD + AI Coding：先让失败测试约束模型</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="25" href="25.html"><span class="lesson-number">25</span><span>系统化调试：让 AI 基于证据排障</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="26" href="26.html"><span class="lesson-number">26</span><span>前后端验证闭环：页面、接口、数据库和副作用怎么一起验</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="27" href="27.html"><span class="lesson-number">27</span><span>AI 说“测试失败无关”时，程序员该怎么判断</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="28" href="28.html"><span class="lesson-number">28</span><span>模块实战：用 AI 完成一次 CLI 交互改造</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 06</span>Skill Superpowers 与工作流固化</summary><a class="lesson-link" data-lesson="29" href="29.html"><span class="lesson-number">29</span><span>Skill 是什么：从提示词到可复用工作流</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="30" href="30.html"><span class="lesson-number">30</span><span>Skill 原理解析：它如何约束 Agent 行为</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="31" href="31.html"><span class="lesson-number">31</span><span>Superpowers 工作流拆解：把工程纪律变成 Skill 链</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="32" href="32.html"><span class="lesson-number">32</span><span>自定义 Skill：把你的经验固化成个人能力</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="33" href="33.html"><span class="lesson-number">33</span><span>外部工具接入：MCP 在 AI Coding 里到底有什么用</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="34" href="34.html"><span class="lesson-number">34</span><span>多 Agent 与自动化：什么时候拆，什么时候不要拆</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="35" href="35.html"><span class="lesson-number">35</span><span>模块实战：用 Superpowers 固化一次业务需求的调试和评审</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="36" href="36.html"><span class="lesson-number">36</span><span>模块实战：给 AI 接一个只读项目工具</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 07</span>综合实战与资产沉淀</summary><a class="lesson-link" data-lesson="37" href="37.html"><span class="lesson-number">37</span><span>综合实战：一个真实需求的 AI Coding 最佳实践</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="38" href="38.html"><span class="lesson-number">38</span><span>综合实战：从一次交付沉淀个人规则库</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 08</span>个人工程资产</summary><a class="lesson-link" data-lesson="39" href="39.html"><span class="lesson-number">39</span><span>从个人提效到个人工程系统</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="END" href="closing.html"><span class="lesson-number">·</span><span>写在专栏结束时：把 AI Coding 留在日常工程里</span><span class="lesson-state" aria-hidden="true"></span></a></details></nav><p class="sidebar-note">给清目标，保留证据，逐步交付。</p></aside><main class="reader-main" id="main-content"><div class="article-context"><span>小步开发测试与调试闭环</span><div class="reading-tools js-only"><div class="font-controls" role="group" aria-label="正文字号"><button type="button" data-font="-1" aria-label="减小正文字号">A−</button><span id="font-size-label" aria-live="polite">18</span><button type="button" data-font="1" aria-label="增大正文字号">A+</button></div><button type="button" class="focus-toggle" aria-pressed="false"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg><span>专注阅读</span></button></div></div><div class="mobile-context"><nav class="reading-route" aria-label="本篇路线"><details><summary>本篇路线</summary><div class="toc">
+<ul>
+<li><a href="#ai-为什么特别容易产生大-diff">AI 为什么特别容易产生大 diff</a></li>
+<li><a href="#小-diff-不是按行数判断">小 diff 不是按行数判断</a></li>
+<li><a href="#开始前先限制文件范围">开始前先限制文件范围</a></li>
+<li><a href="#每一步都用-git-看半径">每一步都用 Git 看半径</a></li>
+<li><a href="#不要让重构混进需求-diff">不要让重构混进需求 diff</a></li>
+<li><a href="#验证半径要匹配改动半径">验证半径要匹配改动半径</a></li>
+<li><a href="#用-task-边界控制上下文">用 Task 边界控制上下文</a></li>
+<li><a href="#执行前写清当前步骤完成定义">执行前写清“当前步骤完成定义”</a></li>
+<li><a href="#用-diff-摘要训练审查节奏">用 diff 摘要训练审查节奏</a></li>
+<li><a href="#计划外文件怎么处理">计划外文件怎么处理</a></li>
+<li><a href="#生成文件锁文件和依赖要单独处理">生成文件、锁文件和依赖要单独处理</a></li>
+<li><a href="#前端小步也要按行为切不按组件切">前端小步也要按行为切，不按组件切</a></li>
+<li><a href="#小步执行可以用-checkpoint但不要掩盖审查">小步执行可以用 checkpoint，但不要掩盖审查</a></li>
+<li><a href="#小步和-pr-的关系">小步和 PR 的关系</a></li>
+<li><a href="#什么时候应该停下来拆新任务">什么时候应该停下来拆新任务</a></li>
+<li><a href="#每个小步都要能说明回滚方式">每个小步都要能说明回滚方式</a></li>
+<li><a href="#合并前再看一次整体-diff">合并前再看一次整体 diff</a></li>
+<li><a href="#不要让-ai-一次修所有测试">不要让 AI 一次“修所有测试”</a></li>
+<li><a href="#一个完整的小步执行模板">一个完整的小步执行模板</a></li>
+<li><a href="#可以用配套工具辅助但不要依赖工具替你判断">可以用配套工具辅助，但不要依赖工具替你判断</a></li>
+<li><a href="#常见错误">常见错误</a></li>
+<li><a href="#改完后重点看什么">改完后重点看什么</a></li>
+<li><a href="#常见问题">常见问题</a></li>
+<li><a href="#可复查资料">可复查资料</a></li>
+</ul>
+</div>
+</details></nav></div><article id="article-body"><h1 id="小步开发为什么要限制-ai-一次改动范围">小步开发：为什么要限制 AI 一次改动范围</h1>
+<p>让 AI 写代码，最容易低估的一件事是 diff 管理。</p>
+<p>很多人会把注意力放在“它有没有实现需求”。但在真实工程里，另一个问题同样重要：这个 diff 能不能被审。</p>
+<p>一个 800 行 diff，里面同时有行为修改、测试补充、格式化、重命名、顺手重构和文档调整，就算测试通过，也很难判断它到底安全不安全。你不知道哪一行是需求必须，哪一行是模型自作主张。更麻烦的是，一旦出问题，你也不知道该回滚哪一部分。</p>
+<p>所以 AI Coding 不能只讲“让模型完成任务”，还要讲“让模型一次只产生一个可审查变化”。</p>
+<p>小步开发的核心不是少写代码，而是控制改动半径。</p>
+<p>一次改动最好能满足三个条件：</p>
+<pre><code class="language-text">一句话能解释
+一个命令能验证
+失败后能单独回滚
+</code></pre>
+<p>做不到这三点，就应该继续拆。</p>
+<p><img alt="小 diff 控制环" src="../assets/content/docs/assets/diagrams/source/23-small-diff-control-loop.svg" /></p>
+<h2 id="ai-为什么特别容易产生大-diff">AI 为什么特别容易产生大 diff</h2>
+<p>人类程序员也会写大 diff，但 AI 写大 diff 的方式更隐蔽。</p>
+<p>它有几个天然倾向。</p>
+<p><strong>它会补全任务。</strong></p>
+<p>你说“订单取消走退款流程”，它可能联想到状态机、退款服务、支付回调、前端展示、接口返回、日志、文档。它的联想不一定错，但一次 diff 不该吞下所有东西。</p>
+<p><strong>它会顺手整理。</strong></p>
+<p>模型看到命名不一致，会想统一；看到旧测试写得丑，会想重写；看到重复逻辑，会想抽函数。很多顺手改动单看有道理，但会污染当前需求。</p>
+<p><strong>它会为了让测试通过扩大范围。</strong></p>
+<p>测试失败时，它可能不先判断失败是否属于当前任务，而是继续改更多代码。没有范围限制时，修复路径会越走越远。</p>
+<p><strong>它不天然感知 review 成本。</strong></p>
+<p>对模型来说，改 3 个文件和改 15 个文件只是输出长度不同。对人来说，审查成本完全不同。</p>
+<p>所以要主动限制 AI 的一次改动范围。</p>
+<h2 id="小-diff-不是按行数判断">小 diff 不是按行数判断</h2>
+<p>很多人会用行数判断 diff 大小，这不够。</p>
+<p>一个 20 行公共接口变更，风险可能比 200 行测试快照更新更高。</p>
+<p>更实用的判断方式是看改动半径：</p>
+<p><img alt="改动半径分级" src="../assets/content/docs/assets/diagrams/source/23-change-radius-levels.svg" /></p>
+<p>Level 1 是单文件行为变化。比如给状态转换函数增加一个 paid -&gt; refund_requested 分支，并补一个 focused test。</p>
+<p>Level 2 是同模块联动。比如状态机、取消服务和订单取消测试一起改。</p>
+<p>Level 3 是跨模块行为变化。比如订单取消、退款服务、事务处理和异步任务一起改。</p>
+<p>Level 4 是系统级变化。比如公共 API response、数据库 schema、协议、权限模型、结算规则。</p>
+<p>AI 一次最适合做 Level 1 或边界清楚的 Level 2。</p>
+<p>Level 3 要拆成多个小 diff。</p>
+<p>Level 4 不应该让 AI 一次完成。它可以协助写设计、补测试、做迁移草稿，但需要更严格的人审和阶段验证。</p>
+<h2 id="开始前先限制文件范围">开始前先限制文件范围</h2>
+<p>小步开发不是等 diff 出来后再后悔，而是在执行前就限制范围。</p>
+<p>错误指令：</p>
+<pre><code class="language-text">按计划实现订单取消退款流程。
+</code></pre>
+<p>直接限制任务范围：</p>
+<pre><code class="language-text">只执行 Task 2：添加 paid -&gt; refund_requested 状态转换。
+
+允许修改：
+- `src/order/order-status-transition.ts`
+- `test/order/order-cancel.test.ts`
+
+禁止修改：
+- `src/order/order-cancel-service.ts`
+- `src/refund/**`
+- API response 类型
+- 数据库 schema
+- 支付回调逻辑
+
+验证：
+- `npm test -- order-cancel`
+
+完成后停止，输出：
+- 改动文件列表
+- diff 摘要
+- 验证命令和结果
+</code></pre>
+<p>这段指令有四个控制点：</p>
+<ul>
+<li>只做一个 Task。</li>
+<li>明确允许文件。</li>
+<li>明确禁止范围。</li>
+<li>完成后停止。</li>
+</ul>
+<p>很多 AI 越界不是因为它不听话，而是你没有把边界写到可执行粒度。</p>
+<h2 id="每一步都用-git-看半径">每一步都用 Git 看半径</h2>
+<p>不要只读 AI 的总结。</p>
+<p>每一步完成后，先看：</p>
+<pre><code class="language-bash">git diff --name-only
+</code></pre>
+<p>再看：</p>
+<pre><code class="language-bash">git diff --stat
+</code></pre>
+<p>如果文件数量超过计划，先不要继续。</p>
+<p>例如计划只允许两个文件：</p>
+<pre><code class="language-text">src/order/order-status-transition.ts
+test/order/order-cancel.test.ts
+</code></pre>
+<p>实际出现：</p>
+<pre><code class="language-text">src/order/order-status-transition.ts
+src/order/order-cancel-service.ts
+src/refund/refund-request-service.ts
+test/order/order-cancel.test.ts
+</code></pre>
+<p>这已经越界。不要让 AI 解释几句就继续。先要求它说明：</p>
+<pre><code class="language-text">你修改了计划外文件。
+
+请先不要继续实现。
+说明每个计划外文件为什么被修改。
+如果不是当前 Task 必需，请恢复这些文件的改动，只保留 Task 2 范围内的 diff。
+</code></pre>
+<p>这里要注意：恢复计划外文件时，不要粗暴 <code>git checkout -- .</code>。当前工作区可能有你自己的改动，也可能有前一步已经确认过的改动。让 Agent 根据 diff 删除自己刚产生的计划外改动，或者你手动按文件审。</p>
+<p>小步开发的关键是“发现越界就停”，不是“越界后继续补救”。</p>
+<h2 id="不要让重构混进需求-diff">不要让重构混进需求 diff</h2>
+<p>AI 很喜欢顺手重构。</p>
+<p>它可能会说：</p>
+<pre><code class="language-text">我顺手整理了重复逻辑，提升可读性。
+</code></pre>
+<p>这句话在 review 里要提高警惕。</p>
+<p>重构不是不能做，但不要和行为变更混在同一个 diff。</p>
+<p>如果确实需要重构，拆成两个 diff：</p>
+<pre><code class="language-text">Diff 1：纯重构
+- 不改变行为。
+- 只移动/抽取代码。
+- 所有现有测试必须保持通过。
+
+Diff 2：行为变更
+- 基于重构后的结构修改需求。
+- 新增或修改测试。
+</code></pre>
+<p>如果重构不是需求必需，直接拒绝：</p>
+<pre><code class="language-text">当前 Task 不做重构。
+请恢复命名整理、抽函数和格式化改动。
+只保留 paid -&gt; refund_requested 状态转换和对应测试。
+</code></pre>
+<p>一个好习惯是要求 AI 在计划里声明：</p>
+<pre><code class="language-text">No opportunistic refactoring.
+No unrelated formatting.
+No dependency updates.
+</code></pre>
+<p>这能减少大量噪音。</p>
+<h2 id="验证半径要匹配改动半径">验证半径要匹配改动半径</h2>
+<p>小 diff 不是只改小，也要验证得准。</p>
+<p>如果是 Level 1 单文件行为改动，先跑 focused test：</p>
+<pre><code class="language-bash">npm test -- order-cancel
+</code></pre>
+<p>如果是 Level 2 同模块联动，再跑模块测试：</p>
+<pre><code class="language-bash">npm test -- order
+</code></pre>
+<p>如果是 Level 3 跨模块联动，需要补集成路径：</p>
+<pre><code class="language-bash">npm test -- order
+npm test -- refund
+npm test -- api-contract
+</code></pre>
+<p>如果是 Level 4 系统级变化，除了自动化测试，还要有人工审查、迁移检查、兼容性检查和回滚方案。</p>
+<p>很多人把“小步开发”理解成只跑小测试，这是错的。</p>
+<p>正确做法是：</p>
+<pre><code class="language-text">先用最小测试约束当前 diff。
+通过后再扩大验证半径。
+验证半径随着改动半径扩大。
+</code></pre>
+<p>否则你会得到一个局部通过、全局出事的改动。</p>
+<h2 id="用-task-边界控制上下文">用 Task 边界控制上下文</h2>
+<p>小步开发还能降低上下文污染。</p>
+<p>一次只执行一个 Task，Agent 当前需要关注的上下文就更少。</p>
+<p>例如 Task 1 只加测试：</p>
+<pre><code class="language-text">只需要 requirements、现有测试、状态枚举。
+不需要实现服务内部细节。
+</code></pre>
+<p>Task 2 只改状态转换：</p>
+<pre><code class="language-text">只需要状态机文件、相关测试、状态定义。
+不需要前端、不需要支付回调、不需要数据库 migration。
+</code></pre>
+<p>Task 3 再接退款请求创建：</p>
+<pre><code class="language-text">才需要 refund request service、事务边界、幂等策略。
+</code></pre>
+<p>如果一开始就把所有文件都给 AI，它会同时考虑所有问题，输出会混在一起。</p>
+<p>所以小步开发不只是 review 策略，也是上下文策略。</p>
+<h2 id="执行前写清当前步骤完成定义">执行前写清“当前步骤完成定义”</h2>
+<p>一个 Task 必须有完成定义。</p>
+<p>坏写法：</p>
+<pre><code class="language-text">完成状态转换。
+</code></pre>
+<p>好写法：</p>
+<pre><code class="language-text">Task 完成定义：
+- `paid -&gt; refund_requested` 状态转换存在。
+- pending cancellation 行为不变。
+- shipped cancellation 行为不变。
+- duplicate cancellation 测试仍然失败，因为幂等还没实现。
+- `npm test -- order-cancel` 中只有预期失败。
+</code></pre>
+<p>注意这里的“预期失败”。</p>
+<p>小步开发不要求每一步都让所有测试通过。TDD 或分步实现时，中间步骤出现预期失败是正常的。关键是失败要被解释清楚，不能变成未知失败。</p>
+<p>如果 Agent 看到失败就擅自实现后续 Task，就破坏了小步边界。</p>
+<p>执行指令里可以写：</p>
+<pre><code class="language-text">如果出现预期失败，请报告，不要为了让它通过而执行下一步。
+</code></pre>
+<h2 id="用-diff-摘要训练审查节奏">用 diff 摘要训练审查节奏</h2>
+<p>每一步完成后，让 AI 输出固定格式：</p>
+<pre><code class="language-markdown">Changed files:
+- `src/order/order-status-transition.ts`
+- `test/order/order-cancel.test.ts`
+
+What changed:
+- Added paid -&gt; refund_requested transition.
+- Added focused test for paid cancellation.
+- Kept pending and shipped tests unchanged.
+
+Verification:
+- `npm test -- order-cancel`
+- Result: paid cancellation passes, duplicate cancellation still fails as expected.
+
+Out of scope not touched:
+- payment callback
+- API response shape
+- database schema
+</code></pre>
+<p>然后你用 Git 验证它的摘要：</p>
+<pre><code class="language-bash">git diff --name-only
+git diff --stat
+</code></pre>
+<p>AI 摘要不是证据，Git diff 和命令输出才是证据。</p>
+<p>但固定摘要有用。它能让 Agent 养成每一步都对齐范围和验证的输出习惯。</p>
+<h2 id="计划外文件怎么处理">计划外文件怎么处理</h2>
+<p>发现计划外文件，不要马上让 AI 继续。</p>
+<p>先分类：</p>
+<pre><code class="language-text">必要越界：当前 Task 的设计漏了文件。
+非必要越界：顺手重构、格式化、猜测性实现。
+误伤越界：格式化工具、自动生成文件、锁文件变化。
+</code></pre>
+<p>必要越界要回到计划：</p>
+<pre><code class="language-text">当前 Task 需要扩大到 `src/refund/refund-request-service.ts`。
+请先更新计划，说明为什么 Task 2 无法在原范围完成。
+不要直接继续实现。
+</code></pre>
+<p>非必要越界要移除。</p>
+<p>误伤越界要看项目规则。有些格式化或锁文件变化是工具自动产生的，但仍然要解释和验证。</p>
+<p>小步开发不是禁止所有计划外变化，而是所有计划外变化都要重新授权。</p>
+<h2 id="生成文件锁文件和依赖要单独处理">生成文件、锁文件和依赖要单独处理</h2>
+<p>真实项目里，小步 diff 经常会碰到生成文件和锁文件。</p>
+<p>比如：</p>
+<pre><code class="language-text">package-lock.json
+pnpm-lock.yaml
+openapi-generated-client.ts
+prisma/schema generated files
+protobuf generated files
+</code></pre>
+<p>这些文件不一定不能改，但不能被悄悄带进 diff。</p>
+<p>可以在 task 里写：</p>
+<pre><code class="language-text">Generated and lock files:
+- do not update dependencies in this task.
+- do not regenerate API clients unless explicitly authorized.
+- if a generated file changes, stop and explain which command produced it.
+- if lock file changes, explain whether a dependency was added or package manager rewrote metadata.
+</code></pre>
+<p>为什么要这么严？</p>
+<p>因为 AI 可能为了让类型通过，顺手升级依赖；为了接口字段对上，顺手改生成 client；为了测试通过，顺手重跑生成命令。每一步都可能合理，但合在一个行为 diff 里，review 成本会暴涨。</p>
+<p>依赖更新最好单独成 diff：</p>
+<pre><code class="language-text">Diff A: dependency or generated artifact update
+Diff B: behavior change based on updated artifact
+</code></pre>
+<p>这样出问题时才能判断是依赖升级导致，还是业务实现导致。</p>
+<h2 id="前端小步也要按行为切不按组件切">前端小步也要按行为切，不按组件切</h2>
+<p>前端任务容易按组件拆：</p>
+<pre><code class="language-text">改按钮
+改弹窗
+改列表
+改详情页
+</code></pre>
+<p>这不一定是好拆法。</p>
+<p>如果需求是“已支付订单取消后显示退款处理中”，更合适的切法是按用户行为：</p>
+<pre><code class="language-text">Step 1: 接口 mock 或测试数据里加入 refund_requested 状态
+Step 2: 订单详情页能显示 refund_requested
+Step 3: 取消成功后刷新为 refund_requested
+Step 4: 重复点击被禁用或后端幂等结果被正确展示
+</code></pre>
+<p>每一步都能用页面测试、组件测试或截图验证。</p>
+<p>如果按组件切，Agent 很容易同时改按钮、状态映射、API client、样式和错误处理，最后页面看起来能用，但你很难判断哪一块承担了业务行为。</p>
+<p>前端小步同样要写 allowed files 和 forbidden changes。比如只做展示时，不应该改 API client；只做 API client 时，不应该顺手改页面样式。</p>
+<h2 id="小步执行可以用-checkpoint但不要掩盖审查">小步执行可以用 checkpoint，但不要掩盖审查</h2>
+<p>有些 Agent 支持 checkpoint、审批、分支或 worktree。它们对小步开发很有帮助，但不能替代审查。</p>
+<p>一个实际流程可以是：</p>
+<pre><code class="language-text">Step 1 完成
+-&gt; 查看 git diff --name-only
+-&gt; 运行 focused test
+-&gt; 记录结果
+-&gt; 接受 checkpoint
+-&gt; 授权 Step 2
+</code></pre>
+<p>不要把 checkpoint 当成“可以放心让它一直跑”的理由。checkpoint 只是降低回退成本，不会告诉你 diff 是否合理。</p>
+<p>如果工具没有 checkpoint，也可以用普通 Git 做同样的事：</p>
+<pre><code class="language-bash">git diff --name-only
+git diff --stat
+</code></pre>
+<p>如果项目允许提交，可以在每个可审小步后提交；如果当前仓库还不适合提交，就至少保留清晰的验证记录。</p>
+<h2 id="小步和-pr-的关系">小步和 PR 的关系</h2>
+<p>小步开发不等于每一步都发一个 PR。</p>
+<p>真实项目里的关系是：</p>
+<pre><code class="language-text">Task step 控制 Agent 一次改动半径
+commit 记录相对完整的本地历史
+PR 承载 reviewer 能一次理解的交付范围
+</code></pre>
+<p>一个需求可能有五个小步，但最后一个 PR：</p>
+<pre><code class="language-text">Step 1: 加失败测试
+Step 2: 改状态转换
+Step 3: 接退款请求
+Step 4: 补失败处理
+Step 5: 扩大验证
+
+PR: paid order cancellation enters refund flow
+</code></pre>
+<p>也可能拆成两个 PR：</p>
+<pre><code class="language-text">PR 1: backend cancellation behavior
+PR 2: frontend display for refund_requested
+</code></pre>
+<p>拆 PR 的判断标准不是“文章里说要小步”，而是 reviewer 能否在一次审查里理解和验证。</p>
+<p>如果一个 PR 同时改后端状态、前端页面、移动端兼容、数据库迁移和运营后台，就算每一步执行时很小，最终审查仍然过重。</p>
+<p>小步开发要服务交付。它控制 Agent 的执行半径，PR 控制人的审查半径。</p>
+<h2 id="什么时候应该停下来拆新任务">什么时候应该停下来拆新任务</h2>
+<p>小步执行中出现这些信号，就不要继续当前任务：</p>
+<ul>
+<li>需要新增依赖。</li>
+<li>需要修改数据库 schema。</li>
+<li>需要改 public API response shape。</li>
+<li>需要跨 repo 改动。</li>
+<li>发现当前需求和已有 spec 冲突。</li>
+<li>需要把测试从 unit 升级到 E2E 才能证明行为。</li>
+<li>改动文件数量超过计划两倍以上。</li>
+</ul>
+<p>这些不是失败，而是任务边界变了。</p>
+<p>正确处理是：</p>
+<pre><code class="language-text">停止当前 step。
+记录新发现。
+更新 requirements/design/tasks。
+重新授权新的小步。
+</code></pre>
+<p>不要让 Agent 带着“我快做完了”的状态继续扩张。AI 不会天然感知生产交付边界，边界变化必须由人重新确认。</p>
+<h2 id="每个小步都要能说明回滚方式">每个小步都要能说明回滚方式</h2>
+<p>小步开发还有一个很现实的指标：这一步能不能单独回滚。</p>
+<p>如果一个 Step 改完后，必须连着后面三个 Step 才能让项目恢复可用，这一步可能切得不对。</p>
+<p>可以在任务里写：</p>
+<pre><code class="language-markdown">Rollback:
+- Step 1 tests can be reverted independently.
+- Step 2 status transition depends on Step 1 tests.
+- Step 3 refund request wiring should not be merged without Step 2.
+- No migration or dependency update in this step.
+</code></pre>
+<p>回滚方式不一定是执行 <code>git revert</code>。它也可以是：</p>
+<ul>
+<li>删除当前 Step 的新增测试。</li>
+<li>恢复一个状态分支。</li>
+<li>关闭一个 feature flag。</li>
+<li>回退一个配置项。</li>
+<li>不合并当前 PR。</li>
+</ul>
+<p>关键是你要知道出问题时退哪一块，而不是回滚整天工作。</p>
+<p>涉及数据库迁移、外部事件、队列消息、缓存 key 的任务，更要提前写回滚。AI 可以帮你生成候选方案，但是否能接受，要由程序员判断。</p>
+<p>如果回滚说不清，就不要把它当成小步。</p>
+<h2 id="合并前再看一次整体-diff">合并前再看一次整体 diff</h2>
+<p>小步执行过程中每一步都可控，不代表最终合并一定可控。</p>
+<p>合并前要把所有小步放在一起看：</p>
+<pre><code class="language-bash">git diff --stat main...HEAD
+git diff --name-only main...HEAD
+</code></pre>
+<p>重点看三类问题。</p>
+<p>第一，是否有和需求无关的文件。比如锁文件、生成 client、样式文件、文档文件突然出现。</p>
+<p>第二，是否有同一个行为被多个小步重复修改。重复修改可能说明前面的拆分不合理，也可能说明 Agent 在后续步骤推翻了前面的假设。</p>
+<p>第三，是否有测试覆盖和改动半径不匹配。跨模块改动只跑了一个 focused test，就不能说验证充分。</p>
+<p>小步开发的最后一步，是把局部证据合成整体交付证据。否则每一步都小，最终仍然可能是一个难审的大包。</p>
+<h2 id="不要让-ai-一次修所有测试">不要让 AI 一次“修所有测试”</h2>
+<p>测试失败后，很多人会说：</p>
+<pre><code class="language-text">把失败的测试都修了。
+</code></pre>
+<p>这类指令风险很高。</p>
+<p>先分类失败：</p>
+<pre><code class="language-text">先不要改代码。
+
+请读取测试输出并分类：
+- 当前 Task 引入的失败。
+- 预期失败。
+- baseline 已存在失败。
+- 与当前 Task 无关的失败。
+
+只给出分类和下一步建议，不要修。
+</code></pre>
+<p>分类完成后，再授权具体修复。</p>
+<p>如果失败属于当前 Task，就在当前 diff 里修。</p>
+<p>如果失败是后续 Task 的预期失败，不修。</p>
+<p>如果失败是 baseline，就停止并记录。</p>
+<p>如果失败无关，不要混进当前 diff。</p>
+<p>这能避免 AI 把测试套件里的旧债一起拖进来。</p>
+<h2 id="一个完整的小步执行模板">一个完整的小步执行模板</h2>
+<p>可以把下面这段作为执行指令：</p>
+<pre><code class="language-text">Execute only Task &lt;N&gt;.
+
+Scope:
+- Allowed files:
+  - &lt;file 1&gt;
+  - &lt;file 2&gt;
+- Forbidden changes:
+  - no unrelated refactor
+  - no formatting-only changes outside allowed files
+  - no dependency update
+  - no public API shape change unless explicitly requested
+
+Expected result:
+- &lt;behavior change&gt;
+- &lt;expected test state&gt;
+
+Verification:
+- &lt;command&gt;
+
+Stop if:
+- you need to modify files outside the allowed list.
+- baseline tests fail.
+- the implementation requires a broader design change.
+- the requested behavior conflicts with existing tests or specs.
+
+After finishing:
+- stop.
+- report changed files.
+- report verification command and result.
+- do not start the next task.
+</code></pre>
+<p>这不是为了限制 AI 变笨，而是为了让每一步都可审查。</p>
+<h2 id="可以用配套工具辅助但不要依赖工具替你判断">可以用配套工具辅助，但不要依赖工具替你判断</h2>
+<p>配套工程的工具 module <code>ai-coding-workflow-kit</code> 里有一个 <code>verify-ledger</code>，可以检查验证记录是否包含必要段落和命令证据：</p>
+<pre><code class="language-bash">node src/cli.js verify-ledger --file examples/verification-ledger.pass.md
+</code></pre>
+<p>它不会判断业务正确性，也不会替你审 diff。它只能提醒你：有没有留下命令、结果和风险记录。</p>
+<p>小步开发最核心的证据仍然是：</p>
+<pre><code class="language-bash">git diff --name-only
+git diff --stat
+git diff
+</code></pre>
+<p>再加上对应测试命令。</p>
+<p>工具可以帮你不漏记录，但不能替你判断“这个 diff 是否应该存在”。</p>
+<h2 id="常见错误">常见错误</h2>
+<p><strong>错误一：把小步理解成少写几行。</strong></p>
+<p>小步看的是行为边界、文件范围、验证半径和回滚能力，不是行数。</p>
+<p><strong>错误二：一个 Task 混测试、实现、重构、文档。</strong></p>
+<p>这些可以都要做，但不应该都在一个 diff 里。</p>
+<p><strong>错误三：计划外文件出现后继续推进。</strong></p>
+<p>计划外文件必须先解释、分类、重新授权。</p>
+<p><strong>错误四：让 AI 修所有测试。</strong></p>
+<p>测试失败先分类，再决定是否修。不要让旧失败混进当前 diff。</p>
+<p><strong>错误五：只看 AI 总结，不看 Git diff。</strong></p>
+<p>AI 总结可能漏掉计划外改动。<code>git diff --name-only</code> 和 <code>git diff --stat</code> 是必查动作。</p>
+<p><strong>错误六：每一步都跑全量测试。</strong></p>
+<p>小步阶段先跑 focused test，关键节点再扩大验证。每步都跑全量可能太慢，反而降低反馈频率。</p>
+<h2 id="改完后重点看什么">改完后重点看什么</h2>
+<p>一次小步执行结束后，看这几个结果：</p>
+<ul>
+<li>改动文件是否在允许列表里。</li>
+<li>是否有无关格式化、重命名、抽函数。</li>
+<li>diff 能否一句话解释。</li>
+<li>验证命令是否覆盖当前行为。</li>
+<li>测试失败是否已经分类。</li>
+<li>这一步能否单独回滚。</li>
+</ul>
+<p>如果答案不清楚，先不要进入下一步。</p>
+<p>AI Coding 的速度优势来自高频反馈，不是一次性吞下更多工作。更可控的节奏，是让 AI 快速完成一个小 diff，然后由人用证据决定是否继续。</p>
+<h2 id="常见问题">常见问题</h2>
+<p><strong>小步会不会变慢？</strong></p>
+<p>单步看会慢一点，整体通常更快。大 diff 出问题后的排查和回滚成本更高。</p>
+<p><strong>一次只改一个文件是不是太死？</strong></p>
+<p>不是按文件数绝对限制。关键是一个 diff 能否单独解释、验证和回滚。同模块两个文件可以是合理小步，跨模块五个文件通常要拆。</p>
+<p><strong>AI 说必须重构才能实现，怎么办？</strong></p>
+<p>让它先解释为什么不重构无法实现。如果确实必要，先做纯重构 diff，验证行为不变，再做行为变更 diff。</p>
+<p><strong>计划外文件已经改了，能不能直接保留？</strong></p>
+<p>先分类。必要越界要更新计划并重新授权；非必要越界要移除；误伤越界要解释来源和影响。</p>
+<p><strong>小步开发和 TDD 什么关系？</strong></p>
+<p>TDD 是很适合小步开发的一种方式。先用失败测试定义行为，再用最小实现让测试通过。后面会单独讲 TDD + AI Coding。</p>
+<h2 id="可复查资料">可复查资料</h2>
+<ul>
+<li>Git diff 官方文档：<a href="https://git-scm.com/docs/git-diff">https://git-scm.com/docs/git-diff</a></li>
+<li>Git status 官方文档：<a href="https://git-scm.com/docs/git-status">https://git-scm.com/docs/git-status</a></li>
+<li>GitHub Copilot coding agent best practices：<a href="https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results">https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results</a></li>
+<li>VS Code Source Control：<a href="https://code.visualstudio.com/docs/sourcecontrol/overview">https://code.visualstudio.com/docs/sourcecontrol/overview</a></li>
+</ul></article><div class="practice-link"><a href="https://github.com/DavidDingXu/learn-ai-coding/blob/main/personal-productivity-app/README.md" target="_blank" rel="noopener"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5M14 4l-4 16"/></svg> 业务样例与测试 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></div><nav class="chapter-nav" aria-label="前后篇"><a href="22.html"><span>上一篇 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg></span><strong>计划先行：让 AI 先解释它准备怎么改</strong></a><a href="24.html"><span>下一篇 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><strong>TDD + AI Coding：先让失败测试约束模型</strong></a></nav><footer class="reader-footer">程序员 AI Coding 进阶实战 · <a href="../license.html">非商业使用</a><details class="community-mini"><summary>关注与交流 · 好好用 AI</summary><div class="community-section"><div><p>交流学习中的问题与实践心得。</p><p>代码问题和勘误，欢迎在 <a href="https://github.com/DavidDingXu/learn-ai-coding/issues" target="_blank" rel="noopener">GitHub 提交 Issue</a>。</p></div><a class="qr-link" href="../assets/wechat-official-account.jpg" target="_blank" rel="noopener" aria-label="查看好好用 AI 公众号二维码原图"><img src="../assets/wechat-official-account.jpg" alt="好好用 AI 微信公众号二维码" width="130" height="130" loading="lazy"><p class="qr-caption">微信扫码 · 点击查看原图</p></a></div></details></footer></main><aside class="context-sidebar" aria-label="本篇辅助导航"><div class="context-inner"><nav class="reading-route" aria-label="本篇路线"><details open><summary>本篇路线</summary><div class="toc">
+<ul>
+<li><a href="#ai-为什么特别容易产生大-diff">AI 为什么特别容易产生大 diff</a></li>
+<li><a href="#小-diff-不是按行数判断">小 diff 不是按行数判断</a></li>
+<li><a href="#开始前先限制文件范围">开始前先限制文件范围</a></li>
+<li><a href="#每一步都用-git-看半径">每一步都用 Git 看半径</a></li>
+<li><a href="#不要让重构混进需求-diff">不要让重构混进需求 diff</a></li>
+<li><a href="#验证半径要匹配改动半径">验证半径要匹配改动半径</a></li>
+<li><a href="#用-task-边界控制上下文">用 Task 边界控制上下文</a></li>
+<li><a href="#执行前写清当前步骤完成定义">执行前写清“当前步骤完成定义”</a></li>
+<li><a href="#用-diff-摘要训练审查节奏">用 diff 摘要训练审查节奏</a></li>
+<li><a href="#计划外文件怎么处理">计划外文件怎么处理</a></li>
+<li><a href="#生成文件锁文件和依赖要单独处理">生成文件、锁文件和依赖要单独处理</a></li>
+<li><a href="#前端小步也要按行为切不按组件切">前端小步也要按行为切，不按组件切</a></li>
+<li><a href="#小步执行可以用-checkpoint但不要掩盖审查">小步执行可以用 checkpoint，但不要掩盖审查</a></li>
+<li><a href="#小步和-pr-的关系">小步和 PR 的关系</a></li>
+<li><a href="#什么时候应该停下来拆新任务">什么时候应该停下来拆新任务</a></li>
+<li><a href="#每个小步都要能说明回滚方式">每个小步都要能说明回滚方式</a></li>
+<li><a href="#合并前再看一次整体-diff">合并前再看一次整体 diff</a></li>
+<li><a href="#不要让-ai-一次修所有测试">不要让 AI 一次“修所有测试”</a></li>
+<li><a href="#一个完整的小步执行模板">一个完整的小步执行模板</a></li>
+<li><a href="#可以用配套工具辅助但不要依赖工具替你判断">可以用配套工具辅助，但不要依赖工具替你判断</a></li>
+<li><a href="#常见错误">常见错误</a></li>
+<li><a href="#改完后重点看什么">改完后重点看什么</a></li>
+<li><a href="#常见问题">常见问题</a></li>
+<li><a href="#可复查资料">可复查资料</a></li>
+</ul>
+</div>
+</details></nav></div></aside></div><dialog class="search-dialog" id="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label for="course-search" id="search-label"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>搜索课程</label><button class="icon-button" aria-label="关闭搜索"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></form><input id="course-search" type="search" placeholder="搜索概念、代码或问题…" autocomplete="off" spellcheck="false"><p class="search-status" id="search-status" role="status">搜索全部 42 篇文章。</p><div class="search-results" id="search-results"></div><footer>↑ ↓ 选择结果 <span>Enter 打开 · Esc 关闭</span></footer></dialog>
+<dialog class="image-viewer" id="image-viewer" aria-label="放大配图"><header><span>查看配图</span><div class="image-actions"><button type="button" id="image-size">原尺寸</button><button type="button" id="close-image" autofocus>关闭</button></div></header><div class="image-canvas"><img id="large-image" alt=""></div><footer><p id="image-description"></p><a id="original-image" target="_blank" rel="noopener">打开原图 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></footer></dialog><div class="toast" id="toast" role="status"></div></body></html>

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#fefce8"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#ca8a04"/>
+    </marker>
+    <style>
+      .title { font: 700 46px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 24px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #475569; }
+      .box { fill: #ffffff; stroke: #fde68a; stroke-width: 2; filter: url(#shadow); }
+      .plan { fill: #fffbeb; stroke: #facc15; stroke-width: 3; filter: url(#shadow); }
+      .label { font: 700 25px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #111827; }
+      .small { font: 400 19px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #334155; }
+      .cmd { font: 700 19px "SFMono-Regular", Menlo, Consolas, monospace; fill: #854d0e; }
+      .edge { stroke: #ca8a04; stroke-width: 4; fill: none; marker-end: url(#arrow); }
+      .stop { fill: #fef2f2; stroke: #fca5a5; stroke-width: 2; filter: url(#shadow); }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <text x="80" y="86" class="title">Plan-first：动代码前先审改法</text>
+  <text x="82" y="128" class="subtitle">计划不是口头保证，而是让假设、文件范围、验证和停止条件先暴露。</text>
+
+  <rect x="95" y="260" width="270" height="140" rx="18" class="box"/>
+  <text x="132" y="315" class="label">任务输入</text>
+  <text x="132" y="355" class="small">需求、规则、上下文包</text>
+
+  <rect x="465" y="210" width="310" height="230" rx="18" class="plan"/>
+  <text x="510" y="270" class="label">Agent 先出计划</text>
+  <text x="510" y="315" class="small">会读哪些文件</text>
+  <text x="510" y="350" class="small">准备改哪些文件</text>
+  <text x="510" y="385" class="small">怎么验证</text>
+  <text x="510" y="420" class="small">什么情况停下</text>
+
+  <rect x="875" y="240" width="300" height="170" rx="18" class="box"/>
+  <text x="918" y="300" class="label">人审计划</text>
+  <text x="918" y="342" class="small">删掉越界动作</text>
+  <text x="918" y="377" class="small">补足验证缺口</text>
+
+  <rect x="1250" y="260" width="260" height="140" rx="18" class="box"/>
+  <text x="1288" y="315" class="label">授权小步实现</text>
+  <text x="1288" y="355" class="cmd">只执行 Task N</text>
+
+  <rect x="890" y="570" width="285" height="140" rx="18" class="box"/>
+  <text x="928" y="625" class="label">跑验证</text>
+  <text x="928" y="665" class="small">测试、lint、截图、日志</text>
+
+  <rect x="465" y="545" width="310" height="190" rx="18" class="stop"/>
+  <text x="510" y="600" class="label">计划不合格就停</text>
+  <text x="510" y="642" class="small">范围不清</text>
+  <text x="510" y="677" class="small">验证缺失</text>
+  <text x="510" y="712" class="small">假设没证据</text>
+
+  <path d="M365 330 C400 330, 430 330, 465 330" class="edge"/>
+  <path d="M775 330 C815 330, 835 330, 875 330" class="edge"/>
+  <path d="M1175 330 C1205 330, 1220 330, 1250 330" class="edge"/>
+  <path d="M1380 400 C1360 545, 1260 630, 1175 640" class="edge"/>
+  <path d="M890 640 C835 640, 820 640, 775 640" class="edge"/>
+  <path d="M620 545 C605 500, 605 475, 620 440" class="edge"/>
+</svg>

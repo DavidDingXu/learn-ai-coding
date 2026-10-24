@@ -1,0 +1,242 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>模块实战：用 Superpowers 固化一次业务需求的调试和评审 · Learn AI Coding</title><meta name="description" content="从接手陌生代码库，到完成一次真实需求。沿着上下文、规格、实现、测试和复盘，建立可重复的 AI Coding 工作流。"><meta name="source-sha256" content="7ce9ca055712f73dc3b9acc3e717b050b3a31d5e03efe97f68f946f94ecdb4ad">
+<link rel="canonical" href="https://daviddingxu.github.io/learn-ai-coding/course/35.html"><link rel="icon" href="../assets/brand.png">
+<script>try{const t=localStorage.getItem('haohai-course-theme');document.documentElement.dataset.theme=t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light'}catch(_){document.documentElement.dataset.theme='light'}</script>
+<link rel="stylesheet" href="../assets/site.css"><script defer src="../assets/search-index.js"></script><script defer src="../assets/site.js"></script></head><body class="article-page" data-root="../" data-page="35"><a class="skip-link" href="#main-content">跳到正文</a><header class="site-header"><div class="header-inner"><button class="icon-button menu-toggle js-only" type="button" aria-label="打开课程目录" aria-controls="course-sidebar" aria-expanded="false"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+<a class="brand" href="../index.html" aria-label="Learn AI Coding · 学习站首页"><img src="../assets/brand.png" alt="" width="36" height="36"><span><strong>Learn AI Coding</strong><small>程序员 AI Coding 进阶实战</small></span></a>
+<nav class="header-nav" aria-label="主导航"><a href="../index.html#curriculum">课程目录</a><a href="../index.html#downloads">离线阅读</a><a href="https://github.com/DavidDingXu/learn-ai-coding" target="_blank" rel="noopener">GitHub <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></nav>
+<div class="header-controls"><button class="icon-button theme-toggle js-only" type="button" aria-label="切换到深色主题" title="切换到深色主题"><span class="theme-light-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A9 9 0 0 1 9.5 3.5a9 9 0 1 0 11 11Z"/></svg></span><span class="theme-dark-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></span></button><button class="search-trigger js-only" type="button" aria-label="搜索课程"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg><span>搜索课程</span><kbd>⌘ K</kbd></button></div></div><div class="reading-progress" aria-hidden="true"><span id="reading-progress-bar"></span></div></header><div class="sidebar-scrim" hidden></div><div class="reader-layout"><aside class="course-sidebar" id="course-sidebar" aria-label="课程目录"><div class="sidebar-heading"><a href="../index.html#curriculum">课程目录</a><button class="icon-button menu-close js-only" type="button" aria-label="关闭课程目录"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><nav aria-label="全部文章"><details class="sidebar-stage"><summary><span class="stage-index">模块 00</span>导读与学习地图</summary><a class="lesson-link" data-lesson="INTRO" href="introduction.html"><span class="lesson-number">·</span><span>程序员 AI Coding 进阶实战</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="00" href="00.html"><span class="lesson-number">00</span><span>程序员如何系统学习 AI Coding</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 01</span>AI Coding 底层心智</summary><a class="lesson-link" data-lesson="01" href="01.html"><span class="lesson-number">01</span><span>程序员用 AI Coding，真正的门槛不是 Prompt</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="02" href="02.html"><span class="lesson-number">02</span><span>从聊天式开发到工程式开发</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="03" href="03.html"><span class="lesson-number">03</span><span>AI Coding 的底层工作模型</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="04" href="04.html"><span class="lesson-number">04</span><span>AI 最擅长和最不擅长的开发任务</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 02</span>程序员工具工作台</summary><a class="lesson-link" data-lesson="05" href="05.html"><span class="lesson-number">05</span><span>Codex、Claude Code、Cursor、Copilot 怎么分工</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="06" href="06.html"><span class="lesson-number">06</span><span>一个程序员的 AI Coding 工作台怎么搭</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="07" href="07.html"><span class="lesson-number">07</span><span>App、CLI、IDE 怎么切换完成一次真实改动</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 03</span>上下文工程与代码库理解</summary><a class="lesson-link" data-lesson="08" href="08.html"><span class="lesson-number">08</span><span>上下文工程：为什么不是塞越多代码越好</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="09" href="09.html"><span class="lesson-number">09</span><span>代码地图不是手工文档：让 Agent 生成可检查的仓库导航</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="10" href="10.html"><span class="lesson-number">10</span><span>让 Agent 做代码搜索：怎样约束搜索目标、证据和停止条件</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="11" href="11.html"><span class="lesson-number">11</span><span>AGENTS.md / CLAUDE.md / Copilot Instructions</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="12" href="12.html"><span class="lesson-number">12</span><span>任务上下文包：一次需求到底该给 AI 什么</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="13" href="13.html"><span class="lesson-number">13</span><span>上下文污染与上下文清理</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="14" href="14.html"><span class="lesson-number">14</span><span>模块实战：让 AI 接手一个陌生代码模块</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 04</span>SDD 与 OpenSpec 实战</summary><a class="lesson-link" data-lesson="15" href="15.html"><span class="lesson-number">15</span><span>SDD 是什么：先写规格，再写代码</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="16" href="16.html"><span class="lesson-number">16</span><span>从一句需求到 requirements.md</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="17" href="17.html"><span class="lesson-number">17</span><span>design.md 怎么写，AI 才不会补丁式开发</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="18" href="18.html"><span class="lesson-number">18</span><span>tasks.md 怎么拆：把复杂需求变成小 diff</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="19" href="19.html"><span class="lesson-number">19</span><span>OpenSpec 实战：把需求变更放进 repo</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="20" href="20.html"><span class="lesson-number">20</span><span>OpenSpec、Spec Kit 与轻量 SDD 怎么选</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="21" href="21.html"><span class="lesson-number">21</span><span>模块实战：用 OpenSpec CLI 推进一次真实产品需求</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 05</span>小步开发测试与调试闭环</summary><a class="lesson-link" data-lesson="22" href="22.html"><span class="lesson-number">22</span><span>计划先行：让 AI 先解释它准备怎么改</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="23" href="23.html"><span class="lesson-number">23</span><span>小步开发：为什么要限制 AI 一次改动范围</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="24" href="24.html"><span class="lesson-number">24</span><span>TDD + AI Coding：先让失败测试约束模型</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="25" href="25.html"><span class="lesson-number">25</span><span>系统化调试：让 AI 基于证据排障</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="26" href="26.html"><span class="lesson-number">26</span><span>前后端验证闭环：页面、接口、数据库和副作用怎么一起验</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="27" href="27.html"><span class="lesson-number">27</span><span>AI 说“测试失败无关”时，程序员该怎么判断</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="28" href="28.html"><span class="lesson-number">28</span><span>模块实战：用 AI 完成一次 CLI 交互改造</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage" open><summary><span class="stage-index">模块 06</span>Skill Superpowers 与工作流固化</summary><a class="lesson-link" data-lesson="29" href="29.html"><span class="lesson-number">29</span><span>Skill 是什么：从提示词到可复用工作流</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="30" href="30.html"><span class="lesson-number">30</span><span>Skill 原理解析：它如何约束 Agent 行为</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="31" href="31.html"><span class="lesson-number">31</span><span>Superpowers 工作流拆解：把工程纪律变成 Skill 链</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="32" href="32.html"><span class="lesson-number">32</span><span>自定义 Skill：把你的经验固化成个人能力</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="33" href="33.html"><span class="lesson-number">33</span><span>外部工具接入：MCP 在 AI Coding 里到底有什么用</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="34" href="34.html"><span class="lesson-number">34</span><span>多 Agent 与自动化：什么时候拆，什么时候不要拆</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="35" href="35.html" aria-current="page"><span class="lesson-number">35</span><span>模块实战：用 Superpowers 固化一次业务需求的调试和评审</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="36" href="36.html"><span class="lesson-number">36</span><span>模块实战：给 AI 接一个只读项目工具</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 07</span>综合实战与资产沉淀</summary><a class="lesson-link" data-lesson="37" href="37.html"><span class="lesson-number">37</span><span>综合实战：一个真实需求的 AI Coding 最佳实践</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="38" href="38.html"><span class="lesson-number">38</span><span>综合实战：从一次交付沉淀个人规则库</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 08</span>个人工程资产</summary><a class="lesson-link" data-lesson="39" href="39.html"><span class="lesson-number">39</span><span>从个人提效到个人工程系统</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="END" href="closing.html"><span class="lesson-number">·</span><span>写在专栏结束时：把 AI Coding 留在日常工程里</span><span class="lesson-state" aria-hidden="true"></span></a></details></nav><p class="sidebar-note">给清目标，保留证据，逐步交付。</p></aside><main class="reader-main" id="main-content"><div class="article-context"><span>Skill Superpowers 与工作流固化</span><div class="reading-tools js-only"><div class="font-controls" role="group" aria-label="正文字号"><button type="button" data-font="-1" aria-label="减小正文字号">A−</button><span id="font-size-label" aria-live="polite">18</span><button type="button" data-font="1" aria-label="增大正文字号">A+</button></div><button type="button" class="focus-toggle" aria-pressed="false"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg><span>专注阅读</span></button></div></div><div class="mobile-context"><nav class="reading-route" aria-label="本篇路线"><details><summary>本篇路线</summary><div class="toc">
+<ul>
+<li><a href="#先把入口说准">先把入口说准</a></li>
+<li><a href="#分工openspec-管需求superpowers-管纪律">分工：OpenSpec 管需求，Superpowers 管纪律</a></li>
+<li><a href="#tdd红灯必须是真的">TDD：红灯必须是真的</a></li>
+<li><a href="#systematic-debugging先找根因再修">systematic-debugging：先找根因再修</a></li>
+<li><a href="#实现只实现当前任务">实现：只实现当前任务</a></li>
+<li><a href="#review看行为风险不写空泛总结">Review：看行为风险，不写空泛总结</a></li>
+<li><a href="#完成前验证不能引用旧输出">完成前验证：不能引用旧输出</a></li>
+<li><a href="#receiving-code-review别把反馈变成新需求">receiving-code-review：别把反馈变成新需求</a></li>
+<li><a href="#skill-不替代工程判断">Skill 不替代工程判断</a></li>
+<li><a href="#迁移到自己的项目">迁移到自己的项目</a></li>
+<li><a href="#配套资料">配套资料</a></li>
+</ul>
+</div>
+</details></nav></div><article id="article-body"><h1 id="模块实战用-superpowers-固化一次业务需求的调试和评审">模块实战：用 Superpowers 固化一次业务需求的调试和评审</h1>
+<p>Superpowers 不是“装几个 Skill 就变专业”。</p>
+<p>它真正有用的地方，是在真实需求里把几个高风险动作固定下来：先看需求合同，先写失败测试，失败时先找根因，完成前跑新鲜验证，review 时先找行为风险。</p>
+<p>Superpowers 的 Skill 链负责约束 Agent 的阶段动作，不负责重新定义业务需求。</p>
+<p>所以 Superpowers 实战不能停在“订单退款”这类口头例子上，要回到已经建好需求合同的产品需求里，看它怎么在真实开发过程中约束 TDD、调试、review 和完成前验证。</p>
+<p>配套代码仓库 <a href="https://github.com/DavidDingXu/learn-ai-coding">DavidDingXu/learn-ai-coding</a> 按一个大仓库组织，仓库根目录下有业务 module 和工具 module。这里继续使用业务 module：<code>personal-productivity-app</code>，不重新换案例。</p>
+<p>这里使用个人效率助手的需求：</p>
+<pre><code class="language-text">今日计划自动纳入逾期未完成任务，并在每日容量限制下返回顺延列表。
+</code></pre>
+<p>对应过程记录在：</p>
+<pre><code class="language-text">learn-ai-coding/personal-productivity-app/dev-process/02-superpowers-today-plan-workflow.md
+</code></pre>
+<p>前一篇已经用 OpenSpec 建了 change：</p>
+<pre><code class="language-text">learn-ai-coding/personal-productivity-app/openspec/changes/today-plan-overdue-rollover/
+</code></pre>
+<p>这次不重新发明需求，只讲 Superpowers 如何约束开发过程。</p>
+<p><img alt="Superpowers 调试评审循环" src="../assets/content/docs/assets/diagrams/source/35-superpowers-debug-review-loop.svg" /></p>
+<h2 id="先把入口说准">先把入口说准</h2>
+<p>Superpowers 的入口会随版本和宿主环境变化：可能是 Codex Skill、Claude Skill、插件命令，也可能沉淀进项目规则。</p>
+<p>真实使用时，不应该背某个固定命令，而应该确认当前环境里真正生效的约束。</p>
+<p>在当前 Superpowers 安装形态里，早期的 <code>/brainstorm</code>、<code>/write-plan</code>、<code>/execute-plan</code> 已提示改用对应 Skill。因此这里不把旧 slash command 当推荐入口。</p>
+<p>这次需求实际使用的是这些 Skill 约束：</p>
+<pre><code class="language-text">superpowers:test-driven-development
+superpowers:systematic-debugging
+superpowers:requesting-code-review
+superpowers:receiving-code-review
+superpowers:verification-before-completion
+</code></pre>
+<p>迁移到自己的项目时，重点不是入口长得像不像这个示例，而是两个检查：</p>
+<pre><code class="language-text">1. 当前工具环境里推荐入口是什么，不沿用旧资料里的过期命令。
+2. TDD、调试、review、完成前验证、review 反馈处理这些高风险节点有没有被规则约束。
+</code></pre>
+<h2 id="分工openspec-管需求superpowers-管纪律">分工：OpenSpec 管需求，Superpowers 管纪律</h2>
+<p>这次需求已经有 OpenSpec 产物：</p>
+<pre><code class="language-text">proposal.md
+design.md
+specs/today-plan/spec.md
+tasks.md
+</code></pre>
+<p>Superpowers 不应该再定义一个新需求。</p>
+<p>正确分工是：</p>
+<pre><code class="language-text">OpenSpec：需求边界、行为合同、任务列表。
+TDD：先写测试并看到红灯。
+systematic-debugging：失败时先定位根因。
+requesting-code-review：完成后按风险审查 diff。
+verification-before-completion：完成前跑新鲜验证。
+receiving-code-review：处理反馈时不扩大 scope。
+</code></pre>
+<p>如果 Skill 建议和 OpenSpec 边界冲突，以当前 change 为准，并把冲突报告出来。</p>
+<h2 id="tdd红灯必须是真的">TDD：红灯必须是真的</h2>
+<p>TDD Skill 的核心规则很硬：</p>
+<pre><code class="language-text">NO PRODUCTION CODE WITHOUT A FAILING TEST FIRST
+</code></pre>
+<p>本次先有测试：</p>
+<pre><code class="language-text">test/today-plan.test.js
+</code></pre>
+<p>第一次运行：</p>
+<pre><code class="language-bash">npm test
+</code></pre>
+<p>红灯：</p>
+<pre><code class="language-text">Error [ERR_MODULE_NOT_FOUND]: Cannot find module
+'/learn-ai-coding/personal-productivity-app/src/today-plan.js'
+</code></pre>
+<p>这不是“测试挂了所以随便修”。</p>
+<p>它说明：测试已经表达了 <code>buildTodayPlan</code> 的业务行为，但生产文件还不存在。</p>
+<p>如果测试第一次就绿，说明你可能只是在验证旧行为。</p>
+<p>如果测试因为拼写或 import 错误失败，也不能算有效红灯。</p>
+<h2 id="systematic-debugging先找根因再修">systematic-debugging：先找根因再修</h2>
+<p>系统化调试不是只在复杂 bug 里用。</p>
+<p>这次红灯看起来简单，但也要按顺序确认：</p>
+<pre><code class="language-text">1. 读完整错误：ERR_MODULE_NOT_FOUND。
+2. 复现命令：npm test。
+3. 查测试 import：../src/today-plan.js。
+4. 查项目文件：src/today-plan.js 不存在。
+5. 得出根因：缺少领域函数实现。
+</code></pre>
+<p>因此修复范围被限制为：</p>
+<pre><code class="language-text">新增 src/today-plan.js。
+不改测试期望。
+页面展示不放进这次调试修复。
+不接数据库。
+不引入第三方依赖。
+</code></pre>
+<p>很多 AI Coding 的大 diff，就是因为跳过这一步。</p>
+<p>失败一出现，AI 直接开始“顺手重构”，最后测试可能绿了，但需求边界也被改没了。</p>
+<h2 id="实现只实现当前任务">实现：只实现当前任务</h2>
+<p>OpenSpec tasks 里写的是：</p>
+<pre><code class="language-text">2.1 Add src/today-plan.js and export buildTodayPlan.
+2.2 Filter eligible tasks to open overdue and due-today tasks only.
+2.3 Sort eligible tasks by overdue status, priority, due date, and stable id fallback.
+2.4 Apply daily capacity and return items, deferred, usedMinutes, remainingMinutes.
+2.5 Validate date and estimate inputs at the domain boundary.
+</code></pre>
+<p>实现文件：</p>
+<pre><code class="language-text">src/today-plan.js
+</code></pre>
+<p>核心规则：</p>
+<pre><code class="language-text">status 必须是 open。
+dueDate 小于 date -&gt; overdue。
+dueDate 等于 date -&gt; due-today。
+future 不进入候选。
+done / blocked 不进入候选。
+逾期优先于当天。
+优先级 high -&gt; medium -&gt; low。
+放不进容量的进入 deferred。
+</code></pre>
+<p>这已经足够满足当前产品需求。</p>
+<p>如果此时 AI 提议新增页面、接日历或做复杂优化，要直接挡住：那是新需求。</p>
+<p>页面当然可以存在，但它只能复用领域函数展示输出。如果为了页面重写排序、过滤或容量逻辑，就已经越过了当前调试任务的边界。</p>
+<h2 id="review看行为风险不写空泛总结">Review：看行为风险，不写空泛总结</h2>
+<p><code>requesting-code-review</code> 的价值不是生成一句“整体实现清晰”。</p>
+<p>本次 review 应该围绕需求合同问：</p>
+<pre><code class="language-text">1. 是否误把 done / blocked 任务放进今日计划？
+2. 是否误把 future 任务放进今日计划？
+3. overdue 是否一定排在 due-today 前？
+4. priority 是否优先于 dueDate age？
+5. selected items 是否可能超过 capacityMinutes？
+6. deferred 是否保留放不下的候选任务？
+7. usedMinutes / remainingMinutes 是否和 items 一致？
+8. 输入校验是否拒绝非法日期、负容量、负估时？
+9. 实现是否偷偷依赖系统时间、I/O 或外部服务？
+</code></pre>
+<p>这类 review 才能迁移到真实项目。</p>
+<p>比如在订单、工单、审批、账单这些业务里，review 也应该看状态过滤、时间边界、排序规则、容量限制和副作用边界。</p>
+<h2 id="完成前验证不能引用旧输出">完成前验证：不能引用旧输出</h2>
+<p><code>verification-before-completion</code> 的规则也很硬：</p>
+<pre><code class="language-text">NO COMPLETION CLAIMS WITHOUT FRESH VERIFICATION EVIDENCE
+</code></pre>
+<p>本次完成前跑三条：</p>
+<pre><code class="language-bash">openspec validate today-plan-overdue-rollover --strict --json --no-interactive
+npm test
+openspec instructions apply --change today-plan-overdue-rollover --json
+</code></pre>
+<p>结果：</p>
+<pre><code class="language-text">OpenSpec strict validate：passed 1, failed 0
+npm test：pass 7, fail 0
+OpenSpec apply：total 8, complete 8, remaining 0
+</code></pre>
+<p>完成报告应该写这些证据，而不是写：</p>
+<pre><code class="language-text">已完成，测试通过。
+</code></pre>
+<p>后者对 reviewer 没有价值。</p>
+<h2 id="receiving-code-review别把反馈变成新需求">receiving-code-review：别把反馈变成新需求</h2>
+<p>收到 review 后也要有边界。</p>
+<p>对这次需求，反馈可以分三类：</p>
+<p>必须修：</p>
+<pre><code class="language-text">容量可能超限。
+排序和 spec 不一致。
+done / blocked 被误收。
+deferred 丢失任务。
+测试缺少关键场景。
+</code></pre>
+<p>可选修：</p>
+<pre><code class="language-text">错误文案更清楚。
+局部函数命名更准确。
+测试 helper 可读性提升。
+</code></pre>
+<p>不在当前需求修：</p>
+<pre><code class="language-text">新增 UI。
+接数据库。
+接日历。
+做提醒系统。
+做全局最优排程。
+</code></pre>
+<p>这一步能防止 review 变成新的大需求。</p>
+<h2 id="skill-不替代工程判断">Skill 不替代工程判断</h2>
+<p>Superpowers 解决的是流程纪律，不替代你判断业务边界。</p>
+<p>它不能替你决定：</p>
+<pre><code class="language-text">blocked 任务是否应该单独提醒。
+低优先级旧任务是否永远排在高优先级新任务之后。
+容量应该按分钟、番茄钟还是工作块计算。
+是否要区分工作、生活、学习不同桶。
+</code></pre>
+<p>这些仍然要写进产品需求或 OpenSpec change。</p>
+<p>Skill 负责的是：当你开始做时，不要跳过红灯、根因、review 和验证。</p>
+<h2 id="迁移到自己的项目">迁移到自己的项目</h2>
+<p>你可以不用 Superpowers 插件，但建议保留这条工作流：</p>
+<pre><code class="language-text">需求合同：OpenSpec / spec / issue
+红灯测试：先让行为失败
+根因调试：先复现、读错误、定位
+小步实现：只做当前任务
+风险评审：按行为合同找问题
+新鲜验证：完成前重新跑命令
+反馈处理：分类，不扩大 scope
+</code></pre>
+<p>给 AI 的指令可以这样写：</p>
+<pre><code class="language-text">以 openspec/changes/today-plan-overdue-rollover/tasks.md 为任务来源。
+实现前使用 superpowers:test-driven-development，先确认失败测试。
+如果测试失败，使用 superpowers:systematic-debugging，先记录第一个失败信号和根因假设。
+实现完成后按 requesting-code-review 的方式审查状态过滤、容量、排序和 deferred 行为。
+完成前使用 verification-before-completion，重新运行 openspec validate、npm test 和 openspec instructions apply。
+收到 review 后使用 receiving-code-review 分类处理，超出当前 change 的建议不混进本次 diff。
+</code></pre>
+<h2 id="配套资料">配套资料</h2>
+<ul>
+<li>Superpowers 过程记录：<code>learn-ai-coding/personal-productivity-app/dev-process/02-superpowers-today-plan-workflow.md</code></li>
+<li>OpenSpec 过程记录：<code>learn-ai-coding/personal-productivity-app/dev-process/01-openspec-today-plan-rollover.md</code></li>
+<li>OpenSpec 变更包：<code>learn-ai-coding/personal-productivity-app/openspec/changes/today-plan-overdue-rollover/</code></li>
+<li>领域实现：<code>learn-ai-coding/personal-productivity-app/src/today-plan.js</code></li>
+<li>业务测试：<code>learn-ai-coding/personal-productivity-app/test/today-plan.test.js</code></li>
+<li>结果页：<code>learn-ai-coding/personal-productivity-app/index.html</code></li>
+<li>页面演示测试：<code>learn-ai-coding/personal-productivity-app/test/today-plan-demo.test.js</code></li>
+<li>Superpowers 上游仓库：<a href="https://github.com/obra/superpowers">https://github.com/obra/superpowers</a></li>
+</ul></article><div class="practice-link"><a href="https://github.com/DavidDingXu/learn-ai-coding/blob/main/personal-productivity-app/dev-process/02-superpowers-today-plan-workflow.md" target="_blank" rel="noopener"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5M14 4l-4 16"/></svg> Superpowers 业务工作流 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></div><nav class="chapter-nav" aria-label="前后篇"><a href="34.html"><span>上一篇 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg></span><strong>多 Agent 与自动化：什么时候拆，什么时候不要拆</strong></a><a href="36.html"><span>下一篇 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><strong>模块实战：给 AI 接一个只读项目工具</strong></a></nav><footer class="reader-footer">程序员 AI Coding 进阶实战 · <a href="../license.html">非商业使用</a><details class="community-mini"><summary>关注与交流 · 好好用 AI</summary><div class="community-section"><div><p>交流学习中的问题与实践心得。</p><p>代码问题和勘误，欢迎在 <a href="https://github.com/DavidDingXu/learn-ai-coding/issues" target="_blank" rel="noopener">GitHub 提交 Issue</a>。</p></div><a class="qr-link" href="../assets/wechat-official-account.jpg" target="_blank" rel="noopener" aria-label="查看好好用 AI 公众号二维码原图"><img src="../assets/wechat-official-account.jpg" alt="好好用 AI 微信公众号二维码" width="130" height="130" loading="lazy"><p class="qr-caption">微信扫码 · 点击查看原图</p></a></div></details></footer></main><aside class="context-sidebar" aria-label="本篇辅助导航"><div class="context-inner"><nav class="reading-route" aria-label="本篇路线"><details open><summary>本篇路线</summary><div class="toc">
+<ul>
+<li><a href="#先把入口说准">先把入口说准</a></li>
+<li><a href="#分工openspec-管需求superpowers-管纪律">分工：OpenSpec 管需求，Superpowers 管纪律</a></li>
+<li><a href="#tdd红灯必须是真的">TDD：红灯必须是真的</a></li>
+<li><a href="#systematic-debugging先找根因再修">systematic-debugging：先找根因再修</a></li>
+<li><a href="#实现只实现当前任务">实现：只实现当前任务</a></li>
+<li><a href="#review看行为风险不写空泛总结">Review：看行为风险，不写空泛总结</a></li>
+<li><a href="#完成前验证不能引用旧输出">完成前验证：不能引用旧输出</a></li>
+<li><a href="#receiving-code-review别把反馈变成新需求">receiving-code-review：别把反馈变成新需求</a></li>
+<li><a href="#skill-不替代工程判断">Skill 不替代工程判断</a></li>
+<li><a href="#迁移到自己的项目">迁移到自己的项目</a></li>
+<li><a href="#配套资料">配套资料</a></li>
+</ul>
+</div>
+</details></nav></div></aside></div><dialog class="search-dialog" id="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label for="course-search" id="search-label"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>搜索课程</label><button class="icon-button" aria-label="关闭搜索"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></form><input id="course-search" type="search" placeholder="搜索概念、代码或问题…" autocomplete="off" spellcheck="false"><p class="search-status" id="search-status" role="status">搜索全部 42 篇文章。</p><div class="search-results" id="search-results"></div><footer>↑ ↓ 选择结果 <span>Enter 打开 · Esc 关闭</span></footer></dialog>
+<dialog class="image-viewer" id="image-viewer" aria-label="放大配图"><header><span>查看配图</span><div class="image-actions"><button type="button" id="image-size">原尺寸</button><button type="button" id="close-image" autofocus>关闭</button></div></header><div class="image-canvas"><img id="large-image" alt=""></div><footer><p id="image-description"></p><a id="original-image" target="_blank" rel="noopener">打开原图 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></footer></dialog><div class="toast" id="toast" role="status"></div></body></html>

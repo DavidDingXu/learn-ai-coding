@@ -1,0 +1,640 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>让 Agent 做代码搜索：怎样约束搜索目标、证据和停止条件 · Learn AI Coding</title><meta name="description" content="从接手陌生代码库，到完成一次真实需求。沿着上下文、规格、实现、测试和复盘，建立可重复的 AI Coding 工作流。"><meta name="source-sha256" content="9bbf1221c74bad6249a5085cd942fa6107ee67bda04c49bf3a0ac2f4970b4aad">
+<link rel="canonical" href="https://daviddingxu.github.io/learn-ai-coding/course/10.html"><link rel="icon" href="../assets/brand.png">
+<script>try{const t=localStorage.getItem('haohai-course-theme');document.documentElement.dataset.theme=t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light'}catch(_){document.documentElement.dataset.theme='light'}</script>
+<link rel="stylesheet" href="../assets/site.css"><script defer src="../assets/search-index.js"></script><script defer src="../assets/site.js"></script></head><body class="article-page" data-root="../" data-page="10"><a class="skip-link" href="#main-content">跳到正文</a><header class="site-header"><div class="header-inner"><button class="icon-button menu-toggle js-only" type="button" aria-label="打开课程目录" aria-controls="course-sidebar" aria-expanded="false"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+<a class="brand" href="../index.html" aria-label="Learn AI Coding · 学习站首页"><img src="../assets/brand.png" alt="" width="36" height="36"><span><strong>Learn AI Coding</strong><small>程序员 AI Coding 进阶实战</small></span></a>
+<nav class="header-nav" aria-label="主导航"><a href="../index.html#curriculum">课程目录</a><a href="../index.html#downloads">离线阅读</a><a href="https://github.com/DavidDingXu/learn-ai-coding" target="_blank" rel="noopener">GitHub <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></nav>
+<div class="header-controls"><button class="icon-button theme-toggle js-only" type="button" aria-label="切换到深色主题" title="切换到深色主题"><span class="theme-light-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A9 9 0 0 1 9.5 3.5a9 9 0 1 0 11 11Z"/></svg></span><span class="theme-dark-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></span></button><button class="search-trigger js-only" type="button" aria-label="搜索课程"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg><span>搜索课程</span><kbd>⌘ K</kbd></button></div></div><div class="reading-progress" aria-hidden="true"><span id="reading-progress-bar"></span></div></header><div class="sidebar-scrim" hidden></div><div class="reader-layout"><aside class="course-sidebar" id="course-sidebar" aria-label="课程目录"><div class="sidebar-heading"><a href="../index.html#curriculum">课程目录</a><button class="icon-button menu-close js-only" type="button" aria-label="关闭课程目录"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><nav aria-label="全部文章"><details class="sidebar-stage"><summary><span class="stage-index">模块 00</span>导读与学习地图</summary><a class="lesson-link" data-lesson="INTRO" href="introduction.html"><span class="lesson-number">·</span><span>程序员 AI Coding 进阶实战</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="00" href="00.html"><span class="lesson-number">00</span><span>程序员如何系统学习 AI Coding</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 01</span>AI Coding 底层心智</summary><a class="lesson-link" data-lesson="01" href="01.html"><span class="lesson-number">01</span><span>程序员用 AI Coding，真正的门槛不是 Prompt</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="02" href="02.html"><span class="lesson-number">02</span><span>从聊天式开发到工程式开发</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="03" href="03.html"><span class="lesson-number">03</span><span>AI Coding 的底层工作模型</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="04" href="04.html"><span class="lesson-number">04</span><span>AI 最擅长和最不擅长的开发任务</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 02</span>程序员工具工作台</summary><a class="lesson-link" data-lesson="05" href="05.html"><span class="lesson-number">05</span><span>Codex、Claude Code、Cursor、Copilot 怎么分工</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="06" href="06.html"><span class="lesson-number">06</span><span>一个程序员的 AI Coding 工作台怎么搭</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="07" href="07.html"><span class="lesson-number">07</span><span>App、CLI、IDE 怎么切换完成一次真实改动</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage" open><summary><span class="stage-index">模块 03</span>上下文工程与代码库理解</summary><a class="lesson-link" data-lesson="08" href="08.html"><span class="lesson-number">08</span><span>上下文工程：为什么不是塞越多代码越好</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="09" href="09.html"><span class="lesson-number">09</span><span>代码地图不是手工文档：让 Agent 生成可检查的仓库导航</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="10" href="10.html" aria-current="page"><span class="lesson-number">10</span><span>让 Agent 做代码搜索：怎样约束搜索目标、证据和停止条件</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="11" href="11.html"><span class="lesson-number">11</span><span>AGENTS.md / CLAUDE.md / Copilot Instructions</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="12" href="12.html"><span class="lesson-number">12</span><span>任务上下文包：一次需求到底该给 AI 什么</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="13" href="13.html"><span class="lesson-number">13</span><span>上下文污染与上下文清理</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="14" href="14.html"><span class="lesson-number">14</span><span>模块实战：让 AI 接手一个陌生代码模块</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 04</span>SDD 与 OpenSpec 实战</summary><a class="lesson-link" data-lesson="15" href="15.html"><span class="lesson-number">15</span><span>SDD 是什么：先写规格，再写代码</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="16" href="16.html"><span class="lesson-number">16</span><span>从一句需求到 requirements.md</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="17" href="17.html"><span class="lesson-number">17</span><span>design.md 怎么写，AI 才不会补丁式开发</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="18" href="18.html"><span class="lesson-number">18</span><span>tasks.md 怎么拆：把复杂需求变成小 diff</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="19" href="19.html"><span class="lesson-number">19</span><span>OpenSpec 实战：把需求变更放进 repo</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="20" href="20.html"><span class="lesson-number">20</span><span>OpenSpec、Spec Kit 与轻量 SDD 怎么选</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="21" href="21.html"><span class="lesson-number">21</span><span>模块实战：用 OpenSpec CLI 推进一次真实产品需求</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 05</span>小步开发测试与调试闭环</summary><a class="lesson-link" data-lesson="22" href="22.html"><span class="lesson-number">22</span><span>计划先行：让 AI 先解释它准备怎么改</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="23" href="23.html"><span class="lesson-number">23</span><span>小步开发：为什么要限制 AI 一次改动范围</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="24" href="24.html"><span class="lesson-number">24</span><span>TDD + AI Coding：先让失败测试约束模型</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="25" href="25.html"><span class="lesson-number">25</span><span>系统化调试：让 AI 基于证据排障</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="26" href="26.html"><span class="lesson-number">26</span><span>前后端验证闭环：页面、接口、数据库和副作用怎么一起验</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="27" href="27.html"><span class="lesson-number">27</span><span>AI 说“测试失败无关”时，程序员该怎么判断</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="28" href="28.html"><span class="lesson-number">28</span><span>模块实战：用 AI 完成一次 CLI 交互改造</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 06</span>Skill Superpowers 与工作流固化</summary><a class="lesson-link" data-lesson="29" href="29.html"><span class="lesson-number">29</span><span>Skill 是什么：从提示词到可复用工作流</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="30" href="30.html"><span class="lesson-number">30</span><span>Skill 原理解析：它如何约束 Agent 行为</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="31" href="31.html"><span class="lesson-number">31</span><span>Superpowers 工作流拆解：把工程纪律变成 Skill 链</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="32" href="32.html"><span class="lesson-number">32</span><span>自定义 Skill：把你的经验固化成个人能力</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="33" href="33.html"><span class="lesson-number">33</span><span>外部工具接入：MCP 在 AI Coding 里到底有什么用</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="34" href="34.html"><span class="lesson-number">34</span><span>多 Agent 与自动化：什么时候拆，什么时候不要拆</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="35" href="35.html"><span class="lesson-number">35</span><span>模块实战：用 Superpowers 固化一次业务需求的调试和评审</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="36" href="36.html"><span class="lesson-number">36</span><span>模块实战：给 AI 接一个只读项目工具</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 07</span>综合实战与资产沉淀</summary><a class="lesson-link" data-lesson="37" href="37.html"><span class="lesson-number">37</span><span>综合实战：一个真实需求的 AI Coding 最佳实践</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="38" href="38.html"><span class="lesson-number">38</span><span>综合实战：从一次交付沉淀个人规则库</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 08</span>个人工程资产</summary><a class="lesson-link" data-lesson="39" href="39.html"><span class="lesson-number">39</span><span>从个人提效到个人工程系统</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="END" href="closing.html"><span class="lesson-number">·</span><span>写在专栏结束时：把 AI Coding 留在日常工程里</span><span class="lesson-state" aria-hidden="true"></span></a></details></nav><p class="sidebar-note">给清目标，保留证据，逐步交付。</p></aside><main class="reader-main" id="main-content"><div class="article-context"><span>上下文工程与代码库理解</span><div class="reading-tools js-only"><div class="font-controls" role="group" aria-label="正文字号"><button type="button" data-font="-1" aria-label="减小正文字号">A−</button><span id="font-size-label" aria-live="polite">18</span><button type="button" data-font="1" aria-label="增大正文字号">A+</button></div><button type="button" class="focus-toggle" aria-pressed="false"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg><span>专注阅读</span></button></div></div><div class="mobile-context"><nav class="reading-route" aria-label="本篇路线"><details><summary>本篇路线</summary><div class="toc">
+<ul>
+<li><a href="#先明确搜索要回答什么">先明确搜索要回答什么</a></li>
+<li><a href="#第一组动作先看文件结构">第一组动作：先看文件结构</a></li>
+<li><a href="#第二组动作从用户语言到代码语言">第二组动作：从用户语言到代码语言</a></li>
+<li><a href="#第三组动作找入口而不是找所有匹配">第三组动作：找入口，而不是找所有匹配</a></li>
+<li><a href="#第四组动作沿调用点确认真实路径">第四组动作：沿调用点确认真实路径</a></li>
+<li><a href="#第五组动作找测试不要后补">第五组动作：找测试，不要后补</a></li>
+<li><a href="#第六组动作查项目命令和规则">第六组动作：查项目命令和规则</a></li>
+<li><a href="#搜索结果应该怎样交付">搜索结果应该怎样交付</a></li>
+<li><a href="#search-summary-怎么验收">Search Summary 怎么验收</a></li>
+<li><a href="#搜索误区对照">搜索误区对照</a></li>
+<li><a href="#一个完整搜索协议的骨架">一个完整搜索协议的骨架</a></li>
+<li><a href="#让-agent-搜索时怎么约束">让 Agent 搜索时怎么约束</a></li>
+<li><a href="#什么时候扩大搜索范围">什么时候扩大搜索范围</a></li>
+<li><a href="#什么时候停止搜索">什么时候停止搜索</a></li>
+<li><a href="#搜索失败时的处理策略">搜索失败时的处理策略</a></li>
+<li><a href="#如何处理搜索不到">如何处理搜索不到</a></li>
+<li><a href="#从搜索到任务上下文包">从搜索到任务上下文包</a></li>
+<li><a href="#生产里怎么留下搜索证据">生产里怎么留下搜索证据</a></li>
+<li><a href="#搜索和代码审查怎么连接">搜索和代码审查怎么连接</a></li>
+<li><a href="#搜索协议怎么沉淀成规则">搜索协议怎么沉淀成规则</a></li>
+<li><a href="#搜索不是代码索引的替代品">搜索不是代码索引的替代品</a></li>
+<li><a href="#常见问题">常见问题</a></li>
+<li><a href="#迁移建议">迁移建议</a></li>
+<li><a href="#可复查资料">可复查资料</a></li>
+</ul>
+</div>
+</details></nav></div><article id="article-body"><h1 id="让-agent-做代码搜索怎样约束搜索目标证据和停止条件">让 Agent 做代码搜索：怎样约束搜索目标、证据和停止条件</h1>
+<p>AI Coding 里，代码搜索不应该变成程序员手工跑一堆命令，再把输出贴给 AI。</p>
+<p>现代 Agent 本来就能读文件、搜索代码、运行命令。程序员真正要做的是约束它怎么搜、搜完交付什么证据、什么时候停止，避免它拿第一个命中结果就开改。</p>
+<p>搜索不是为了找到“看起来相关”的文件，而是为了确定 Agent 应该读哪些文件、不要读哪些文件、先改哪里、怎么验证。</p>
+<p>很多失败发生在第一轮搜索。</p>
+<p>任务是修订单提交失败，Agent 搜到一个 <code>submitOrder</code> 就开始改；任务是修登录状态，Agent 看到一个 <code>401</code> 就加重试；任务是改页面交互，Agent 只读组件不读接口和状态管理。后面即使代码写得不错，方向也可能错了。</p>
+<p>程序员要把代码搜索当成上下文选择协议。<code>rg</code>、文件树、调用点、测试文件、配置文件、Git diff 是 Agent 可以使用的工具；你的职责是规定搜索目标、分类方式、证据格式和停止条件。</p>
+<p><img alt="从代码搜索到任务上下文" src="../assets/content/docs/assets/diagrams/source/10-search-to-context-flow.svg" /></p>
+<h2 id="先明确搜索要回答什么">先明确搜索要回答什么</h2>
+<p>不要一上来就搜关键词。</p>
+<p>先问四个问题：</p>
+<ol>
+<li>用户可见问题是什么？</li>
+<li>入口可能在哪里？</li>
+<li>业务规则可能在哪里？</li>
+<li>修完怎么验证？</li>
+</ol>
+<p>比如任务是：</p>
+<pre><code class="language-text">session 过期后重新登录，第一次提交资料表单失败。
+</code></pre>
+<p>搜索目标不是“找 session”，而是确认：</p>
+<ul>
+<li>表单提交入口在哪里。</li>
+<li>401 处理在哪里。</li>
+<li>refresh token 逻辑在哪里。</li>
+<li>submit 是否会重试。</li>
+<li>是否有相关测试。</li>
+<li>是否有页面或 API 验证路径。</li>
+</ul>
+<p>同样是搜索，目标不同，命令就不同。</p>
+<h2 id="第一组动作先看文件结构">第一组动作：先看文件结构</h2>
+<p>进入陌生仓库后，先让 Agent 看结构。下面这些命令不是要求你每次亲手执行，而是告诉 Agent 这一轮侦察应该覆盖哪些信息；当结果有争议时，你可以用它们复查。</p>
+<pre><code class="language-bash">rg --files | sed -n '1,120p'
+rg --files | rg &quot;README|AGENTS|CLAUDE|package.json|pom.xml|build.gradle|Makefile|justfile|Taskfile&quot;
+rg --files | rg &quot;test|spec|__tests__&quot;
+</code></pre>
+<p>第一条看文件树的样子。第二条找规则、文档和配置。第三条找测试。</p>
+<p>注意：<code>rg --files | sed -n '1,120p'</code> 只是快速观察，不是为了把文件全贴给 AI。它帮 Agent 判断项目类型、目录命名、测试位置和生成目录。</p>
+<p>如果项目很大，可以缩小范围：</p>
+<pre><code class="language-bash">rg --files src | sed -n '1,120p'
+rg --files test tests __tests__ 2&gt;/dev/null
+</code></pre>
+<p>看结构时要标记几类目录：</p>
+<pre><code class="language-text">src/              可能是源码
+test/             测试
+docs/             文档，可能过期
+generated/        生成代码，谨慎修改
+dist/ build/      构建产物，不改
+legacy/           兼容逻辑，不能随便删
+examples/ demo/   示例，不一定是生产路径
+</code></pre>
+<p>这一步的输出应该收敛成代码地图、上下文审计或任务上下文，而不是直接进入实现。</p>
+<h2 id="第二组动作从用户语言到代码语言">第二组动作：从用户语言到代码语言</h2>
+<p>用户说的是“提交失败”，代码里可能叫：</p>
+<pre><code class="language-text">submit
+save
+commit
+create
+update
+mutation
+request
+checkout
+</code></pre>
+<p>不要只搜一个词。先列同义词。</p>
+<pre><code class="language-bash">rg -n &quot;submit|save|create|update|mutation&quot; src test
+</code></pre>
+<p>如果任务是 session 过期，可以搜：</p>
+<pre><code class="language-bash">rg -n &quot;session|token|refresh|401|unauthorized|expired&quot; src test
+</code></pre>
+<p>如果任务是订单状态，可以搜：</p>
+<pre><code class="language-bash">rg -n &quot;OrderStatus|status|paid|pending|cancel|refund&quot; src test
+</code></pre>
+<p>这里的关键是把用户语言翻译成代码语言。很多 Agent 会漏这一步，直接拿用户原话搜索。中文业务词、页面文案、错误提示未必出现在代码里。</p>
+<p>可以让 Agent 先做词表：</p>
+<pre><code class="language-text">先不要搜索。
+请把“session 过期后重新登录，第一次提交表单失败”翻译成可能出现在代码里的英文关键词、函数名、状态名和错误码。
+然后再给搜索命令。
+</code></pre>
+<p>这个小动作能显著提高命中率。</p>
+<h2 id="第三组动作找入口而不是找所有匹配">第三组动作：找入口，而不是找所有匹配</h2>
+<p><code>rg</code> 输出很多行时，不要让 Agent 直接进入实现。</p>
+<p>先要求它筛入口。</p>
+<p>前端任务常见入口：</p>
+<pre><code class="language-bash">rg -n &quot;ProfileForm|SettingsPage|routes|createBrowserRouter|submit&quot; src
+</code></pre>
+<p>后端任务常见入口：</p>
+<pre><code class="language-bash">rg -n &quot;router|controller|handler|endpoint|POST|GET|/orders&quot; src
+</code></pre>
+<p>CLI 或脚本任务：</p>
+<pre><code class="language-bash">rg -n &quot;commander|yargs|process.argv|main\\(|if __name__&quot; .
+</code></pre>
+<p>测试入口：</p>
+<pre><code class="language-bash">rg -n &quot;auth-refresh|session|submit&quot; test tests __tests__ 2&gt;/dev/null
+</code></pre>
+<p>入口的判断标准不是文件名像不像，而是它是否连接用户动作和实现逻辑。</p>
+<p>例如：</p>
+<pre><code class="language-text">ProfileForm.tsx        可能是页面组件
+request.ts             可能是请求封装
+auth-refresh.test.ts   可能是验证路径
+token-storage.ts       可能是约束文件，不一定要改
+</code></pre>
+<p>这时任务上下文可以写：</p>
+<pre><code class="language-markdown">## Candidate Entry
+
+- `src/forms/ProfileForm.tsx`: form submit entry.
+- `src/auth/request.ts`: HTTP 401 handling.
+- `test/auth-refresh.test.ts`: existing auth refresh coverage.
+</code></pre>
+<p>这比“找到很多相关文件”更有用。</p>
+<h2 id="第四组动作沿调用点确认真实路径">第四组动作：沿调用点确认真实路径</h2>
+<p>找到候选文件后，要确认调用关系。</p>
+<p>如果发现函数 <code>refreshToken</code>，继续搜调用点：</p>
+<pre><code class="language-bash">rg -n &quot;refreshToken\\(&quot; src test
+</code></pre>
+<p>如果发现类型 <code>OrderStatus</code>：</p>
+<pre><code class="language-bash">rg -n &quot;OrderStatus&quot; src test
+</code></pre>
+<p>如果发现错误码：</p>
+<pre><code class="language-bash">rg -n &quot;AUTH_EXPIRED|TOKEN_EXPIRED|401&quot; src test
+</code></pre>
+<p>调用点搜索要回答：</p>
+<ul>
+<li>谁调用它？</li>
+<li>调用前后有什么状态变化？</li>
+<li>是否有多条路径？</li>
+<li>哪些路径有测试？</li>
+<li>是否有旧接口或兼容层？</li>
+</ul>
+<p>一个常见错误是只读函数定义，不读调用点。函数本身看起来可以改，但调用方可能依赖旧行为。</p>
+<p>给 Agent 的要求可以这样写：</p>
+<pre><code class="language-text">请不要只读函数定义。
+找到候选函数后，继续搜索调用点，并区分：
+- 生产调用路径
+- 测试调用路径
+- demo/example 调用路径
+- legacy 调用路径
+</code></pre>
+<p>这能避免它把示例路径当生产路径。</p>
+<h2 id="第五组动作找测试不要后补">第五组动作：找测试，不要后补</h2>
+<p>AI Coding 里，测试不是实现后的收尾，它是上下文的一部分。</p>
+<p>先搜测试：</p>
+<pre><code class="language-bash">rg -n &quot;session|refresh|submit|401&quot; test tests __tests__ 2&gt;/dev/null
+rg --files | rg &quot;(test|spec)\\.(js|ts|tsx|java|kt|go|py)$&quot;
+</code></pre>
+<p>读测试时看四件事：</p>
+<ol>
+<li>当前行为怎么描述。</li>
+<li>旧边界是什么。</li>
+<li>测试命令是什么。</li>
+<li>是否有类似路径可复制。</li>
+</ol>
+<p>如果没有测试，也要写清楚：</p>
+<pre><code class="language-markdown">## Test Coverage
+
+- No existing test found for expired-session first submit.
+- Existing auth tests only cover login success and refresh failure.
+- Need either a regression test or manual browser verification.
+</code></pre>
+<p>没有测试不是不能改，但不能假装有验证。</p>
+<h2 id="第六组动作查项目命令和规则">第六组动作：查项目命令和规则</h2>
+<p>很多 AI 失败不是代码错，而是命令跑错。</p>
+<p>先找项目命令：</p>
+<pre><code class="language-bash">cat package.json
+rg -n &quot;\&quot;scripts\&quot;&quot; package.json
+rg -n &quot;test|lint|typecheck|build&quot; README.md Makefile justfile Taskfile.yml 2&gt;/dev/null
+</code></pre>
+<p>如果是 Java：</p>
+<pre><code class="language-bash">rg --files | rg &quot;pom.xml|build.gradle|gradlew|mvnw&quot;
+</code></pre>
+<p>如果是 Go：</p>
+<pre><code class="language-bash">rg --files | rg &quot;go.mod|Makefile&quot;
+</code></pre>
+<p>再读项目规则：</p>
+<pre><code class="language-bash">rg --files | rg &quot;AGENTS.md|CLAUDE.md|copilot-instructions|instructions&quot;
+</code></pre>
+<p>项目规则和命令应该进入任务上下文：</p>
+<pre><code class="language-markdown">## Project Rules And Commands
+
+- Project rules: `AGENTS.md`
+- Focused test: `npm test -- auth-refresh`
+- Type check: `npm run typecheck`
+- Do not edit: `src/generated/`
+</code></pre>
+<p>否则 Agent 很容易用默认命令猜。</p>
+<h2 id="搜索结果应该怎样交付">搜索结果应该怎样交付</h2>
+<p>不要让 Agent 把几十行 <code>rg</code> 输出原样丢回来，也不要只接受一句“我搜过了”。</p>
+<p>要求它整理成结构化的 Search Summary：</p>
+<pre><code class="language-markdown">## Search Summary
+
+### Objective
+
+session 过期后重新登录，第一次提交资料表单应该成功。
+
+### Candidate Files
+
+- `src/forms/ProfileForm.tsx`
+  - reason: form submit entry
+- `src/auth/request.ts`
+  - reason: HTTP 401 handling
+- `src/auth/token-storage.ts`
+  - reason: token storage, do not edit initially
+- `test/auth-refresh.test.ts`
+  - reason: related auth refresh tests
+
+### Not Relevant Initially
+
+- `src/demo/ProfileForm.tsx`
+  - reason: demo page, not production route
+- `src/generated/api-client.ts`
+  - reason: generated file
+
+### Verification
+
+- `npm test -- auth-refresh`
+- browser path: login -&gt; expire session -&gt; refresh -&gt; submit
+</code></pre>
+<p>整理的过程就是上下文选择。</p>
+<p>如果 Agent 只返回原始输出，它仍然把优先级判断留给了后续生成；如果它先整理证据，你就能检查它是否把 demo、legacy、generated、tests 和生产路径区分清楚。</p>
+<h2 id="search-summary-怎么验收">Search Summary 怎么验收</h2>
+<p>Agent 给了 Search Summary，不代表它就能开始改。</p>
+<p>你至少要检查六件事。</p>
+<p>第一，是否覆盖入口。</p>
+<p>对于用户可见问题，必须能找到用户动作进入系统的地方。前端是页面、路由、组件或 submit handler；后端是 route、controller、handler、job 或 consumer；CLI 是命令入口和 argv 解析。只找到工具函数，不算找到入口。</p>
+<p>第二，是否覆盖测试。</p>
+<p>Agent 如果没有找测试，就很容易把实现写成自己的理解。没有测试也要明说，而不是跳过。</p>
+<p>第三，是否区分路径类型。</p>
+<p>Search Summary 里至少要区分：</p>
+<pre><code class="language-text">production path
+test path
+demo/example path
+legacy path
+generated path
+docs-only path
+</code></pre>
+<p>这些路径混在一起，后面一定会出问题。</p>
+<p>第四，是否有排除理由。</p>
+<p>“Not relevant initially” 不是垃圾桶。每个排除文件都应该有理由。比如 generated、demo、旧文档、测试夹具、历史兼容层、当前任务不允许修改。</p>
+<p>第五，是否给出验证入口。</p>
+<p>搜索结束时应该知道至少一个验证动作：focused test、接口调用、浏览器路径、日志检查、脚本命令。没有验证入口，就不该实现。</p>
+<p>第六，是否列出开放问题。</p>
+<p>真实项目里，搜索很少能回答所有问题。Open Questions 不是失败，而是防止 Agent 自己拍板。比如“原请求是否允许重试一次”“并发提交怎么处理”“旧 token 格式是否需要兼容”。</p>
+<p>可以用下面这段话验收：</p>
+<pre><code class="language-text">请自检你的 Search Summary：
+1. 是否找到真实入口？证据是什么？
+2. 是否读取或确认没有相关测试？
+3. 是否区分 production/test/demo/legacy/generated？
+4. 每个排除文件的理由是什么？
+5. 第一个验证动作是什么？
+6. 哪些问题必须由人确认？
+
+如果任一项答不上来，不要开始实现。
+</code></pre>
+<p>这段自检不是形式。它能把“搜过了”变成“搜对了没有”。</p>
+<h2 id="搜索误区对照">搜索误区对照</h2>
+<p><img alt="代码搜索误区对照" src="../assets/content/docs/assets/diagrams/source/10-search-anti-patterns.svg" /></p>
+<p>误区一：只搜用户原话。</p>
+<p>用户说“提交失败”，代码里可能没有“提交”。要翻译成函数名、状态名、错误码、接口路径。</p>
+<p>误区二：只读第一个命中文件。</p>
+<p>第一个命中可能是 demo、legacy、docs 或测试夹具。要确认是否生产路径。</p>
+<p>误区三：只搜实现，不搜测试。</p>
+<p>测试是行为边界。没有测试，就要补测试或手动验证路径。</p>
+<p>误区四：只看定义，不看调用点。</p>
+<p>定义告诉你函数做什么，调用点告诉你谁依赖它。</p>
+<p>误区五：只看当前文件，不看项目规则。</p>
+<p>项目规则可能明确禁止改生成目录、禁止新增依赖、要求跑某些命令。</p>
+<h2 id="一个完整搜索协议的骨架">一个完整搜索协议的骨架</h2>
+<p>不要急着写脚本。先把 Agent 的搜索顺序固定下来。下面这些命令可以作为协议里的可复查证据，也可以在 Agent 输出异常时手动复核。</p>
+<pre><code class="language-bash"># 1. worktree
+git status --short
+
+# 2. project shape
+rg --files | sed -n '1,120p'
+rg --files | rg &quot;README|AGENTS|CLAUDE|package.json|Makefile|pom.xml|build.gradle&quot;
+
+# 3. tests
+rg --files | rg &quot;test|spec|__tests__&quot;
+
+# 4. task keywords
+rg -n &quot;session|token|refresh|401|unauthorized|expired|submit&quot; src test 2&gt;/dev/null
+
+# 5. candidate call sites
+rg -n &quot;refreshToken\\(|submitProfile\\(|request\\(&quot; src test 2&gt;/dev/null
+
+# 6. commands
+rg -n &quot;test|lint|typecheck|build&quot; package.json README.md Makefile 2&gt;/dev/null
+</code></pre>
+<p>每一组命令后都要让 Agent 回答：这组输出改变了上下文选择吗？</p>
+<p>如果没有，就不要把它塞进任务上下文。</p>
+<h2 id="让-agent-搜索时怎么约束">让 Agent 搜索时怎么约束</h2>
+<p>可以直接让 Agent 执行搜索，但要约束输出。</p>
+<pre><code class="language-text">请用 `rg` 做上下文侦察，暂时不要改代码。
+
+要求：
+1. 先列关键词，不要直接搜索。
+2. 搜索入口、实现、测试、配置。
+3. 区分生产路径、测试路径、demo/example、legacy、generated。
+4. 输出 Search Summary，不要贴完整原始输出。
+5. 如果真实入口不确定，停止并提问。
+</code></pre>
+<p>这个提示比“你先搜一下”强得多。</p>
+<p>它让 Agent 明确产出：关键词、分类、候选文件、排除文件、缺失上下文。</p>
+<h2 id="什么时候扩大搜索范围">什么时候扩大搜索范围</h2>
+<p>一开始不要全仓乱搜，但也不能死守小范围。</p>
+<p>需要扩大范围的信号：</p>
+<ul>
+<li>候选入口读完后找不到实际调用。</li>
+<li>测试失败指向另一个模块。</li>
+<li>日志里出现异步任务或队列。</li>
+<li>配置决定了运行路径。</li>
+<li>接口契约在生成客户端或 schema 里。</li>
+<li>同名函数有多个实现。</li>
+</ul>
+<p>扩大搜索时要说清楚原因：</p>
+<pre><code class="language-text">当前 `src/auth/request.ts` 无法解释失败。
+错误日志指向 `refresh queue`。
+请扩大搜索到 queue 和 retry 相关文件：
+`rg -n &quot;refresh queue|retry|pending request&quot; src test`
+</code></pre>
+<p>不要说：</p>
+<pre><code class="language-text">再看看别的地方。
+</code></pre>
+<p>模糊扩大范围最容易产生大 diff。</p>
+<h2 id="什么时候停止搜索">什么时候停止搜索</h2>
+<p>搜索也会失控。</p>
+<p>有些 Agent 搜着搜着会把整个项目都读一遍，然后产出一份很长的总结。看起来勤奋，实际会增加噪音。</p>
+<p>停止搜索的标准不是“再也没有文件可看”，而是已经具备实现前需要的最小证据。</p>
+<p>可以用下面五个条件判断：</p>
+<pre><code class="language-text">1. 找到真实入口。
+2. 找到核心实现或确认实现缺失。
+3. 找到相关测试，或确认没有相关测试。
+4. 找到至少一个可执行验证动作。
+5. 列出本次不应该修改的相似路径。
+</code></pre>
+<p>满足这五项，就可以停止第一轮搜索，进入计划阶段。</p>
+<p>如果继续搜索，必须说明新增搜索要回答什么问题。比如：</p>
+<pre><code class="language-text">继续搜索 only if it answers one of these:
+- original request retry policy
+- concurrent refresh behavior
+- existing regression test location
+</code></pre>
+<p>不要用“再全面看一下”这种要求。它会把 Agent 带回全仓浏览。</p>
+<p>搜索停止后，Agent 应该输出一个最小计划，而不是直接改代码：</p>
+<pre><code class="language-markdown">## Minimal Plan
+
+1. Add a regression test for expired-session first submit.
+2. Implement retry-after-refresh in request wrapper only if the test proves the current failure.
+3. Run focused auth test and typecheck.
+</code></pre>
+<p>搜索的终点是计划，不是代码。</p>
+<h2 id="搜索失败时的处理策略">搜索失败时的处理策略</h2>
+<p>搜索失败也要有流程。</p>
+<p>第一种，关键词不匹配。</p>
+<p>比如用户说“提交资料”，代码里叫 <code>saveProfile</code>、<code>mutateProfile</code>、<code>updateUserInfo</code>。这时让 Agent 先做词表扩展，不要猜实现。</p>
+<pre><code class="language-text">当前关键词没有命中真实入口。
+请从 UI 文案、route、API path、测试名、类型名五个方向扩展关键词。
+</code></pre>
+<p>第二种，入口在框架约定里。</p>
+<p>有些项目入口不明显，比如 Next.js app router、Rails routes、Spring annotations、NestJS decorators、FastAPI route decorators。单纯搜 <code>router</code> 未必够。</p>
+<p>要求 Agent 先判断框架，再按框架约定搜：</p>
+<pre><code class="language-text">请先判断项目框架和路由约定。
+然后按该框架的入口规则搜索页面、route、handler 或 controller。
+</code></pre>
+<p>第三种，入口在另一个仓库或服务。</p>
+<p>如果前端只看到 API 调用，但业务逻辑在后端仓库，不要让 Agent 在当前仓库硬改。</p>
+<pre><code class="language-markdown">Search Result:
+- Current repo contains frontend submit path.
+- Backend validation logic is not present.
+- Need backend repo, API schema, or documented contract before changing behavior.
+</code></pre>
+<p>第四种，现有测试覆盖缺失。</p>
+<p>没有测试时，搜索结果应该明确写：</p>
+<pre><code class="language-markdown">No existing regression test found.
+Next action: add failing test or define manual verification path before implementation.
+</code></pre>
+<p>第五种，搜索结果互相冲突。</p>
+<p>比如 README 写 <code>npm test</code>，package scripts 里只有 <code>pnpm test</code>；docs 说 <code>generated/</code> 不要改，但当前代码里有人手改过 generated 文件。冲突不能靠 Agent 猜。</p>
+<pre><code class="language-text">请列出冲突点、各自证据来源，并停止实现。
+</code></pre>
+<p>搜索失败不是坏事。坏的是失败后还继续实现。</p>
+<h2 id="如何处理搜索不到">如何处理搜索不到</h2>
+<p>搜索不到不等于不存在。</p>
+<p>可能是：</p>
+<ul>
+<li>关键词不对。</li>
+<li>逻辑在配置里。</li>
+<li>逻辑在生成代码里。</li>
+<li>行为来自第三方库。</li>
+<li>文案来自后端。</li>
+<li>入口在另一个仓库。</li>
+</ul>
+<p>这时不要让 Agent 猜。</p>
+<p>可以这样问：</p>
+<pre><code class="language-text">当前关键词没有找到入口。
+请列出 5 个可能原因，并为每个原因给一个最小验证动作。
+不要修改代码。
+</code></pre>
+<p>例如：</p>
+<pre><code class="language-markdown">## Possible Reasons
+
+1. form submit uses generic `mutate` helper.
+   - search: `rg -n &quot;mutate\\(&quot; src`
+
+2. 401 handling is in generated API client.
+   - inspect generated client, but do not edit directly.
+
+3. error text comes from backend.
+   - search API response schema and backend error code.
+</code></pre>
+<p>搜索不到时，最重要的是调整搜索策略，而不是直接实现。</p>
+<h2 id="从搜索到任务上下文包">从搜索到任务上下文包</h2>
+<p>最终要把搜索结果收敛成任务上下文包。</p>
+<pre><code class="language-markdown"># Task Context
+
+## Objective
+
+session 过期后重新登录，第一次提交资料表单应该成功。
+
+## Files To Inspect First
+
+- `src/forms/ProfileForm.tsx`: submit entry.
+- `src/auth/request.ts`: 401 handling.
+- `test/auth-refresh.test.ts`: related tests.
+
+## Files Not To Edit Initially
+
+- `src/auth/token-storage.ts`: token storage format is out of scope.
+- `src/generated/api-client.ts`: generated file.
+- `src/demo/ProfileForm.tsx`: demo only.
+
+## Verification
+
+- `npm test -- auth-refresh`
+- `npm run typecheck`
+- browser path: login -&gt; expire session -&gt; refresh -&gt; submit
+
+## Open Questions
+
+- Does refresh success guarantee original request can be safely retried once?
+- How should concurrent submit requests behave?
+</code></pre>
+<p>这份上下文包才是进入实现阶段的材料。</p>
+<p>搜索本身不是成果。能指导下一步行动、能被人复查的上下文才是成果。</p>
+<h2 id="生产里怎么留下搜索证据">生产里怎么留下搜索证据</h2>
+<p>搜索证据不一定要永久保存，但中高风险任务应该能在 PR 或任务记录里复查。</p>
+<p>最小格式可以是：</p>
+<pre><code class="language-markdown">## Search Evidence
+
+### Goal
+
+Find expired-session first-submit path.
+
+### Commands / Agent Actions
+
+- searched `session|token|refresh|401|submit` under `src` and `test`
+- inspected route, request wrapper, form submit, and auth tests
+
+### Files Read
+
+- `src/forms/ProfileForm.tsx`
+- `src/auth/request.ts`
+- `test/auth-refresh.test.ts`
+
+### Excluded
+
+- `src/demo/ProfileForm.tsx`: demo only.
+- `src/generated/api-client.ts`: generated.
+
+### Verification Candidate
+
+- `npm test -- auth-refresh`
+- browser path: login -&gt; expire session -&gt; refresh -&gt; submit
+</code></pre>
+<p>这份记录不需要贴完整 <code>rg</code> 输出。保留完整输出反而会制造噪音。真正要留下的是搜索目标、读过的文件、排除理由和验证候选。</p>
+<p>如果团队 review 要求更严格，可以把关键命中行也写进去：</p>
+<pre><code class="language-markdown">## Key Hits
+
+- `src/auth/request.ts`: contains 401 handling and refresh call.
+- `test/auth-refresh.test.ts`: has refresh success test, no original submit retry test.
+</code></pre>
+<p>注意不要写成：</p>
+<pre><code class="language-markdown">I searched around and found auth files.
+</code></pre>
+<p>这句话没有复查价值。</p>
+<h2 id="搜索和代码审查怎么连接">搜索和代码审查怎么连接</h2>
+<p>好的搜索会降低 review 成本。</p>
+<p>reviewer 最关心的不是你搜了多少，而是你为什么只改这些文件。</p>
+<p>PR 里可以这样写：</p>
+<pre><code class="language-markdown">## Why These Files
+
+- `test/auth-refresh.test.ts`
+  - adds regression coverage for current failure.
+- `src/auth/request.ts`
+  - only production path that handles 401 refresh and retry.
+
+## Why Not These Files
+
+- `src/auth/token-storage.ts`
+  - storage was verified to contain refreshed token.
+- `src/generated/api-client.ts`
+  - generated client, inspected only.
+- `src/demo/ProfileForm.tsx`
+  - demo path, not production route.
+</code></pre>
+<p>这比一句“修改了 auth 逻辑”有用得多。</p>
+<p>如果 reviewer 问“为什么没改 token storage”，你可以回到证据：Network 显示 token refresh 成功，问题在原请求未重试。这样 review 会围绕事实，而不是围绕感觉。</p>
+<h2 id="搜索协议怎么沉淀成规则">搜索协议怎么沉淀成规则</h2>
+<p>如果你发现自己经常提醒 Agent：</p>
+<ul>
+<li>先找入口再实现。</li>
+<li>区分 demo 和 production。</li>
+<li>先找测试。</li>
+<li>搜索不到就列原因，不要猜。</li>
+<li>不要把 generated 文件当修改目标。</li>
+</ul>
+<p>这些内容就应该写进长期规则或 Skill。</p>
+<p><code>AGENTS.md</code> 里可以放轻量版本：</p>
+<pre><code class="language-markdown">## Search Before Editing
+
+- For unfamiliar code, search and list actual files read before editing.
+- Distinguish production, test, demo/example, legacy, and generated paths.
+- Do not edit generated files unless the task explicitly requests generated output changes.
+- If no test is found, state the verification gap before implementation.
+- If the real entry is unclear, stop and ask.
+</code></pre>
+<p>Skill 里可以放完整流程：关键词生成、搜索、分类、Search Summary、自检、停止条件。</p>
+<p>规则越具体，Agent 越不容易把“搜索”理解成随便找几个命中行。</p>
+<h2 id="搜索不是代码索引的替代品">搜索不是代码索引的替代品</h2>
+<p>这里讲 <code>rg</code> 和 Agent 搜索，不代表所有项目都只靠文本搜索。</p>
+<p>大型代码库里，语言服务器、IDE 索引、代码搜索平台、调用图、OpenGrok、Sourcegraph、内部代码平台都很有价值。它们能更准确地找定义、引用、调用关系和跨仓依赖。</p>
+<p>但原则不变：工具越强，越要让结果进入 Search Summary。</p>
+<p>你可以把搜索动作替换成：</p>
+<pre><code class="language-text">- IDE find references
+- language server go to definition
+- Sourcegraph query
+- internal code search
+- dependency graph
+</code></pre>
+<p>但输出仍然要回答：</p>
+<ul>
+<li>真实入口是什么？</li>
+<li>关键实现在哪里？</li>
+<li>哪些路径不能改？</li>
+<li>测试和验证在哪里？</li>
+<li>哪些结论还没证据？</li>
+</ul>
+<p>不要把代码索引工具的命中结果直接当答案。它只是更强的证据来源。</p>
+<h2 id="常见问题">常见问题</h2>
+<p><strong>为什么不用 IDE 全局搜索就够了？</strong></p>
+<p>IDE 搜索也可以。重点不是工具，而是搜索策略。<code>rg</code> 的好处是快、可复制、容易放进 Agent 工作流和完成记录里。</p>
+<p><strong>搜索输出很多，应该给 AI 全部看吗？</strong></p>
+<p>不建议。先分类和摘要。完整输出只有在需要复查时再给。大量无关匹配会制造噪音。</p>
+<p><strong>Agent 自己会搜索，我还需要关心命令吗？</strong></p>
+<p>需要关心搜索目标、分类要求和证据格式。命令可以由 Agent 执行，但 Agent 会搜索不代表它会按正确优先级搜索。</p>
+<p><strong>没有测试目录怎么办？</strong></p>
+<p>把“没有测试”写进上下文，并补手动验证路径、接口调用或日志检查。不要让 Agent 把没有测试理解成无需验证。</p>
+<p><strong>搜索到多个入口怎么办？</strong></p>
+<p>让 Agent 区分生产、测试、demo、legacy、generated。无法确认时先提问，不要直接选一个。</p>
+<h2 id="迁移建议">迁移建议</h2>
+<p>下次处理陌生任务时，先不要开改。让 Agent 花 5 分钟做 Search Summary。</p>
+<p>固定写这五块：</p>
+<pre><code class="language-markdown">Objective:
+Candidate files:
+Not relevant initially:
+Verification:
+Open questions:
+</code></pre>
+<p>如果这五块写不出来，说明上下文还没选好。</p>
+<p>AI Coding 不是让 Agent 替你乱搜。它应该让搜索结果更快变成可执行、可验证、可审查的任务上下文。</p>
+<p>接下来会讲项目规则文件：<code>AGENTS.md</code>、<code>CLAUDE.md</code>、Copilot instructions 这类文件到底该写什么，哪些规则适合长期保留，哪些只应该放在单次任务里。</p>
+<h2 id="可复查资料">可复查资料</h2>
+<ul>
+<li>ripgrep 官方仓库：<a href="https://github.com/BurntSushi/ripgrep">https://github.com/BurntSushi/ripgrep</a></li>
+<li>OpenAI Codex 最佳实践：<a href="https://developers.openai.com/codex/learn/best-practices">https://developers.openai.com/codex/learn/best-practices</a></li>
+<li>OpenAI Codex <code>AGENTS.md</code> 指南：<a href="https://developers.openai.com/codex/guides/agents-md">https://developers.openai.com/codex/guides/agents-md</a></li>
+<li>Anthropic Claude Code memory：<a href="https://code.claude.com/docs/en/memory">https://code.claude.com/docs/en/memory</a></li>
+</ul></article><div class="practice-link"><a href="https://github.com/DavidDingXu/learn-ai-coding/blob/main/ai-coding-workflow-kit/dev-process/01-module-onboarding.md" target="_blank" rel="noopener"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5M14 4l-4 16"/></svg> 陌生模块接手记录 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></div><nav class="chapter-nav" aria-label="前后篇"><a href="09.html"><span>上一篇 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg></span><strong>代码地图不是手工文档：让 Agent 生成可检查的仓库导航</strong></a><a href="11.html"><span>下一篇 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><strong>AGENTS.md / CLAUDE.md / Copilot Instructions</strong></a></nav><footer class="reader-footer">程序员 AI Coding 进阶实战 · <a href="../license.html">非商业使用</a><details class="community-mini"><summary>关注与交流 · 好好用 AI</summary><div class="community-section"><div><p>交流学习中的问题与实践心得。</p><p>代码问题和勘误，欢迎在 <a href="https://github.com/DavidDingXu/learn-ai-coding/issues" target="_blank" rel="noopener">GitHub 提交 Issue</a>。</p></div><a class="qr-link" href="../assets/wechat-official-account.jpg" target="_blank" rel="noopener" aria-label="查看好好用 AI 公众号二维码原图"><img src="../assets/wechat-official-account.jpg" alt="好好用 AI 微信公众号二维码" width="130" height="130" loading="lazy"><p class="qr-caption">微信扫码 · 点击查看原图</p></a></div></details></footer></main><aside class="context-sidebar" aria-label="本篇辅助导航"><div class="context-inner"><nav class="reading-route" aria-label="本篇路线"><details open><summary>本篇路线</summary><div class="toc">
+<ul>
+<li><a href="#先明确搜索要回答什么">先明确搜索要回答什么</a></li>
+<li><a href="#第一组动作先看文件结构">第一组动作：先看文件结构</a></li>
+<li><a href="#第二组动作从用户语言到代码语言">第二组动作：从用户语言到代码语言</a></li>
+<li><a href="#第三组动作找入口而不是找所有匹配">第三组动作：找入口，而不是找所有匹配</a></li>
+<li><a href="#第四组动作沿调用点确认真实路径">第四组动作：沿调用点确认真实路径</a></li>
+<li><a href="#第五组动作找测试不要后补">第五组动作：找测试，不要后补</a></li>
+<li><a href="#第六组动作查项目命令和规则">第六组动作：查项目命令和规则</a></li>
+<li><a href="#搜索结果应该怎样交付">搜索结果应该怎样交付</a></li>
+<li><a href="#search-summary-怎么验收">Search Summary 怎么验收</a></li>
+<li><a href="#搜索误区对照">搜索误区对照</a></li>
+<li><a href="#一个完整搜索协议的骨架">一个完整搜索协议的骨架</a></li>
+<li><a href="#让-agent-搜索时怎么约束">让 Agent 搜索时怎么约束</a></li>
+<li><a href="#什么时候扩大搜索范围">什么时候扩大搜索范围</a></li>
+<li><a href="#什么时候停止搜索">什么时候停止搜索</a></li>
+<li><a href="#搜索失败时的处理策略">搜索失败时的处理策略</a></li>
+<li><a href="#如何处理搜索不到">如何处理搜索不到</a></li>
+<li><a href="#从搜索到任务上下文包">从搜索到任务上下文包</a></li>
+<li><a href="#生产里怎么留下搜索证据">生产里怎么留下搜索证据</a></li>
+<li><a href="#搜索和代码审查怎么连接">搜索和代码审查怎么连接</a></li>
+<li><a href="#搜索协议怎么沉淀成规则">搜索协议怎么沉淀成规则</a></li>
+<li><a href="#搜索不是代码索引的替代品">搜索不是代码索引的替代品</a></li>
+<li><a href="#常见问题">常见问题</a></li>
+<li><a href="#迁移建议">迁移建议</a></li>
+<li><a href="#可复查资料">可复查资料</a></li>
+</ul>
+</div>
+</details></nav></div></aside></div><dialog class="search-dialog" id="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label for="course-search" id="search-label"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>搜索课程</label><button class="icon-button" aria-label="关闭搜索"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></form><input id="course-search" type="search" placeholder="搜索概念、代码或问题…" autocomplete="off" spellcheck="false"><p class="search-status" id="search-status" role="status">搜索全部 42 篇文章。</p><div class="search-results" id="search-results"></div><footer>↑ ↓ 选择结果 <span>Enter 打开 · Esc 关闭</span></footer></dialog>
+<dialog class="image-viewer" id="image-viewer" aria-label="放大配图"><header><span>查看配图</span><div class="image-actions"><button type="button" id="image-size">原尺寸</button><button type="button" id="close-image" autofocus>关闭</button></div></header><div class="image-canvas"><img id="large-image" alt=""></div><footer><p id="image-description"></p><a id="original-image" target="_blank" rel="noopener">打开原图 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></footer></dialog><div class="toast" id="toast" role="status"></div></body></html>

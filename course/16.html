@@ -1,0 +1,622 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>从一句需求到 requirements.md · Learn AI Coding</title><meta name="description" content="从接手陌生代码库，到完成一次真实需求。沿着上下文、规格、实现、测试和复盘，建立可重复的 AI Coding 工作流。"><meta name="source-sha256" content="fc825cd69a529f337b585ea301a3aa7ad2b32684f47bfe7bfeeeb557195cadf5">
+<link rel="canonical" href="https://daviddingxu.github.io/learn-ai-coding/course/16.html"><link rel="icon" href="../assets/brand.png">
+<script>try{const t=localStorage.getItem('haohai-course-theme');document.documentElement.dataset.theme=t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light'}catch(_){document.documentElement.dataset.theme='light'}</script>
+<link rel="stylesheet" href="../assets/site.css"><script defer src="../assets/search-index.js"></script><script defer src="../assets/site.js"></script></head><body class="article-page" data-root="../" data-page="16"><a class="skip-link" href="#main-content">跳到正文</a><header class="site-header"><div class="header-inner"><button class="icon-button menu-toggle js-only" type="button" aria-label="打开课程目录" aria-controls="course-sidebar" aria-expanded="false"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+<a class="brand" href="../index.html" aria-label="Learn AI Coding · 学习站首页"><img src="../assets/brand.png" alt="" width="36" height="36"><span><strong>Learn AI Coding</strong><small>程序员 AI Coding 进阶实战</small></span></a>
+<nav class="header-nav" aria-label="主导航"><a href="../index.html#curriculum">课程目录</a><a href="../index.html#downloads">离线阅读</a><a href="https://github.com/DavidDingXu/learn-ai-coding" target="_blank" rel="noopener">GitHub <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></nav>
+<div class="header-controls"><button class="icon-button theme-toggle js-only" type="button" aria-label="切换到深色主题" title="切换到深色主题"><span class="theme-light-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A9 9 0 0 1 9.5 3.5a9 9 0 1 0 11 11Z"/></svg></span><span class="theme-dark-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></span></button><button class="search-trigger js-only" type="button" aria-label="搜索课程"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg><span>搜索课程</span><kbd>⌘ K</kbd></button></div></div><div class="reading-progress" aria-hidden="true"><span id="reading-progress-bar"></span></div></header><div class="sidebar-scrim" hidden></div><div class="reader-layout"><aside class="course-sidebar" id="course-sidebar" aria-label="课程目录"><div class="sidebar-heading"><a href="../index.html#curriculum">课程目录</a><button class="icon-button menu-close js-only" type="button" aria-label="关闭课程目录"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><nav aria-label="全部文章"><details class="sidebar-stage"><summary><span class="stage-index">模块 00</span>导读与学习地图</summary><a class="lesson-link" data-lesson="INTRO" href="introduction.html"><span class="lesson-number">·</span><span>程序员 AI Coding 进阶实战</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="00" href="00.html"><span class="lesson-number">00</span><span>程序员如何系统学习 AI Coding</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 01</span>AI Coding 底层心智</summary><a class="lesson-link" data-lesson="01" href="01.html"><span class="lesson-number">01</span><span>程序员用 AI Coding，真正的门槛不是 Prompt</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="02" href="02.html"><span class="lesson-number">02</span><span>从聊天式开发到工程式开发</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="03" href="03.html"><span class="lesson-number">03</span><span>AI Coding 的底层工作模型</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="04" href="04.html"><span class="lesson-number">04</span><span>AI 最擅长和最不擅长的开发任务</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 02</span>程序员工具工作台</summary><a class="lesson-link" data-lesson="05" href="05.html"><span class="lesson-number">05</span><span>Codex、Claude Code、Cursor、Copilot 怎么分工</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="06" href="06.html"><span class="lesson-number">06</span><span>一个程序员的 AI Coding 工作台怎么搭</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="07" href="07.html"><span class="lesson-number">07</span><span>App、CLI、IDE 怎么切换完成一次真实改动</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 03</span>上下文工程与代码库理解</summary><a class="lesson-link" data-lesson="08" href="08.html"><span class="lesson-number">08</span><span>上下文工程：为什么不是塞越多代码越好</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="09" href="09.html"><span class="lesson-number">09</span><span>代码地图不是手工文档：让 Agent 生成可检查的仓库导航</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="10" href="10.html"><span class="lesson-number">10</span><span>让 Agent 做代码搜索：怎样约束搜索目标、证据和停止条件</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="11" href="11.html"><span class="lesson-number">11</span><span>AGENTS.md / CLAUDE.md / Copilot Instructions</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="12" href="12.html"><span class="lesson-number">12</span><span>任务上下文包：一次需求到底该给 AI 什么</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="13" href="13.html"><span class="lesson-number">13</span><span>上下文污染与上下文清理</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="14" href="14.html"><span class="lesson-number">14</span><span>模块实战：让 AI 接手一个陌生代码模块</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage" open><summary><span class="stage-index">模块 04</span>SDD 与 OpenSpec 实战</summary><a class="lesson-link" data-lesson="15" href="15.html"><span class="lesson-number">15</span><span>SDD 是什么：先写规格，再写代码</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="16" href="16.html" aria-current="page"><span class="lesson-number">16</span><span>从一句需求到 requirements.md</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="17" href="17.html"><span class="lesson-number">17</span><span>design.md 怎么写，AI 才不会补丁式开发</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="18" href="18.html"><span class="lesson-number">18</span><span>tasks.md 怎么拆：把复杂需求变成小 diff</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="19" href="19.html"><span class="lesson-number">19</span><span>OpenSpec 实战：把需求变更放进 repo</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="20" href="20.html"><span class="lesson-number">20</span><span>OpenSpec、Spec Kit 与轻量 SDD 怎么选</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="21" href="21.html"><span class="lesson-number">21</span><span>模块实战：用 OpenSpec CLI 推进一次真实产品需求</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 05</span>小步开发测试与调试闭环</summary><a class="lesson-link" data-lesson="22" href="22.html"><span class="lesson-number">22</span><span>计划先行：让 AI 先解释它准备怎么改</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="23" href="23.html"><span class="lesson-number">23</span><span>小步开发：为什么要限制 AI 一次改动范围</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="24" href="24.html"><span class="lesson-number">24</span><span>TDD + AI Coding：先让失败测试约束模型</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="25" href="25.html"><span class="lesson-number">25</span><span>系统化调试：让 AI 基于证据排障</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="26" href="26.html"><span class="lesson-number">26</span><span>前后端验证闭环：页面、接口、数据库和副作用怎么一起验</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="27" href="27.html"><span class="lesson-number">27</span><span>AI 说“测试失败无关”时，程序员该怎么判断</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="28" href="28.html"><span class="lesson-number">28</span><span>模块实战：用 AI 完成一次 CLI 交互改造</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 06</span>Skill Superpowers 与工作流固化</summary><a class="lesson-link" data-lesson="29" href="29.html"><span class="lesson-number">29</span><span>Skill 是什么：从提示词到可复用工作流</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="30" href="30.html"><span class="lesson-number">30</span><span>Skill 原理解析：它如何约束 Agent 行为</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="31" href="31.html"><span class="lesson-number">31</span><span>Superpowers 工作流拆解：把工程纪律变成 Skill 链</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="32" href="32.html"><span class="lesson-number">32</span><span>自定义 Skill：把你的经验固化成个人能力</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="33" href="33.html"><span class="lesson-number">33</span><span>外部工具接入：MCP 在 AI Coding 里到底有什么用</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="34" href="34.html"><span class="lesson-number">34</span><span>多 Agent 与自动化：什么时候拆，什么时候不要拆</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="35" href="35.html"><span class="lesson-number">35</span><span>模块实战：用 Superpowers 固化一次业务需求的调试和评审</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="36" href="36.html"><span class="lesson-number">36</span><span>模块实战：给 AI 接一个只读项目工具</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 07</span>综合实战与资产沉淀</summary><a class="lesson-link" data-lesson="37" href="37.html"><span class="lesson-number">37</span><span>综合实战：一个真实需求的 AI Coding 最佳实践</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="38" href="38.html"><span class="lesson-number">38</span><span>综合实战：从一次交付沉淀个人规则库</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 08</span>个人工程资产</summary><a class="lesson-link" data-lesson="39" href="39.html"><span class="lesson-number">39</span><span>从个人提效到个人工程系统</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="END" href="closing.html"><span class="lesson-number">·</span><span>写在专栏结束时：把 AI Coding 留在日常工程里</span><span class="lesson-state" aria-hidden="true"></span></a></details></nav><p class="sidebar-note">给清目标，保留证据，逐步交付。</p></aside><main class="reader-main" id="main-content"><div class="article-context"><span>SDD 与 OpenSpec 实战</span><div class="reading-tools js-only"><div class="font-controls" role="group" aria-label="正文字号"><button type="button" data-font="-1" aria-label="减小正文字号">A−</button><span id="font-size-label" aria-live="polite">18</span><button type="button" data-font="1" aria-label="增大正文字号">A+</button></div><button type="button" class="focus-toggle" aria-pressed="false"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg><span>专注阅读</span></button></div></div><div class="mobile-context"><nav class="reading-route" aria-label="本篇路线"><details><summary>本篇路线</summary><div class="toc">
+<ul>
+<li><a href="#requirementsmd-写什么不写什么">requirements.md 写什么，不写什么</a></li>
+<li><a href="#一个坏的-requirements-长什么样">一个坏的 requirements 长什么样</a></li>
+<li><a href="#从一句话需求拆成六块">从一句话需求拆成六块</a></li>
+<li><a href="#把现有行为和新行为分开写">把现有行为和新行为分开写</a></li>
+<li><a href="#需求确认不是让产品补文档">需求确认不是让产品补文档</a></li>
+<li><a href="#线上-bug-的-requirements-怎么写">线上 bug 的 requirements 怎么写</a></li>
+<li><a href="#需求合同检查矩阵">需求合同检查矩阵</a></li>
+<li><a href="#让-ai-帮你写-requirements-草稿">让 AI 帮你写 requirements 草稿</a></li>
+<li><a href="#一个完整-requirements-示例">一个完整 requirements 示例</a></li>
+<li><a href="#验收条件怎么写得可测试">验收条件怎么写得可测试</a></li>
+<li><a href="#非目标怎么写">非目标怎么写</a></li>
+<li><a href="#open-questions-不要怕多">Open Questions 不要怕多</a></li>
+<li><a href="#requirements-和测试的关系">requirements 和测试的关系</a></li>
+<li><a href="#让-agent-生成-requirements-时要给它证据边界">让 Agent 生成 requirements 时，要给它证据边界</a></li>
+<li><a href="#requirements-通过前不要进入-design">requirements 通过前，不要进入 design</a></li>
+<li><a href="#pr-里怎么呈现-requirements">PR 里怎么呈现 requirements</a></li>
+<li><a href="#状态值错误码和字段名要引用真实系统">状态值、错误码和字段名要引用真实系统</a></li>
+<li><a href="#需求质量不够时agent-会怎么误解">需求质量不够时，Agent 会怎么误解</a></li>
+<li><a href="#常见错误">常见错误</a></li>
+<li><a href="#常见问题">常见问题</a></li>
+<li><a href="#可以直接复用的模板">可以直接复用的模板</a></li>
+<li><a href="#迁移建议">迁移建议</a></li>
+<li><a href="#可复查资料">可复查资料</a></li>
+</ul>
+</div>
+</details></nav></div><article id="article-body"><h1 id="从一句需求到-requirementsmd">从一句需求到 <code>requirements.md</code></h1>
+<p>复杂需求开始前，最不该省的是 <code>requirements.md</code>。</p>
+<p>不是因为文档重要，而是因为需求如果没有变成可验证的行为合同，AI 会在实现过程中自己补空白。</p>
+<p>一句话需求：</p>
+<pre><code class="language-text">已支付订单不能直接取消，要走退款。
+</code></pre>
+<p>听起来清楚，其实不够。它没有说明 pending 订单怎么办，shipped 订单怎么办，退款失败怎么办，旧接口返回结构能不能变，管理后台是不是同一规则，历史订单是否迁移。</p>
+<p><code>requirements.md</code> 的目的，就是把这些隐含问题在写代码前摊开。</p>
+<p><img alt="从一句需求到 requirements" src="../assets/content/docs/assets/diagrams/source/16-requirements-transform.svg" /></p>
+<h2 id="requirementsmd-写什么不写什么"><code>requirements.md</code> 写什么，不写什么</h2>
+<p><code>requirements.md</code> 写行为，不写实现。</p>
+<p>它要回答：</p>
+<ul>
+<li>谁在什么场景下触发。</li>
+<li>系统应该表现出什么行为。</li>
+<li>哪些旧行为必须保留。</li>
+<li>哪些异常路径必须处理。</li>
+<li>哪些内容不在本次范围。</li>
+<li>怎么判断需求完成。</li>
+<li>哪些问题还需要确认。</li>
+</ul>
+<p>它不应该写：</p>
+<ul>
+<li>改哪个函数。</li>
+<li>新增哪个 if。</li>
+<li>抽什么类。</li>
+<li>用哪个数据库字段。</li>
+<li>怎么拆 task。</li>
+</ul>
+<p>这些属于 <code>design.md</code> 和 <code>tasks.md</code>。</p>
+<p>把技术方案写进 requirements，容易让需求合同变形。后面如果实现方案变了，需求也跟着乱。</p>
+<h2 id="一个坏的-requirements-长什么样">一个坏的 requirements 长什么样</h2>
+<p>坏版本：</p>
+<pre><code class="language-markdown"># Requirements
+
+已支付订单不能直接取消，要在 `cancelOrder` 里面判断 paid 状态，然后调用退款服务。
+如果是 pending 就照旧，如果是 shipped 就报错。
+</code></pre>
+<p>这段话看起来很具体，但问题很多。</p>
+<p>第一，它直接指定了实现位置和实现方式。</p>
+<p>第二，它没有说明返回给用户的行为。</p>
+<p>第三，它没有定义退款服务失败怎么办。</p>
+<p>第四，它没有说明旧接口返回结构是否保持。</p>
+<p>第五，它没有说明验收条件。</p>
+<p>更好的版本：</p>
+<pre><code class="language-markdown"># Requirements
+
+## Goal
+
+用户取消已支付订单时，系统不应直接取消订单，而应进入退款申请流程。
+
+## Acceptance Criteria
+
+- pending 订单取消后状态为 canceled。
+- paid 订单取消后状态为 refund_requested。
+- shipped 订单取消仍按现有规则拒绝。
+- API response shape remains compatible with existing clients.
+
+## Error Cases
+
+- If refund request creation fails, order status must remain paid.
+- User should receive a retryable error message.
+
+## Out Of Scope
+
+- Payment provider callback behavior.
+- Historical order data migration.
+- Admin batch cancellation.
+
+## Open Questions
+
+- Should paid order cancellation create refund request synchronously or asynchronously?
+</code></pre>
+<p>这才是需求合同。</p>
+<h2 id="从一句话需求拆成六块">从一句话需求拆成六块</h2>
+<p>一份可用的 <code>requirements.md</code> 通常包括六块。</p>
+<pre><code class="language-text">Goal
+Actors / Scenarios
+Acceptance Criteria
+Error Cases
+Out Of Scope
+Open Questions
+</code></pre>
+<p>不是每个需求都要六块都很长，但这六块能防止 Agent 漏掉关键边界。</p>
+<h3 id="goal">Goal</h3>
+<p>Goal 写一句清楚的行为目标。</p>
+<p>差：</p>
+<pre><code class="language-text">优化订单取消。
+</code></pre>
+<p>好：</p>
+<pre><code class="language-text">用户取消已支付订单时，系统进入退款申请流程，而不是直接取消订单。
+</code></pre>
+<p>Goal 不写技术方案。</p>
+<h3 id="actors-scenarios">Actors / Scenarios</h3>
+<p>写谁在什么场景下触发。</p>
+<pre><code class="language-markdown">## Scenarios
+
+- Buyer cancels a pending order before payment.
+- Buyer cancels a paid order before shipping.
+- Buyer cancels a shipped order.
+- Support agent cancels an order from admin console.
+</code></pre>
+<p>如果不同角色规则不同，要写出来。否则 Agent 可能把用户端规则套到管理后台。</p>
+<h3 id="acceptance-criteria">Acceptance Criteria</h3>
+<p>验收条件要可验证。</p>
+<p>差：</p>
+<pre><code class="language-markdown">- 订单取消逻辑正确。
+</code></pre>
+<p>好：</p>
+<pre><code class="language-markdown">- Given a pending order, when user cancels, then status becomes canceled.
+- Given a paid order, when user cancels, then status becomes refund_requested.
+- Given a shipped order, when user cancels, then existing rejection behavior remains unchanged.
+</code></pre>
+<p>Given/When/Then 的价值不在格式，而在强迫你写出前置状态、动作和结果。</p>
+<h3 id="error-cases">Error Cases</h3>
+<p>异常路径不能留给实现时猜。</p>
+<pre><code class="language-markdown">## Error Cases
+
+- If refund request creation fails, order status remains paid.
+- If duplicate cancel request arrives, no duplicate refund request is created.
+- If payment provider is unavailable, user receives retryable error.
+</code></pre>
+<p>很多线上 bug 都出在异常路径。AI 如果只看 happy path，会写出表面可用的实现。</p>
+<h3 id="out-of-scope">Out Of Scope</h3>
+<p>非目标是 <code>requirements.md</code> 里最重要但最容易漏的部分。</p>
+<pre><code class="language-markdown">## Out Of Scope
+
+- Do not change payment provider callback logic.
+- Do not migrate historical order data.
+- Do not change admin batch cancellation.
+- Do not change public API response shape.
+</code></pre>
+<p>非目标告诉 Agent 这次不改什么。没有它，AI 很容易“顺便”做大。</p>
+<h3 id="open-questions">Open Questions</h3>
+<p>不确定的问题要显式列出来。</p>
+<pre><code class="language-markdown">## Open Questions
+
+- Should paid cancellation create refund request synchronously?
+- Should support agents bypass the buyer-side restriction?
+- What error copy should be shown when refund request creation fails?
+</code></pre>
+<p>Open Questions 的价值是暂停，而不是让 Agent 自己决定。</p>
+<h2 id="把现有行为和新行为分开写">把现有行为和新行为分开写</h2>
+<p>生产需求里，最容易出问题的不是“新行为没实现”，而是旧行为被顺手改坏。</p>
+<p>所以 requirements 里建议加一张行为表，尤其是状态机、权限、接口兼容类需求。</p>
+<pre><code class="language-markdown">## Behavior Matrix
+
+| Scenario | Current Behavior | Expected Behavior |
+| --- | --- | --- |
+| pending order cancel | status becomes `canceled` | unchanged |
+| paid order cancel | status becomes `canceled` | status becomes `refund_requested` |
+| shipped order cancel | rejected with `ORDER_ALREADY_SHIPPED` | unchanged |
+| duplicate paid cancel | may create duplicate side effect | no duplicate refund request |
+</code></pre>
+<p>这张表对 Agent 很有用。它能明确哪些路径要改，哪些路径不能动。</p>
+<p>它对 reviewer 也有用。review diff 时，不只看 paid 分支，还会看 pending、shipped 和 duplicate 路径有没有测试覆盖。</p>
+<p>很多“AI 改坏旧逻辑”的问题，本质上是 requirements 没有把旧行为写成约束。Agent 看到新目标后，会自然围绕新目标重组代码。如果旧行为没有被写进合同，它就不一定知道哪些东西不能碰。</p>
+<h2 id="需求确认不是让产品补文档">需求确认不是让产品补文档</h2>
+<p>个人 AI Coding 场景里，很多需求来自自己、同事、issue 或线上问题。你不一定有完整 PRD，也不应该为了写 requirements 去发起一轮重流程。</p>
+<p>可执行的做法是：让 Agent 先根据现有材料生成草稿，然后你把不确定点发给相关人确认。</p>
+<p>比如：</p>
+<pre><code class="language-markdown">Need confirmation:
+
+1. Paid cancellation should create refund request synchronously or asynchronously?
+2. Support agent cancellation follows buyer-side rule or has override permission?
+3. Existing mobile clients can display `refund_requested` or need fallback copy?
+</code></pre>
+<p>这三条比“请确认订单取消需求”有效得多。它们直接指向实现会分叉的地方。</p>
+<p>如果没有产品或业务方可以确认，也要把决定写清楚：</p>
+<pre><code class="language-markdown">Decision:
+- For this change, buyer cancellation creates refund request synchronously.
+- Support agent cancellation remains out of scope.
+- Mobile fallback display will be handled in a separate change.
+
+Reason:
+- Current refund service already exposes synchronous create API.
+- No admin batch cancellation requirement is confirmed.
+</code></pre>
+<p>这不是形式主义。它是在给未来的代码审查和线上问题留证据。</p>
+<h2 id="线上-bug-的-requirements-怎么写">线上 bug 的 requirements 怎么写</h2>
+<p>很多程序员觉得只有新需求才需要 requirements，线上 bug 直接修就行。AI Coding 里，这个想法很容易出问题。</p>
+<p>比如线上报警：</p>
+<pre><code class="language-text">用户重复点击取消订单后，出现两条退款申请。
+</code></pre>
+<p>如果直接让 Agent 修，它可能只在按钮上加防重复点击，也可能只在接口里加锁，还可能改测试让它通过。真正需要先写清楚的是：重复请求在系统层面应该如何表现。</p>
+<p>可以写成：</p>
+<pre><code class="language-markdown"># Requirements: duplicate paid cancellation is idempotent
+
+## Goal
+
+When a buyer repeats paid order cancellation, the system must not create duplicate refund requests.
+
+## Current Behavior
+
+- Duplicate cancel requests may create multiple refund requests.
+- Existing pending order cancellation is not part of this bug.
+
+## Acceptance Criteria
+
+- Given a paid order with no refund request, when buyer cancels once, then one refund request is created.
+- Given a paid order with an existing refund request, when buyer cancels again, then no new refund request is created.
+- Given a duplicate request, response shape remains compatible with existing clients.
+
+## Error Cases
+
+- If refund request lookup fails, order status remains unchanged.
+
+## Out Of Scope
+
+- Do not change UI button debounce in this fix.
+- Do not change payment provider callback behavior.
+- Do not migrate historical duplicate refund records.
+</code></pre>
+<p>这份 requirements 把修复范围限定在后端幂等行为。UI 防重复点击可以作为后续增强，但不能代替服务端幂等。</p>
+<p>这就是 requirements 的价值：它先定义正确行为，再让 design 决定技术手段。</p>
+<h2 id="需求合同检查矩阵">需求合同检查矩阵</h2>
+<p><img alt="requirements 检查矩阵" src="../assets/content/docs/assets/diagrams/source/16-requirements-check-matrix.svg" /></p>
+<p>写完 <code>requirements.md</code> 后，用四个维度检查。</p>
+<p>第一，行为是否具体。</p>
+<p>能不能从文字直接写出测试？如果不能，说明还太虚。</p>
+<p>第二，旧行为是否保留。</p>
+<p>新需求通常只改变一部分路径。哪些旧行为不变必须写出来。</p>
+<p>第三，异常路径是否覆盖。</p>
+<p>失败、重复、并发、权限、外部系统不可用，这些是否需要说明。</p>
+<p>第四，非目标是否明确。</p>
+<p>不在本次范围的东西，如果不写，Agent 可能当成优化空间。</p>
+<h2 id="让-ai-帮你写-requirements-草稿">让 AI 帮你写 requirements 草稿</h2>
+<p>AI 很适合把原始需求整理成 requirements 草稿，但不要让它直接写成最终合同。</p>
+<p>可以这样提示：</p>
+<pre><code class="language-text">先不要写代码。
+
+请把下面需求整理成 requirements.md 草稿：
+
+需求：
+已支付订单不能直接取消，要走退款。
+
+要求：
+- 只写用户可见行为和业务验收条件。
+- 不写技术实现方案。
+- 使用 Goal / Scenarios / Acceptance Criteria / Error Cases / Out Of Scope / Open Questions。
+- 不确定的地方写 Open Questions，不要自行决定。
+</code></pre>
+<p>然后你要审。</p>
+<p>重点看：</p>
+<ul>
+<li>是否把实现写进了 requirements。</li>
+<li>是否遗漏旧行为。</li>
+<li>是否把未确认规则写成确定事实。</li>
+<li>是否缺异常路径。</li>
+<li>是否缺非目标。</li>
+</ul>
+<p>AI 可以生成草稿，但需求合同必须人确认。</p>
+<h2 id="一个完整-requirements-示例">一个完整 requirements 示例</h2>
+<p>下面是订单取消改退款的完整版本。</p>
+<pre><code class="language-markdown"># Requirements: paid order cancellation enters refund flow
+
+## Goal
+
+When a buyer cancels a paid order before shipping, the system should create a refund request instead of directly canceling the order.
+
+## Scenarios
+
+- Buyer cancels a pending order before payment.
+- Buyer cancels a paid order before shipping.
+- Buyer cancels a shipped order.
+- Buyer repeats a cancel request for the same paid order.
+
+## Acceptance Criteria
+
+- Given a pending order, when the buyer cancels it, then the order status becomes `canceled`.
+- Given a paid order, when the buyer cancels it, then the order status becomes `refund_requested`.
+- Given a shipped order, when the buyer cancels it, then the existing shipped-order rejection remains unchanged.
+- Given a repeated cancel request for a paid order with an existing refund request, then no duplicate refund request is created.
+- Existing API response shape remains compatible with current clients.
+
+## Error Cases
+
+- If refund request creation fails, the order status remains `paid`.
+- If payment provider is temporarily unavailable, the user receives a retryable error.
+
+## Out Of Scope
+
+- Payment provider callback handling.
+- Historical order data migration.
+- Admin batch cancellation.
+- Changing public API response shape.
+
+## Open Questions
+
+- Should refund request creation be synchronous or asynchronous?
+- What user-facing copy should appear when refund request creation fails?
+- Should support agents follow the same rule as buyers?
+</code></pre>
+<p>这份 requirements 没有说改哪个函数。它只定义行为。</p>
+<p>requirements 通过后，<code>design.md</code> 才有明确输入：根据当前代码结构决定在哪里实现、如何保持兼容、风险在哪里。</p>
+<h2 id="验收条件怎么写得可测试">验收条件怎么写得可测试</h2>
+<p>验收条件写得好不好，看它能不能变成测试。</p>
+<p>差：</p>
+<pre><code class="language-markdown">- 系统应该正确处理已支付订单。
+</code></pre>
+<p>这句话没法直接测试。</p>
+<p>好：</p>
+<pre><code class="language-markdown">- Given a paid order, when the buyer cancels it, then the order status becomes `refund_requested`.
+</code></pre>
+<p>它能直接变成测试用例：</p>
+<pre><code class="language-text">setup paid order
+call cancel
+assert status refund_requested
+</code></pre>
+<p>再比如：</p>
+<pre><code class="language-markdown">- Given refund request creation fails, when buyer cancels a paid order, then order status remains `paid`.
+</code></pre>
+<p>这能直接变成失败注入测试。</p>
+<p>如果一个验收条件不能变成测试、截图、接口调用或人工检查步骤，它就还不够清楚。</p>
+<h2 id="非目标怎么写">非目标怎么写</h2>
+<p>非目标不要写成“暂不考虑性能”这种空话。</p>
+<p>要写具体边界：</p>
+<pre><code class="language-markdown">## Out Of Scope
+
+- Do not change payment provider callback behavior.
+- Do not change admin batch cancellation.
+- Do not migrate historical order data.
+- Do not change public API response shape.
+</code></pre>
+<p>非目标有两个作用。</p>
+<p>第一，它保护现有系统。
+第二，它让 tasks 可以拆得更小。</p>
+<p>如果非目标没写，Agent 很可能把“支付回调也顺便改一下”当成合理方案。</p>
+<h2 id="open-questions-不要怕多">Open Questions 不要怕多</h2>
+<p>Open Questions 是好东西。</p>
+<p>它说明你没有把不确定性伪装成确定结论。</p>
+<p>比如：</p>
+<pre><code class="language-markdown">## Open Questions
+
+- Refund request creation should be sync or async?
+- Should support agents follow buyer-side cancel restriction?
+- What happens when refund provider returns a duplicate request error?
+</code></pre>
+<p>如果这些问题影响实现，就先确认；如果不影响第一步，可以写进 design 的风险和 tasks 的后续项。</p>
+<p>AI Coding 里，真正危险的是没有 Open Questions。那通常意味着 Agent 自己在替你做业务决定。</p>
+<h2 id="requirements-和测试的关系">requirements 和测试的关系</h2>
+<p><code>requirements.md</code> 不是测试文件，但它应该天然能推导出测试。</p>
+<p>可以在 requirements 末尾加一段：</p>
+<pre><code class="language-markdown">## Verification Ideas
+
+- Unit test: pending order cancel remains canceled.
+- Unit test: paid order cancel creates refund_requested.
+- Unit test: shipped order cancel remains rejected.
+- Unit test: duplicate paid cancel does not create duplicate refund request.
+- API compatibility check: response shape unchanged.
+</code></pre>
+<p>这不是 <code>tasks.md</code>，只是提示后续测试方向。</p>
+<p>真正的测试命令和实现顺序放到 tasks。</p>
+<h2 id="让-agent-生成-requirements-时要给它证据边界">让 Agent 生成 requirements 时，要给它证据边界</h2>
+<p>不要只说“帮我写 requirements”。这会让 Agent 按常识补业务规则。</p>
+<p>更合适的输入是：</p>
+<pre><code class="language-text">请生成 requirements.md 草稿，不要写代码。
+
+可用证据：
+- 用户需求：已支付订单不能直接取消，要走退款。
+- 当前代码：请先搜索订单取消入口、订单状态枚举、相关测试。
+- 只能把源码、测试和需求中能确认的内容写成事实。
+- 不确定的业务规则写进 Open Questions。
+
+输出要求：
+- 每条 Current Behavior 带文件路径。
+- Acceptance Criteria 使用 Given/When/Then。
+- Out Of Scope 写清不能改的模块和行为。
+</code></pre>
+<p>这里的关键不是模板，而是证据边界。</p>
+<p>Agent 可以搜索代码，可以读取测试，可以根据需求生成候选验收条件。但它不能把“常见电商系统通常怎么做”写成你项目的事实。</p>
+<p>审草稿时，重点看两类句子。</p>
+<p>第一类是没有来源的确定句：</p>
+<pre><code class="language-markdown">Refund request should be created asynchronously.
+</code></pre>
+<p>如果原始需求和源码都没支持这个结论，它应该改成 Open Question。</p>
+<p>第二类是过度抽象句：</p>
+<pre><code class="language-markdown">System should improve cancellation experience.
+</code></pre>
+<p>这句话不能测试，应该改成状态、响应、页面行为或错误码。</p>
+<h2 id="requirements-通过前不要进入-design">requirements 通过前，不要进入 design</h2>
+<p>有些需求看起来急，容易直接跳到设计。但 requirements 没过，design 越详细越危险。</p>
+<p>进入 design 前，至少确认这些问题：</p>
+<pre><code class="language-text">新行为是否能写成测试？
+旧行为是否写进合同？
+异常路径是否有期望结果？
+非目标是否具体到模块、接口或行为？
+Open Questions 里是否还有会影响实现路径的问题？
+</code></pre>
+<p>如果还有会影响实现的问题，比如“退款同步还是异步”“后台是否同规则”“新增状态老客户端能否识别”，就不要让 Agent 设计方案。</p>
+<p>可以先做两件事：</p>
+<ul>
+<li>让 Agent 搜索现有代码，补齐 Current Behavior。</li>
+<li>把业务决策问题发给人确认。</li>
+</ul>
+<p>这比让 Agent 在 design 里自作主张要便宜得多。</p>
+<h2 id="pr-里怎么呈现-requirements">PR 里怎么呈现 requirements</h2>
+<p>requirements 不一定要完整贴进 PR 描述，但 PR 需要能追溯到它。</p>
+<p>可以这样写：</p>
+<pre><code class="language-markdown">Requirement summary:
+- paid order cancellation now enters refund flow
+- pending and shipped cancellation behavior unchanged
+- response shape unchanged
+
+Spec:
+- `docs/specs/order-cancel-refund/requirements.md`
+
+Verification mapped from requirements:
+- pending cancel regression test
+- paid cancel refund_requested test
+- shipped cancel existing error test
+- duplicate paid cancel idempotency test
+</code></pre>
+<p>reviewer 不需要读很长的需求文档，也能知道这次行为合同是什么。</p>
+<p>对 AI Coding 来说，这一步还有另一个价值：后续让 Agent 做 code review 或补测试时，它可以直接拿 PR 描述和 requirements 对照，而不是重新猜需求。</p>
+<h2 id="状态值错误码和字段名要引用真实系统">状态值、错误码和字段名要引用真实系统</h2>
+<p>requirements 写行为，但并不意味着它可以随便命名状态和错误码。</p>
+<p>如果当前系统里订单状态叫 <code>PAID</code>、<code>CANCELLED</code>，你在 requirements 里写 <code>paid</code>、<code>canceled</code> 只是示意没有问题；但进入真实任务时，状态值必须和代码、接口或数据库一致。</p>
+<p>可以要求 Agent 先查这些材料：</p>
+<pre><code class="language-text">请先搜索：
+- order status enum
+- cancel related error codes
+- public API response schema
+- existing order cancel tests
+
+输出 requirements 草稿时：
+- 业务描述用自然语言。
+- 状态值、错误码、字段名使用源码里的真实名字。
+- 找不到的名字不要发明，写到 Open Questions。
+</code></pre>
+<p>这能避免一个很隐蔽的问题：requirements 看起来对，但实现时 Agent 为了匹配文档新增了一套不该存在的命名。</p>
+<p>比如系统里已有错误码：</p>
+<pre><code class="language-text">ORDER_ALREADY_SHIPPED
+ORDER_CANCEL_NOT_ALLOWED
+</code></pre>
+<p>requirements 就不要写成：</p>
+<pre><code class="language-markdown">- shipped order returns `SHIPPED_ORDER_ERROR`.
+</code></pre>
+<p>应该写：</p>
+<pre><code class="language-markdown">- shipped order still returns existing `ORDER_ALREADY_SHIPPED` error.
+</code></pre>
+<p>这句话同时表达了两个约束：错误码真实存在，并且本次不改。</p>
+<h2 id="需求质量不够时agent-会怎么误解">需求质量不够时，Agent 会怎么误解</h2>
+<p>看一个更贴近真实工作的例子：</p>
+<pre><code class="language-text">把会员到期提醒做一下，别让用户错过续费。
+</code></pre>
+<p>这句话如果直接交给 Agent，至少会出现这些分叉：</p>
+<ul>
+<li>到期前几天提醒？</li>
+<li>站内信、短信、邮件、App push 哪些渠道？</li>
+<li>免费会员、付费会员、企业会员是否一样？</li>
+<li>已取消自动续费的用户是否提醒？</li>
+<li>多次提醒是否去重？</li>
+<li>发送失败是否重试？</li>
+<li>法务和隐私策略是否允许发送？</li>
+</ul>
+<p>如果 requirements 只写“用户到期前收到提醒”，实现就会非常随意。</p>
+<p>更合适的写法是先把范围压住：</p>
+<pre><code class="language-markdown">## Goal
+
+Paid individual members should receive one in-app reminder 7 days before membership expiration.
+
+## Acceptance Criteria
+
+- Given a paid individual member expires in 7 days, when daily reminder job runs, then one in-app reminder is created.
+- Given reminder already exists for the same expiration cycle, when job runs again, then no duplicate reminder is created.
+- Given enterprise member, when job runs, then no reminder is created in this change.
+
+## Out Of Scope
+
+- SMS, email, and push notifications.
+- Enterprise membership reminder.
+- Auto-renew payment retry.
+- Marketing campaign copy.
+</code></pre>
+<p>这段 requirements 没有解决所有续费问题，但它把这次变更定义清楚了。Agent 可以围绕“个人付费会员、站内信、7 天、一次、去重”去搜索和实现。</p>
+<p>程序员写 requirements，不是为了把需求说得宏大，而是把这次要改的行为压到可执行范围。</p>
+<h2 id="常见错误">常见错误</h2>
+<p><strong>错误一：把技术实现写进需求。</strong></p>
+<p>需求写行为，技术方案写 design。</p>
+<p><strong>错误二：只有 happy path。</strong></p>
+<p>复杂需求必须写 error cases。尤其是外部系统失败、重复请求、并发和权限。</p>
+<p><strong>错误三：没有非目标。</strong></p>
+<p>非目标不写，Agent 容易扩大范围。</p>
+<p><strong>错误四：验收条件不可测试。</strong></p>
+<p>“体验更好”“逻辑正确”都不可测试。改成状态、响应、页面行为或命令结果。</p>
+<p><strong>错误五：把不确定问题写成确定规则。</strong></p>
+<p>不确定就写 Open Questions，先确认。</p>
+<h2 id="常见问题">常见问题</h2>
+<p><strong>requirements 要不要写中文还是英文？</strong></p>
+<p>看团队习惯。代码标识、状态值、错误码、命令保留英文；业务描述用中文也可以。关键是可测试、可追溯，不是语言选择。</p>
+<p><strong>如果需求来自线上 bug，requirements 还要写吗？</strong></p>
+<p>要写，但可以短。线上 bug 也需要定义“修复后应该是什么行为”“哪些旧行为不能变”“怎么证明没复发”。否则很容易只修当前报错路径。</p>
+<p><strong>验收条件是不是越多越好？</strong></p>
+<p>不是。验收条件要覆盖会改变结果的路径。重复写同一类场景会增加噪音。优先写状态分支、权限分支、异常路径、兼容性分支。</p>
+<p><strong>Open Questions 会不会显得需求没想清楚？</strong></p>
+<p>不会。Open Questions 是把不确定性显式暴露。真正危险的是没确认就让 Agent 默认选择一个实现。</p>
+<p><strong>requirements 变了，后面的 design 和 tasks 怎么办？</strong></p>
+<p>需要同步更新。尤其是 Acceptance Criteria、Out Of Scope、Error Cases 变化时，design 的方案和 tasks 的验证命令都可能要重拆。</p>
+<h2 id="可以直接复用的模板">可以直接复用的模板</h2>
+<pre><code class="language-markdown"># Requirements: &lt;change name&gt;
+
+## Goal
+
+&lt;One sentence describing the behavior change.&gt;
+
+## Scenarios
+
+- &lt;Actor + situation&gt;
+
+## Acceptance Criteria
+
+- Given &lt;state&gt;, when &lt;action&gt;, then &lt;observable result&gt;.
+
+## Error Cases
+
+- If &lt;failure&gt;, then &lt;expected behavior&gt;.
+
+## Out Of Scope
+
+- &lt;What this change must not touch.&gt;
+
+## Open Questions
+
+- &lt;Question that needs human confirmation.&gt;
+
+## Verification Ideas
+
+- &lt;Test, command, screenshot, API call, or manual check idea.&gt;
+</code></pre>
+<p>第一次写不要追求完美。先写出 Goal、Acceptance Criteria、Out Of Scope。复杂需求再补 Error Cases 和 Open Questions。</p>
+<h2 id="迁移建议">迁移建议</h2>
+<p>下次遇到一句模糊需求，先不要让 AI 改代码。让它生成 <code>requirements.md</code> 草稿，然后你只审三件事：</p>
+<ul>
+<li>行为是否可测试。</li>
+<li>旧行为是否保留。</li>
+<li>非目标是否明确。</li>
+</ul>
+<p>如果这三件事过不了，就不要进入 design。</p>
+<p><code>requirements.md</code> 写清后，<code>design.md</code> 才有基础。需求合同只定义要什么，设计文档要回答怎么在当前代码库里改，怎么控制兼容性、数据流、架构边界和验证风险。</p>
+<p>还有一种情况要直接拒绝继续：需求本身要求绕过现有安全、权限、审计或合规边界，但没有明确授权。</p>
+<p>比如：</p>
+<pre><code class="language-text">临时让所有客服都能取消已支付订单，先上线再说。
+</code></pre>
+<p>这不能直接写成 Acceptance Criteria。至少要先确认：</p>
+<ul>
+<li>哪些角色可以取消。</li>
+<li>是否需要操作日志。</li>
+<li>是否影响退款审批。</li>
+<li>是否需要灰度或开关。</li>
+<li>现有权限测试是否要保留。</li>
+</ul>
+<p>AI Coding 的速度越快，越不能把权限和审计当成实现细节。requirements 阶段发现这类问题，就应该停在 Open Questions，而不是让 design 替业务和安全决策背书。</p>
+<h2 id="可复查资料">可复查资料</h2>
+<ul>
+<li>GitHub Spec Kit 官方文档：<a href="https://github.github.com/spec-kit/">https://github.github.com/spec-kit/</a></li>
+<li>GitHub Spec Kit 仓库：<a href="https://github.com/github/spec-kit">https://github.com/github/spec-kit</a></li>
+<li>GitHub Blog: Spec-driven development with AI：<a href="https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/">https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/</a></li>
+<li>OpenSpec 官方站：<a href="https://openspec.dev/">https://openspec.dev/</a></li>
+</ul></article><div class="practice-link"><a href="https://github.com/DavidDingXu/learn-ai-coding/blob/main/personal-productivity-app/dev-process/01-openspec-today-plan-rollover.md" target="_blank" rel="noopener"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5M14 4l-4 16"/></svg> OpenSpec 业务需求实战 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></div><nav class="chapter-nav" aria-label="前后篇"><a href="15.html"><span>上一篇 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg></span><strong>SDD 是什么：先写规格，再写代码</strong></a><a href="17.html"><span>下一篇 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><strong>design.md 怎么写，AI 才不会补丁式开发</strong></a></nav><footer class="reader-footer">程序员 AI Coding 进阶实战 · <a href="../license.html">非商业使用</a><details class="community-mini"><summary>关注与交流 · 好好用 AI</summary><div class="community-section"><div><p>交流学习中的问题与实践心得。</p><p>代码问题和勘误，欢迎在 <a href="https://github.com/DavidDingXu/learn-ai-coding/issues" target="_blank" rel="noopener">GitHub 提交 Issue</a>。</p></div><a class="qr-link" href="../assets/wechat-official-account.jpg" target="_blank" rel="noopener" aria-label="查看好好用 AI 公众号二维码原图"><img src="../assets/wechat-official-account.jpg" alt="好好用 AI 微信公众号二维码" width="130" height="130" loading="lazy"><p class="qr-caption">微信扫码 · 点击查看原图</p></a></div></details></footer></main><aside class="context-sidebar" aria-label="本篇辅助导航"><div class="context-inner"><nav class="reading-route" aria-label="本篇路线"><details open><summary>本篇路线</summary><div class="toc">
+<ul>
+<li><a href="#requirementsmd-写什么不写什么">requirements.md 写什么，不写什么</a></li>
+<li><a href="#一个坏的-requirements-长什么样">一个坏的 requirements 长什么样</a></li>
+<li><a href="#从一句话需求拆成六块">从一句话需求拆成六块</a></li>
+<li><a href="#把现有行为和新行为分开写">把现有行为和新行为分开写</a></li>
+<li><a href="#需求确认不是让产品补文档">需求确认不是让产品补文档</a></li>
+<li><a href="#线上-bug-的-requirements-怎么写">线上 bug 的 requirements 怎么写</a></li>
+<li><a href="#需求合同检查矩阵">需求合同检查矩阵</a></li>
+<li><a href="#让-ai-帮你写-requirements-草稿">让 AI 帮你写 requirements 草稿</a></li>
+<li><a href="#一个完整-requirements-示例">一个完整 requirements 示例</a></li>
+<li><a href="#验收条件怎么写得可测试">验收条件怎么写得可测试</a></li>
+<li><a href="#非目标怎么写">非目标怎么写</a></li>
+<li><a href="#open-questions-不要怕多">Open Questions 不要怕多</a></li>
+<li><a href="#requirements-和测试的关系">requirements 和测试的关系</a></li>
+<li><a href="#让-agent-生成-requirements-时要给它证据边界">让 Agent 生成 requirements 时，要给它证据边界</a></li>
+<li><a href="#requirements-通过前不要进入-design">requirements 通过前，不要进入 design</a></li>
+<li><a href="#pr-里怎么呈现-requirements">PR 里怎么呈现 requirements</a></li>
+<li><a href="#状态值错误码和字段名要引用真实系统">状态值、错误码和字段名要引用真实系统</a></li>
+<li><a href="#需求质量不够时agent-会怎么误解">需求质量不够时，Agent 会怎么误解</a></li>
+<li><a href="#常见错误">常见错误</a></li>
+<li><a href="#常见问题">常见问题</a></li>
+<li><a href="#可以直接复用的模板">可以直接复用的模板</a></li>
+<li><a href="#迁移建议">迁移建议</a></li>
+<li><a href="#可复查资料">可复查资料</a></li>
+</ul>
+</div>
+</details></nav></div></aside></div><dialog class="search-dialog" id="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label for="course-search" id="search-label"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>搜索课程</label><button class="icon-button" aria-label="关闭搜索"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></form><input id="course-search" type="search" placeholder="搜索概念、代码或问题…" autocomplete="off" spellcheck="false"><p class="search-status" id="search-status" role="status">搜索全部 42 篇文章。</p><div class="search-results" id="search-results"></div><footer>↑ ↓ 选择结果 <span>Enter 打开 · Esc 关闭</span></footer></dialog>
+<dialog class="image-viewer" id="image-viewer" aria-label="放大配图"><header><span>查看配图</span><div class="image-actions"><button type="button" id="image-size">原尺寸</button><button type="button" id="close-image" autofocus>关闭</button></div></header><div class="image-canvas"><img id="large-image" alt=""></div><footer><p id="image-description"></p><a id="original-image" target="_blank" rel="noopener">打开原图 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></footer></dialog><div class="toast" id="toast" role="status"></div></body></html>

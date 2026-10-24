@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440">
+  <rect width="2560" height="1440" fill="#f8fafc"/>
+  <rect x="120" y="96" width="2320" height="1248" rx="32" fill="#ffffff" stroke="#d8dee9" stroke-width="3"/>
+  <text x="180" y="180" font-family="Arial, sans-serif" font-size="58" font-weight="700" fill="#111827">从聊天式开发到工程式 AI Coding</text>
+  <text x="180" y="238" font-family="Arial, sans-serif" font-size="30" fill="#4b5563">把“继续让 AI 修”换成“任务、上下文、计划、diff、验证、沉淀”的可检查流程。</text>
+  <defs>
+    <marker id="arrow2" markerWidth="18" markerHeight="18" refX="14" refY="9" orient="auto">
+      <path d="M 0 0 L 18 9 L 0 18 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <g font-family="Arial, sans-serif">
+    <rect x="210" y="350" width="850" height="610" rx="24" fill="#fff1f2" stroke="#fb7185" stroke-width="4"/>
+    <text x="270" y="430" font-size="42" font-weight="700" fill="#9f1239">聊天式开发循环</text>
+    <text x="300" y="520" font-size="32" fill="#1f2937">需求一句话</text>
+    <text x="300" y="600" font-size="32" fill="#1f2937">AI 直接改代码</text>
+    <text x="300" y="680" font-size="32" fill="#1f2937">测试失败继续修</text>
+    <text x="300" y="760" font-size="32" fill="#1f2937">diff 越来越大</text>
+    <text x="300" y="840" font-size="32" fill="#1f2937">靠感觉接受结果</text>
+    <path d="M650 505 C870 505 870 850 650 850 C430 850 430 505 650 505" fill="none" stroke="#9f1239" stroke-width="6"/>
+    <polygon points="650,505 616,488 620,526" fill="#9f1239"/>
+
+    <rect x="1500" y="350" width="850" height="610" rx="24" fill="#eff6ff" stroke="#60a5fa" stroke-width="4"/>
+    <text x="1560" y="430" font-size="42" font-weight="700" fill="#1d4ed8">工程式开发流水线</text>
+    <text x="1590" y="520" font-size="32" fill="#1f2937">任务判断</text>
+    <text x="1590" y="600" font-size="32" fill="#1f2937">上下文包</text>
+    <text x="1590" y="680" font-size="32" fill="#1f2937">计划 / 规格</text>
+    <text x="1590" y="760" font-size="32" fill="#1f2937">小 diff</text>
+    <text x="1590" y="840" font-size="32" fill="#1f2937">验证记录</text>
+    <line x1="1800" y1="510" x2="1800" y2="560" stroke="#1d4ed8" stroke-width="6" marker-end="url(#arrow2)"/>
+    <line x1="1800" y1="590" x2="1800" y2="640" stroke="#1d4ed8" stroke-width="6" marker-end="url(#arrow2)"/>
+    <line x1="1800" y1="670" x2="1800" y2="720" stroke="#1d4ed8" stroke-width="6" marker-end="url(#arrow2)"/>
+    <line x1="1800" y1="750" x2="1800" y2="800" stroke="#1d4ed8" stroke-width="6" marker-end="url(#arrow2)"/>
+
+    <line x1="1110" y1="655" x2="1450" y2="655" stroke="#475569" stroke-width="7" marker-end="url(#arrow2)"/>
+    <text x="1135" y="615" font-size="30" font-weight="700" fill="#334155">关键变化</text>
+    <text x="1135" y="705" font-size="26" fill="#475569">从追问 AI，变成控制流程</text>
+
+    <rect x="390" y="1100" width="1780" height="120" rx="20" fill="#111827"/>
+    <text x="455" y="1172" font-size="34" fill="#f9fafb">判断标准：每一步都能回答“输入是什么、改了什么、怎么证明、如何回滚”。</text>
+  </g>
+</svg>

@@ -1,0 +1,3 @@
+8b0203643789a3fa80d75329b6ba45fc5ffde213fee76745d7dac07c534ff061  learn-ai-coding-manifest.json
+34c3abfc9dc22900505f4896a24aeb01acdc131ed4e0c8a4dbf18f327f9a03ef  learn-ai-coding.epub
+e747374e44a53cc4e530b45427a525c4e17717fb06867c706e6d4f878a6973c2  learn-ai-coding.pdf

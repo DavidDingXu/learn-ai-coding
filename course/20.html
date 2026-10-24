@@ -1,0 +1,510 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OpenSpec、Spec Kit 与轻量 SDD 怎么选 · Learn AI Coding</title><meta name="description" content="从接手陌生代码库，到完成一次真实需求。沿着上下文、规格、实现、测试和复盘，建立可重复的 AI Coding 工作流。"><meta name="source-sha256" content="a560d7d5e85e9b71084d2a3b53d7dcd8e0e001966c558532b994e4940cb8fe33">
+<link rel="canonical" href="https://daviddingxu.github.io/learn-ai-coding/course/20.html"><link rel="icon" href="../assets/brand.png">
+<script>try{const t=localStorage.getItem('haohai-course-theme');document.documentElement.dataset.theme=t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light'}catch(_){document.documentElement.dataset.theme='light'}</script>
+<link rel="stylesheet" href="../assets/site.css"><script defer src="../assets/search-index.js"></script><script defer src="../assets/site.js"></script></head><body class="article-page" data-root="../" data-page="20"><a class="skip-link" href="#main-content">跳到正文</a><header class="site-header"><div class="header-inner"><button class="icon-button menu-toggle js-only" type="button" aria-label="打开课程目录" aria-controls="course-sidebar" aria-expanded="false"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+<a class="brand" href="../index.html" aria-label="Learn AI Coding · 学习站首页"><img src="../assets/brand.png" alt="" width="36" height="36"><span><strong>Learn AI Coding</strong><small>程序员 AI Coding 进阶实战</small></span></a>
+<nav class="header-nav" aria-label="主导航"><a href="../index.html#curriculum">课程目录</a><a href="../index.html#downloads">离线阅读</a><a href="https://github.com/DavidDingXu/learn-ai-coding" target="_blank" rel="noopener">GitHub <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></nav>
+<div class="header-controls"><button class="icon-button theme-toggle js-only" type="button" aria-label="切换到深色主题" title="切换到深色主题"><span class="theme-light-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A9 9 0 0 1 9.5 3.5a9 9 0 1 0 11 11Z"/></svg></span><span class="theme-dark-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></span></button><button class="search-trigger js-only" type="button" aria-label="搜索课程"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg><span>搜索课程</span><kbd>⌘ K</kbd></button></div></div><div class="reading-progress" aria-hidden="true"><span id="reading-progress-bar"></span></div></header><div class="sidebar-scrim" hidden></div><div class="reader-layout"><aside class="course-sidebar" id="course-sidebar" aria-label="课程目录"><div class="sidebar-heading"><a href="../index.html#curriculum">课程目录</a><button class="icon-button menu-close js-only" type="button" aria-label="关闭课程目录"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><nav aria-label="全部文章"><details class="sidebar-stage"><summary><span class="stage-index">模块 00</span>导读与学习地图</summary><a class="lesson-link" data-lesson="INTRO" href="introduction.html"><span class="lesson-number">·</span><span>程序员 AI Coding 进阶实战</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="00" href="00.html"><span class="lesson-number">00</span><span>程序员如何系统学习 AI Coding</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 01</span>AI Coding 底层心智</summary><a class="lesson-link" data-lesson="01" href="01.html"><span class="lesson-number">01</span><span>程序员用 AI Coding，真正的门槛不是 Prompt</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="02" href="02.html"><span class="lesson-number">02</span><span>从聊天式开发到工程式开发</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="03" href="03.html"><span class="lesson-number">03</span><span>AI Coding 的底层工作模型</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="04" href="04.html"><span class="lesson-number">04</span><span>AI 最擅长和最不擅长的开发任务</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 02</span>程序员工具工作台</summary><a class="lesson-link" data-lesson="05" href="05.html"><span class="lesson-number">05</span><span>Codex、Claude Code、Cursor、Copilot 怎么分工</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="06" href="06.html"><span class="lesson-number">06</span><span>一个程序员的 AI Coding 工作台怎么搭</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="07" href="07.html"><span class="lesson-number">07</span><span>App、CLI、IDE 怎么切换完成一次真实改动</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 03</span>上下文工程与代码库理解</summary><a class="lesson-link" data-lesson="08" href="08.html"><span class="lesson-number">08</span><span>上下文工程：为什么不是塞越多代码越好</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="09" href="09.html"><span class="lesson-number">09</span><span>代码地图不是手工文档：让 Agent 生成可检查的仓库导航</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="10" href="10.html"><span class="lesson-number">10</span><span>让 Agent 做代码搜索：怎样约束搜索目标、证据和停止条件</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="11" href="11.html"><span class="lesson-number">11</span><span>AGENTS.md / CLAUDE.md / Copilot Instructions</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="12" href="12.html"><span class="lesson-number">12</span><span>任务上下文包：一次需求到底该给 AI 什么</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="13" href="13.html"><span class="lesson-number">13</span><span>上下文污染与上下文清理</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="14" href="14.html"><span class="lesson-number">14</span><span>模块实战：让 AI 接手一个陌生代码模块</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage" open><summary><span class="stage-index">模块 04</span>SDD 与 OpenSpec 实战</summary><a class="lesson-link" data-lesson="15" href="15.html"><span class="lesson-number">15</span><span>SDD 是什么：先写规格，再写代码</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="16" href="16.html"><span class="lesson-number">16</span><span>从一句需求到 requirements.md</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="17" href="17.html"><span class="lesson-number">17</span><span>design.md 怎么写，AI 才不会补丁式开发</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="18" href="18.html"><span class="lesson-number">18</span><span>tasks.md 怎么拆：把复杂需求变成小 diff</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="19" href="19.html"><span class="lesson-number">19</span><span>OpenSpec 实战：把需求变更放进 repo</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="20" href="20.html" aria-current="page"><span class="lesson-number">20</span><span>OpenSpec、Spec Kit 与轻量 SDD 怎么选</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="21" href="21.html"><span class="lesson-number">21</span><span>模块实战：用 OpenSpec CLI 推进一次真实产品需求</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 05</span>小步开发测试与调试闭环</summary><a class="lesson-link" data-lesson="22" href="22.html"><span class="lesson-number">22</span><span>计划先行：让 AI 先解释它准备怎么改</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="23" href="23.html"><span class="lesson-number">23</span><span>小步开发：为什么要限制 AI 一次改动范围</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="24" href="24.html"><span class="lesson-number">24</span><span>TDD + AI Coding：先让失败测试约束模型</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="25" href="25.html"><span class="lesson-number">25</span><span>系统化调试：让 AI 基于证据排障</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="26" href="26.html"><span class="lesson-number">26</span><span>前后端验证闭环：页面、接口、数据库和副作用怎么一起验</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="27" href="27.html"><span class="lesson-number">27</span><span>AI 说“测试失败无关”时，程序员该怎么判断</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="28" href="28.html"><span class="lesson-number">28</span><span>模块实战：用 AI 完成一次 CLI 交互改造</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 06</span>Skill Superpowers 与工作流固化</summary><a class="lesson-link" data-lesson="29" href="29.html"><span class="lesson-number">29</span><span>Skill 是什么：从提示词到可复用工作流</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="30" href="30.html"><span class="lesson-number">30</span><span>Skill 原理解析：它如何约束 Agent 行为</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="31" href="31.html"><span class="lesson-number">31</span><span>Superpowers 工作流拆解：把工程纪律变成 Skill 链</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="32" href="32.html"><span class="lesson-number">32</span><span>自定义 Skill：把你的经验固化成个人能力</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="33" href="33.html"><span class="lesson-number">33</span><span>外部工具接入：MCP 在 AI Coding 里到底有什么用</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="34" href="34.html"><span class="lesson-number">34</span><span>多 Agent 与自动化：什么时候拆，什么时候不要拆</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="35" href="35.html"><span class="lesson-number">35</span><span>模块实战：用 Superpowers 固化一次业务需求的调试和评审</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="36" href="36.html"><span class="lesson-number">36</span><span>模块实战：给 AI 接一个只读项目工具</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 07</span>综合实战与资产沉淀</summary><a class="lesson-link" data-lesson="37" href="37.html"><span class="lesson-number">37</span><span>综合实战：一个真实需求的 AI Coding 最佳实践</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="38" href="38.html"><span class="lesson-number">38</span><span>综合实战：从一次交付沉淀个人规则库</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 08</span>个人工程资产</summary><a class="lesson-link" data-lesson="39" href="39.html"><span class="lesson-number">39</span><span>从个人提效到个人工程系统</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="END" href="closing.html"><span class="lesson-number">·</span><span>写在专栏结束时：把 AI Coding 留在日常工程里</span><span class="lesson-state" aria-hidden="true"></span></a></details></nav><p class="sidebar-note">给清目标，保留证据，逐步交付。</p></aside><main class="reader-main" id="main-content"><div class="article-context"><span>SDD 与 OpenSpec 实战</span><div class="reading-tools js-only"><div class="font-controls" role="group" aria-label="正文字号"><button type="button" data-font="-1" aria-label="减小正文字号">A−</button><span id="font-size-label" aria-live="polite">18</span><button type="button" data-font="1" aria-label="增大正文字号">A+</button></div><button type="button" class="focus-toggle" aria-pressed="false"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg><span>专注阅读</span></button></div></div><div class="mobile-context"><nav class="reading-route" aria-label="本篇路线"><details><summary>本篇路线</summary><div class="toc">
+<ul>
+<li><a href="#先把三者的边界说清楚">先把三者的边界说清楚</a></li>
+<li><a href="#用一张决策图先分流">用一张决策图先分流</a></li>
+<li><a href="#轻量-sdd最适合个人高频使用">轻量 SDD：最适合个人高频使用</a></li>
+<li><a href="#openspec适合存量系统的行为变更">OpenSpec：适合存量系统的行为变更</a></li>
+<li><a href="#spec-kit适合完整-sdd-流程和工具集成">Spec Kit：适合完整 SDD 流程和工具集成</a></li>
+<li><a href="#三者怎么映射到真实工作">三者怎么映射到真实工作</a></li>
+<li><a href="#一个更实用的选择表">一个更实用的选择表</a></li>
+<li><a href="#不要把-spec-kit-和-openspec-写进同一个任务上下文">不要把 Spec Kit 和 OpenSpec 写进同一个任务上下文</a></li>
+<li><a href="#选型时最容易犯的五个错">选型时最容易犯的五个错</a></li>
+<li><a href="#给个人程序员的落地顺序">给个人程序员的落地顺序</a></li>
+<li><a href="#真正的选择标准谁来维护-source-of-truth">真正的选择标准：谁来维护 source of truth</a></li>
+<li><a href="#常见问题">常见问题</a></li>
+<li><a href="#可复查资料">可复查资料</a></li>
+</ul>
+</div>
+</details></nav></div><article id="article-body"><h1 id="openspecspec-kit-与轻量-sdd-怎么选">OpenSpec、Spec Kit 与轻量 SDD 怎么选</h1>
+<p>程序员做 AI Coding，很容易在 SDD 这里走偏。</p>
+<p>一种偏法是完全不用规格。所有需求都写进聊天窗口，要求 AI “理解代码后实现”。这在小改动里能跑通，在复杂需求里很快失控：旧行为说不清，技术边界说不清，测试意图说不清，最后只剩一个很大的 diff。</p>
+<p>另一种偏法是看到框架就上框架。一个字段展示改动，也要搞完整 spec、plan、tasks、workflow。流程看起来正规，实际成本比收益高。</p>
+<p>不要先问“哪个工具更强”，先看任务形态：</p>
+<ul>
+<li>这次变更是不是一次性的。</li>
+<li>它会不会改变长期行为合同。</li>
+<li>是否已有系统行为需要作为 source of truth。</li>
+<li>是否需要工具帮你生成、校验、串联完整 SDD artifact。</li>
+<li>后续 AI 是否会反复接手同一领域。</li>
+</ul>
+<p>结论先说：</p>
+<p>小而明确、一次性的复杂任务，用轻量 SDD。</p>
+<p>存量系统里反复变化的业务领域，用 OpenSpec。</p>
+<p>偏 0 到 1、希望用工具链驱动完整 Spec -&gt; Plan -&gt; Tasks -&gt; Implement 流程，或者需要多 Agent 集成，用 Spec Kit。</p>
+<p>不要把三者理解成低级、中级、高级。它们解决的是不同问题。</p>
+<p><img alt="SDD 工具选择地图" src="../assets/content/docs/assets/diagrams/source/20-sdd-tool-selection-map.svg" /></p>
+<h2 id="先把三者的边界说清楚">先把三者的边界说清楚</h2>
+<p>轻量 SDD 是一种 repo-local 写法，不是一个官方框架。</p>
+<p>它通常就是在项目里放一个临时规格目录：</p>
+<pre><code class="language-text">.ai/tasks/paid-order-cancel-refund/
+├── requirements.md
+├── design.md
+├── tasks.md
+└── verification.md
+</code></pre>
+<p>它的优势是启动成本低。你不需要安装工具，不需要改项目模板，不需要学习新命令。只要把需求、设计、任务和验证写到固定位置，就能让 Agent 读到稳定上下文。</p>
+<p>它的弱点也明显：完成后这些文件是否归档、是否成为长期系统合同、下一次 AI 是否会优先读取，全靠你自己的工作习惯。</p>
+<p>OpenSpec 是变更管理层。</p>
+<p>官方文档当前把 <code>openspec/specs/</code> 定义为系统当前行为，把 <code>openspec/changes/</code> 定义为拟议变更。每个 change 里有 <code>proposal.md</code>、<code>design.md</code>、<code>tasks.md</code> 和 delta specs。归档时，delta spec 里的 ADDED、MODIFIED、REMOVED 会合并回主 <code>specs/</code>。</p>
+<p>它的优势是把“当前事实”和“拟议变更”分开。对存量系统很重要。</p>
+<p>它的弱点是需要你维护主 specs。如果主 specs 过期，Agent 会被一个看起来权威但实际错误的上下文带偏。</p>
+<p>Spec Kit 是完整 SDD 工具链。</p>
+<p>GitHub Spec Kit 官方文档当前描述的核心流程是 Spec -&gt; Plan -&gt; Tasks -&gt; Implement。quick start 里还推荐在有歧义的生产功能中加入 <code>/speckit.clarify</code>、<code>/speckit.checklist</code>、<code>/speckit.analyze</code>，并提供多种 AI coding agent integration、extensions、presets、workflows 等能力。</p>
+<p>它的优势是流程完整、集成面广、模板和命令体系清楚，适合从需求到实现的结构化推进。</p>
+<p>它的弱点是对小任务会显得重，而且常被误用成“把完整流程跑一遍就等于质量更高”。真正的质量仍然来自规格质量、代码审查和验证证据。</p>
+<h2 id="用一张决策图先分流">用一张决策图先分流</h2>
+<p><img alt="SDD 选型流程" src="../assets/content/docs/assets/diagrams/source/20-sdd-decision-flow.svg" /></p>
+<p>实际工作里，我会先问第一个问题：</p>
+<pre><code class="language-text">这次变更会改变长期行为合同吗？
+</code></pre>
+<p>不会，就用轻量 SDD。</p>
+<p>例如：</p>
+<ul>
+<li>给已有 API 增加一个日志字段。</li>
+<li>修一个明确的空指针。</li>
+<li>修改页面加载状态文案。</li>
+<li>给已存在行为补一组回归测试。</li>
+</ul>
+<p>这些任务需要上下文和验证，但不一定需要长期规格资产。你只要写清：</p>
+<pre><code class="language-text">需求是什么
+不改什么
+涉及哪些文件
+怎么验证
+失败后怎么停
+</code></pre>
+<p>就够了。</p>
+<p>第二个问题：</p>
+<pre><code class="language-text">是否已有系统行为需要作为 source of truth？
+</code></pre>
+<p>有，就优先考虑 OpenSpec。</p>
+<p>例如订单、支付、权限、库存、风控、结算、消息投递。这些领域里，AI 最容易犯的错不是语法，而是重新解释业务规则。OpenSpec 的 <code>specs/</code> 可以让它先读取当前行为，再处理 <code>changes/</code> 里的拟议变更。</p>
+<p>第三个问题：</p>
+<pre><code class="language-text">是否需要工具链帮你管理完整 SDD 流程和 Agent 集成？
+</code></pre>
+<p>需要，就考虑 Spec Kit。</p>
+<p>例如你在做一个新功能包、新服务、新工具，想让工具生成规格、计划、任务，并且希望不同 AI coding agent 都能进入同一套流程。Spec Kit 的 integration、command、template、preset 更适合这类场景。</p>
+<h2 id="轻量-sdd最适合个人高频使用">轻量 SDD：最适合个人高频使用</h2>
+<p>轻量 SDD 的最大价值，是让你不再把复杂需求交给一次聊天。</p>
+<p>它适合这些任务：</p>
+<ul>
+<li>需求不大，但有业务边界。</li>
+<li>改动不需要长期归档成系统 spec。</li>
+<li>你希望快速把 Agent 限制在小 diff 里。</li>
+<li>项目不方便引入额外工具。</li>
+<li>你还在摸索一个团队或个人的写法，不想过早绑定框架。</li>
+</ul>
+<p>一个比较稳的目录是：</p>
+<pre><code class="language-text">.ai/tasks/&lt;task-name&gt;/
+├── requirements.md
+├── design.md
+├── tasks.md
+└── verification.md
+</code></pre>
+<p><code>requirements.md</code> 写行为：</p>
+<pre><code class="language-markdown"># Requirements: paid order cancellation
+
+## Current Behavior
+- Pending orders can be canceled directly.
+- Shipped orders reject cancellation.
+- Paid orders currently become canceled directly.
+
+## Target Behavior
+- Paid orders become refund_requested.
+- Exactly one refund request is created.
+- Duplicate cancellation does not create duplicate refund requests.
+- Refund creation failure leaves the order paid.
+
+## Out of Scope
+- Payment provider callback behavior.
+- Public API response shape.
+- Database schema migration.
+</code></pre>
+<p><code>design.md</code> 写技术边界：</p>
+<pre><code class="language-markdown"># Design
+
+## Ownership
+- `OrderCancelService` orchestrates cancellation.
+- `OrderStatusTransition` owns allowed transitions.
+- `RefundRequestService` owns refund request creation.
+
+## Compatibility
+- Keep API response shape unchanged.
+- Do not change payment provider callback.
+- No database migration in this change.
+
+## Failure Handling
+- Persist refund_requested only after refund request creation succeeds.
+</code></pre>
+<p><code>tasks.md</code> 写小步 diff：</p>
+<pre><code class="language-markdown"># Tasks
+
+## Task 1: Add focused tests
+Files:
+- `test/order/cancel.test.ts`
+
+Verify:
+- `npm test -- order-cancel`
+
+Stop if:
+- existing pending or shipped behavior fails before implementation.
+
+## Task 2: Add status transition
+Files:
+- `src/order/status-transition.ts`
+
+Verify:
+- `npm test -- order-cancel`
+
+Stop if:
+- public API response shape must change.
+</code></pre>
+<p><code>verification.md</code> 记录证据：</p>
+<pre><code class="language-markdown"># Verification
+
+## Commands
+
+```bash
+npm test -- order-cancel
+npm test -- order
+```
+
+## Results
+- `npm test -- order-cancel`: pass
+- `npm test -- order`: pass
+
+## Residual Risk
+- Payment provider callback was out of scope.
+</code></pre>
+<p>注意，这里没有为了“显得工程化”新建一个样板项目。它直接服务真实变更。</p>
+<p>轻量 SDD 的风险也要看清：</p>
+<ul>
+<li>没有工具强制你归档。</li>
+<li>没有 delta spec 合并语义。</li>
+<li>没有跨 Agent 的命令集成。</li>
+<li>文档结构全靠项目规则维护。</li>
+</ul>
+<p>所以它适合个人高频工作流，不适合承担长期行为合同。</p>
+<h2 id="openspec适合存量系统的行为变更">OpenSpec：适合存量系统的行为变更</h2>
+<p>OpenSpec 的强项，是处理已有系统的变更。</p>
+<p>官方 concepts 文档强调它是 brownfield-first，delta-based 的方式让你能指定对现有行为的修改，而不是只描述新系统。这一点对 AI Coding 很关键。</p>
+<p>很多真实需求不是“做一个新能力”，而是：</p>
+<ul>
+<li>旧逻辑 A 保持不变。</li>
+<li>旧逻辑 B 改成 B2。</li>
+<li>旧逻辑 C 删除。</li>
+<li>新逻辑 D 加进来。</li>
+</ul>
+<p>如果这些都写在一个 prompt 里，Agent 很容易把 A 也顺手改了。</p>
+<p>OpenSpec 的目录给了明确边界：</p>
+<pre><code class="language-text">openspec/
+├── specs/
+│   └── order/spec.md
+└── changes/
+    └── paid-order-cancel-refund/
+        ├── proposal.md
+        ├── design.md
+        ├── tasks.md
+        └── specs/order/spec.md
+</code></pre>
+<p>主 <code>specs/order/spec.md</code> 写当前行为：</p>
+<pre><code class="language-markdown">### Requirement: Pending order cancellation
+The system SHALL allow pending orders to be canceled.
+
+### Requirement: Shipped order cancellation
+The system SHALL reject cancellation for shipped orders.
+</code></pre>
+<p>change 里的 delta spec 写变化：</p>
+<pre><code class="language-markdown">## MODIFIED Requirements
+
+### Requirement: Paid order cancellation
+The system SHALL move paid orders to refund_requested when a user cancels them.
+</code></pre>
+<p>这个结构比轻量 SDD 多了一层语义：当前系统事实和当前变更不是同一个东西。</p>
+<p>OpenSpec 适合这些情况：</p>
+<ul>
+<li>同一领域会连续多次变更。</li>
+<li>你希望 AI 每次先读取当前行为。</li>
+<li>需求有增、改、删语义。</li>
+<li>变更完成后需要归档成新的系统事实。</li>
+<li>需要保留 change 历史，方便后续追溯。</li>
+</ul>
+<p>OpenSpec 不适合这些情况：</p>
+<ul>
+<li>项目还没有形成稳定业务领域。</li>
+<li>只有一次性小改动。</li>
+<li>没人维护 <code>openspec/specs/</code>。</li>
+<li>团队会把 spec 当成形式文档，代码变了 spec 不更新。</li>
+</ul>
+<p>最后这一点最重要。OpenSpec 不是自动真理机。它只是给规格资产一个结构。主 specs 是否可靠，仍然取决于你是否在变更后同步和归档。</p>
+<h2 id="spec-kit适合完整-sdd-流程和工具集成">Spec Kit：适合完整 SDD 流程和工具集成</h2>
+<p>Spec Kit 更像一个完整的 SDD 工作台。</p>
+<p>从官方 quick start 看，它不是只提供一个模板目录，而是通过 Specify CLI 初始化项目，并给 AI coding agent 提供命令。核心命令包括：</p>
+<pre><code class="language-text">/speckit.constitution
+/speckit.specify
+/speckit.plan
+/speckit.tasks
+/speckit.implement
+</code></pre>
+<p>生产功能里，官方 quick start 还建议把这些质量动作纳入常规流程：</p>
+<pre><code class="language-text">/speckit.clarify
+/speckit.checklist
+/speckit.analyze
+</code></pre>
+<p>这几个命令背后的工程意图很好理解：</p>
+<p><code>constitution</code> 写项目原则和长期约束。</p>
+<p><code>specify</code> 写要做什么和为什么做，尽量不在这个阶段陷入技术栈。</p>
+<p><code>clarify</code> 处理规格里的歧义。</p>
+<p><code>checklist</code> 检查需求质量。</p>
+<p><code>plan</code> 进入技术方案。</p>
+<p><code>tasks</code> 拆任务。</p>
+<p><code>analyze</code> 检查 spec、plan、tasks 之间的一致性。</p>
+<p><code>implement</code> 执行。</p>
+<p>Spec Kit 适合这些情况：</p>
+<ul>
+<li>你要从 0 到 1 做一个较完整功能或工具。</li>
+<li>你希望工具直接生成 SDD 目录、脚本和命令。</li>
+<li>你希望同一个 SDD 流程能被不同 Agent 使用。</li>
+<li>你需要模板、preset、extension 去适配团队或个人规范。</li>
+<li>你愿意接受更完整的流程成本，换取更强的结构化。</li>
+</ul>
+<p>Spec Kit 不适合这些情况：</p>
+<ul>
+<li>只是修一个局部 bug。</li>
+<li>当前项目不想引入新的 CLI 和模板。</li>
+<li>你还没有能力审它生成的 spec、plan、tasks。</li>
+<li>你把 <code>/speckit.implement</code> 当成“自动写完并保证正确”的按钮。</li>
+</ul>
+<p>最后一条尤其要警惕。Spec Kit 能让上下文更结构化，但不能替代工程判断。<code>analyze</code> 能检查 artifact 之间的一致性，不等于业务一定正确；<code>implement</code> 能驱动实现，不等于不用做代码审查和测试。</p>
+<h2 id="三者怎么映射到真实工作">三者怎么映射到真实工作</h2>
+<p>同一个需求，在三种路线下会长得很不一样。</p>
+<p>需求：</p>
+<pre><code class="language-text">已支付订单取消后，不再直接 canceled，而是进入 refund_requested，并创建一次退款请求。
+</code></pre>
+<p>如果用轻量 SDD，你会创建：</p>
+<pre><code class="language-text">.ai/tasks/paid-order-cancel-refund/
+├── requirements.md
+├── design.md
+├── tasks.md
+└── verification.md
+</code></pre>
+<p>然后让 Agent 逐个 task 做。</p>
+<p>如果用 OpenSpec，你会先确认当前 specs：</p>
+<pre><code class="language-text">openspec/specs/order/spec.md
+</code></pre>
+<p>然后开 change：</p>
+<pre><code class="language-text">openspec/changes/paid-order-cancel-refund/
+├── proposal.md
+├── design.md
+├── tasks.md
+└── specs/order/spec.md
+</code></pre>
+<p>实现完成后 archive，把 delta spec 合并回主 specs。</p>
+<p>如果用 Spec Kit，你会围绕命令流程推进：</p>
+<pre><code class="language-text">/speckit.constitution
+/speckit.specify
+/speckit.clarify
+/speckit.checklist
+/speckit.plan
+/speckit.tasks
+/speckit.analyze
+/speckit.implement
+</code></pre>
+<p>然后在每个阶段审 artifact。</p>
+<p>这三种方式都可以做同一个需求，但它们解决的主问题不同：</p>
+<pre><code class="language-text">轻量 SDD：约束一次任务
+OpenSpec：维护存量行为变更
+Spec Kit：驱动完整 SDD 生命周期
+</code></pre>
+<p>如果你只记住这三句话，选型基本不会偏得太远。</p>
+<h2 id="一个更实用的选择表">一个更实用的选择表</h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>推荐</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>修复明确 bug，影响范围小</td>
+<td>轻量 SDD</td>
+<td>写清复现、边界和验证即可</td>
+</tr>
+<tr>
+<td>中等复杂需求，但不会长期维护规格</td>
+<td>轻量 SDD</td>
+<td>成本低，能控制小 diff</td>
+</tr>
+<tr>
+<td>订单、权限、支付、库存等存量行为变化</td>
+<td>OpenSpec</td>
+<td>需要当前行为和拟议变更分离</td>
+</tr>
+<tr>
+<td>同一领域会反复被 AI 接手</td>
+<td>OpenSpec</td>
+<td>主 specs 能成为长期上下文入口</td>
+</tr>
+<tr>
+<td>新项目、新工具、新功能包</td>
+<td>Spec Kit</td>
+<td>完整流程更有价值</td>
+</tr>
+<tr>
+<td>需要多 AI coding agent 使用同一套流程</td>
+<td>Spec Kit</td>
+<td>integration 和命令体系更强</td>
+</tr>
+<tr>
+<td>需要自定义模板、preset、extension</td>
+<td>Spec Kit</td>
+<td>工具内建扩展机制</td>
+</tr>
+<tr>
+<td>团队暂时没人维护规格资产</td>
+<td>轻量 SDD</td>
+<td>先不要引入长期 spec 负债</td>
+</tr>
+<tr>
+<td>只改文案、样式或小配置</td>
+<td>不必 SDD</td>
+<td>直接改，但保留验证证据</td>
+</tr>
+</tbody>
+</table></div>
+<p>这个表不是死规则。真实项目里可以组合使用。</p>
+<p>例如，一个 repo 可以用 OpenSpec 维护订单、支付这些高风险领域，同时普通 UI 改动仍然用轻量 SDD。另一个新工具项目可以用 Spec Kit 初始化完整流程，再把其中的 project principles 和 task 拆分习惯迁移到自己的轻量 SDD 模板里。</p>
+<p>工具之间不是互斥关系，真正要避免的是把它们混成一锅。</p>
+<h2 id="不要把-spec-kit-和-openspec-写进同一个任务上下文">不要把 Spec Kit 和 OpenSpec 写进同一个任务上下文</h2>
+<p>很多人会想：“既然都好，那我把 Spec Kit、OpenSpec、自己手写的 requirements 都给 AI，看它综合一下。”</p>
+<p>这通常会污染上下文。</p>
+<p>因为三者对 artifact 的语义不同：</p>
+<ul>
+<li>轻量 SDD 的 <code>requirements.md</code> 是一次任务合同。</li>
+<li>OpenSpec 的 <code>specs/</code> 是当前系统行为，<code>changes/</code> 是拟议变更。</li>
+<li>Spec Kit 的 spec/plan/tasks 是一个工具链阶段产物。</li>
+</ul>
+<p>如果你同时给 Agent 三套结构，它可能分不清哪个是 source of truth。</p>
+<p>一次任务只选一条主线。</p>
+<p>用轻量 SDD，就明确：</p>
+<pre><code class="language-text">本次任务以 `.ai/tasks/&lt;task&gt;/` 为准。
+不要读取其他草稿目录。
+</code></pre>
+<p>用 OpenSpec，就明确：</p>
+<pre><code class="language-text">先读取 `openspec/specs/&lt;domain&gt;/spec.md`。
+再读取 `openspec/changes/&lt;change&gt;/` 下的 proposal、delta spec、design、tasks。
+当前授权只执行 tasks.md 中指定 task。
+</code></pre>
+<p>用 Spec Kit，就明确：</p>
+<pre><code class="language-text">按当前 feature 的 Spec Kit artifact 推进。
+先运行 analyze 或人工检查 spec/plan/tasks 一致性，再实现。
+</code></pre>
+<p>主线清楚，Agent 才不容易把旧草稿、旧设计和当前任务混在一起。</p>
+<h2 id="选型时最容易犯的五个错">选型时最容易犯的五个错</h2>
+<p><strong>错误一：把轻量 SDD 当成低配方案。</strong></p>
+<p>轻量不等于粗糙。对个人高频任务，它反而是最实用的起点。只要 requirements、design、tasks、verification 写得扎实，它能解决大多数复杂但一次性的变更。</p>
+<p><strong>错误二：OpenSpec 只写 changes，不维护 specs。</strong></p>
+<p>这会失去 OpenSpec 最核心的价值。没有当前系统行为，delta spec 就没有参照。</p>
+<p><strong>错误三：Spec Kit 跑完命令就直接相信结果。</strong></p>
+<p>Spec Kit 生成 artifact 后仍然要审。尤其是 clarify 是否真的消除了歧义，plan 是否符合现有代码，tasks 是否能小步验证。</p>
+<p><strong>错误四：把框架能力当成项目能力。</strong></p>
+<p>工具支持 integration、extension、preset，不代表你的 repo 已经适合它。项目规则、测试命令、模块边界、CI 反馈这些基础能力如果缺失，框架只能让问题更结构化地暴露出来。</p>
+<p><strong>错误五：为了显得专业，把小任务流程复杂化。</strong></p>
+<p>如果一个改动 30 分钟能完成，验证也清楚，不需要把它扩成完整 SDD 流程。AI Coding 要服务交付，不是让每个任务都变成仪式。</p>
+<h2 id="给个人程序员的落地顺序">给个人程序员的落地顺序</h2>
+<p>如果你现在没有任何 SDD 习惯，不建议一上来装一堆框架。</p>
+<p>先从轻量 SDD 开始。</p>
+<p>给自己的 repo 固定一个目录：</p>
+<pre><code class="language-text">.ai/tasks/
+</code></pre>
+<p>每次复杂任务都写四个文件：</p>
+<pre><code class="language-text">requirements.md
+design.md
+tasks.md
+verification.md
+</code></pre>
+<p>连续做 5 个真实任务后，再回看：</p>
+<ul>
+<li>哪些需求反复出现在同一领域。</li>
+<li>哪些旧行为总需要重复解释。</li>
+<li>哪些变更完成后应该沉淀成长期合同。</li>
+</ul>
+<p>如果答案集中在某几个业务领域，再引入 OpenSpec。</p>
+<p>先只覆盖一个领域，例如：</p>
+<pre><code class="language-text">openspec/specs/order/spec.md
+</code></pre>
+<p>不要一次补全整个系统。一次补 3 到 5 条高风险行为，然后用一个真实 change 走完整流程。</p>
+<p>如果你开始做新工具、新产品模块，或者需要让不同 Agent 共享一套 SDD 命令，再评估 Spec Kit。</p>
+<p>安装前先做三件事：</p>
+<pre><code class="language-bash">uv --version
+git status --short
+specify --help
+</code></pre>
+<p>如果使用 one-shot：</p>
+<pre><code class="language-bash">uvx --from git+https://github.com/github/spec-kit.git specify init .
+</code></pre>
+<p>如果使用持久安装，先看官方安装文档和当前 release。不要把网上旧教程里的命令直接复制到生产 repo。</p>
+<h2 id="真正的选择标准谁来维护-source-of-truth">真正的选择标准：谁来维护 source of truth</h2>
+<p>所有 SDD 工具最后都会回到一个问题：</p>
+<pre><code class="language-text">这次任务完成后，谁负责维护事实？
+</code></pre>
+<p>轻量 SDD 的事实，通常停留在任务目录和 verification 里。它适合短生命周期。</p>
+<p>OpenSpec 的事实，应该沉淀到 <code>openspec/specs/</code>。它适合长期行为合同。</p>
+<p>Spec Kit 的事实，分布在它生成的 spec、plan、tasks、constitution 和扩展模板里。它适合完整流程，但也更需要你理解每个 artifact 的职责。</p>
+<p>如果没人维护事实，工具越完整，过期信息越多。</p>
+<p>AI Coding 最怕的不是没有文档，而是有一堆过期但看起来很正式的文档。</p>
+<p>所以选型时不要只问“哪个框架能力最多”，要问：</p>
+<ul>
+<li>这个 repo 是否有稳定的当前行为规格。</li>
+<li>我是否愿意在代码变更后更新规格。</li>
+<li>Agent 下次会不会优先读取这些规格。</li>
+<li>测试和验证能否证明规格没有漂移。</li>
+</ul>
+<p>这些问题答不上来，先用轻量 SDD。</p>
+<p>这些问题答得上来，再引入 OpenSpec 或 Spec Kit。</p>
+<h2 id="常见问题">常见问题</h2>
+<p><strong>轻量 SDD 能不能和 OpenSpec 共存？</strong></p>
+<p>可以，但同一次任务最好只选一条主线。OpenSpec 覆盖高风险长期领域，轻量 SDD 处理普通一次性任务，是比较实际的组合。</p>
+<p><strong>Spec Kit 和 OpenSpec 谁更适合程序员？</strong></p>
+<p>看任务。存量系统行为变更更偏 OpenSpec；完整 SDD 流程、新项目、多 Agent 集成更偏 Spec Kit。专业不等于选更重的工具，而是能控制成本和风险。</p>
+<p><strong>已经用了 Spec Kit，还需要 AGENTS.md 吗？</strong></p>
+<p>需要。Spec Kit 能生成和组织流程，但项目长期规则、验证命令、禁止事项、代码风格仍然需要在 Agent 能稳定读取的位置维护。具体位置以你使用的 agent integration 为准。</p>
+<p><strong>OpenSpec 能不能替代测试？</strong></p>
+<p>不能。OpenSpec 维护行为规格，测试提供可执行证据。没有测试，Agent 仍然可能实现出“看起来符合 spec”的错误代码。</p>
+<p><strong>什么时候不要上任何 SDD？</strong></p>
+<p>很小、风险低、验证明确的改动可以直接做。例如修 typo、改配置默认值、调整非核心样式。但也要保留最基本的 diff 审查和验证记录。</p>
+<h2 id="可复查资料">可复查资料</h2>
+<ul>
+<li>GitHub Spec Kit 官方文档：<a href="https://github.github.io/spec-kit/">https://github.github.io/spec-kit/</a></li>
+<li>GitHub Spec Kit quick start：<a href="https://github.github.io/spec-kit/quickstart.html">https://github.github.io/spec-kit/quickstart.html</a></li>
+<li>GitHub Spec Kit integrations：<a href="https://github.github.io/spec-kit/reference/integrations.html">https://github.github.io/spec-kit/reference/integrations.html</a></li>
+<li>GitHub Spec Kit CLI reference：<a href="https://github.github.io/spec-kit/reference/overview.html">https://github.github.io/spec-kit/reference/overview.html</a></li>
+<li>OpenSpec getting started：<a href="https://github.com/Fission-AI/OpenSpec/blob/main/docs/getting-started.md">https://github.com/Fission-AI/OpenSpec/blob/main/docs/getting-started.md</a></li>
+<li>OpenSpec concepts：<a href="https://github.com/Fission-AI/OpenSpec/blob/main/docs/concepts.md">https://github.com/Fission-AI/OpenSpec/blob/main/docs/concepts.md</a></li>
+</ul></article><div class="practice-link"><a href="https://github.com/DavidDingXu/learn-ai-coding/blob/main/personal-productivity-app/dev-process/01-openspec-today-plan-rollover.md" target="_blank" rel="noopener"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5M14 4l-4 16"/></svg> OpenSpec 业务需求实战 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></div><nav class="chapter-nav" aria-label="前后篇"><a href="19.html"><span>上一篇 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg></span><strong>OpenSpec 实战：把需求变更放进 repo</strong></a><a href="21.html"><span>下一篇 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><strong>模块实战：用 OpenSpec CLI 推进一次真实产品需求</strong></a></nav><footer class="reader-footer">程序员 AI Coding 进阶实战 · <a href="../license.html">非商业使用</a><details class="community-mini"><summary>关注与交流 · 好好用 AI</summary><div class="community-section"><div><p>交流学习中的问题与实践心得。</p><p>代码问题和勘误，欢迎在 <a href="https://github.com/DavidDingXu/learn-ai-coding/issues" target="_blank" rel="noopener">GitHub 提交 Issue</a>。</p></div><a class="qr-link" href="../assets/wechat-official-account.jpg" target="_blank" rel="noopener" aria-label="查看好好用 AI 公众号二维码原图"><img src="../assets/wechat-official-account.jpg" alt="好好用 AI 微信公众号二维码" width="130" height="130" loading="lazy"><p class="qr-caption">微信扫码 · 点击查看原图</p></a></div></details></footer></main><aside class="context-sidebar" aria-label="本篇辅助导航"><div class="context-inner"><nav class="reading-route" aria-label="本篇路线"><details open><summary>本篇路线</summary><div class="toc">
+<ul>
+<li><a href="#先把三者的边界说清楚">先把三者的边界说清楚</a></li>
+<li><a href="#用一张决策图先分流">用一张决策图先分流</a></li>
+<li><a href="#轻量-sdd最适合个人高频使用">轻量 SDD：最适合个人高频使用</a></li>
+<li><a href="#openspec适合存量系统的行为变更">OpenSpec：适合存量系统的行为变更</a></li>
+<li><a href="#spec-kit适合完整-sdd-流程和工具集成">Spec Kit：适合完整 SDD 流程和工具集成</a></li>
+<li><a href="#三者怎么映射到真实工作">三者怎么映射到真实工作</a></li>
+<li><a href="#一个更实用的选择表">一个更实用的选择表</a></li>
+<li><a href="#不要把-spec-kit-和-openspec-写进同一个任务上下文">不要把 Spec Kit 和 OpenSpec 写进同一个任务上下文</a></li>
+<li><a href="#选型时最容易犯的五个错">选型时最容易犯的五个错</a></li>
+<li><a href="#给个人程序员的落地顺序">给个人程序员的落地顺序</a></li>
+<li><a href="#真正的选择标准谁来维护-source-of-truth">真正的选择标准：谁来维护 source of truth</a></li>
+<li><a href="#常见问题">常见问题</a></li>
+<li><a href="#可复查资料">可复查资料</a></li>
+</ul>
+</div>
+</details></nav></div></aside></div><dialog class="search-dialog" id="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label for="course-search" id="search-label"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>搜索课程</label><button class="icon-button" aria-label="关闭搜索"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></form><input id="course-search" type="search" placeholder="搜索概念、代码或问题…" autocomplete="off" spellcheck="false"><p class="search-status" id="search-status" role="status">搜索全部 42 篇文章。</p><div class="search-results" id="search-results"></div><footer>↑ ↓ 选择结果 <span>Enter 打开 · Esc 关闭</span></footer></dialog>
+<dialog class="image-viewer" id="image-viewer" aria-label="放大配图"><header><span>查看配图</span><div class="image-actions"><button type="button" id="image-size">原尺寸</button><button type="button" id="close-image" autofocus>关闭</button></div></header><div class="image-canvas"><img id="large-image" alt=""></div><footer><p id="image-description"></p><a id="original-image" target="_blank" rel="noopener">打开原图 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></footer></dialog><div class="toast" id="toast" role="status"></div></body></html>

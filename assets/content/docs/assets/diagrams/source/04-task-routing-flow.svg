@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#ffffbf"/>
+      <stop offset="100%" stop-color="#eff6ff"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/>
+    </marker>
+    <style>
+      .title { font: 700 46px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 24px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #475569; }
+      .nodeTitle { font: 700 24px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .text { font: 400 19px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #334155; }
+      .label { font: 700 18px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #1d4ed8; }
+      .node { fill: #ffffff; stroke: #bfdbfe; stroke-width: 2; filter: url(#shadow); }
+      .decision { fill: #eff6ff; stroke: #60a5fa; stroke-width: 3; filter: url(#shadow); }
+      .resultGreen { fill: #dcfce7; stroke: #86efac; stroke-width: 2; filter: url(#shadow); }
+      .resultYellow { fill: #fef9c3; stroke: #fde68a; stroke-width: 2; filter: url(#shadow); }
+      .resultBlue { fill: #e0f2fe; stroke: #7dd3fc; stroke-width: 2; filter: url(#shadow); }
+      .resultRed { fill: #fee2e2; stroke: #fca5a5; stroke-width: 2; filter: url(#shadow); }
+      .line { stroke: #2563eb; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <text x="80" y="86" class="title">AI Coding 任务路由流程</text>
+  <text x="82" y="128" class="subtitle">先判断任务属性，再决定 Agent 的授权级别。</text>
+
+  <rect x="640" y="170" width="320" height="96" rx="18" class="node"/>
+  <text x="720" y="210" class="nodeTitle">输入任务</text>
+  <text x="688" y="244" class="text">需求、线索、相关文件</text>
+
+  <rect x="640" y="320" width="320" height="112" rx="20" class="decision"/>
+  <text x="704" y="364" class="nodeTitle">需求清楚吗？</text>
+  <text x="694" y="400" class="text">能说清完成后行为吗</text>
+
+  <rect x="160" y="318" width="330" height="116" rx="18" class="resultBlue"/>
+  <text x="236" y="362" class="nodeTitle">先澄清</text>
+  <text x="206" y="398" class="text">让 AI 提问、拆选项</text>
+
+  <rect x="640" y="490" width="320" height="112" rx="20" class="decision"/>
+  <text x="676" y="534" class="nodeTitle">范围可界定吗？</text>
+  <text x="696" y="570" class="text">入口、模块、测试能定位吗</text>
+
+  <rect x="1120" y="488" width="330" height="116" rx="18" class="resultYellow"/>
+  <text x="1190" y="532" class="nodeTitle">先侦察和计划</text>
+  <text x="1172" y="568" class="text">读文件，不直接改代码</text>
+
+  <rect x="430" y="670" width="300" height="114" rx="18" class="decision"/>
+  <text x="482" y="714" class="nodeTitle">有验证信号吗？</text>
+  <text x="474" y="750" class="text">测试、构建、截图、接口</text>
+
+  <rect x="870" y="670" width="300" height="114" rx="18" class="decision"/>
+  <text x="916" y="714" class="nodeTitle">触碰高风险吗？</text>
+  <text x="914" y="750" class="text">金额、权限、数据、事故</text>
+
+  <rect x="80" y="700" width="270" height="116" rx="18" class="resultYellow"/>
+  <text x="150" y="744" class="nodeTitle">先补验证</text>
+  <text x="116" y="780" class="text">建立可运行检查信号</text>
+
+  <rect x="520" y="805" width="260" height="70" rx="18" class="resultGreen"/>
+  <text x="568" y="849" class="nodeTitle">AI 主导</text>
+
+  <rect x="900" y="805" width="260" height="70" rx="18" class="resultYellow"/>
+  <text x="936" y="849" class="nodeTitle">人控计划</text>
+
+  <rect x="1240" y="700" width="280" height="116" rx="18" class="resultRed"/>
+  <text x="1292" y="744" class="nodeTitle">人主导现场</text>
+  <text x="1282" y="780" class="text">AI 只做分析和草稿</text>
+
+  <path class="line" d="M 800 266 L 800 320"/>
+  <path class="line" d="M 640 376 L 490 376"/>
+  <text x="552" y="356" class="label">否</text>
+  <path class="line" d="M 800 432 L 800 490"/>
+  <text x="818" y="466" class="label">是</text>
+
+  <path class="line" d="M 960 546 L 1120 546"/>
+  <text x="1030" y="526" class="label">否</text>
+  <path class="line" d="M 760 602 C 700 628, 640 652, 600 670"/>
+  <text x="720" y="638" class="label">是</text>
+  <path class="line" d="M 850 602 C 900 630, 960 650, 1000 670"/>
+
+  <path class="line" d="M 430 744 L 350 758"/>
+  <text x="382" y="726" class="label">否</text>
+  <path class="line" d="M 620 784 L 640 805"/>
+  <text x="640" y="798" class="label">是且低风险</text>
+
+  <path class="line" d="M 1170 728 L 1240 756"/>
+  <text x="1192" y="716" class="label">是</text>
+  <path class="line" d="M 1018 784 L 1028 805"/>
+  <text x="1038" y="798" class="label">否但范围较大</text>
+</svg>

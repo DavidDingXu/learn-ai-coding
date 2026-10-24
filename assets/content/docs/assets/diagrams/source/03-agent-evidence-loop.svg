@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#fbfbf8"/>
+      <stop offset="100%" stop-color="#ecfeff"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f766e"/>
+    </marker>
+    <style>
+      .title { font: 700 46px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 24px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #475569; }
+      .nodeTitle { font: 700 25px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .text { font: 400 19px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #334155; }
+      .small { font: 400 18px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #475569; }
+      .node { fill: #ffffff; stroke: #99f6e4; stroke-width: 2; filter: url(#shadow); }
+      .center { fill: #0f766e; filter: url(#shadow); }
+      .side { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 2; }
+      .warn { fill: #fff7ed; stroke: #fdba74; stroke-width: 2; }
+      .line { stroke: #0f766e; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .centerText { font: 700 31px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #ffffff; }
+      .centerSmall { font: 400 20px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #d1fae5; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <text x="80" y="86" class="title">Agent 证据驱动工作循环</text>
+  <text x="82" y="128" class="subtitle">每次行动都要能回到文件、diff、命令输出或人工确认，不能只停在口头判断。</text>
+
+  <circle cx="800" cy="470" r="138" class="center"/>
+  <text x="704" y="454" class="centerText">可观察循环</text>
+  <text x="676" y="496" class="centerSmall">看见什么，才能相信什么</text>
+
+  <rect x="650" y="180" width="300" height="120" rx="18" class="node"/>
+  <text x="710" y="228" class="nodeTitle">1. 任务合同</text>
+  <text x="700" y="266" class="text">目标 / 边界 / 完成判断</text>
+
+  <rect x="1050" y="290" width="310" height="122" rx="18" class="node"/>
+  <text x="1110" y="338" class="nodeTitle">2. 上下文证据</text>
+  <text x="1094" y="376" class="text">搜索结果 / 读取文件 / 入口</text>
+
+  <rect x="1050" y="560" width="310" height="122" rx="18" class="node"/>
+  <text x="1126" y="608" class="nodeTitle">3. 计划</text>
+  <text x="1094" y="646" class="text">预计改动 / 验证命令</text>
+
+  <rect x="650" y="680" width="300" height="122" rx="18" class="node"/>
+  <text x="720" y="728" class="nodeTitle">4. 小 diff</text>
+  <text x="696" y="766" class="text">只改当前步骤需要的文件</text>
+
+  <rect x="240" y="560" width="310" height="122" rx="18" class="node"/>
+  <text x="304" y="608" class="nodeTitle">5. 验证命令</text>
+  <text x="290" y="646" class="text">test / lint / build / 浏览器</text>
+
+  <rect x="240" y="290" width="310" height="122" rx="18" class="node"/>
+  <text x="304" y="338" class="nodeTitle">6. 观察反馈</text>
+  <text x="288" y="376" class="text">通过 / 失败分类 / 剩余风险</text>
+
+  <path class="line" d="M 910 286 C 980 300, 1020 320, 1050 342"/>
+  <path class="line" d="M 1205 412 C 1208 480, 1207 520, 1204 560"/>
+  <path class="line" d="M 1050 628 C 1000 675, 970 698, 950 720"/>
+  <path class="line" d="M 650 740 C 586 720, 570 678, 550 640"/>
+  <path class="line" d="M 394 560 C 390 500, 390 455, 394 412"/>
+  <path class="line" d="M 550 335 C 592 300, 620 276, 650 252"/>
+
+  <rect x="80" y="730" width="420" height="92" rx="16" class="warn"/>
+  <text x="112" y="768" class="nodeTitle">暂停信号</text>
+  <text x="112" y="804" class="small">入口不确定、计划扩大、diff 过大、验证失败未分类。</text>
+
+  <rect x="1100" y="730" width="420" height="92" rx="16" class="side"/>
+  <text x="1132" y="768" class="nodeTitle">沉淀产物</text>
+  <text x="1132" y="804" class="small">代码地图、任务上下文包、验证记录、项目规则。</text>
+</svg>

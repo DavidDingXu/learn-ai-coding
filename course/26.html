@@ -1,0 +1,712 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>前后端验证闭环：页面、接口、数据库和副作用怎么一起验 · Learn AI Coding</title><meta name="description" content="从接手陌生代码库，到完成一次真实需求。沿着上下文、规格、实现、测试和复盘，建立可重复的 AI Coding 工作流。"><meta name="source-sha256" content="2a6837a401547f9ce610d21191c9c9de59cd3d8ad90734ba5dde063d19f15032">
+<link rel="canonical" href="https://daviddingxu.github.io/learn-ai-coding/course/26.html"><link rel="icon" href="../assets/brand.png">
+<script>try{const t=localStorage.getItem('haohai-course-theme');document.documentElement.dataset.theme=t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light'}catch(_){document.documentElement.dataset.theme='light'}</script>
+<link rel="stylesheet" href="../assets/site.css"><script defer src="../assets/search-index.js"></script><script defer src="../assets/site.js"></script></head><body class="article-page" data-root="../" data-page="26"><a class="skip-link" href="#main-content">跳到正文</a><header class="site-header"><div class="header-inner"><button class="icon-button menu-toggle js-only" type="button" aria-label="打开课程目录" aria-controls="course-sidebar" aria-expanded="false"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+<a class="brand" href="../index.html" aria-label="Learn AI Coding · 学习站首页"><img src="../assets/brand.png" alt="" width="36" height="36"><span><strong>Learn AI Coding</strong><small>程序员 AI Coding 进阶实战</small></span></a>
+<nav class="header-nav" aria-label="主导航"><a href="../index.html#curriculum">课程目录</a><a href="../index.html#downloads">离线阅读</a><a href="https://github.com/DavidDingXu/learn-ai-coding" target="_blank" rel="noopener">GitHub <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></nav>
+<div class="header-controls"><button class="icon-button theme-toggle js-only" type="button" aria-label="切换到深色主题" title="切换到深色主题"><span class="theme-light-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A9 9 0 0 1 9.5 3.5a9 9 0 1 0 11 11Z"/></svg></span><span class="theme-dark-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></span></button><button class="search-trigger js-only" type="button" aria-label="搜索课程"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg><span>搜索课程</span><kbd>⌘ K</kbd></button></div></div><div class="reading-progress" aria-hidden="true"><span id="reading-progress-bar"></span></div></header><div class="sidebar-scrim" hidden></div><div class="reader-layout"><aside class="course-sidebar" id="course-sidebar" aria-label="课程目录"><div class="sidebar-heading"><a href="../index.html#curriculum">课程目录</a><button class="icon-button menu-close js-only" type="button" aria-label="关闭课程目录"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><nav aria-label="全部文章"><details class="sidebar-stage"><summary><span class="stage-index">模块 00</span>导读与学习地图</summary><a class="lesson-link" data-lesson="INTRO" href="introduction.html"><span class="lesson-number">·</span><span>程序员 AI Coding 进阶实战</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="00" href="00.html"><span class="lesson-number">00</span><span>程序员如何系统学习 AI Coding</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 01</span>AI Coding 底层心智</summary><a class="lesson-link" data-lesson="01" href="01.html"><span class="lesson-number">01</span><span>程序员用 AI Coding，真正的门槛不是 Prompt</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="02" href="02.html"><span class="lesson-number">02</span><span>从聊天式开发到工程式开发</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="03" href="03.html"><span class="lesson-number">03</span><span>AI Coding 的底层工作模型</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="04" href="04.html"><span class="lesson-number">04</span><span>AI 最擅长和最不擅长的开发任务</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 02</span>程序员工具工作台</summary><a class="lesson-link" data-lesson="05" href="05.html"><span class="lesson-number">05</span><span>Codex、Claude Code、Cursor、Copilot 怎么分工</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="06" href="06.html"><span class="lesson-number">06</span><span>一个程序员的 AI Coding 工作台怎么搭</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="07" href="07.html"><span class="lesson-number">07</span><span>App、CLI、IDE 怎么切换完成一次真实改动</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 03</span>上下文工程与代码库理解</summary><a class="lesson-link" data-lesson="08" href="08.html"><span class="lesson-number">08</span><span>上下文工程：为什么不是塞越多代码越好</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="09" href="09.html"><span class="lesson-number">09</span><span>代码地图不是手工文档：让 Agent 生成可检查的仓库导航</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="10" href="10.html"><span class="lesson-number">10</span><span>让 Agent 做代码搜索：怎样约束搜索目标、证据和停止条件</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="11" href="11.html"><span class="lesson-number">11</span><span>AGENTS.md / CLAUDE.md / Copilot Instructions</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="12" href="12.html"><span class="lesson-number">12</span><span>任务上下文包：一次需求到底该给 AI 什么</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="13" href="13.html"><span class="lesson-number">13</span><span>上下文污染与上下文清理</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="14" href="14.html"><span class="lesson-number">14</span><span>模块实战：让 AI 接手一个陌生代码模块</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 04</span>SDD 与 OpenSpec 实战</summary><a class="lesson-link" data-lesson="15" href="15.html"><span class="lesson-number">15</span><span>SDD 是什么：先写规格，再写代码</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="16" href="16.html"><span class="lesson-number">16</span><span>从一句需求到 requirements.md</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="17" href="17.html"><span class="lesson-number">17</span><span>design.md 怎么写，AI 才不会补丁式开发</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="18" href="18.html"><span class="lesson-number">18</span><span>tasks.md 怎么拆：把复杂需求变成小 diff</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="19" href="19.html"><span class="lesson-number">19</span><span>OpenSpec 实战：把需求变更放进 repo</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="20" href="20.html"><span class="lesson-number">20</span><span>OpenSpec、Spec Kit 与轻量 SDD 怎么选</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="21" href="21.html"><span class="lesson-number">21</span><span>模块实战：用 OpenSpec CLI 推进一次真实产品需求</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage" open><summary><span class="stage-index">模块 05</span>小步开发测试与调试闭环</summary><a class="lesson-link" data-lesson="22" href="22.html"><span class="lesson-number">22</span><span>计划先行：让 AI 先解释它准备怎么改</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="23" href="23.html"><span class="lesson-number">23</span><span>小步开发：为什么要限制 AI 一次改动范围</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="24" href="24.html"><span class="lesson-number">24</span><span>TDD + AI Coding：先让失败测试约束模型</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="25" href="25.html"><span class="lesson-number">25</span><span>系统化调试：让 AI 基于证据排障</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="26" href="26.html" aria-current="page"><span class="lesson-number">26</span><span>前后端验证闭环：页面、接口、数据库和副作用怎么一起验</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="27" href="27.html"><span class="lesson-number">27</span><span>AI 说“测试失败无关”时，程序员该怎么判断</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="28" href="28.html"><span class="lesson-number">28</span><span>模块实战：用 AI 完成一次 CLI 交互改造</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 06</span>Skill Superpowers 与工作流固化</summary><a class="lesson-link" data-lesson="29" href="29.html"><span class="lesson-number">29</span><span>Skill 是什么：从提示词到可复用工作流</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="30" href="30.html"><span class="lesson-number">30</span><span>Skill 原理解析：它如何约束 Agent 行为</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="31" href="31.html"><span class="lesson-number">31</span><span>Superpowers 工作流拆解：把工程纪律变成 Skill 链</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="32" href="32.html"><span class="lesson-number">32</span><span>自定义 Skill：把你的经验固化成个人能力</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="33" href="33.html"><span class="lesson-number">33</span><span>外部工具接入：MCP 在 AI Coding 里到底有什么用</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="34" href="34.html"><span class="lesson-number">34</span><span>多 Agent 与自动化：什么时候拆，什么时候不要拆</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="35" href="35.html"><span class="lesson-number">35</span><span>模块实战：用 Superpowers 固化一次业务需求的调试和评审</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="36" href="36.html"><span class="lesson-number">36</span><span>模块实战：给 AI 接一个只读项目工具</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 07</span>综合实战与资产沉淀</summary><a class="lesson-link" data-lesson="37" href="37.html"><span class="lesson-number">37</span><span>综合实战：一个真实需求的 AI Coding 最佳实践</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="38" href="38.html"><span class="lesson-number">38</span><span>综合实战：从一次交付沉淀个人规则库</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 08</span>个人工程资产</summary><a class="lesson-link" data-lesson="39" href="39.html"><span class="lesson-number">39</span><span>从个人提效到个人工程系统</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="END" href="closing.html"><span class="lesson-number">·</span><span>写在专栏结束时：把 AI Coding 留在日常工程里</span><span class="lesson-state" aria-hidden="true"></span></a></details></nav><p class="sidebar-note">给清目标，保留证据，逐步交付。</p></aside><main class="reader-main" id="main-content"><div class="article-context"><span>小步开发测试与调试闭环</span><div class="reading-tools js-only"><div class="font-controls" role="group" aria-label="正文字号"><button type="button" data-font="-1" aria-label="减小正文字号">A−</button><span id="font-size-label" aria-live="polite">18</span><button type="button" data-font="1" aria-label="增大正文字号">A+</button></div><button type="button" class="focus-toggle" aria-pressed="false"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg><span>专注阅读</span></button></div></div><div class="mobile-context"><nav class="reading-route" aria-label="本篇路线"><details><summary>本篇路线</summary><div class="toc">
+<ul>
+<li><a href="#为什么单点验证不够">为什么单点验证不够</a></li>
+<li><a href="#先定义这次要证明什么">先定义这次要证明什么</a></li>
+<li><a href="#页面验证证明用户路径真的可走">页面验证：证明用户路径真的可走</a></li>
+<li><a href="#接口验证证明合同没有被破坏">接口验证：证明合同没有被破坏</a></li>
+<li><a href="#业务状态证明数据真的落地">业务状态：证明数据真的落地</a></li>
+<li><a href="#副作用证明外部动作没有多发或漏发">副作用：证明外部动作没有多发或漏发</a></li>
+<li><a href="#测试数据也要进入验证闭环">测试数据也要进入验证闭环</a></li>
+<li><a href="#验证-ledger-要能让别人复查">验证 ledger 要能让别人复查</a></li>
+<li><a href="#验证顺序先内后外再串起来">验证顺序：先内后外，再串起来</a></li>
+<li><a href="#让-ai-输出验证矩阵">让 AI 输出验证矩阵</a></li>
+<li><a href="#错误路径也要验证">错误路径也要验证</a></li>
+<li><a href="#并发和重复提交要单独验证">并发和重复提交要单独验证</a></li>
+<li><a href="#权限和角色不要漏">权限和角色不要漏</a></li>
+<li><a href="#不要让-mock-掩盖真实问题">不要让 mock 掩盖真实问题</a></li>
+<li><a href="#验证记录要包含残余风险">验证记录要包含残余风险</a></li>
+<li><a href="#验证环境也要写清">验证环境也要写清</a></li>
+<li><a href="#一个完整验证计划长什么样">一个完整验证计划长什么样</a></li>
+<li><a href="#给-agent-的验证指令不要只写跑测试">给 Agent 的验证指令不要只写“跑测试”</a></li>
+<li><a href="#验证闭环要防只验证改动路径">验证闭环要防“只验证改动路径”</a></li>
+<li><a href="#验证命令要和风险一一对应">验证命令要和风险一一对应</a></li>
+<li><a href="#手工验证也要可复查">手工验证也要可复查</a></li>
+<li><a href="#上线前把证据压成一句话">上线前把证据压成一句话</a></li>
+<li><a href="#数据清理和可重复执行也要检查">数据清理和可重复执行也要检查</a></li>
+<li><a href="#验证失败时不要继续补页面">验证失败时不要继续补页面</a></li>
+<li><a href="#常见错误">常见错误</a></li>
+<li><a href="#改完后重点看什么">改完后重点看什么</a></li>
+<li><a href="#常见问题">常见问题</a></li>
+<li><a href="#可复查资料">可复查资料</a></li>
+</ul>
+</div>
+</details></nav></div><article id="article-body"><h1 id="前后端验证闭环页面接口数据库和副作用怎么一起验">前后端验证闭环：页面、接口、数据库和副作用怎么一起验</h1>
+<p>AI 做完一个前后端改动后，最常见的危险说法是：</p>
+<pre><code class="language-text">我已经测试过了，页面正常。
+</code></pre>
+<p>或者：</p>
+<pre><code class="language-text">接口测试通过。
+</code></pre>
+<p>这两句话都可能是真的，但都不够。</p>
+<p>页面正常，只能证明用户眼前看到的东西在某个路径下符合预期。它不能证明接口响应结构没变、数据库状态正确、副作用只发生一次。</p>
+<p>接口测试通过，也不能证明页面交互真的可用、前端状态会刷新、错误提示正确、按钮不会重复提交。</p>
+<p>真实产品里的一个功能，通常跨四层：</p>
+<pre><code class="language-text">UI 行为 -&gt; HTTP 合同 -&gt; 业务状态 -&gt; 外部副作用
+</code></pre>
+<p>AI Coding 的验证闭环，就是让这四类证据能互相对上。</p>
+<p><img alt="前后端验证链路" src="../assets/content/docs/assets/diagrams/source/26-full-stack-verification-chain.svg" /></p>
+<h2 id="为什么单点验证不够">为什么单点验证不够</h2>
+<p>继续用订单取消进入退款流程这个例子。</p>
+<p>需求是：</p>
+<pre><code class="language-text">用户取消已支付订单后，页面显示“退款处理中”，后端订单状态变成 refund_requested，并且只创建一个退款请求。
+</code></pre>
+<p>如果只做页面验证：</p>
+<pre><code class="language-text">点击取消后，页面显示“退款处理中”。
+</code></pre>
+<p>这只能证明前端最终显示了这个文案。</p>
+<p>它不能证明：</p>
+<ul>
+<li>后端状态是不是 <code>refund_requested</code>。</li>
+<li>是否创建了退款请求。</li>
+<li>重复点击是否创建多条退款请求。</li>
+<li>API response shape 是否兼容。</li>
+<li>失败时页面是否提示正确。</li>
+</ul>
+<p>如果只做接口验证：</p>
+<pre><code class="language-bash">curl -X POST /api/orders/123/cancel
+</code></pre>
+<p>看到 200，也不能证明：</p>
+<ul>
+<li>页面是否调用了正确接口。</li>
+<li>UI 是否禁用了重复点击。</li>
+<li>错误状态是否显示。</li>
+<li>用户刷新页面后状态是否一致。</li>
+</ul>
+<p>所以前后端功能不能用单点证据收尾。</p>
+<p><img alt="单点验证盲区" src="../assets/content/docs/assets/diagrams/source/26-verification-gap-matrix.svg" /></p>
+<h2 id="先定义这次要证明什么">先定义这次要证明什么</h2>
+<p>验证闭环不是测试越多越好。</p>
+<p>先把需求拆成可证明事实：</p>
+<pre><code class="language-text">UI:
+- paid order detail page shows cancel action.
+- after cancel succeeds, page shows refund_requested / 退款处理中.
+- duplicate click is prevented or handled.
+
+HTTP:
+- POST /api/orders/:id/cancel returns expected status code.
+- response shape remains compatible.
+- failure uses existing error envelope.
+
+Business state:
+- order status becomes refund_requested.
+- pending and shipped behavior remains unchanged.
+- failed refund request leaves order paid.
+
+Side effects:
+- exactly one refund request is created.
+- duplicate cancellation does not create another request.
+- payment provider callback is not changed in this task.
+</code></pre>
+<p>这一步比直接写 Playwright 更重要。</p>
+<p>因为你要先知道“验证什么”，再决定用什么工具。</p>
+<h2 id="页面验证证明用户路径真的可走">页面验证：证明用户路径真的可走</h2>
+<p>页面验证适合证明：</p>
+<ul>
+<li>用户能看到入口。</li>
+<li>用户能完成交互。</li>
+<li>页面状态会刷新。</li>
+<li>加载、成功、失败提示符合预期。</li>
+<li>重复点击、禁用状态、错误提示正确。</li>
+</ul>
+<p>如果使用 Playwright，可以让 AI 生成测试草稿，但要给清楚路径：</p>
+<pre><code class="language-text">请写前端 E2E 测试草稿，覆盖 paid order cancellation 用户路径。
+
+要求：
+- 从订单详情页进入。
+- 点击取消。
+- 等待 API 成功响应后页面显示“退款处理中”。
+- 验证取消按钮不再可重复触发。
+- 不 mock 掉页面本身的状态更新逻辑。
+- 不验证数据库，数据库由后端测试覆盖。
+</code></pre>
+<p>Playwright 测试可以类似：</p>
+<pre><code class="language-ts">test('paid order cancellation shows refund requested state', async ({ page }) =&gt; {
+  await page.goto('/orders/paid-order-1');
+
+  await page.getByRole('button', { name: '取消订单' }).click();
+
+  await expect(page.getByText('退款处理中')).toBeVisible();
+  await expect(page.getByRole('button', { name: '取消订单' })).toBeHidden();
+});
+</code></pre>
+<p>这段测试证明用户路径，不证明后端副作用。</p>
+<p>不要让 AI 把所有验证都塞进 E2E。E2E 成本高、失败原因复杂，适合覆盖关键路径，不适合承担所有业务状态断言。</p>
+<h2 id="接口验证证明合同没有被破坏">接口验证：证明合同没有被破坏</h2>
+<p>接口验证适合证明：</p>
+<ul>
+<li>status code。</li>
+<li>response body shape。</li>
+<li>错误 envelope。</li>
+<li>鉴权和权限边界。</li>
+<li>幂等请求的响应。</li>
+</ul>
+<p>例如：</p>
+<pre><code class="language-bash">curl -i -X POST http://localhost:3000/api/orders/123/cancel \
+  -H 'Content-Type: application/json'
+</code></pre>
+<p>要看：</p>
+<pre><code class="language-text">HTTP/1.1 200 OK
+</code></pre>
+<p>也要看 response body：</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: &quot;123&quot;,
+  &quot;status&quot;: &quot;refund_requested&quot;,
+  &quot;message&quot;: &quot;Refund request created&quot;
+}
+</code></pre>
+<p>如果项目有 API test，可以写：</p>
+<pre><code class="language-ts">test('cancel paid order returns refund_requested without response shape change', async ({ request }) =&gt; {
+  const response = await request.post('/api/orders/paid-order-1/cancel');
+  expect(response.status()).toBe(200);
+
+  const body = await response.json();
+  expect(body).toMatchObject({
+    id: 'paid-order-1',
+    status: 'refund_requested'
+  });
+  expect(Object.keys(body).sort()).toEqual(['id', 'message', 'status'].sort());
+});
+</code></pre>
+<p>这里的重点是 response shape。AI 很容易为了实现需求顺手改返回结构，前端当前页面可能没坏，但其他调用方会坏。</p>
+<p>接口验证不能被页面截图替代。</p>
+<h2 id="业务状态证明数据真的落地">业务状态：证明数据真的落地</h2>
+<p>业务状态验证适合证明：</p>
+<ul>
+<li>数据库记录是否正确。</li>
+<li>状态转换是否符合规则。</li>
+<li>事务失败是否回滚。</li>
+<li>旧状态行为是否保持。</li>
+</ul>
+<p>后端 focused test 可以写：</p>
+<pre><code class="language-ts">test('paid order cancellation persists refund_requested status', async () =&gt; {
+  const order = await fixtures.createOrder({ status: 'paid' });
+
+  await cancelOrder(order.id);
+
+  const saved = await orders.find(order.id);
+  expect(saved.status).toBe('refund_requested');
+});
+</code></pre>
+<p>失败路径也要有：</p>
+<pre><code class="language-ts">test('order remains paid when refund request creation fails', async () =&gt; {
+  const order = await fixtures.createOrder({ status: 'paid' });
+  refundRequests.failNextCreate();
+
+  await expect(cancelOrder(order.id)).rejects.toThrow();
+
+  const saved = await orders.find(order.id);
+  expect(saved.status).toBe('paid');
+});
+</code></pre>
+<p>如果没有数据库测试条件，也要保留人工或脚本化检查：</p>
+<pre><code class="language-sql">select id, status from orders where id = '123';
+</code></pre>
+<p>不要只看接口返回。接口返回可能是内存对象，数据库写入可能失败。</p>
+<h2 id="副作用证明外部动作没有多发或漏发">副作用：证明外部动作没有多发或漏发</h2>
+<p>退款、消息、邮件、队列、外部 API 调用，都属于副作用。</p>
+<p>副作用验证最容易被忽略，因为页面和接口可能都看起来正常。</p>
+<p>订单取消场景里，至少要证明：</p>
+<pre><code class="language-text">paid cancel creates exactly one refund request.
+duplicate cancel does not create another refund request.
+refund request failure does not leave order in wrong state.
+payment provider callback remains out of scope.
+</code></pre>
+<p>测试可以是：</p>
+<pre><code class="language-ts">test('duplicate paid cancellation creates one refund request', async () =&gt; {
+  const order = await fixtures.createOrder({ status: 'paid' });
+
+  await cancelOrder(order.id);
+  await cancelOrder(order.id);
+
+  expect(await refundRequests.countForOrder(order.id)).toBe(1);
+});
+</code></pre>
+<p>如果副作用通过队列发出，要检查队列消息：</p>
+<pre><code class="language-text">Queue evidence:
+- topic: refund.requested
+- key: order:123:cancel
+- count: 1
+</code></pre>
+<p>如果外部服务不能在本地调用，要明确边界：</p>
+<pre><code class="language-text">Not locally verified:
+- real payment provider callback.
+
+Verified instead:
+- refund request record is created.
+- provider callback code path was not changed.
+- staging callback verification remains required before release.
+</code></pre>
+<p>这比假装“已完整验证”更专业。</p>
+<h2 id="测试数据也要进入验证闭环">测试数据也要进入验证闭环</h2>
+<p>前后端验证经常漏掉测试数据。</p>
+<p>页面显示对了、接口返回对了，但如果测试数据不是目标状态，验证仍然不可信。</p>
+<p>订单取消场景里，要明确：</p>
+<pre><code class="language-text">Test data:
+- order id: paid-order-1
+- order status before cancel: paid
+- payment status: captured
+- shipping status: not_shipped
+- existing refund request: none
+</code></pre>
+<p>如果验证 duplicate cancel，还要写：</p>
+<pre><code class="language-text">Before second cancel:
+- order status: refund_requested
+- refund request count: 1
+</code></pre>
+<p>这能防止 AI 用一个名字叫 <code>paid-order-1</code>、实际状态不是 paid 的 fixture 去跑测试。</p>
+<p>对前端 E2E，测试数据准备方式也要写清：</p>
+<ul>
+<li>通过 seed 脚本创建。</li>
+<li>通过 API 创建。</li>
+<li>使用固定 fixture。</li>
+<li>使用 mock server。</li>
+</ul>
+<p>不同方式证明的东西不同。mock server 证明前端响应某个合同；seed + real API 更接近真实链路。</p>
+<h2 id="验证-ledger-要能让别人复查">验证 ledger 要能让别人复查</h2>
+<p>前后端验证完成后，可以把结果写成 ledger：</p>
+<pre><code class="language-markdown"># Verification Ledger
+
+## Test Data
+
+- paid order: `paid-order-1`
+- initial status: `paid`
+- existing refund request count: 0
+
+## Commands
+
+```bash
+npm test -- order-cancel
+npm test -- order-api
+npx playwright test order-cancel.spec.ts
+```
+
+## Evidence
+
+- backend focused test: PASS, covers status and idempotency
+- API contract test: PASS, response keys remain `id`, `status`, `message`
+- Playwright path: PASS, page displays 退款处理中 after cancel
+
+## Not Verified
+
+- real payment provider callback
+- old mobile client display
+
+## Residual Risk
+
+- staging check required for provider callback signature
+</code></pre>
+<p>ledger 不需要替代测试报告。它的价值是把多层证据串起来，让 reviewer 知道每个命令证明了什么。</p>
+<p>如果没有 ledger，AI 很容易把“跑了几个命令”写成“验证完成”，但别人无法复查边界。</p>
+<h2 id="验证顺序先内后外再串起来">验证顺序：先内后外，再串起来</h2>
+<p>前后端验证建议按这个顺序：</p>
+<pre><code class="language-text">1. 后端 focused test
+2. API contract test
+3. 前端组件或页面路径
+4. E2E 关键路径
+5. 副作用和残余风险记录
+</code></pre>
+<p>为什么不先跑 E2E？</p>
+<p>E2E 失败时原因太多：选择器、网络、鉴权、后端状态、异步加载、数据准备都可能导致失败。先用后端和接口测试确认核心行为，再用 E2E 验用户路径，定位成本更低。</p>
+<p>但最后不能只停在后端测试。用户路径也要验证。</p>
+<p>比较稳的执行指令：</p>
+<pre><code class="language-text">请按下面顺序验证，不要跳步：
+
+1. 运行后端 focused test：`npm test -- order-cancel`
+2. 运行 API contract test：`npm test -- order-api`
+3. 运行前端关键路径：`npx playwright test order-cancel.spec.ts`
+4. 汇总每个命令证明了什么，以及仍然没有证明什么。
+</code></pre>
+<p>AI 如果只跑最容易通过的命令，就要求它补齐缺口。</p>
+<h2 id="让-ai-输出验证矩阵">让 AI 输出验证矩阵</h2>
+<p>完成后不要只让 AI 写：</p>
+<pre><code class="language-text">测试已通过。
+</code></pre>
+<p>要求它输出验证矩阵：</p>
+<pre><code class="language-markdown">| Evidence | Command / Check | Proves | Does not prove |
+|---|---|---|---|
+| Backend focused test | `npm test -- order-cancel` | status transition, idempotency, failure rollback | UI path |
+| API contract | `npm test -- order-api` | status code, response shape | browser rendering |
+| E2E path | `npx playwright test order-cancel.spec.ts` | user can cancel and see refund state | real payment callback |
+| Queue check | `refund.requested count = 1` | side effect emitted once | external provider success |
+</code></pre>
+<p>这个矩阵很有用。</p>
+<p>它迫使 AI 说清每个证据的边界，避免把“某个测试通过”夸成“功能完全没问题”。</p>
+<h2 id="错误路径也要验证">错误路径也要验证</h2>
+<p>前后端功能最容易漏错误路径。</p>
+<p>至少要看：</p>
+<ul>
+<li>后端返回 400/409/500 时页面怎么显示。</li>
+<li>重复点击是否被禁止或幂等处理。</li>
+<li>权限不足是否进入正确提示。</li>
+<li>网络失败是否保留可重试状态。</li>
+<li>后端部分成功时前端是否会显示错误状态。</li>
+</ul>
+<p>例如：</p>
+<pre><code class="language-ts">test('cancel failure keeps user on paid state with error message', async ({ page }) =&gt; {
+  await page.route('**/api/orders/*/cancel', route =&gt; {
+    route.fulfill({
+      status: 500,
+      contentType: 'application/json',
+      body: JSON.stringify({ error: { message: 'Refund service unavailable' } })
+    });
+  });
+
+  await page.goto('/orders/paid-order-1');
+  await page.getByRole('button', { name: '取消订单' }).click();
+
+  await expect(page.getByText('Refund service unavailable')).toBeVisible();
+  await expect(page.getByText('已支付')).toBeVisible();
+});
+</code></pre>
+<p>这段测试证明的是前端错误状态，不证明数据库状态。数据库状态仍然要后端测试覆盖。</p>
+<h2 id="并发和重复提交要单独验证">并发和重复提交要单独验证</h2>
+<p>前后端链路里，重复提交是高发问题。</p>
+<p>用户可能双击按钮，浏览器可能重试请求，移动端可能在弱网下重复发送。页面禁用按钮有价值，但不能替代后端幂等。</p>
+<p>订单取消场景至少要验证两层：</p>
+<pre><code class="language-text">UI:
+- first click disables or hides cancel action.
+- repeated click does not send a second request, or handles idempotent response.
+
+Backend:
+- repeated cancel request creates at most one refund request.
+- repeated request returns compatible response.
+</code></pre>
+<p>前端测试可以证明按钮行为：</p>
+<pre><code class="language-ts">await page.getByRole('button', { name: '取消订单' }).dblclick();
+await expect(page.getByText('退款处理中')).toBeVisible();
+</code></pre>
+<p>后端测试证明副作用次数：</p>
+<pre><code class="language-ts">await cancelOrder(order.id);
+await cancelOrder(order.id);
+expect(await refundRequests.countForOrder(order.id)).toBe(1);
+</code></pre>
+<p>如果只验证 UI，不验证后端，脚本或移动端仍然可能绕过。
+如果只验证后端，不验证 UI，用户可能看到重复加载、错误提示或状态抖动。</p>
+<p>AI 很容易把“按钮禁用”当成完整幂等方案。验证闭环要把这两层分开。</p>
+<h2 id="权限和角色不要漏">权限和角色不要漏</h2>
+<p>前后端功能还要验证谁能做这件事。</p>
+<p>同一个“取消订单”动作，可能有：</p>
+<ul>
+<li>买家入口。</li>
+<li>客服后台入口。</li>
+<li>商家后台入口。</li>
+<li>定时任务入口。</li>
+<li>开放 API 入口。</li>
+</ul>
+<p>如果需求只覆盖买家入口，就要写清：</p>
+<pre><code class="language-text">Verified:
+- buyer paid order cancellation.
+
+Not changed:
+- support admin cancellation.
+- merchant cancellation.
+- scheduled cleanup job.
+</code></pre>
+<p>如果权限会变，至少要有 API 层测试：</p>
+<pre><code class="language-ts">test('buyer cannot cancel another buyer order', async () =&gt; {
+  const response = await requestAs(otherBuyer).post('/api/orders/paid-order-1/cancel');
+  expect(response.status()).toBe(403);
+});
+</code></pre>
+<p>页面看不到按钮，不代表接口不能被调用。权限类需求必须在后端验证。</p>
+<h2 id="不要让-mock-掩盖真实问题">不要让 mock 掩盖真实问题</h2>
+<p>前端测试经常 mock API。</p>
+<p>mock 有价值，能稳定验证前端状态。但 mock 也可能掩盖真实合同问题。</p>
+<p>如果前端测试 mock 了 response：</p>
+<pre><code class="language-json">{ &quot;status&quot;: &quot;refund_requested&quot; }
+</code></pre>
+<p>而真实后端返回：</p>
+<pre><code class="language-json">{ &quot;orderStatus&quot;: &quot;refund_requested&quot; }
+</code></pre>
+<p>前端 E2E mock 测试会过，真实联调会挂。</p>
+<p>所以关键路径至少要有一个不 mock 合同的验证：</p>
+<pre><code class="language-text">API contract test verifies real response shape.
+Front-end route test verifies UI state.
+One integration or E2E path verifies the two meet.
+</code></pre>
+<p>不要让 AI 为了测试稳定，把真实合同全部 mock 掉。</p>
+<h2 id="验证记录要包含残余风险">验证记录要包含残余风险</h2>
+<p>真实项目里，不是每件事都能本地验证。</p>
+<p>比如：</p>
+<ul>
+<li>真正的支付 provider。</li>
+<li>第三方短信或邮件。</li>
+<li>生产级队列重试。</li>
+<li>大数据量下的性能。</li>
+<li>某些权限组合。</li>
+</ul>
+<p>不能验证就要写出来：</p>
+<pre><code class="language-markdown">## Residual Risk
+
+- Real payment provider callback was not executed locally.
+- Staging verification is required for callback signature and provider state transition.
+- Queue retry policy was not changed in this task.
+</code></pre>
+<p>这不是示弱。它是在防止 AI 把未验证内容说成已验证。</p>
+<h2 id="验证环境也要写清">验证环境也要写清</h2>
+<p>验证结果离不开环境。</p>
+<p>同一个命令，在本地、CI、staging 的意义不同。</p>
+<p>ledger 里可以写：</p>
+<pre><code class="language-markdown">## Environment
+
+- local node: 20.x
+- database: local test container
+- browser: Chromium via Playwright
+- API base: local dev server
+- payment provider: fake adapter
+</code></pre>
+<p>这样 reviewer 才知道结果的边界。</p>
+<p>如果用 mock server，要写清 mock 覆盖了什么；如果用真实 dev server，要写清测试数据怎么创建和清理。</p>
+<p>AI 常会省略环境，直接写“测试通过”。生产验证不能这么写。</p>
+<h2 id="一个完整验证计划长什么样">一个完整验证计划长什么样</h2>
+<p>把订单取消改退款作为例子，一份可执行验证计划可以这样写：</p>
+<pre><code class="language-markdown">Verification Plan: paid order cancellation
+
+## Test Data
+
+- paid order: `paid-order-1`
+- pending order: `pending-order-1`
+- shipped order: `shipped-order-1`
+- paid order has captured payment and no refund request before test
+
+## Backend
+
+- `npm test -- order-cancel`
+  - paid -&gt; refund_requested
+  - pending -&gt; canceled unchanged
+  - shipped -&gt; existing rejection unchanged
+  - duplicate paid cancel creates one refund request
+  - refund request failure keeps order paid
+
+## API
+
+- `npm test -- order-api`
+  - status code remains 200 for accepted cancel
+  - response shape remains `id`, `status`, `message`
+  - error envelope remains compatible
+
+## Frontend
+
+- `npx playwright test order-cancel.spec.ts`
+  - user can cancel paid order from detail page
+  - page shows 退款处理中
+  - cancel action no longer repeats
+  - failure response keeps paid state and shows error
+
+## Side Effects
+
+- refund request count for order is 1
+- idempotency key is stable
+- payment provider callback path not touched
+
+## Residual Risk
+
+- real provider callback requires staging verification
+- old mobile client display not covered in this web test
+</code></pre>
+<p>这份计划不追求“所有测试都写在一个地方”。它把证据分层，每层证明自己的事情。</p>
+<p>如果 Agent 完成后只报告 <code>npm test -- order-cancel</code> 通过，就能看出缺口：API、页面、副作用和残余风险都还没闭合。</p>
+<h2 id="给-agent-的验证指令不要只写跑测试">给 Agent 的验证指令不要只写“跑测试”</h2>
+<p>更好的指令是让它按证据层输出。</p>
+<pre><code class="language-text">请按验证计划执行，不要自行缩减命令。
+
+输出必须包含：
+1. Test data：使用了哪些订单、初始状态是什么。
+2. Commands：实际执行的命令。
+3. Evidence：每个命令证明什么。
+4. Not verified：哪些路径没有验证。
+5. Residual risk：未验证路径是否阻塞发布。
+</code></pre>
+<p>如果某个命令跑不了，也不能跳过：</p>
+<pre><code class="language-text">如果命令无法执行：
+- 写出失败原因。
+- 说明它原本要证明什么。
+- 给出替代验证。
+- 标记残余风险。
+</code></pre>
+<p>比如 Playwright 跑不了，不能直接写“前端未测”。要说明是浏览器依赖缺失、dev server 未启动、登录态不可用，还是测试本身不存在。不同原因对应的处理完全不同。</p>
+<h2 id="验证闭环要防只验证改动路径">验证闭环要防“只验证改动路径”</h2>
+<p>AI 经常只验证新增路径：paid order cancel。旧路径 pending、shipped、权限、失败回滚容易被漏掉。</p>
+<p>可以让它输出覆盖表：</p>
+<pre><code class="language-markdown">| Scenario | Verified | Evidence |
+| --- | --- | --- |
+| pending cancel unchanged | yes | `npm test -- order-cancel` |
+| paid cancel refund_requested | yes | `npm test -- order-cancel` |
+| shipped cancel rejected | yes | `npm test -- order-cancel` |
+| duplicate paid cancel idempotent | yes | `npm test -- order-cancel` |
+| refund failure keeps paid | yes | `npm test -- order-cancel` |
+| page shows refund state | yes | Playwright |
+| old mobile client display | no | residual risk |
+</code></pre>
+<p>这张表能一眼看出是否只测了 happy path。</p>
+<p>验证不是为了证明 AI 做对了，而是为了找出它可能没做对的地方。</p>
+<h2 id="验证命令要和风险一一对应">验证命令要和风险一一对应</h2>
+<p>验证计划里每个风险都应该有对应证据。</p>
+<pre><code class="language-markdown">| Risk | Evidence |
+| --- | --- |
+| paid order status not persisted | backend integration test |
+| response shape changed | API contract test |
+| duplicate refund request | idempotency test |
+| page does not refresh after cancel | Playwright path |
+| old pending cancel broken | regression test |
+| payment callback accidentally changed | diff review + callback tests unchanged |
+</code></pre>
+<p>如果某个风险没有证据，就不要把它从风险列表里删掉。要么补验证，要么保留 residual risk。</p>
+<p>AI 很容易只跑测试，不解释测试覆盖了哪个风险。风险到证据的映射，是前后端验证闭环的核心。</p>
+<h2 id="手工验证也要可复查">手工验证也要可复查</h2>
+<p>有些路径短期没有自动化测试，只能手工验证。手工验证不是随便点一点。</p>
+<p>记录格式可以是：</p>
+<pre><code class="language-markdown">Manual check:
+- environment: staging
+- account: buyer test account
+- order: paid order created by seed script
+- steps:
+  1. open order detail
+  2. click cancel
+  3. confirm modal
+  4. refresh page
+- expected:
+  - page shows 退款处理中
+  - cancel button hidden
+  - order API returns refund_requested
+- evidence:
+  - screenshot path or attached image
+  - request id / log id
+</code></pre>
+<p>手工验证不能替代所有自动化测试，但它可以作为外部服务、真实浏览器、权限组合的补充证据。</p>
+<p>不要让 AI 把“我手工看了”写成验证结论。手工验证也要有步骤和结果。</p>
+<h2 id="上线前把证据压成一句话">上线前把证据压成一句话</h2>
+<p>验证材料很多，最后要能压成一句 reviewer 能理解的话。</p>
+<p>例如：</p>
+<pre><code class="language-text">Paid order cancellation was verified at backend, API, web UI and side-effect layers:
+focused order tests passed, API response shape stayed compatible, Playwright covered the cancel path,
+refund request count stayed 1 under duplicate cancel, real provider callback remains staging-only residual risk.
+</code></pre>
+<p>中文 PR 里可以写：</p>
+<pre><code class="language-text">已验证后端状态、接口合同、Web 页面路径和退款请求副作用：
+订单 focused tests 通过，API response shape 未变，Playwright 覆盖取消路径，
+重复取消只创建一条退款请求；真实支付回调未在本地验证，需 staging 复核。
+</code></pre>
+<p>这句话不是替代详细 ledger，而是给 reviewer 一个入口。</p>
+<p>如果你压不出这句话，说明验证证据还没有串起来。</p>
+<h2 id="数据清理和可重复执行也要检查">数据清理和可重复执行也要检查</h2>
+<p>前后端验证如果依赖固定数据，要确认测试能重复跑。</p>
+<p>常见问题：</p>
+<ul>
+<li>第一次测试创建 refund request，第二次测试因为数据残留失败。</li>
+<li>E2E 用固定账号，状态被上一次测试改掉。</li>
+<li>本地数据库没有清理，CI 每次干净环境，结果不同。</li>
+<li>并行测试使用同一个 order id。</li>
+</ul>
+<p>验证计划里可以写：</p>
+<pre><code class="language-text">Data isolation:
+- each test creates its own order id.
+- refund request table is cleaned between tests.
+- E2E seed runs before each test.
+- no test depends on previous test order.
+</code></pre>
+<p>这类细节很工程化，但生产里非常常见。AI 如果只写一个能跑一次的测试，后面会变成 flaky test。</p>
+<h2 id="验证失败时不要继续补页面">验证失败时不要继续补页面</h2>
+<p>前后端任务里，常见错误是后端验证失败时继续改页面。</p>
+<p>比如 API contract 已经发现 response shape 变化，Agent 仍然去改前端适配新 shape。这样页面可能恢复正常，但合同已经被破坏。</p>
+<p>规则应该是：</p>
+<pre><code class="language-text">如果后端 focused 或 API contract 验证失败，先停止。
+不要通过修改前端来掩盖后端合同变化。
+</code></pre>
+<p>页面适配只有在合同变化被 requirements/design 明确接受后才做。否则就是让调用方迁就一次未审的后端改动。</p>
+<p>同理，如果页面验证失败，也不要先改后端去迎合页面。先确认 API 合同和业务状态是否正确，再判断页面是状态映射问题、缓存问题、异步刷新问题，还是后端确实返回错了。</p>
+<p>验证闭环不是“哪层红就改哪层”，而是先定位红灯属于哪一层。</p>
+<p>定位清楚后，再按层修复：合同错修后端，展示错修前端，数据错修 seed 或业务状态，副作用错修服务边界。不要让一个层的补丁掩盖另一个层的问题。</p>
+<p>如果时间紧，也要保留验证顺序。</p>
+<p>可以少跑一些命令，但不要颠倒层次：</p>
+<pre><code class="language-text">先确认合同。
+再确认状态。
+再确认页面。
+最后确认副作用和残余风险。
+</code></pre>
+<p>否则页面补丁可能掩盖接口破坏，mock 测试可能掩盖真实合同变化，副作用遗漏可能在上线后才暴露。</p>
+<h2 id="常见错误">常见错误</h2>
+<p><strong>错误一：只看页面截图。</strong></p>
+<p>截图不能证明接口合同、数据库状态和副作用。</p>
+<p><strong>错误二：只跑接口测试。</strong></p>
+<p>接口测试不能证明用户路径、前端状态刷新和错误提示。</p>
+<p><strong>错误三：mock 掉所有后端。</strong></p>
+<p>mock 能稳定前端测试，但不能替代真实合同验证。</p>
+<p><strong>错误四：只测成功路径。</strong></p>
+<p>失败、重复点击、权限不足、网络异常是前后端问题高发区。</p>
+<p><strong>错误五：不写残余风险。</strong></p>
+<p>没验证外部 provider，就不要写“端到端验证完成”。</p>
+<p><strong>错误六：让 AI 自己挑验证命令。</strong></p>
+<p>它可能选最容易过的命令。验证命令应该来自 tasks、项目规则或人工授权。</p>
+<h2 id="改完后重点看什么">改完后重点看什么</h2>
+<p>一次前后端改动结束后，看这些结果：</p>
+<ul>
+<li>页面路径是否验证。</li>
+<li>HTTP status 和 response shape 是否验证。</li>
+<li>数据库或业务状态是否验证。</li>
+<li>副作用是否验证。</li>
+<li>错误路径是否验证。</li>
+<li>mock 和真实合同是否区分。</li>
+<li>残余风险是否写清。</li>
+</ul>
+<p>如果只有“页面看起来正常”或“接口测试通过”，验证闭环还没完成。</p>
+<p>AI Coding 的交付质量，最终不是看它写了多少代码，而是看它留下了多少能互相印证的证据。</p>
+<h2 id="常见问题">常见问题</h2>
+<p><strong>没有 E2E 测试基础怎么办？</strong></p>
+<p>先从关键路径的一条 Playwright 测试开始，不要试图一次覆盖所有页面。也可以先用手工步骤加截图记录，但要明确它不是自动化回归。</p>
+<p><strong>前端测试 mock API 还算验证吗？</strong></p>
+<p>算前端状态验证，不算真实合同验证。要配接口测试或至少一次真实 API 检查。</p>
+<p><strong>后端已经有测试，还要页面验证吗？</strong></p>
+<p>只要需求包含用户交互，就要验证页面路径。后端测试不能证明按钮、提示、状态刷新和重复点击行为。</p>
+<p><strong>外部服务不能本地跑怎么办？</strong></p>
+<p>用 mock 或 contract 测本地边界，记录真实外部路径未验证，并安排 staging 或人工验证。</p>
+<p><strong>验证命令太慢怎么办？</strong></p>
+<p>先 focused，再 module，再关键 E2E。不要每一步都跑全量，但合并前要覆盖受影响面。</p>
+<h2 id="可复查资料">可复查资料</h2>
+<ul>
+<li>Playwright intro：<a href="https://playwright.dev/docs/intro">https://playwright.dev/docs/intro</a></li>
+<li>Playwright assertions：<a href="https://playwright.dev/docs/test-assertions">https://playwright.dev/docs/test-assertions</a></li>
+<li>Playwright API testing：<a href="https://playwright.dev/docs/api-testing">https://playwright.dev/docs/api-testing</a></li>
+<li>MDN HTTP response status codes：<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status">https://developer.mozilla.org/en-US/docs/Web/HTTP/Status</a></li>
+<li>MDN Fetch API：<a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API</a></li>
+</ul></article><div class="practice-link"><a href="https://github.com/DavidDingXu/learn-ai-coding/blob/main/personal-productivity-app/README.md" target="_blank" rel="noopener"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5M14 4l-4 16"/></svg> 业务样例与测试 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></div><nav class="chapter-nav" aria-label="前后篇"><a href="25.html"><span>上一篇 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg></span><strong>系统化调试：让 AI 基于证据排障</strong></a><a href="27.html"><span>下一篇 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><strong>AI 说“测试失败无关”时，程序员该怎么判断</strong></a></nav><footer class="reader-footer">程序员 AI Coding 进阶实战 · <a href="../license.html">非商业使用</a><details class="community-mini"><summary>关注与交流 · 好好用 AI</summary><div class="community-section"><div><p>交流学习中的问题与实践心得。</p><p>代码问题和勘误，欢迎在 <a href="https://github.com/DavidDingXu/learn-ai-coding/issues" target="_blank" rel="noopener">GitHub 提交 Issue</a>。</p></div><a class="qr-link" href="../assets/wechat-official-account.jpg" target="_blank" rel="noopener" aria-label="查看好好用 AI 公众号二维码原图"><img src="../assets/wechat-official-account.jpg" alt="好好用 AI 微信公众号二维码" width="130" height="130" loading="lazy"><p class="qr-caption">微信扫码 · 点击查看原图</p></a></div></details></footer></main><aside class="context-sidebar" aria-label="本篇辅助导航"><div class="context-inner"><nav class="reading-route" aria-label="本篇路线"><details open><summary>本篇路线</summary><div class="toc">
+<ul>
+<li><a href="#为什么单点验证不够">为什么单点验证不够</a></li>
+<li><a href="#先定义这次要证明什么">先定义这次要证明什么</a></li>
+<li><a href="#页面验证证明用户路径真的可走">页面验证：证明用户路径真的可走</a></li>
+<li><a href="#接口验证证明合同没有被破坏">接口验证：证明合同没有被破坏</a></li>
+<li><a href="#业务状态证明数据真的落地">业务状态：证明数据真的落地</a></li>
+<li><a href="#副作用证明外部动作没有多发或漏发">副作用：证明外部动作没有多发或漏发</a></li>
+<li><a href="#测试数据也要进入验证闭环">测试数据也要进入验证闭环</a></li>
+<li><a href="#验证-ledger-要能让别人复查">验证 ledger 要能让别人复查</a></li>
+<li><a href="#验证顺序先内后外再串起来">验证顺序：先内后外，再串起来</a></li>
+<li><a href="#让-ai-输出验证矩阵">让 AI 输出验证矩阵</a></li>
+<li><a href="#错误路径也要验证">错误路径也要验证</a></li>
+<li><a href="#并发和重复提交要单独验证">并发和重复提交要单独验证</a></li>
+<li><a href="#权限和角色不要漏">权限和角色不要漏</a></li>
+<li><a href="#不要让-mock-掩盖真实问题">不要让 mock 掩盖真实问题</a></li>
+<li><a href="#验证记录要包含残余风险">验证记录要包含残余风险</a></li>
+<li><a href="#验证环境也要写清">验证环境也要写清</a></li>
+<li><a href="#一个完整验证计划长什么样">一个完整验证计划长什么样</a></li>
+<li><a href="#给-agent-的验证指令不要只写跑测试">给 Agent 的验证指令不要只写“跑测试”</a></li>
+<li><a href="#验证闭环要防只验证改动路径">验证闭环要防“只验证改动路径”</a></li>
+<li><a href="#验证命令要和风险一一对应">验证命令要和风险一一对应</a></li>
+<li><a href="#手工验证也要可复查">手工验证也要可复查</a></li>
+<li><a href="#上线前把证据压成一句话">上线前把证据压成一句话</a></li>
+<li><a href="#数据清理和可重复执行也要检查">数据清理和可重复执行也要检查</a></li>
+<li><a href="#验证失败时不要继续补页面">验证失败时不要继续补页面</a></li>
+<li><a href="#常见错误">常见错误</a></li>
+<li><a href="#改完后重点看什么">改完后重点看什么</a></li>
+<li><a href="#常见问题">常见问题</a></li>
+<li><a href="#可复查资料">可复查资料</a></li>
+</ul>
+</div>
+</details></nav></div></aside></div><dialog class="search-dialog" id="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label for="course-search" id="search-label"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>搜索课程</label><button class="icon-button" aria-label="关闭搜索"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></form><input id="course-search" type="search" placeholder="搜索概念、代码或问题…" autocomplete="off" spellcheck="false"><p class="search-status" id="search-status" role="status">搜索全部 42 篇文章。</p><div class="search-results" id="search-results"></div><footer>↑ ↓ 选择结果 <span>Enter 打开 · Esc 关闭</span></footer></dialog>
+<dialog class="image-viewer" id="image-viewer" aria-label="放大配图"><header><span>查看配图</span><div class="image-actions"><button type="button" id="image-size">原尺寸</button><button type="button" id="close-image" autofocus>关闭</button></div></header><div class="image-canvas"><img id="large-image" alt=""></div><footer><p id="image-description"></p><a id="original-image" target="_blank" rel="noopener">打开原图 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></footer></dialog><div class="toast" id="toast" role="status"></div></body></html>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <rect width="1600" height="900" fill="#f8fafc"/>
+  <text x="80" y="82" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#172033">从一次业务交付沉淀个人规则库</text>
+  <text x="80" y="124" font-family="Arial, sans-serif" font-size="18" fill="#64748b">只沉淀反复出现、能验证、跨项目可迁移的规则</text>
+  <g font-family="Arial, sans-serif">
+    <rect x="155" y="210" width="280" height="110" rx="16" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="190" y="276" font-size="22" font-weight="700" fill="#111827">今日计划交付</text>
+    <rect x="495" y="210" width="280" height="110" rx="16" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="530" y="276" font-size="22" font-weight="700" fill="#111827">失败模式</text>
+    <rect x="835" y="210" width="280" height="110" rx="16" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="870" y="276" font-size="22" font-weight="700" fill="#111827">规则候选</text>
+    <rect x="1175" y="210" width="280" height="110" rx="16" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="1210" y="276" font-size="22" font-weight="700" fill="#111827">落到资产</text>
+    <path d="M435 265 L495 265" stroke="#64748b" stroke-width="4" marker-end="url(#a38)"/>
+    <path d="M775 265 L835 265" stroke="#64748b" stroke-width="4" marker-end="url(#a38)"/>
+    <path d="M1115 265 L1175 265" stroke="#64748b" stroke-width="4" marker-end="url(#a38)"/>
+  </g>
+  <rect x="250" y="485" width="1100" height="220" rx="18" fill="#ffffff" stroke="#d1d5db"/>
+  <text x="300" y="540" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#1f2937">沉淀三类资产</text>
+  <text x="300" y="585" font-family="Arial, sans-serif" font-size="18" fill="#4b5563">项目事实：README / AGENTS.md / openspec/specs</text>
+  <text x="300" y="621" font-family="Arial, sans-serif" font-size="18" fill="#4b5563">跨项目流程：OpenSpec 使用规则 / Superpowers Skill 触发条件</text>
+  <text x="300" y="657" font-family="Arial, sans-serif" font-size="18" fill="#4b5563">可执行证据：test/today-plan.test.js / npm test / openspec validate</text>
+  <text x="300" y="693" font-family="Arial, sans-serif" font-size="18" fill="#4b5563">不要沉淀 demo 名字，沉淀能迁移到订单、工单、审批、账单里的边界。</text>
+  <defs>
+    <marker id="a38" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#64748b"/>
+    </marker>
+  </defs>
+</svg>

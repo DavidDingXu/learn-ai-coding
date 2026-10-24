@@ -1,0 +1,526 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Skill 是什么：从提示词到可复用工作流 · Learn AI Coding</title><meta name="description" content="从接手陌生代码库，到完成一次真实需求。沿着上下文、规格、实现、测试和复盘，建立可重复的 AI Coding 工作流。"><meta name="source-sha256" content="84f925e9f412263938f0915fd5c72d074b75c7c0146bd571a9608524b37d5c46">
+<link rel="canonical" href="https://daviddingxu.github.io/learn-ai-coding/course/29.html"><link rel="icon" href="../assets/brand.png">
+<script>try{const t=localStorage.getItem('haohai-course-theme');document.documentElement.dataset.theme=t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light'}catch(_){document.documentElement.dataset.theme='light'}</script>
+<link rel="stylesheet" href="../assets/site.css"><script defer src="../assets/search-index.js"></script><script defer src="../assets/site.js"></script></head><body class="article-page" data-root="../" data-page="29"><a class="skip-link" href="#main-content">跳到正文</a><header class="site-header"><div class="header-inner"><button class="icon-button menu-toggle js-only" type="button" aria-label="打开课程目录" aria-controls="course-sidebar" aria-expanded="false"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+<a class="brand" href="../index.html" aria-label="Learn AI Coding · 学习站首页"><img src="../assets/brand.png" alt="" width="36" height="36"><span><strong>Learn AI Coding</strong><small>程序员 AI Coding 进阶实战</small></span></a>
+<nav class="header-nav" aria-label="主导航"><a href="../index.html#curriculum">课程目录</a><a href="../index.html#downloads">离线阅读</a><a href="https://github.com/DavidDingXu/learn-ai-coding" target="_blank" rel="noopener">GitHub <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></nav>
+<div class="header-controls"><button class="icon-button theme-toggle js-only" type="button" aria-label="切换到深色主题" title="切换到深色主题"><span class="theme-light-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A9 9 0 0 1 9.5 3.5a9 9 0 1 0 11 11Z"/></svg></span><span class="theme-dark-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></span></button><button class="search-trigger js-only" type="button" aria-label="搜索课程"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg><span>搜索课程</span><kbd>⌘ K</kbd></button></div></div><div class="reading-progress" aria-hidden="true"><span id="reading-progress-bar"></span></div></header><div class="sidebar-scrim" hidden></div><div class="reader-layout"><aside class="course-sidebar" id="course-sidebar" aria-label="课程目录"><div class="sidebar-heading"><a href="../index.html#curriculum">课程目录</a><button class="icon-button menu-close js-only" type="button" aria-label="关闭课程目录"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><nav aria-label="全部文章"><details class="sidebar-stage"><summary><span class="stage-index">模块 00</span>导读与学习地图</summary><a class="lesson-link" data-lesson="INTRO" href="introduction.html"><span class="lesson-number">·</span><span>程序员 AI Coding 进阶实战</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="00" href="00.html"><span class="lesson-number">00</span><span>程序员如何系统学习 AI Coding</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 01</span>AI Coding 底层心智</summary><a class="lesson-link" data-lesson="01" href="01.html"><span class="lesson-number">01</span><span>程序员用 AI Coding，真正的门槛不是 Prompt</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="02" href="02.html"><span class="lesson-number">02</span><span>从聊天式开发到工程式开发</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="03" href="03.html"><span class="lesson-number">03</span><span>AI Coding 的底层工作模型</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="04" href="04.html"><span class="lesson-number">04</span><span>AI 最擅长和最不擅长的开发任务</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 02</span>程序员工具工作台</summary><a class="lesson-link" data-lesson="05" href="05.html"><span class="lesson-number">05</span><span>Codex、Claude Code、Cursor、Copilot 怎么分工</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="06" href="06.html"><span class="lesson-number">06</span><span>一个程序员的 AI Coding 工作台怎么搭</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="07" href="07.html"><span class="lesson-number">07</span><span>App、CLI、IDE 怎么切换完成一次真实改动</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 03</span>上下文工程与代码库理解</summary><a class="lesson-link" data-lesson="08" href="08.html"><span class="lesson-number">08</span><span>上下文工程：为什么不是塞越多代码越好</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="09" href="09.html"><span class="lesson-number">09</span><span>代码地图不是手工文档：让 Agent 生成可检查的仓库导航</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="10" href="10.html"><span class="lesson-number">10</span><span>让 Agent 做代码搜索：怎样约束搜索目标、证据和停止条件</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="11" href="11.html"><span class="lesson-number">11</span><span>AGENTS.md / CLAUDE.md / Copilot Instructions</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="12" href="12.html"><span class="lesson-number">12</span><span>任务上下文包：一次需求到底该给 AI 什么</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="13" href="13.html"><span class="lesson-number">13</span><span>上下文污染与上下文清理</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="14" href="14.html"><span class="lesson-number">14</span><span>模块实战：让 AI 接手一个陌生代码模块</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 04</span>SDD 与 OpenSpec 实战</summary><a class="lesson-link" data-lesson="15" href="15.html"><span class="lesson-number">15</span><span>SDD 是什么：先写规格，再写代码</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="16" href="16.html"><span class="lesson-number">16</span><span>从一句需求到 requirements.md</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="17" href="17.html"><span class="lesson-number">17</span><span>design.md 怎么写，AI 才不会补丁式开发</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="18" href="18.html"><span class="lesson-number">18</span><span>tasks.md 怎么拆：把复杂需求变成小 diff</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="19" href="19.html"><span class="lesson-number">19</span><span>OpenSpec 实战：把需求变更放进 repo</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="20" href="20.html"><span class="lesson-number">20</span><span>OpenSpec、Spec Kit 与轻量 SDD 怎么选</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="21" href="21.html"><span class="lesson-number">21</span><span>模块实战：用 OpenSpec CLI 推进一次真实产品需求</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 05</span>小步开发测试与调试闭环</summary><a class="lesson-link" data-lesson="22" href="22.html"><span class="lesson-number">22</span><span>计划先行：让 AI 先解释它准备怎么改</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="23" href="23.html"><span class="lesson-number">23</span><span>小步开发：为什么要限制 AI 一次改动范围</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="24" href="24.html"><span class="lesson-number">24</span><span>TDD + AI Coding：先让失败测试约束模型</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="25" href="25.html"><span class="lesson-number">25</span><span>系统化调试：让 AI 基于证据排障</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="26" href="26.html"><span class="lesson-number">26</span><span>前后端验证闭环：页面、接口、数据库和副作用怎么一起验</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="27" href="27.html"><span class="lesson-number">27</span><span>AI 说“测试失败无关”时，程序员该怎么判断</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="28" href="28.html"><span class="lesson-number">28</span><span>模块实战：用 AI 完成一次 CLI 交互改造</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage" open><summary><span class="stage-index">模块 06</span>Skill Superpowers 与工作流固化</summary><a class="lesson-link" data-lesson="29" href="29.html" aria-current="page"><span class="lesson-number">29</span><span>Skill 是什么：从提示词到可复用工作流</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="30" href="30.html"><span class="lesson-number">30</span><span>Skill 原理解析：它如何约束 Agent 行为</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="31" href="31.html"><span class="lesson-number">31</span><span>Superpowers 工作流拆解：把工程纪律变成 Skill 链</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="32" href="32.html"><span class="lesson-number">32</span><span>自定义 Skill：把你的经验固化成个人能力</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="33" href="33.html"><span class="lesson-number">33</span><span>外部工具接入：MCP 在 AI Coding 里到底有什么用</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="34" href="34.html"><span class="lesson-number">34</span><span>多 Agent 与自动化：什么时候拆，什么时候不要拆</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="35" href="35.html"><span class="lesson-number">35</span><span>模块实战：用 Superpowers 固化一次业务需求的调试和评审</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="36" href="36.html"><span class="lesson-number">36</span><span>模块实战：给 AI 接一个只读项目工具</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 07</span>综合实战与资产沉淀</summary><a class="lesson-link" data-lesson="37" href="37.html"><span class="lesson-number">37</span><span>综合实战：一个真实需求的 AI Coding 最佳实践</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="38" href="38.html"><span class="lesson-number">38</span><span>综合实战：从一次交付沉淀个人规则库</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 08</span>个人工程资产</summary><a class="lesson-link" data-lesson="39" href="39.html"><span class="lesson-number">39</span><span>从个人提效到个人工程系统</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="END" href="closing.html"><span class="lesson-number">·</span><span>写在专栏结束时：把 AI Coding 留在日常工程里</span><span class="lesson-state" aria-hidden="true"></span></a></details></nav><p class="sidebar-note">给清目标，保留证据，逐步交付。</p></aside><main class="reader-main" id="main-content"><div class="article-context"><span>Skill Superpowers 与工作流固化</span><div class="reading-tools js-only"><div class="font-controls" role="group" aria-label="正文字号"><button type="button" data-font="-1" aria-label="减小正文字号">A−</button><span id="font-size-label" aria-live="polite">18</span><button type="button" data-font="1" aria-label="增大正文字号">A+</button></div><button type="button" class="focus-toggle" aria-pressed="false"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg><span>专注阅读</span></button></div></div><div class="mobile-context"><nav class="reading-route" aria-label="本篇路线"><details><summary>本篇路线</summary><div class="toc">
+<ul>
+<li><a href="#skill-适合固化什么">Skill 适合固化什么</a></li>
+<li><a href="#一个-skill-通常包含什么">一个 Skill 通常包含什么</a></li>
+<li><a href="#skill-和-prompt-的区别">Skill 和 Prompt 的区别</a></li>
+<li><a href="#skill-和项目规则的区别">Skill 和项目规则的区别</a></li>
+<li><a href="#skill-和-plugin-的区别">Skill 和 Plugin 的区别</a></li>
+<li><a href="#skill-和-mcp-的区别">Skill 和 MCP 的区别</a></li>
+<li><a href="#skill-在-ai-coding-工作流里的位置">Skill 在 AI Coding 工作流里的位置</a></li>
+<li><a href="#从项目规则提取到-skill-的时机">从项目规则提取到 Skill 的时机</a></li>
+<li><a href="#skill-的生命周期">Skill 的生命周期</a></li>
+<li><a href="#一个最小-skill-应该怎么写">一个最小 Skill 应该怎么写</a></li>
+<li><a href="#好-skill-的关键是触发条件">好 Skill 的关键是触发条件</a></li>
+<li><a href="#skill-里不要写工具事实以外的幻想能力">Skill 里不要写工具事实以外的幻想能力</a></li>
+<li><a href="#skill-什么时候不该写">Skill 什么时候不该写</a></li>
+<li><a href="#skill-也要能被验证">Skill 也要能被验证</a></li>
+<li><a href="#skill-要接到交付证据上">Skill 要接到交付证据上</a></li>
+<li><a href="#一个坏-prompt-到-skill-的改造过程">一个坏 prompt 到 Skill 的改造过程</a></li>
+<li><a href="#skill-的投入产出怎么判断">Skill 的投入产出怎么判断</a></li>
+<li><a href="#个人程序员可以先做三类-skill">个人程序员可以先做三类 Skill</a></li>
+<li><a href="#常见错误">常见错误</a></li>
+<li><a href="#改完后重点看什么">改完后重点看什么</a></li>
+<li><a href="#常见问题">常见问题</a></li>
+<li><a href="#可复查资料">可复查资料</a></li>
+</ul>
+</div>
+</details></nav></div><article id="article-body"><h1 id="skill-是什么从提示词到可复用工作流">Skill 是什么：从提示词到可复用工作流</h1>
+<p>很多程序员第一次看到 Skill，会把它理解成“高级 Prompt”。</p>
+<p>这个理解太窄。</p>
+<p>Prompt 解决的是当前这一次怎么说。Skill 解决的是以后每一次类似任务都按什么流程、读取什么资料、使用什么脚本、产出什么证据。</p>
+<p>比如你已经形成了一套 AI Coding 调试方法：</p>
+<pre><code class="language-text">先复现
+读完整错误
+追调用链
+提出单一假设
+最小验证
+修根因
+跑回归
+记录残余风险
+</code></pre>
+<p>如果每次调试都把这段复制进聊天窗口，它只是 prompt。</p>
+<p>如果你把它做成一个 Skill，让 Agent 在遇到 bug、测试失败、CI 失败时自动读取这套流程，并配合 references、scripts、模板和输出要求，那它就是可复用工作流。</p>
+<p>Skill 的价值，不是让 AI 多记几句话，而是把个人经验从“临时提醒”变成“可重复执行的工程程序”。</p>
+<p><img alt="Skill 结构拆解" src="../assets/content/docs/assets/diagrams/source/29-skill-package-anatomy.svg" /></p>
+<h2 id="skill-适合固化什么">Skill 适合固化什么</h2>
+<p>不是所有经验都适合做成 Skill。</p>
+<p>一次性的任务要求，放 prompt。</p>
+<p>某个 repo 的长期规则，放 <code>AGENTS.md</code>、<code>CLAUDE.md</code> 或对应工具的项目规则。</p>
+<p>跨项目反复使用的工作流，才适合做 Skill。</p>
+<p>适合 Skill 的场景通常有几个特征：</p>
+<ul>
+<li>每次任务都有固定步骤。</li>
+<li>步骤中需要查固定资料或模板。</li>
+<li>需要运行固定脚本或校验器。</li>
+<li>需要防止 AI 走常见错误路径。</li>
+<li>输出有固定结构。</li>
+<li>这个流程会在多个项目或多类任务里复用。</li>
+</ul>
+<p>例如：</p>
+<ul>
+<li>代码审查。</li>
+<li>系统化调试。</li>
+<li>TDD 实现。</li>
+<li>文章发布检查。</li>
+<li>API 文档核对。</li>
+<li>生成项目代码地图。</li>
+<li>前后端验证记录。</li>
+<li>技术方案 red-team。</li>
+</ul>
+<p>这些都不是一句 prompt 能长期解决的。</p>
+<h2 id="一个-skill-通常包含什么">一个 Skill 通常包含什么</h2>
+<p>不同工具对 Skill 的具体格式不完全一样，但从当前 Codex Skills、Claude Code Skills 和 Superpowers 的结构看，核心思路很接近：用一个入口说明文件告诉 Agent 什么时候使用、怎么使用、有哪些资料和脚本。</p>
+<p>一个常见结构是：</p>
+<pre><code class="language-text">my-skill/
+├── SKILL.md
+├── references/
+│   ├── checklist.md
+│   └── examples.md
+├── scripts/
+│   └── validate-output.js
+└── assets/
+    └── template.md
+</code></pre>
+<p><code>SKILL.md</code> 是入口。它至少要说明：</p>
+<ul>
+<li>skill 名称。</li>
+<li>什么时候触发。</li>
+<li>执行前要读什么。</li>
+<li>执行步骤。</li>
+<li>哪些行为禁止。</li>
+<li>输出格式。</li>
+<li>验证方式。</li>
+</ul>
+<p><code>references/</code> 放相对稳定的资料，例如检查清单、案例、模板说明、领域规则。</p>
+<p><code>scripts/</code> 放可执行工具，例如校验 Markdown 结构、生成索引、检查链接、转换文件。</p>
+<p><code>assets/</code> 放固定资产，例如模板、样例、图片、脚手架片段。</p>
+<p>Skill 不是把所有内容都塞进一个超长 prompt。它应该让 Agent 按需读取相关资料，必要时运行脚本，最后产出可验证结果。</p>
+<h2 id="skill-和-prompt-的区别">Skill 和 Prompt 的区别</h2>
+<p>Prompt 是一次性的。</p>
+<p>例如：</p>
+<pre><code class="language-text">请帮我 review 这个 PR，重点看 bug、风险和测试缺口。
+</code></pre>
+<p>Skill 是持久的。</p>
+<p>它会把 review 方法固定下来：</p>
+<pre><code class="language-text">先读需求和 diff。
+按严重程度输出 findings。
+每个 finding 必须有文件和行号。
+先列问题，再写摘要。
+没有问题就明确说没有发现。
+必须说明未运行的测试。
+</code></pre>
+<p>Prompt 的问题是容易漏。今天你记得说“先列问题”，明天可能忘了。Agent 也可能在长上下文里被别的任务带偏。</p>
+<p>Skill 的作用是把这些长期有效的行为放到稳定入口里。</p>
+<p>但不要把所有 prompt 都变成 Skill。</p>
+<p>如果一个要求只对当前任务有效，例如“这次只改订单模块，不改支付回调”，它就应该留在 prompt 或当前 <code>tasks.md</code>，不要写进 Skill。</p>
+<h2 id="skill-和项目规则的区别">Skill 和项目规则的区别</h2>
+<p>很多人会把 Skill 和 <code>AGENTS.md</code> 混用。</p>
+<p>这会导致两个问题：</p>
+<ul>
+<li>项目规则变成工具教程。</li>
+<li>Skill 变成某个 repo 的一次性约定。</li>
+</ul>
+<p>边界可以这样判断：</p>
+<pre><code class="language-text">这个约束是否只属于当前 repo？
+</code></pre>
+<p>如果是，放项目规则。</p>
+<p>例如：</p>
+<pre><code class="language-markdown">## Test Commands
+
+- Backend focused tests: `npm test -- order`
+- Frontend tests: `npm test -- web`
+- E2E tests: `npx playwright test`
+</code></pre>
+<p>这属于项目规则。</p>
+<p>再问：</p>
+<pre><code class="language-text">这个流程是否可以跨 repo 复用？
+</code></pre>
+<p>如果是，放 Skill。</p>
+<p>例如：</p>
+<pre><code class="language-text">调试时必须先复现、收集证据、提出单一假设，再修复。
+</code></pre>
+<p>这属于工作流。</p>
+<p>Skill 可以引用项目规则，但不要替代项目规则。一个 TDD Skill 可以要求“运行项目指定的 focused test”，具体命令应该来自 repo。</p>
+<p><img alt="Skill 边界图" src="../assets/content/docs/assets/diagrams/source/29-skill-boundary-map.svg" /></p>
+<h2 id="skill-和-plugin-的区别">Skill 和 Plugin 的区别</h2>
+<p>Plugin 更像分发单位。</p>
+<p>一个 plugin 里可以包含多个 skills，也可以包含 MCP 配置、hooks、资源、应用或其他安装信息。Superpowers 就是一个典型例子：它不是单个 skill，而是一组围绕软件开发流程的技能和安装方式。</p>
+<p>对个人程序员来说，可以先这样理解：</p>
+<pre><code class="language-text">Skill = 一个可复用工作流
+Plugin = 一组能力的安装包
+</code></pre>
+<p>如果你只是想固化“怎么做代码审查”，写 Skill。</p>
+<p>如果你想把一组工作流、脚本、资源和工具配置打包给另一个工具或另一台机器安装，再考虑 Plugin。</p>
+<p>不要一开始就做 plugin。先让单个 Skill 在自己的项目里跑通。</p>
+<h2 id="skill-和-mcp-的区别">Skill 和 MCP 的区别</h2>
+<p>Skill 不是外部工具接入。</p>
+<p>MCP 更适合让 Agent 访问外部资源或执行外部能力，例如文档、Issue、浏览器、只读数据库、代码索引服务。</p>
+<p>Skill 负责“怎么做”。</p>
+<p>MCP 负责“能访问什么”。</p>
+<p>例如调试一个线上问题：</p>
+<ul>
+<li>Skill 规定先复现、收集日志、提出假设。</li>
+<li>MCP 可以提供只读日志查询工具、Issue 读取工具、监控查询工具。</li>
+</ul>
+<p>如果只接 MCP，没有 Skill，Agent 可能拿到很多数据但不知道怎么排障。</p>
+<p>如果只有 Skill，没有 MCP，Agent 有方法但拿不到外部证据。</p>
+<p>两者可以组合，但不要混淆。</p>
+<h2 id="skill-在-ai-coding-工作流里的位置">Skill 在 AI Coding 工作流里的位置</h2>
+<p>把前面讲过的内容放到一条链路里，Skill 通常不负责定义需求，也不负责保存系统长期行为。它更像执行阶段的工作流入口。</p>
+<pre><code class="language-text">requirements / issue / spec
+-&gt; task context / design / tasks
+-&gt; Skill 触发对应执行纪律
+-&gt; Agent 读文件、改代码、跑命令
+-&gt; verification ledger / PR / review
+</code></pre>
+<p>例如：</p>
+<ul>
+<li>OpenSpec 保存“当前系统行为”和“拟议变更”。</li>
+<li>tasks.md 定义“这次要做哪几个小 diff”。</li>
+<li>TDD Skill 规定“执行行为变更前先写失败测试”。</li>
+<li>Debug Skill 规定“失败时先复现、找根因，再修复”。</li>
+<li>Verification Skill 规定“声明完成前必须报告命令和残余风险”。</li>
+</ul>
+<p>这样看，Skill 不是又一层文档，而是把任务执行过程里的高频纪律变成可复用流程。</p>
+<p>如果你的任务上下文本身已经足够具体，但 Agent 仍然经常跳步骤，那就适合把跳过的步骤做成 Skill。</p>
+<h2 id="从项目规则提取到-skill-的时机">从项目规则提取到 Skill 的时机</h2>
+<p>不要一开始就把规则写成 Skill。</p>
+<p>很多规则先出现在项目里。比如你在一个支付项目中反复提醒 Agent：</p>
+<pre><code class="language-text">不要改支付回调签名。
+不要把幂等失败当成普通异常。
+改状态机必须补状态转换测试。
+完成前必须跑 payment focused tests。
+</code></pre>
+<p>这些话先应该进入当前 repo 的项目规则，因为它们高度依赖业务边界。</p>
+<p>等你在多个项目里看到同一种问题，才考虑提取为 Skill。</p>
+<p>例如下面这部分可以跨项目复用：</p>
+<pre><code class="language-text">涉及状态机、持久化、认证、支付或 job 的行为变更：
+- 先识别状态来源和副作用。
+- 先写能失败的 focused test。
+- 不把 refactor 和行为变化混在一个 diff。
+- 完成前报告命令、结果和未验证范围。
+</code></pre>
+<p>这已经不是某个支付项目的规则，而是一类高风险改动的执行纪律。</p>
+<p>提取时要保留边界。</p>
+<p>Skill 里不要写：</p>
+<pre><code class="language-text">Run `npm test -- payment`.
+</code></pre>
+<p>应该写：</p>
+<pre><code class="language-text">Run the focused test command documented by the repository. If no focused command exists, inspect project scripts and report the chosen command before using it as evidence.
+</code></pre>
+<p>这样 Skill 负责流程，项目规则负责具体命令。</p>
+<h2 id="skill-的生命周期">Skill 的生命周期</h2>
+<p>Skill 不是写完就永远正确。</p>
+<p>一个个人 Skill 通常会经历四个阶段。</p>
+<pre><code class="language-text">试用：从一次真实失误里提炼流程。
+收敛：只保留会改变 Agent 行为的触发、步骤、停止点和输出。
+脚本化：把格式、链接、字段、命令记录这类确定性检查交给脚本。
+淘汰：工具能力变化、流程不再适用或被项目规则替代时删除。
+</code></pre>
+<p>很多 Skill 失效，不是因为模型变差，而是因为它已经过期。</p>
+<p>例如一个文档核对 Skill 里写死了某个工具的旧命令。半年后工具安装方式变了，Agent 仍然会按旧命令执行。正确做法是把易变事实换成核对动作：</p>
+<pre><code class="language-text">Before using tool-specific commands, verify the current official installation and command reference.
+</code></pre>
+<p>再把稳定流程留下：</p>
+<pre><code class="language-text">先核对当前版本。
+再列出破坏性变化。
+只改当前任务需要的调用点。
+最后用测试证明改动。
+</code></pre>
+<p>维护 Skill 时，不要只追加规则。</p>
+<p>每次修改都问一句：</p>
+<pre><code class="language-text">这条规则是否还在真实任务里发挥作用？
+</code></pre>
+<p>如果答案不清楚，先删掉或移到 reference，而不是继续增加主流程噪音。</p>
+<h2 id="一个最小-skill-应该怎么写">一个最小 Skill 应该怎么写</h2>
+<p>假设你想把“验证记录检查”固化成 Skill。</p>
+<p>先不要写复杂工具。一个最小 <code>SKILL.md</code> 可以这样：</p>
+<pre><code class="language-markdown">---
+name: verification-ledger-review
+description: Use when reviewing whether an AI Coding task has enough verification evidence before declaring completion.
+---
+
+# Verification Ledger Review
+
+Use this skill before claiming an implementation is complete.
+
+## Required Inputs
+
+- changed file list
+- verification commands and output
+- known baseline failures
+- residual risks
+
+## Workflow
+
+1. Read the task goal and changed files.
+2. Check whether focused verification was run.
+3. Check whether broader verification was needed and run.
+4. Classify any failures as current diff, baseline, expected red test, or environment.
+5. Reject completion if command evidence is missing.
+6. Report residual risk explicitly.
+
+## Output
+
+- Completion status: complete / incomplete
+- Evidence used
+- Missing verification
+- Failure classification
+- Residual risk
+</code></pre>
+<p>这已经比临时 prompt 稳定。</p>
+<p>但它还不够强。下一步可以加 references：</p>
+<pre><code class="language-text">references/
+└── failure-classification.md
+</code></pre>
+<p>再加脚本：</p>
+<pre><code class="language-text">scripts/
+└── check-ledger.js
+</code></pre>
+<p>Skill 的演进路线应该是：</p>
+<pre><code class="language-text">先固化流程
+再补参考资料
+再加脚本校验
+最后才考虑分发
+</code></pre>
+<p>不要反过来，一上来就做很重的目录和安装流程。</p>
+<h2 id="好-skill-的关键是触发条件">好 Skill 的关键是触发条件</h2>
+<p>Skill 写得再好，触发条件模糊也会出问题。</p>
+<p>坏 description：</p>
+<pre><code class="language-text">Use this skill to improve code quality.
+</code></pre>
+<p>这个范围太大，Agent 不知道什么时候该用。</p>
+<p>好 description：</p>
+<pre><code class="language-text">Use when encountering a bug, test failure, CI failure, or unexpected runtime behavior before proposing fixes.
+</code></pre>
+<p>它明确：</p>
+<ul>
+<li>触发对象是 bug、测试失败、CI 失败、异常行为。</li>
+<li>触发时间是在提出修复之前。</li>
+</ul>
+<p>再比如 TDD Skill：</p>
+<pre><code class="language-text">Use when implementing a behavior change where a focused automated test can be written before implementation.
+</code></pre>
+<p>这比“Use for development”清楚得多。</p>
+<p>触发条件要具体到工程场景，而不是写抽象价值。</p>
+<h2 id="skill-里不要写工具事实以外的幻想能力">Skill 里不要写工具事实以外的幻想能力</h2>
+<p>写 Skill 时，一个常见错误是把愿望写成能力。</p>
+<p>例如：</p>
+<pre><code class="language-text">The agent must guarantee the implementation is production ready.
+</code></pre>
+<p>这没有用。Agent 不能保证生产就绪。</p>
+<p>更好的写法是：</p>
+<pre><code class="language-text">Before declaring completion, the agent must report:
+- changed files
+- verification commands and outputs
+- tests not run and why
+- residual risk
+</code></pre>
+<p>Skill 不能替代真实验证。它只能规定 Agent 必须怎样收集、使用和报告证据。</p>
+<p>另一个错误是写太多“永远”“必须”但没有可执行动作。</p>
+<p>例如：</p>
+<pre><code class="language-text">Always write high-quality maintainable code.
+</code></pre>
+<p>这不如：</p>
+<pre><code class="language-text">Do not combine refactoring with behavior changes unless explicitly authorized.
+If a refactor is required, stop and request a separate refactor step.
+</code></pre>
+<p>Skill 里的规则必须能落到行为。</p>
+<h2 id="skill-什么时候不该写">Skill 什么时候不该写</h2>
+<p>下面这些不适合做 Skill：</p>
+<ul>
+<li>只服务一次任务的约束。</li>
+<li>某个 repo 的具体命令和路径。</li>
+<li>还没被你实际验证过的流程。</li>
+<li>过长的工具百科。</li>
+<li>没有稳定触发条件的经验总结。</li>
+<li>只是为了显得“工作流化”的 prompt 集合。</li>
+</ul>
+<p>尤其是“还没被验证过的流程”。</p>
+<p>一个 Skill 会放大你的经验。如果经验是错的，它会稳定地产生错误。</p>
+<p>先在真实任务里跑几次，再固化。</p>
+<h2 id="skill-也要能被验证">Skill 也要能被验证</h2>
+<p>一个 Skill 是否有用，不能靠感觉。</p>
+<p>你可以拿同一类任务做对照：</p>
+<pre><code class="language-text">没有 Skill：
+- Agent 是否直接写代码？
+- 是否遗漏验证命令？
+- 是否没有报告 residual risk？
+
+使用 Skill：
+- 是否先读要求的上下文？
+- 是否按阶段停住？
+- 是否输出了证据？
+- diff 是否更小、更可审？
+</code></pre>
+<p>如果使用 Skill 后行为没有明显变化，原因通常有三种：</p>
+<ul>
+<li>触发条件不够具体。</li>
+<li>停止条件太软。</li>
+<li>输出要求不可检查。</li>
+</ul>
+<p>这时不要继续堆更多说明。先改这三处。</p>
+<p>例如 verification Skill 如果没有拦住“测试已通过”这种空结论，就应该把输出要求改成：</p>
+<pre><code class="language-text">Do not accept completion unless the response includes:
+- command
+- result
+- failures or explicit no failures
+- what was not verified
+</code></pre>
+<p>Skill 的效果要看它是否改变 Agent 行为，而不是看它写得多像规范。</p>
+<h2 id="skill-要接到交付证据上">Skill 要接到交付证据上</h2>
+<p>Skill 最后要落到交付证据。</p>
+<p>否则它只是对话里的流程提示。</p>
+<p>以 verification Skill 为例，任务完成时至少应该能回答：</p>
+<pre><code class="language-text">这次 Skill 触发了吗？
+它要求的上下文读了吗？
+它要求的停止点有没有触发？
+它要求的验证命令跑了吗？
+结果是什么？
+哪些范围没有验证？
+</code></pre>
+<p>可以把这段写进 PR 描述、任务记录或本地 verification ledger：</p>
+<pre><code class="language-markdown">Workflow evidence:
+- skill: verification-ledger-review
+- trigger: before completion claim
+- changed files checked: yes
+- focused command: `npm test -- order-cancel`
+- result: pass, 18 tests
+- not verified: payment provider sandbox callback
+</code></pre>
+<p>这样 reviewer 才能判断 Agent 是按流程做了，还是只说自己做了。</p>
+<p>Skill 和交付记录之间缺一层证据，就会回到老问题：AI 说完成，人不知道该不该信。</p>
+<h2 id="一个坏-prompt-到-skill-的改造过程">一个坏 prompt 到 Skill 的改造过程</h2>
+<p>坏 prompt：</p>
+<pre><code class="language-text">以后调试要认真点，先分析原因，不要乱改。
+</code></pre>
+<p>这句话对人有提醒作用，对 Agent 的约束很弱。</p>
+<p>改成 Skill 时，要拆成行为：</p>
+<pre><code class="language-markdown">Use when:
+- bug, test failure, CI failure, unexpected runtime behavior.
+
+Before editing:
+- reproduce or record why reproduction is unavailable.
+- read full error output.
+- identify first failing line.
+- inspect recent diff.
+- trace the value or state source.
+
+Stop if:
+- reproduction is missing.
+- fix requires changing public API or schema.
+- failure may be baseline and baseline is not confirmed.
+
+Output:
+- root cause.
+- changed files.
+- verification commands and results.
+- residual risk.
+</code></pre>
+<p>这样 Agent 才知道具体该做什么、什么时候不能继续、最后要交什么证据。</p>
+<p>Skill 改造的关键，是把抽象要求翻译成可检查行为。</p>
+<h2 id="skill-的投入产出怎么判断">Skill 的投入产出怎么判断</h2>
+<p>写 Skill 需要维护成本，所以要算值不值。</p>
+<p>适合写 Skill 的任务，通常满足：</p>
+<pre><code class="language-text">高频：一个月会遇到多次。
+高风险：漏一步会导致错误 diff、错误文章或错误验证。
+跨项目：不是某个 repo 的独有规则。
+可检查：结果能用命令、diff、清单或输出结构判断。
+</code></pre>
+<p>例如“完成前验证”值得写。因为 AI 经常提前宣布完成，漏掉命令、失败分类和残余风险。</p>
+<p>“某个项目的订单取消目录结构”不适合写。它属于项目规则或代码地图。</p>
+<p>“某个库的旧 API 用法”也不适合写。它可能很快过期，应该通过官方文档或项目依赖版本核对。</p>
+<p>一个实用判断：</p>
+<pre><code class="language-text">如果这个规则明天换一个 repo 仍然成立，可以考虑 Skill。
+如果换一个 repo 就失效，先放项目规则。
+</code></pre>
+<h2 id="个人程序员可以先做三类-skill">个人程序员可以先做三类 Skill</h2>
+<p>不要一开始做很多。</p>
+<p>我建议从三类开始。</p>
+<p><strong>第一类：调试 Skill。</strong></p>
+<p>触发测试失败、CI 失败、异常行为。核心流程是先证据、再假设、后修复。</p>
+<p><strong>第二类：验证 Skill。</strong></p>
+<p>在 AI 声称完成前触发。检查命令、输出、失败分类、残余风险。</p>
+<p><strong>第三类：写作或文档 Skill。</strong></p>
+<p>如果你经常写技术文档、变更说明、PR 描述，可以把结构、禁用口径、证据要求固化。</p>
+<p>这三类最容易产生复用价值，而且不会强行改变项目架构。</p>
+<h2 id="常见错误">常见错误</h2>
+<p><strong>错误一：把 Skill 写成 prompt 合集。</strong></p>
+<p>Skill 应该有触发、流程、资料、脚本和输出约束，不只是几段提示词。</p>
+<p><strong>错误二：把 repo 命令写进跨项目 Skill。</strong></p>
+<p>跨项目 Skill 应该说“运行项目指定测试命令”，具体命令由项目规则提供。</p>
+<p><strong>错误三：触发条件太泛。</strong></p>
+<p>“提高质量”“写更好代码”没有触发价值。</p>
+<p><strong>错误四：没有验证方式。</strong></p>
+<p>Skill 执行完也要能检查结果。没有输出约束和检查点，工作流会漂。</p>
+<p><strong>错误五：把 MCP 和 Skill 混为一谈。</strong></p>
+<p>Skill 是方法，MCP 是外部能力接入。两者可以组合，但职责不同。</p>
+<p><strong>错误六：过早做 Plugin。</strong></p>
+<p>先让单个 Skill 在真实任务中稳定，再考虑打包分发。</p>
+<h2 id="改完后重点看什么">改完后重点看什么</h2>
+<p>一个 Skill 写完后，不要只看文件结构。</p>
+<p>重点看：</p>
+<ul>
+<li>触发条件是否具体。</li>
+<li>是否明确什么时候不该用。</li>
+<li>流程是否能按步骤执行。</li>
+<li>是否引用了必要资料。</li>
+<li>是否有脚本或检查方式。</li>
+<li>输出是否可审查。</li>
+<li>是否避免写入项目私有命令。</li>
+<li>是否在真实任务里跑过。</li>
+</ul>
+<p>如果一个 Skill 不能让 Agent 按固定步骤留下证据，它就只是换了位置的 prompt。</p>
+<p>Skill 的目标，是把你已经证明有效的 AI Coding 方法，沉淀成下一次还能被正确调用的工作流资产。</p>
+<h2 id="常见问题">常见问题</h2>
+<p><strong>Skill 是不是越多越好？</strong></p>
+<p>不是。Skill 多了会增加触发冲突和维护成本。先做高频、高风险、可复用的流程。</p>
+<p><strong>Skill 可以替代 AGENTS.md 吗？</strong></p>
+<p>不能。AGENTS.md 适合 repo 规则；Skill 适合跨项目工作流。两者职责不同。</p>
+<p><strong>Skill 需要写代码吗？</strong></p>
+<p>不一定。最小 Skill 可以只有 <code>SKILL.md</code>。当流程需要稳定校验或生成时，再加脚本。</p>
+<p><strong>Skill 能保证 AI 不犯错吗？</strong></p>
+<p>不能。它只能提高流程一致性，要求 AI 使用证据、模板和校验。最终还要看 diff、测试和人工判断。</p>
+<p><strong>什么时候该把 Skill 做成 Plugin？</strong></p>
+<p>当你需要分发一组 skills、脚本、MCP 配置或其他资源，并希望跨工具安装时，再考虑 Plugin。</p>
+<h2 id="可复查资料">可复查资料</h2>
+<ul>
+<li>OpenAI Codex Agent Skills：<a href="https://developers.openai.com/codex/skills">https://developers.openai.com/codex/skills</a></li>
+<li>Anthropic Claude Code Skills：<a href="https://code.claude.com/docs/en/skills">https://code.claude.com/docs/en/skills</a></li>
+<li>Superpowers GitHub 仓库：<a href="https://github.com/obra/superpowers">https://github.com/obra/superpowers</a></li>
+<li>Model Context Protocol 文档：<a href="https://modelcontextprotocol.io/docs/getting-started/intro">https://modelcontextprotocol.io/docs/getting-started/intro</a></li>
+</ul></article><div class="practice-link"><a href="https://github.com/DavidDingXu/learn-ai-coding/blob/main/personal-productivity-app/dev-process/02-superpowers-today-plan-workflow.md" target="_blank" rel="noopener"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5M14 4l-4 16"/></svg> Superpowers 业务工作流 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></div><nav class="chapter-nav" aria-label="前后篇"><a href="28.html"><span>上一篇 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg></span><strong>模块实战：用 AI 完成一次 CLI 交互改造</strong></a><a href="30.html"><span>下一篇 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><strong>Skill 原理解析：它如何约束 Agent 行为</strong></a></nav><footer class="reader-footer">程序员 AI Coding 进阶实战 · <a href="../license.html">非商业使用</a><details class="community-mini"><summary>关注与交流 · 好好用 AI</summary><div class="community-section"><div><p>交流学习中的问题与实践心得。</p><p>代码问题和勘误，欢迎在 <a href="https://github.com/DavidDingXu/learn-ai-coding/issues" target="_blank" rel="noopener">GitHub 提交 Issue</a>。</p></div><a class="qr-link" href="../assets/wechat-official-account.jpg" target="_blank" rel="noopener" aria-label="查看好好用 AI 公众号二维码原图"><img src="../assets/wechat-official-account.jpg" alt="好好用 AI 微信公众号二维码" width="130" height="130" loading="lazy"><p class="qr-caption">微信扫码 · 点击查看原图</p></a></div></details></footer></main><aside class="context-sidebar" aria-label="本篇辅助导航"><div class="context-inner"><nav class="reading-route" aria-label="本篇路线"><details open><summary>本篇路线</summary><div class="toc">
+<ul>
+<li><a href="#skill-适合固化什么">Skill 适合固化什么</a></li>
+<li><a href="#一个-skill-通常包含什么">一个 Skill 通常包含什么</a></li>
+<li><a href="#skill-和-prompt-的区别">Skill 和 Prompt 的区别</a></li>
+<li><a href="#skill-和项目规则的区别">Skill 和项目规则的区别</a></li>
+<li><a href="#skill-和-plugin-的区别">Skill 和 Plugin 的区别</a></li>
+<li><a href="#skill-和-mcp-的区别">Skill 和 MCP 的区别</a></li>
+<li><a href="#skill-在-ai-coding-工作流里的位置">Skill 在 AI Coding 工作流里的位置</a></li>
+<li><a href="#从项目规则提取到-skill-的时机">从项目规则提取到 Skill 的时机</a></li>
+<li><a href="#skill-的生命周期">Skill 的生命周期</a></li>
+<li><a href="#一个最小-skill-应该怎么写">一个最小 Skill 应该怎么写</a></li>
+<li><a href="#好-skill-的关键是触发条件">好 Skill 的关键是触发条件</a></li>
+<li><a href="#skill-里不要写工具事实以外的幻想能力">Skill 里不要写工具事实以外的幻想能力</a></li>
+<li><a href="#skill-什么时候不该写">Skill 什么时候不该写</a></li>
+<li><a href="#skill-也要能被验证">Skill 也要能被验证</a></li>
+<li><a href="#skill-要接到交付证据上">Skill 要接到交付证据上</a></li>
+<li><a href="#一个坏-prompt-到-skill-的改造过程">一个坏 prompt 到 Skill 的改造过程</a></li>
+<li><a href="#skill-的投入产出怎么判断">Skill 的投入产出怎么判断</a></li>
+<li><a href="#个人程序员可以先做三类-skill">个人程序员可以先做三类 Skill</a></li>
+<li><a href="#常见错误">常见错误</a></li>
+<li><a href="#改完后重点看什么">改完后重点看什么</a></li>
+<li><a href="#常见问题">常见问题</a></li>
+<li><a href="#可复查资料">可复查资料</a></li>
+</ul>
+</div>
+</details></nav></div></aside></div><dialog class="search-dialog" id="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label for="course-search" id="search-label"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>搜索课程</label><button class="icon-button" aria-label="关闭搜索"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></form><input id="course-search" type="search" placeholder="搜索概念、代码或问题…" autocomplete="off" spellcheck="false"><p class="search-status" id="search-status" role="status">搜索全部 42 篇文章。</p><div class="search-results" id="search-results"></div><footer>↑ ↓ 选择结果 <span>Enter 打开 · Esc 关闭</span></footer></dialog>
+<dialog class="image-viewer" id="image-viewer" aria-label="放大配图"><header><span>查看配图</span><div class="image-actions"><button type="button" id="image-size">原尺寸</button><button type="button" id="close-image" autofocus>关闭</button></div></header><div class="image-canvas"><img id="large-image" alt=""></div><footer><p id="image-description"></p><a id="original-image" target="_blank" rel="noopener">打开原图 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></footer></dialog><div class="toast" id="toast" role="status"></div></body></html>

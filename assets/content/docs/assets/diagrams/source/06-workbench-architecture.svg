@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#ecfeff"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0891b2"/>
+    </marker>
+    <style>
+      .title { font: 700 46px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 24px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #475569; }
+      .box { fill: #ffffff; stroke: #bae6fd; stroke-width: 2; filter: url(#shadow); }
+      .repo { fill: #164e63; filter: url(#shadow); }
+      .asset { fill: #ecfeff; stroke: #67e8f9; stroke-width: 2; }
+      .tool { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 2; }
+      .verify { fill: #fef9c3; stroke: #fde68a; stroke-width: 2; }
+      .nodeTitle { font: 700 25px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .repoTitle { font: 700 30px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #ffffff; }
+      .repoText { font: 400 20px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #cffafe; }
+      .text { font: 400 20px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #334155; }
+      .small { font: 400 18px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #475569; }
+      .line { stroke: #0891b2; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .dash { stroke: #94a3b8; stroke-width: 2; stroke-dasharray: 8 8; fill: none; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <text x="80" y="86" class="title">程序员 AI Coding 工作台架构</text>
+  <text x="82" y="128" class="subtitle">工具围绕真实仓库工作：上下文、编辑、验证和记录都要落到同一条路径上。</text>
+
+  <rect x="580" y="290" width="440" height="250" rx="28" class="repo"/>
+  <text x="708" y="370" class="repoTitle">真实代码仓库</text>
+  <text x="656" y="420" class="repoText">source / tests / config / docs</text>
+  <text x="688" y="462" class="repoText">Git diff 是核心事实</text>
+
+  <rect x="100" y="210" width="340" height="140" rx="20" class="asset"/>
+  <text x="146" y="260" class="nodeTitle">项目规则</text>
+  <text x="146" y="300" class="text">AGENTS.md / CLAUDE.md</text>
+
+  <rect x="100" y="430" width="340" height="140" rx="20" class="asset"/>
+  <text x="146" y="480" class="nodeTitle">任务记录</text>
+  <text x="146" y="520" class="text">context / plan / ledger</text>
+
+  <rect x="580" y="110" width="440" height="130" rx="20" class="tool"/>
+  <text x="632" y="160" class="nodeTitle">仓库级 Agent</text>
+  <text x="632" y="200" class="text">搜索、读文件、计划、小步实现</text>
+
+  <rect x="1160" y="210" width="340" height="140" rx="20" class="tool"/>
+  <text x="1206" y="260" class="nodeTitle">编辑器工作面</text>
+  <text x="1206" y="300" class="text">跳转、选区、类型反馈</text>
+
+  <rect x="1160" y="430" width="340" height="140" rx="20" class="verify"/>
+  <text x="1206" y="480" class="nodeTitle">验证工作面</text>
+  <text x="1206" y="520" class="text">终端、浏览器、测试输出</text>
+
+  <rect x="580" y="650" width="440" height="130" rx="20" class="asset"/>
+  <text x="632" y="700" class="nodeTitle">沉淀资产</text>
+  <text x="632" y="740" class="text">代码地图、规则更新、验证证据</text>
+
+  <path d="M 440 280 C 500 300, 535 330, 580 360" class="line"/>
+  <path d="M 440 500 C 510 490, 535 470, 580 448" class="line"/>
+  <path d="M 800 240 L 800 290" class="line"/>
+  <path d="M 1020 380 C 1080 340, 1110 305, 1160 285" class="line"/>
+  <path d="M 1020 460 C 1080 485, 1110 500, 1160 505" class="line"/>
+  <path d="M 800 540 L 800 650" class="line"/>
+
+  <path d="M 1160 530 C 1050 610, 960 630, 880 650" class="dash"/>
+  <path d="M 700 650 C 560 620, 480 575, 440 520" class="dash"/>
+</svg>

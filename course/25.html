@@ -1,0 +1,817 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>系统化调试：让 AI 基于证据排障 · Learn AI Coding</title><meta name="description" content="从接手陌生代码库，到完成一次真实需求。沿着上下文、规格、实现、测试和复盘，建立可重复的 AI Coding 工作流。"><meta name="source-sha256" content="820290486945e1141c471906c410285c8d0af913cc52d1810d9d299e4c94fd5f">
+<link rel="canonical" href="https://daviddingxu.github.io/learn-ai-coding/course/25.html"><link rel="icon" href="../assets/brand.png">
+<script>try{const t=localStorage.getItem('haohai-course-theme');document.documentElement.dataset.theme=t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light'}catch(_){document.documentElement.dataset.theme='light'}</script>
+<link rel="stylesheet" href="../assets/site.css"><script defer src="../assets/search-index.js"></script><script defer src="../assets/site.js"></script></head><body class="article-page" data-root="../" data-page="25"><a class="skip-link" href="#main-content">跳到正文</a><header class="site-header"><div class="header-inner"><button class="icon-button menu-toggle js-only" type="button" aria-label="打开课程目录" aria-controls="course-sidebar" aria-expanded="false"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+<a class="brand" href="../index.html" aria-label="Learn AI Coding · 学习站首页"><img src="../assets/brand.png" alt="" width="36" height="36"><span><strong>Learn AI Coding</strong><small>程序员 AI Coding 进阶实战</small></span></a>
+<nav class="header-nav" aria-label="主导航"><a href="../index.html#curriculum">课程目录</a><a href="../index.html#downloads">离线阅读</a><a href="https://github.com/DavidDingXu/learn-ai-coding" target="_blank" rel="noopener">GitHub <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></nav>
+<div class="header-controls"><button class="icon-button theme-toggle js-only" type="button" aria-label="切换到深色主题" title="切换到深色主题"><span class="theme-light-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A9 9 0 0 1 9.5 3.5a9 9 0 1 0 11 11Z"/></svg></span><span class="theme-dark-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></span></button><button class="search-trigger js-only" type="button" aria-label="搜索课程"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg><span>搜索课程</span><kbd>⌘ K</kbd></button></div></div><div class="reading-progress" aria-hidden="true"><span id="reading-progress-bar"></span></div></header><div class="sidebar-scrim" hidden></div><div class="reader-layout"><aside class="course-sidebar" id="course-sidebar" aria-label="课程目录"><div class="sidebar-heading"><a href="../index.html#curriculum">课程目录</a><button class="icon-button menu-close js-only" type="button" aria-label="关闭课程目录"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><nav aria-label="全部文章"><details class="sidebar-stage"><summary><span class="stage-index">模块 00</span>导读与学习地图</summary><a class="lesson-link" data-lesson="INTRO" href="introduction.html"><span class="lesson-number">·</span><span>程序员 AI Coding 进阶实战</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="00" href="00.html"><span class="lesson-number">00</span><span>程序员如何系统学习 AI Coding</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 01</span>AI Coding 底层心智</summary><a class="lesson-link" data-lesson="01" href="01.html"><span class="lesson-number">01</span><span>程序员用 AI Coding，真正的门槛不是 Prompt</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="02" href="02.html"><span class="lesson-number">02</span><span>从聊天式开发到工程式开发</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="03" href="03.html"><span class="lesson-number">03</span><span>AI Coding 的底层工作模型</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="04" href="04.html"><span class="lesson-number">04</span><span>AI 最擅长和最不擅长的开发任务</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 02</span>程序员工具工作台</summary><a class="lesson-link" data-lesson="05" href="05.html"><span class="lesson-number">05</span><span>Codex、Claude Code、Cursor、Copilot 怎么分工</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="06" href="06.html"><span class="lesson-number">06</span><span>一个程序员的 AI Coding 工作台怎么搭</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="07" href="07.html"><span class="lesson-number">07</span><span>App、CLI、IDE 怎么切换完成一次真实改动</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 03</span>上下文工程与代码库理解</summary><a class="lesson-link" data-lesson="08" href="08.html"><span class="lesson-number">08</span><span>上下文工程：为什么不是塞越多代码越好</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="09" href="09.html"><span class="lesson-number">09</span><span>代码地图不是手工文档：让 Agent 生成可检查的仓库导航</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="10" href="10.html"><span class="lesson-number">10</span><span>让 Agent 做代码搜索：怎样约束搜索目标、证据和停止条件</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="11" href="11.html"><span class="lesson-number">11</span><span>AGENTS.md / CLAUDE.md / Copilot Instructions</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="12" href="12.html"><span class="lesson-number">12</span><span>任务上下文包：一次需求到底该给 AI 什么</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="13" href="13.html"><span class="lesson-number">13</span><span>上下文污染与上下文清理</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="14" href="14.html"><span class="lesson-number">14</span><span>模块实战：让 AI 接手一个陌生代码模块</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 04</span>SDD 与 OpenSpec 实战</summary><a class="lesson-link" data-lesson="15" href="15.html"><span class="lesson-number">15</span><span>SDD 是什么：先写规格，再写代码</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="16" href="16.html"><span class="lesson-number">16</span><span>从一句需求到 requirements.md</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="17" href="17.html"><span class="lesson-number">17</span><span>design.md 怎么写，AI 才不会补丁式开发</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="18" href="18.html"><span class="lesson-number">18</span><span>tasks.md 怎么拆：把复杂需求变成小 diff</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="19" href="19.html"><span class="lesson-number">19</span><span>OpenSpec 实战：把需求变更放进 repo</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="20" href="20.html"><span class="lesson-number">20</span><span>OpenSpec、Spec Kit 与轻量 SDD 怎么选</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="21" href="21.html"><span class="lesson-number">21</span><span>模块实战：用 OpenSpec CLI 推进一次真实产品需求</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage" open><summary><span class="stage-index">模块 05</span>小步开发测试与调试闭环</summary><a class="lesson-link" data-lesson="22" href="22.html"><span class="lesson-number">22</span><span>计划先行：让 AI 先解释它准备怎么改</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="23" href="23.html"><span class="lesson-number">23</span><span>小步开发：为什么要限制 AI 一次改动范围</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="24" href="24.html"><span class="lesson-number">24</span><span>TDD + AI Coding：先让失败测试约束模型</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="25" href="25.html" aria-current="page"><span class="lesson-number">25</span><span>系统化调试：让 AI 基于证据排障</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="26" href="26.html"><span class="lesson-number">26</span><span>前后端验证闭环：页面、接口、数据库和副作用怎么一起验</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="27" href="27.html"><span class="lesson-number">27</span><span>AI 说“测试失败无关”时，程序员该怎么判断</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="28" href="28.html"><span class="lesson-number">28</span><span>模块实战：用 AI 完成一次 CLI 交互改造</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 06</span>Skill Superpowers 与工作流固化</summary><a class="lesson-link" data-lesson="29" href="29.html"><span class="lesson-number">29</span><span>Skill 是什么：从提示词到可复用工作流</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="30" href="30.html"><span class="lesson-number">30</span><span>Skill 原理解析：它如何约束 Agent 行为</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="31" href="31.html"><span class="lesson-number">31</span><span>Superpowers 工作流拆解：把工程纪律变成 Skill 链</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="32" href="32.html"><span class="lesson-number">32</span><span>自定义 Skill：把你的经验固化成个人能力</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="33" href="33.html"><span class="lesson-number">33</span><span>外部工具接入：MCP 在 AI Coding 里到底有什么用</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="34" href="34.html"><span class="lesson-number">34</span><span>多 Agent 与自动化：什么时候拆，什么时候不要拆</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="35" href="35.html"><span class="lesson-number">35</span><span>模块实战：用 Superpowers 固化一次业务需求的调试和评审</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="36" href="36.html"><span class="lesson-number">36</span><span>模块实战：给 AI 接一个只读项目工具</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 07</span>综合实战与资产沉淀</summary><a class="lesson-link" data-lesson="37" href="37.html"><span class="lesson-number">37</span><span>综合实战：一个真实需求的 AI Coding 最佳实践</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="38" href="38.html"><span class="lesson-number">38</span><span>综合实战：从一次交付沉淀个人规则库</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 08</span>个人工程资产</summary><a class="lesson-link" data-lesson="39" href="39.html"><span class="lesson-number">39</span><span>从个人提效到个人工程系统</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="END" href="closing.html"><span class="lesson-number">·</span><span>写在专栏结束时：把 AI Coding 留在日常工程里</span><span class="lesson-state" aria-hidden="true"></span></a></details></nav><p class="sidebar-note">给清目标，保留证据，逐步交付。</p></aside><main class="reader-main" id="main-content"><div class="article-context"><span>小步开发测试与调试闭环</span><div class="reading-tools js-only"><div class="font-controls" role="group" aria-label="正文字号"><button type="button" data-font="-1" aria-label="减小正文字号">A−</button><span id="font-size-label" aria-live="polite">18</span><button type="button" data-font="1" aria-label="增大正文字号">A+</button></div><button type="button" class="focus-toggle" aria-pressed="false"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg><span>专注阅读</span></button></div></div><div class="mobile-context"><nav class="reading-route" aria-label="本篇路线"><details><summary>本篇路线</summary><div class="toc">
+<ul>
+<li><a href="#先禁止直接修">先禁止直接修</a></li>
+<li><a href="#复现要写成命令不要写成感觉">复现要写成命令，不要写成感觉</a></li>
+<li><a href="#读完整错误不要只读最后一行">读完整错误，不要只读最后一行</a></li>
+<li><a href="#沿数据流往上追">沿数据流往上追</a></li>
+<li><a href="#一次只提出一个假设">一次只提出一个假设</a></li>
+<li><a href="#最小验证动作不是完整修复">最小验证动作不是完整修复</a></li>
+<li><a href="#修复前最好有失败用例">修复前最好有失败用例</a></li>
+<li><a href="#多层系统要定位坏在哪一层">多层系统要定位坏在哪一层</a></li>
+<li><a href="#证据要分三层">证据要分三层</a></li>
+<li><a href="#debug-worksheet-可以固定下来">Debug worksheet 可以固定下来</a></li>
+<li><a href="#调试时怎么和-ai-对话">调试时怎么和 AI 对话</a></li>
+<li><a href="#什么时候要停下来回到设计">什么时候要停下来回到设计</a></li>
+<li><a href="#ci-失败不要直接本地乱改">CI 失败不要直接本地乱改</a></li>
+<li><a href="#间歇性失败先提高可观察性">间歇性失败先提高可观察性</a></li>
+<li><a href="#修复后要删除诊断噪音">修复后要删除诊断噪音</a></li>
+<li><a href="#修复说明要能被-reviewer-复查">修复说明要能被 reviewer 复查</a></li>
+<li><a href="#回归验证不能只跑失败用例">回归验证不能只跑失败用例</a></li>
+<li><a href="#一个-ci-失败案例本地绿ci-红">一个 CI 失败案例：本地绿，CI 红</a></li>
+<li><a href="#给-agent-的排障指令可以固定成四段">给 Agent 的排障指令可以固定成四段</a></li>
+<li><a href="#排障报告的最低标准">排障报告的最低标准</a></li>
+<li><a href="#不要把防御性代码当成修复">不要把防御性代码当成修复</a></li>
+<li><a href="#线上问题要保留可复现材料">线上问题要保留可复现材料</a></li>
+<li><a href="#调试后的-pr-描述要写根因不写过程流水">调试后的 PR 描述要写根因，不写过程流水</a></li>
+<li><a href="#调试完成后的上线前检查">调试完成后的上线前检查</a></li>
+<li><a href="#常见错误">常见错误</a></li>
+<li><a href="#改完后重点看什么">改完后重点看什么</a></li>
+<li><a href="#常见问题">常见问题</a></li>
+<li><a href="#可复查资料">可复查资料</a></li>
+</ul>
+</div>
+</details></nav></div><article id="article-body"><h1 id="系统化调试让-ai-基于证据排障">系统化调试：让 AI 基于证据排障</h1>
+<p>AI 写代码快，猜原因也快。</p>
+<p>这在调试时很危险。</p>
+<p>你贴一段报错：</p>
+<pre><code class="language-text">TypeError: Cannot read properties of undefined (reading 'status')
+</code></pre>
+<p>AI 很可能马上给出修复建议：</p>
+<pre><code class="language-text">这里加一个空值判断即可。
+</code></pre>
+<p>有时它是对的。更多时候，它只是把症状压下去了。真正的问题可能是上游查询没有返回订单、mock 数据漏字段、异步初始化顺序错了、接口响应 shape 变了，或者测试环境没有加载 fixture。</p>
+<p>调试不是“看到错误就修”。调试是先证明问题从哪里开始，再修根因。</p>
+<p>AI Coding 里的系统化调试，就是强制 Agent 先走证据循环：</p>
+<pre><code class="language-text">复现 -&gt; 收集证据 -&gt; 缩小边界 -&gt; 提出单一假设 -&gt; 最小验证 -&gt; 修根因 -&gt; 回归
+</code></pre>
+<p><img alt="系统化调试证据循环" src="../assets/content/docs/assets/diagrams/source/25-debug-evidence-loop.svg" /></p>
+<h2 id="先禁止直接修">先禁止直接修</h2>
+<p>调试任务的第一条指令，应该是：</p>
+<pre><code class="language-text">先不要修改代码。
+</code></pre>
+<p>这句话要放在最前面。</p>
+<p>很多 Agent 默认会进入“修复模式”。它看到错误，就尝试补空值、改条件、重跑测试。如果第一次没过，再补一层判断。几轮之后，原始错误可能没了，但代码里多了一堆防御性分支，根因仍然存在。</p>
+<p>调试输入可以这样写：</p>
+<pre><code class="language-text">先不要修改代码。
+
+请基于下面的错误输出做系统化排障：
+- 读完整错误和堆栈。
+- 找到触发命令。
+- 说明是否能稳定复现。
+- 找出最近相关 diff。
+- 沿调用链追踪 `status` 从哪里来。
+- 只提出一个最可能假设。
+- 给出最小验证动作。
+
+在我确认前，不要修复。
+</code></pre>
+<p>这能把 AI 从“猜修复”切到“找证据”。</p>
+<h2 id="复现要写成命令不要写成感觉">复现要写成命令，不要写成感觉</h2>
+<p>很多调试失败，是因为复现不清。</p>
+<p>坏记录：</p>
+<pre><code class="language-text">订单取消测试偶尔失败。
+</code></pre>
+<p>好记录：</p>
+<pre><code class="language-bash">npm test -- order-cancel
+</code></pre>
+<p>输出：</p>
+<pre><code class="language-text">FAIL test/order/order-cancel.test.ts
+TypeError: Cannot read properties of undefined (reading 'status')
+  at cancelOrder (src/order/order-cancel-service.ts:42:18)
+  at test/order/order-cancel.test.ts:87:24
+</code></pre>
+<p>还要记录：</p>
+<pre><code class="language-text">Reproduction:
+- command: `npm test -- order-cancel`
+- frequency: 5/5
+- branch: `feature/paid-cancel-refund`
+- last known passing state: before Task 3
+</code></pre>
+<p>如果不能稳定复现，不要让 AI 直接修。</p>
+<p>应该先收集更多数据：</p>
+<pre><code class="language-text">这个失败不是稳定复现。
+请先提出可以增加的诊断信息：
+- 日志位置
+- 关键变量
+- 组件边界
+- 需要重复运行的命令
+不要修改业务逻辑。
+</code></pre>
+<p>不稳定问题最怕随机补丁。先让它变得可观察。</p>
+<h2 id="读完整错误不要只读最后一行">读完整错误，不要只读最后一行</h2>
+<p>AI 很容易被错误最后一行带偏。</p>
+<p>例如：</p>
+<pre><code class="language-text">Cannot read properties of undefined (reading 'status')
+</code></pre>
+<p>最后一行说 <code>status</code> 是 undefined，但根因不一定在读取这一行。要看：</p>
+<ul>
+<li>哪个对象是 undefined。</li>
+<li>它从哪个函数返回。</li>
+<li>这个函数的输入是什么。</li>
+<li>输入为什么变了。</li>
+<li>最近 diff 是否改过 fixture、mock、查询条件或状态转换。</li>
+</ul>
+<p>可以让 AI 这样做：</p>
+<pre><code class="language-text">请完整读取堆栈。
+
+输出：
+- first failing line
+- caller chain
+- value that became undefined
+- where this value is created
+- which recent change could affect it
+</code></pre>
+<p>如果它直接给修复方案，要求它回到证据：</p>
+<pre><code class="language-text">先不要修。
+你还没有证明 `order` 为什么是 undefined。
+请沿调用链往上追踪来源。
+</code></pre>
+<h2 id="沿数据流往上追">沿数据流往上追</h2>
+<p>深层错误要逆着调用链追。</p>
+<p>比如错误发生在：</p>
+<pre><code class="language-js">if (order.status === 'paid') {
+  // ...
+}
+</code></pre>
+<p>不要先加：</p>
+<pre><code class="language-js">if (!order) throw new Error('order not found');
+</code></pre>
+<p>这可能只是把错误换了个形式。</p>
+<p>先追：</p>
+<pre><code class="language-text">order 从哪里来？
+</code></pre>
+<p>可能是：</p>
+<pre><code class="language-js">const order = await orderRepository.findById(orderId);
+</code></pre>
+<p>继续追：</p>
+<pre><code class="language-text">orderId 从哪里来？
+</code></pre>
+<p>可能是测试里：</p>
+<pre><code class="language-js">const order = await fixtures.createOrder({ state: 'paid' });
+await cancelOrder(order.id);
+</code></pre>
+<p>再追：</p>
+<pre><code class="language-text">fixtures.createOrder 返回的 id 是否真实落库？
+</code></pre>
+<p>这时可能发现根因：Task 3 改了 fixture 默认字段，把 <code>status</code> 写成 <code>state</code>，repository 查询条件仍然按 <code>status</code> 查。</p>
+<p>要修的不是 <code>cancelOrder</code> 的空值判断，而是 fixture 或 repository 的字段映射。</p>
+<p>根因和症状的差别就在这里。</p>
+<h2 id="一次只提出一个假设">一次只提出一个假设</h2>
+<p>AI 调试时常见坏味道是一次给多个可能原因：</p>
+<pre><code class="language-text">可能是数据未初始化、异步时序问题、mock 配置错误或状态字段不一致。
+</code></pre>
+<p>这没有错，但不能直接进入修复。</p>
+<p>下一步要选一个最可能假设，并说明证据：</p>
+<pre><code class="language-text">Hypothesis:
+- `fixtures.createOrder` now writes `state`, but `orderRepository.findById` expects `status`.
+
+Evidence:
+- failing test creates order through fixture.
+- stack shows `order` is undefined inside cancel service.
+- recent diff changed fixture field names.
+- repository query still filters by `status`.
+
+Minimal verification:
+- inspect the created fixture record before cancel.
+- run only `npm test -- order-cancel -- --test-name-pattern paid`.
+</code></pre>
+<p>这才是可验证假设。</p>
+<p>如果假设失败，不要叠加第二个补丁。回到证据：</p>
+<pre><code class="language-text">这个假设不成立。
+请记录验证结果，并基于新证据提出一个新的单一假设。
+</code></pre>
+<p>调试最怕“改一点再改一点”。每一轮必须能说明上一轮假设为什么成立或失败。</p>
+<h2 id="最小验证动作不是完整修复">最小验证动作不是完整修复</h2>
+<p>假设阶段的验证动作应该尽量小。</p>
+<p>例如怀疑 fixture 字段写错，可以先加临时诊断或直接查看测试数据，而不是马上改业务代码。</p>
+<p>可用动作包括：</p>
+<pre><code class="language-bash">npm test -- order-cancel -- --test-name-pattern paid
+git diff -- test/order/order-cancel.test.ts
+rg -n &quot;createOrder|status|state&quot; test src
+</code></pre>
+<p>前端问题可以用 Playwright 调试：</p>
+<pre><code class="language-bash">npx playwright test order-cancel.spec.ts --debug
+</code></pre>
+<p>CI 问题可以先看 workflow logs。GitHub Actions 官方文档也把 workflow run logs 作为排障入口。不要在本地猜一个“可能的环境变量问题”，先看日志里哪一步失败、输入是什么、环境差异是什么。</p>
+<p>最小验证的原则：</p>
+<pre><code class="language-text">一次只验证一个变量。
+不要把验证动作和修复动作混在一起。
+</code></pre>
+<h2 id="修复前最好有失败用例">修复前最好有失败用例</h2>
+<p>如果问题能被测试表达，先写失败用例。</p>
+<p>例如你确认根因是 duplicate cancel 会创建两条退款请求，那么修复前先补：</p>
+<pre><code class="language-js">test('duplicate paid cancellation creates only one refund request', async () =&gt; {
+  const order = await fixtures.createOrder({ status: 'paid' });
+
+  await cancelOrder(order.id);
+  await cancelOrder(order.id);
+
+  assert.equal(await refundRequests.countForOrder(order.id), 1);
+});
+</code></pre>
+<p>然后再修。</p>
+<p>如果问题很难写自动化测试，也要保留复现脚本、日志、截图或命令输出。不要只让 AI 写“已修复”。</p>
+<p>修复阶段的指令可以写：</p>
+<pre><code class="language-text">现在只修已确认根因：duplicate paid cancellation lacks idempotency.
+
+要求：
+- 保留刚才新增的失败测试。
+- 只修改 refund request 幂等逻辑。
+- 不改 API response shape。
+- 不改 payment callback。
+- 跑 `npm test -- order-cancel`。
+- 完成后停止。
+</code></pre>
+<p>这和“修一下测试失败”完全不同。</p>
+<h2 id="多层系统要定位坏在哪一层">多层系统要定位坏在哪一层</h2>
+<p>真实项目常见的调试不是单函数问题，而是多层链路：</p>
+<pre><code class="language-text">前端页面 -&gt; API -&gt; service -&gt; repository -&gt; database
+</code></pre>
+<p>或者：</p>
+<pre><code class="language-text">CI workflow -&gt; build script -&gt; test command -&gt; environment variables
+</code></pre>
+<p>这时不要在最深处猜。</p>
+<p>要按边界收集证据：</p>
+<pre><code class="language-text">API 收到的 payload 是什么？
+service 传给 repository 的参数是什么？
+repository 返回了什么？
+数据库里实际记录是什么？
+测试 fixture 写入了什么？
+</code></pre>
+<p>可以让 AI 先画出链路：</p>
+<pre><code class="language-text">先不要修。
+请画出这条失败路径的数据流：
+- test input
+- service call
+- repository query
+- database record
+- returned object
+
+标出每一层当前证据和缺失证据。
+</code></pre>
+<p>然后只补缺失证据。</p>
+<p>不要让 AI 直接“检查一下相关代码”。先让它补齐缺失证据。</p>
+<h2 id="证据要分三层">证据要分三层</h2>
+<p>调试时，证据可以分成三层。</p>
+<p>第一层是症状证据：</p>
+<pre><code class="language-text">哪个命令失败。
+哪条断言失败。
+实际值和期望值是什么。
+第一条错误在哪里。
+</code></pre>
+<p>第二层是路径证据：</p>
+<pre><code class="language-text">失败路径经过哪些函数、组件、接口、配置。
+本次 diff 改了哪些路径上的文件。
+哪些路径没有被改。
+</code></pre>
+<p>第三层是根因证据：</p>
+<pre><code class="language-text">哪个输入、状态、数据或环境变量导致错误。
+用什么最小验证证明它就是根因。
+修复后同一证据如何变化。
+</code></pre>
+<p>很多 AI 调试只停在第一层：看到错误，补一个判断。系统化调试要求至少走到第二层，复杂问题要走到第三层。</p>
+<p>可以让 Agent 按这个格式输出：</p>
+<pre><code class="language-markdown">Evidence layers:
+
+Symptom:
+- `npm test -- order-cancel` fails on duplicate paid cancellation.
+- Expected refund request count 1, received 2.
+
+Path:
+- test -&gt; `cancelOrder` -&gt; `RefundRequestService.create`
+- changed files include cancel service and refund request service.
+
+Root cause candidate:
+- refund request creation lacks idempotency by order id.
+
+Minimal verification:
+- call cancel twice and inspect refund request count.
+</code></pre>
+<p>这比“可能是幂等问题”更可审。</p>
+<h2 id="debug-worksheet-可以固定下来">Debug worksheet 可以固定下来</h2>
+<p>调试过程不要只留在聊天里。</p>
+<p>可以在任务目录里放一个 <code>debug.md</code>：</p>
+<p><img alt="Debug worksheet" src="../assets/content/docs/assets/diagrams/source/25-debug-worksheet.svg" /></p>
+<p>模板如下：</p>
+<pre><code class="language-markdown"># Debug Worksheet
+
+## Reproduction
+- Command:
+- Frequency:
+- Environment:
+- Last known passing state:
+
+## Error
+- First failing line:
+- Full stack:
+- Actual:
+- Expected:
+
+## Evidence
+- Recent diff:
+- Relevant files:
+- Logs / screenshots:
+- Data flow:
+
+## Boundary
+- Works:
+- Fails:
+- Unknown:
+
+## Hypothesis
+- I think:
+- Because:
+
+## Minimal Verification
+- Command or check:
+- Expected result:
+
+## Result
+- Confirmed / rejected:
+- New evidence:
+
+## Fix
+- Root cause:
+- Changed files:
+- Why this fixes root cause:
+
+## Verification
+- Focused:
+- Broader:
+- Residual risk:
+</code></pre>
+<p>这个文件不需要每次都完整填写。遇到复杂 bug、CI 失败、线上问题、间歇性测试失败时，它能减少排障时的遗漏。</p>
+<h2 id="调试时怎么和-ai-对话">调试时怎么和 AI 对话</h2>
+<p>可以按阶段给指令。</p>
+<p>复现阶段：</p>
+<pre><code class="language-text">先不要改代码。
+请读取失败输出，整理 reproduction、first failing line、caller chain。
+如果信息不足，只列出需要补充的命令。
+</code></pre>
+<p>证据阶段：</p>
+<pre><code class="language-text">请使用 `rg` 查找相关调用点和最近修改文件。
+输出 working path 和 failing path 的差异。
+不要提出修复。
+</code></pre>
+<p>假设阶段：</p>
+<pre><code class="language-text">基于当前证据，只提出一个最可能根因。
+写出支持证据、反证可能、最小验证动作。
+</code></pre>
+<p>修复阶段：</p>
+<pre><code class="language-text">只修已确认根因。
+不做无关重构。
+保留失败测试。
+跑指定验证命令。
+完成后停止。
+</code></pre>
+<p>回归阶段：</p>
+<pre><code class="language-text">请汇总：
+- root cause
+- changed files
+- focused verification
+- broader verification
+- residual risk
+</code></pre>
+<p>这样做会让 AI 少猜很多。</p>
+<h2 id="什么时候要停下来回到设计">什么时候要停下来回到设计</h2>
+<p>调试中经常会发现：问题不是一个 bug，而是设计假设错了。</p>
+<p>比如订单取消失败，看起来是空指针，追下去发现根因是：</p>
+<pre><code class="language-text">paid -&gt; refund_requested 需要事务保证，
+但当前实现先更新订单状态，再创建退款请求。
+退款请求失败后，订单已经变成 refund_requested。
+</code></pre>
+<p>这不是加空值判断能解决的问题。它涉及状态更新和副作用顺序，应该回到 design。</p>
+<p>出现下面情况，要停止调试并升级为设计问题：</p>
+<ul>
+<li>修复需要改变事务边界。</li>
+<li>修复需要改变 public API response shape。</li>
+<li>修复需要新增状态、事件或数据库字段。</li>
+<li>根因涉及多个入口共用规则。</li>
+<li>当前 tests 无法表达正确行为，需要重写 requirement。</li>
+<li>需要引入新依赖或新基础设施。</li>
+</ul>
+<p>这时可以写：</p>
+<pre><code class="language-markdown">Debug result:
+- Symptom: refund request failure leaves order in wrong state.
+- Root cause: state is persisted before side effect succeeds.
+- This is a design boundary issue, not a local null-check bug.
+
+Action:
+- stop implementation.
+- update design.md failure handling.
+- update tasks.md with transaction / rollback behavior.
+- add failing test before changing implementation.
+</code></pre>
+<p>AI 调试时最容易一路修下去。程序员要判断这是不是还在 bug 修复范围内，还是已经进入设计变更。</p>
+<h2 id="ci-失败不要直接本地乱改">CI 失败不要直接本地乱改</h2>
+<p>CI 失败经常和本地不同。</p>
+<p>常见差异包括：</p>
+<ul>
+<li>Node、Java、Python 版本不同。</li>
+<li>环境变量缺失。</li>
+<li>数据库、浏览器、系统依赖不同。</li>
+<li>测试顺序不同。</li>
+<li>时区、locale、文件路径不同。</li>
+<li>缓存或依赖锁文件问题。</li>
+</ul>
+<p>看到 CI 红，不要直接说：</p>
+<pre><code class="language-text">修复 CI。
+</code></pre>
+<p>更好的输入：</p>
+<pre><code class="language-text">先不要改代码。
+请根据 CI 日志做排障：
+- 哪个 job、step、command 失败。
+- 本地是否有同样命令。
+- CI 环境和本地环境差异。
+- 最近 diff 是否影响该 step。
+- 最小复现命令是什么。
+- 一个最可能假设是什么。
+</code></pre>
+<p>如果本地无法复现，就不要假装已经验证。要写清：</p>
+<pre><code class="language-text">Not locally reproduced.
+Evidence from CI log:
+- ...
+Next verification:
+- rerun failed job after config change
+</code></pre>
+<p>这比“本地测试通过，应该没问题”可靠得多。</p>
+<h2 id="间歇性失败先提高可观察性">间歇性失败先提高可观察性</h2>
+<p>间歇性失败最容易被 AI 随机修坏。</p>
+<p>比如：</p>
+<pre><code class="language-text">order-cancel E2E occasionally fails waiting for 退款处理中.
+</code></pre>
+<p>不要马上加超时。</p>
+<p>先收集：</p>
+<ul>
+<li>失败频率。</li>
+<li>失败时网络请求是否成功。</li>
+<li>前端状态是否更新。</li>
+<li>后端日志里订单状态是什么。</li>
+<li>测试数据是否唯一。</li>
+<li>是否有并发测试污染。</li>
+</ul>
+<p>可以让 Agent 先做诊断计划：</p>
+<pre><code class="language-text">先不要修改业务逻辑。
+请为这个 flaky test 设计诊断步骤：
+- 需要增加哪些临时日志或 trace。
+- 需要重复运行哪个命令多少次。
+- 如何区分前端等待问题、接口失败、数据污染和异步竞态。
+- 哪些诊断改动最终必须删除。
+</code></pre>
+<p>Playwright 的 trace、截图、视频、网络日志都能帮助定位。后端测试可以加唯一 id、隔离数据库、固定时间和随机数。</p>
+<p>只有确认是等待条件不准确，才考虑调整等待逻辑。没有证据时直接把 timeout 从 5 秒改 30 秒，通常只是把问题藏起来。</p>
+<h2 id="修复后要删除诊断噪音">修复后要删除诊断噪音</h2>
+<p>调试过程中可能会加日志、临时断言、临时脚本。这些东西不一定都该进最终 diff。</p>
+<p>修复完成后，让 Agent 自查：</p>
+<pre><code class="language-text">请检查本次 diff 中是否还有临时诊断内容：
+- console.log / print / debug output
+- temporary comments
+- skipped tests
+- widened timeouts
+- broad catch blocks
+- diagnostic-only scripts
+
+如果保留，请说明为什么它是生产需要，而不是调试残留。
+</code></pre>
+<p>调试残留很常见，尤其是 AI 修复多轮失败后。它可能留下过宽的 catch、过长的 timeout、无意义日志，表面上测试通过，代码质量下降。</p>
+<p>真正的修复应该比调试过程干净。</p>
+<h2 id="修复说明要能被-reviewer-复查">修复说明要能被 reviewer 复查</h2>
+<p>调试完成后，不要只写“修复了空指针”。</p>
+<p>可复查的修复说明应该包含：</p>
+<pre><code class="language-markdown">Root cause:
+- `fixtures.createOrder` wrote `state`, but repository lookup expected `status`.
+
+Fix:
+- align fixture field with production schema.
+- keep repository query unchanged.
+
+Why this is root cause:
+- before fix, created test record lacked `status`.
+- after fix, `orders.find(order.id)` returns the paid order.
+
+Verification:
+- `npm test -- order-cancel -- --test-name-pattern paid`: PASS
+- `npm test -- order-cancel`: PASS
+
+Not changed:
+- cancel service null handling
+- API response shape
+- payment callback flow
+</code></pre>
+<p>这段说明能让 reviewer 复查：修的是根因，不是把症状掩盖掉。</p>
+<p>如果修复说明写不出“为什么这就是根因”，说明调试还没完成。</p>
+<h2 id="回归验证不能只跑失败用例">回归验证不能只跑失败用例</h2>
+<p>失败用例通过，只能证明当前症状消失。</p>
+<p>修复后至少要跑两层：</p>
+<pre><code class="language-text">focused reproduction:
+- 证明原失败用例通过。
+
+neighbor regression:
+- 证明相邻旧行为没坏。
+</code></pre>
+<p>订单取消例子里，修 duplicate paid cancellation 后，不能只跑 duplicate 测试。还要跑 pending、paid、shipped、refund failure 这些相邻路径。</p>
+<p>可以要求 Agent：</p>
+<pre><code class="language-text">修复后请运行：
+1. 原失败用例。
+2. 同文件全部测试。
+3. 受影响模块测试。
+
+分别说明每个命令证明什么。
+</code></pre>
+<p>如果只跑原失败用例，很可能把一个 bug 修成另一个 bug。</p>
+<h2 id="一个-ci-失败案例本地绿ci-红">一个 CI 失败案例：本地绿，CI 红</h2>
+<p>假设本地验证通过：</p>
+<pre><code class="language-text">npm test -- order-cancel
+PASS
+</code></pre>
+<p>但 CI 失败：</p>
+<pre><code class="language-text">FAIL test/order/order-cancel.test.ts
+duplicate paid cancellation creates one refund request
+Expected: 1
+Received: 2
+</code></pre>
+<p>不要让 AI 直接“修 CI”。先让它整理差异：</p>
+<pre><code class="language-markdown">CI evidence:
+- job: test-linux
+- command: `npm test -- order-cancel`
+- failing test: duplicate paid cancellation creates one refund request
+- actual: 2 refund requests
+- expected: 1 refund request
+
+Local evidence:
+- same command passed locally.
+
+Diff surface:
+- `src/order/order-cancel-service.ts`
+- `src/refund/refund-request-service.ts`
+- no lockfile change
+- no CI config change
+
+Environment difference:
+- CI runs tests in parallel.
+- local run uses default serial mode.
+</code></pre>
+<p>这时一个合理假设是：幂等逻辑在并发情况下不成立。</p>
+<p>最小验证不是改代码，而是先复现并发：</p>
+<pre><code class="language-text">Minimal verification:
+- run duplicate cancellation test with parallel workers or concurrent requests.
+- inspect whether idempotency key has unique constraint.
+- inspect refund request creation transaction.
+</code></pre>
+<p>修复可能需要数据库唯一约束、事务或 upsert。这个结论已经超出“本地绿 CI 红”的表面现象。</p>
+<p>如果直接加 sleep、延长 timeout、重试测试，可能让 CI 暂时绿，但生产里的重复退款问题仍然存在。</p>
+<p>这个案例说明：CI 失败不是麻烦，它经常暴露本地没覆盖的执行条件。让 AI 基于 CI 证据排障，才能避免把真实并发问题当成环境问题。</p>
+<h2 id="给-agent-的排障指令可以固定成四段">给 Agent 的排障指令可以固定成四段</h2>
+<p>复杂调试时，直接贴错误让 AI 发挥，通常会得到一堆猜测。可以把指令固定成四段。</p>
+<p>第一段，先锁住只读：</p>
+<pre><code class="language-text">先不要修改代码。
+你现在只做排障，不做修复。
+</code></pre>
+<p>第二段，要求复现和证据：</p>
+<pre><code class="language-text">请整理：
+- failing command
+- first failing line
+- actual vs expected
+- stack / caller chain
+- changed files that may affect this failure
+</code></pre>
+<p>第三段，要求单一假设：</p>
+<pre><code class="language-text">只提出一个最可能根因。
+必须写支持证据和反证可能。
+不要列 5 个可能原因后直接修。
+</code></pre>
+<p>第四段，要求最小验证：</p>
+<pre><code class="language-text">给出一个最小验证动作。
+验证动作不能同时修改业务逻辑。
+验证完成前不要进入修复。
+</code></pre>
+<p>完整指令可以这样写：</p>
+<pre><code class="language-text">先不要修改代码。
+
+请对下面失败做系统化排障：
+1. 记录 failing command、first failing line、actual vs expected。
+2. 沿调用链找出值从哪里来。
+3. 对照 git diff，判断失败路径是否经过本次修改。
+4. 只提出一个最可能根因。
+5. 给出最小验证动作。
+
+输出排障报告，不要修复。
+</code></pre>
+<p>这段指令的重点不是格式，而是阻止 AI 从错误直接跳到补丁。</p>
+<h2 id="排障报告的最低标准">排障报告的最低标准</h2>
+<p>一次排障报告至少要包含：</p>
+<pre><code class="language-markdown">## Reproduction
+- command:
+- frequency:
+- environment:
+
+## Failure
+- failing test / scenario:
+- actual:
+- expected:
+- first failing line:
+
+## Path
+- caller chain:
+- data source:
+- changed files on path:
+
+## Hypothesis
+- root cause candidate:
+- supporting evidence:
+- possible counter-evidence:
+
+## Minimal verification
+- command / check:
+- expected result:
+
+## Stop condition
+- what would make this a design issue:
+</code></pre>
+<p>如果 Agent 输出里没有 command、actual/expected、caller chain，只给修复建议，直接退回。</p>
+<p>调试工作不是靠“看起来懂了”推进，而是靠每一步证据能被复查。</p>
+<h2 id="不要把防御性代码当成修复">不要把防御性代码当成修复</h2>
+<p>AI 调试时最常见的“假修复”是加防御性代码。</p>
+<p>比如：</p>
+<pre><code class="language-js">if (!order) {
+  return null;
+}
+</code></pre>
+<p>或者：</p>
+<pre><code class="language-js">if (!order?.status) {
+  return { status: 'unknown' };
+}
+</code></pre>
+<p>这类代码可能让报错消失，但它没有解释为什么订单不存在，也没有证明业务应该返回 <code>null</code> 或 <code>unknown</code>。</p>
+<p>防御性代码只有在满足下面条件时才合理：</p>
+<ul>
+<li>这个输入在生产中确实可能为空。</li>
+<li>requirements 或接口合同定义了空值行为。</li>
+<li>有测试覆盖空值路径。</li>
+<li>不会掩盖上游数据错误。</li>
+</ul>
+<p>否则它只是把异常藏起来。</p>
+<p>可以要求 Agent：</p>
+<pre><code class="language-text">如果你建议加 guard clause，请先证明：
+- 空值是合法业务输入，还是上游 bug。
+- 合法时应该返回什么。
+- 哪个测试覆盖这个分支。
+- 为什么不是修上游数据来源。
+</code></pre>
+<p>这条规则能挡住大量“看起来稳妥”的错误修复。</p>
+<h2 id="线上问题要保留可复现材料">线上问题要保留可复现材料</h2>
+<p>线上问题不一定能在本地完全复现，但也不能只靠文字描述。</p>
+<p>至少保留：</p>
+<pre><code class="language-text">request id / trace id
+时间范围
+用户角色或租户
+关键日志
+输入 payload
+实际响应
+相关数据快照
+当前版本或 commit
+</code></pre>
+<p>给 Agent 时，先脱敏，再让它基于这些材料找路径。</p>
+<pre><code class="language-text">先不要修改代码。
+基于以下脱敏 trace，找出请求经过的代码路径和可能的状态来源。
+不要根据业务常识猜测缺失字段。
+</code></pre>
+<p>线上排障尤其不能让 AI 直接改。它缺少生产上下文，必须先把 trace、日志、数据和代码路径对齐。</p>
+<h2 id="调试后的-pr-描述要写根因不写过程流水">调试后的 PR 描述要写根因，不写过程流水</h2>
+<p>PR 里不用贴完整 debug worksheet，但要留下能审的摘要。</p>
+<pre><code class="language-markdown">Root cause:
+- Duplicate paid cancellation created two refund requests because refund creation was not guarded by an idempotency key.
+
+Fix:
+- Use `order:&lt;orderId&gt;:cancel` as idempotency key.
+- Reuse existing refund request when the key already exists.
+
+Verification:
+- `npm test -- order-cancel`: PASS
+- duplicate paid cancellation test added
+- refund failure path still keeps order paid
+
+Not changed:
+- payment provider callback
+- public API response shape
+</code></pre>
+<p>这样的摘要比“修复重复取消问题”更有价值。它让 reviewer 能判断修复是否对着根因，测试是否覆盖风险，边界是否保持。</p>
+<h2 id="调试完成后的上线前检查">调试完成后的上线前检查</h2>
+<p>调试修复进入交付前，再做一遍短检查：</p>
+<pre><code class="language-text">Root cause:
+- 是否一句话说得清。
+
+Patch:
+- 是否只改根因相关文件。
+- 是否没有临时日志、skip、only、扩大 timeout。
+
+Regression:
+- 原失败用例是否通过。
+- 相邻路径是否通过。
+- broader command 是否跑过或记录了原因。
+
+Risk:
+- 是否改变接口、数据、权限、副作用。
+- 是否有未验证外部依赖。
+</code></pre>
+<p>这段检查适合放在 PR 自查里。</p>
+<p>AI 可以协助生成自查报告，但你要用 diff 和命令输出核对。尤其要看它有没有为了让测试通过而保留不该保留的诊断代码。</p>
+<p>如果调试修复很小，也至少保留：</p>
+<pre><code class="language-text">root cause + changed files + verification command
+</code></pre>
+<p>没有这三项，后续再出问题时很难判断当时修了什么。</p>
+<p>还有一个简单判断：如果你删掉修复代码，原失败用例不会重新失败，那这个用例就没有锁住根因。此时要补回归测试，或者至少保留可复现脚本。否则这次调试只是一次临时处理，不能算真正闭环。</p>
+<p>如果修复依赖外部条件，例如特定时区、特定浏览器、特定 CI runner，也要把条件写进记录。否则后续换环境后，同一个问题会被重新误判。</p>
+<p>还有一种检查很有用：反证检查。</p>
+<p>修复后可以让 Agent 回答：</p>
+<pre><code class="language-text">如果这个根因判断是错的，哪些现象应该不会出现？
+当前证据里有没有反例？
+有没有其它假设也能解释同一组现象？
+我们是否验证过这些假设？
+</code></pre>
+<p>这不是让流程变学术，而是防止“第一个看起来合理的解释”变成根因。线上问题、CI 偶发失败、异步竞态、缓存问题，尤其需要这一步。</p>
+<p>反证检查还可以帮助你判断是否应该继续让 Agent 修改代码。如果仍有多个假设能解释同一现象，下一步应该是补证据，而不是补补丁。</p>
+<h2 id="常见错误">常见错误</h2>
+<p><strong>错误一：看到报错就补空值判断。</strong></p>
+<p>空值判断可能需要，但先证明为什么为空。</p>
+<p><strong>错误二：一次改多个可能原因。</strong></p>
+<p>同时改 fixture、service、repository，最后不知道哪个修好了问题。</p>
+<p><strong>错误三：没有复现命令。</strong></p>
+<p>没有复现，就没有可靠验证。</p>
+<p><strong>错误四：只读最后一行错误。</strong></p>
+<p>堆栈、上游调用、最近 diff 才能定位根因。</p>
+<p><strong>错误五：调试过程只留在聊天记录。</strong></p>
+<p>复杂问题要沉淀 debug worksheet，否则后面很难复盘。</p>
+<p><strong>错误六：CI 失败按本地经验猜。</strong></p>
+<p>先看 CI job、step、command、环境差异和日志。</p>
+<h2 id="改完后重点看什么">改完后重点看什么</h2>
+<p>一次调试完成后，看这些结果：</p>
+<ul>
+<li>是否有稳定复现或明确说明无法稳定复现。</li>
+<li>是否定位到 first failing line 和上游来源。</li>
+<li>是否提出并验证过单一假设。</li>
+<li>修复是否针对根因，而不是只压症状。</li>
+<li>是否有失败用例或等价复现证据。</li>
+<li>focused 和 broader verification 是否都跑过。</li>
+<li>是否记录了 residual risk。</li>
+</ul>
+<p>如果这些都没有，只是 AI 改完后测试绿了，你还不能确信它修对了。</p>
+<p>调试的目标不是让错误消失，而是让错误为什么出现、为什么被修复、为什么不会回归，都有证据。</p>
+<h2 id="常见问题">常见问题</h2>
+<p><strong>简单 bug 也要写 debug worksheet 吗？</strong></p>
+<p>不需要。简单、稳定复现、根因明显的问题，可以直接记录命令和修复。但只要开始猜，或者第二次修还没好，就应该写下来。</p>
+<p><strong>AI 已经知道怎么修，还要先排查吗？</strong></p>
+<p>让它先说证据。能用代码、日志、堆栈证明的“知道”，才值得相信。</p>
+<p><strong>没有测试怎么验证修复？</strong></p>
+<p>先争取写最小复现测试。写不了就保留脚本、日志、截图、手工步骤和预期结果。</p>
+<p><strong>调试阶段可以加日志吗？</strong></p>
+<p>可以，但要区分诊断日志和最终代码。临时日志用于定位，修复后要删除或转成有意义的结构化日志。</p>
+<p><strong>多个假设都很可能怎么办？</strong></p>
+<p>按最小验证成本排序，一次验证一个。不要把多个修复混在一个 diff。</p>
+<h2 id="可复查资料">可复查资料</h2>
+<ul>
+<li>Playwright debugging：<a href="https://playwright.dev/docs/debug">https://playwright.dev/docs/debug</a></li>
+<li>Node.js debugger：<a href="https://nodejs.org/api/debugger.html">https://nodejs.org/api/debugger.html</a></li>
+<li>GitHub Actions workflow logs：<a href="https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/using-workflow-run-logs">https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/using-workflow-run-logs</a></li>
+<li>OpenAI Codex best practices：<a href="https://developers.openai.com/codex/learn/best-practices">https://developers.openai.com/codex/learn/best-practices</a></li>
+</ul></article><div class="practice-link"><a href="https://github.com/DavidDingXu/learn-ai-coding/blob/main/personal-productivity-app/README.md" target="_blank" rel="noopener"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5M14 4l-4 16"/></svg> 业务样例与测试 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></div><nav class="chapter-nav" aria-label="前后篇"><a href="24.html"><span>上一篇 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg></span><strong>TDD + AI Coding：先让失败测试约束模型</strong></a><a href="26.html"><span>下一篇 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><strong>前后端验证闭环：页面、接口、数据库和副作用怎么一起验</strong></a></nav><footer class="reader-footer">程序员 AI Coding 进阶实战 · <a href="../license.html">非商业使用</a><details class="community-mini"><summary>关注与交流 · 好好用 AI</summary><div class="community-section"><div><p>交流学习中的问题与实践心得。</p><p>代码问题和勘误，欢迎在 <a href="https://github.com/DavidDingXu/learn-ai-coding/issues" target="_blank" rel="noopener">GitHub 提交 Issue</a>。</p></div><a class="qr-link" href="../assets/wechat-official-account.jpg" target="_blank" rel="noopener" aria-label="查看好好用 AI 公众号二维码原图"><img src="../assets/wechat-official-account.jpg" alt="好好用 AI 微信公众号二维码" width="130" height="130" loading="lazy"><p class="qr-caption">微信扫码 · 点击查看原图</p></a></div></details></footer></main><aside class="context-sidebar" aria-label="本篇辅助导航"><div class="context-inner"><nav class="reading-route" aria-label="本篇路线"><details open><summary>本篇路线</summary><div class="toc">
+<ul>
+<li><a href="#先禁止直接修">先禁止直接修</a></li>
+<li><a href="#复现要写成命令不要写成感觉">复现要写成命令，不要写成感觉</a></li>
+<li><a href="#读完整错误不要只读最后一行">读完整错误，不要只读最后一行</a></li>
+<li><a href="#沿数据流往上追">沿数据流往上追</a></li>
+<li><a href="#一次只提出一个假设">一次只提出一个假设</a></li>
+<li><a href="#最小验证动作不是完整修复">最小验证动作不是完整修复</a></li>
+<li><a href="#修复前最好有失败用例">修复前最好有失败用例</a></li>
+<li><a href="#多层系统要定位坏在哪一层">多层系统要定位坏在哪一层</a></li>
+<li><a href="#证据要分三层">证据要分三层</a></li>
+<li><a href="#debug-worksheet-可以固定下来">Debug worksheet 可以固定下来</a></li>
+<li><a href="#调试时怎么和-ai-对话">调试时怎么和 AI 对话</a></li>
+<li><a href="#什么时候要停下来回到设计">什么时候要停下来回到设计</a></li>
+<li><a href="#ci-失败不要直接本地乱改">CI 失败不要直接本地乱改</a></li>
+<li><a href="#间歇性失败先提高可观察性">间歇性失败先提高可观察性</a></li>
+<li><a href="#修复后要删除诊断噪音">修复后要删除诊断噪音</a></li>
+<li><a href="#修复说明要能被-reviewer-复查">修复说明要能被 reviewer 复查</a></li>
+<li><a href="#回归验证不能只跑失败用例">回归验证不能只跑失败用例</a></li>
+<li><a href="#一个-ci-失败案例本地绿ci-红">一个 CI 失败案例：本地绿，CI 红</a></li>
+<li><a href="#给-agent-的排障指令可以固定成四段">给 Agent 的排障指令可以固定成四段</a></li>
+<li><a href="#排障报告的最低标准">排障报告的最低标准</a></li>
+<li><a href="#不要把防御性代码当成修复">不要把防御性代码当成修复</a></li>
+<li><a href="#线上问题要保留可复现材料">线上问题要保留可复现材料</a></li>
+<li><a href="#调试后的-pr-描述要写根因不写过程流水">调试后的 PR 描述要写根因，不写过程流水</a></li>
+<li><a href="#调试完成后的上线前检查">调试完成后的上线前检查</a></li>
+<li><a href="#常见错误">常见错误</a></li>
+<li><a href="#改完后重点看什么">改完后重点看什么</a></li>
+<li><a href="#常见问题">常见问题</a></li>
+<li><a href="#可复查资料">可复查资料</a></li>
+</ul>
+</div>
+</details></nav></div></aside></div><dialog class="search-dialog" id="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label for="course-search" id="search-label"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>搜索课程</label><button class="icon-button" aria-label="关闭搜索"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></form><input id="course-search" type="search" placeholder="搜索概念、代码或问题…" autocomplete="off" spellcheck="false"><p class="search-status" id="search-status" role="status">搜索全部 42 篇文章。</p><div class="search-results" id="search-results"></div><footer>↑ ↓ 选择结果 <span>Enter 打开 · Esc 关闭</span></footer></dialog>
+<dialog class="image-viewer" id="image-viewer" aria-label="放大配图"><header><span>查看配图</span><div class="image-actions"><button type="button" id="image-size">原尺寸</button><button type="button" id="close-image" autofocus>关闭</button></div></header><div class="image-canvas"><img id="large-image" alt=""></div><footer><p id="image-description"></p><a id="original-image" target="_blank" rel="noopener">打开原图 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></footer></dialog><div class="toast" id="toast" role="status"></div></body></html>

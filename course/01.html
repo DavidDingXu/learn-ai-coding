@@ -1,0 +1,494 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>程序员用 AI Coding，真正的门槛不是 Prompt · Learn AI Coding</title><meta name="description" content="从接手陌生代码库，到完成一次真实需求。沿着上下文、规格、实现、测试和复盘，建立可重复的 AI Coding 工作流。"><meta name="source-sha256" content="574efe3b0c46c17241ded9de0eabfb6958b881a843d3d7bfc92ea026971db251">
+<link rel="canonical" href="https://daviddingxu.github.io/learn-ai-coding/course/01.html"><link rel="icon" href="../assets/brand.png">
+<script>try{const t=localStorage.getItem('haohai-course-theme');document.documentElement.dataset.theme=t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light'}catch(_){document.documentElement.dataset.theme='light'}</script>
+<link rel="stylesheet" href="../assets/site.css"><script defer src="../assets/search-index.js"></script><script defer src="../assets/site.js"></script></head><body class="article-page" data-root="../" data-page="01"><a class="skip-link" href="#main-content">跳到正文</a><header class="site-header"><div class="header-inner"><button class="icon-button menu-toggle js-only" type="button" aria-label="打开课程目录" aria-controls="course-sidebar" aria-expanded="false"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+<a class="brand" href="../index.html" aria-label="Learn AI Coding · 学习站首页"><img src="../assets/brand.png" alt="" width="36" height="36"><span><strong>Learn AI Coding</strong><small>程序员 AI Coding 进阶实战</small></span></a>
+<nav class="header-nav" aria-label="主导航"><a href="../index.html#curriculum">课程目录</a><a href="../index.html#downloads">离线阅读</a><a href="https://github.com/DavidDingXu/learn-ai-coding" target="_blank" rel="noopener">GitHub <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></nav>
+<div class="header-controls"><button class="icon-button theme-toggle js-only" type="button" aria-label="切换到深色主题" title="切换到深色主题"><span class="theme-light-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A9 9 0 0 1 9.5 3.5a9 9 0 1 0 11 11Z"/></svg></span><span class="theme-dark-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></span></button><button class="search-trigger js-only" type="button" aria-label="搜索课程"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg><span>搜索课程</span><kbd>⌘ K</kbd></button></div></div><div class="reading-progress" aria-hidden="true"><span id="reading-progress-bar"></span></div></header><div class="sidebar-scrim" hidden></div><div class="reader-layout"><aside class="course-sidebar" id="course-sidebar" aria-label="课程目录"><div class="sidebar-heading"><a href="../index.html#curriculum">课程目录</a><button class="icon-button menu-close js-only" type="button" aria-label="关闭课程目录"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><nav aria-label="全部文章"><details class="sidebar-stage"><summary><span class="stage-index">模块 00</span>导读与学习地图</summary><a class="lesson-link" data-lesson="INTRO" href="introduction.html"><span class="lesson-number">·</span><span>程序员 AI Coding 进阶实战</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="00" href="00.html"><span class="lesson-number">00</span><span>程序员如何系统学习 AI Coding</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage" open><summary><span class="stage-index">模块 01</span>AI Coding 底层心智</summary><a class="lesson-link" data-lesson="01" href="01.html" aria-current="page"><span class="lesson-number">01</span><span>程序员用 AI Coding，真正的门槛不是 Prompt</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="02" href="02.html"><span class="lesson-number">02</span><span>从聊天式开发到工程式开发</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="03" href="03.html"><span class="lesson-number">03</span><span>AI Coding 的底层工作模型</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="04" href="04.html"><span class="lesson-number">04</span><span>AI 最擅长和最不擅长的开发任务</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 02</span>程序员工具工作台</summary><a class="lesson-link" data-lesson="05" href="05.html"><span class="lesson-number">05</span><span>Codex、Claude Code、Cursor、Copilot 怎么分工</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="06" href="06.html"><span class="lesson-number">06</span><span>一个程序员的 AI Coding 工作台怎么搭</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="07" href="07.html"><span class="lesson-number">07</span><span>App、CLI、IDE 怎么切换完成一次真实改动</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 03</span>上下文工程与代码库理解</summary><a class="lesson-link" data-lesson="08" href="08.html"><span class="lesson-number">08</span><span>上下文工程：为什么不是塞越多代码越好</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="09" href="09.html"><span class="lesson-number">09</span><span>代码地图不是手工文档：让 Agent 生成可检查的仓库导航</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="10" href="10.html"><span class="lesson-number">10</span><span>让 Agent 做代码搜索：怎样约束搜索目标、证据和停止条件</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="11" href="11.html"><span class="lesson-number">11</span><span>AGENTS.md / CLAUDE.md / Copilot Instructions</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="12" href="12.html"><span class="lesson-number">12</span><span>任务上下文包：一次需求到底该给 AI 什么</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="13" href="13.html"><span class="lesson-number">13</span><span>上下文污染与上下文清理</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="14" href="14.html"><span class="lesson-number">14</span><span>模块实战：让 AI 接手一个陌生代码模块</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 04</span>SDD 与 OpenSpec 实战</summary><a class="lesson-link" data-lesson="15" href="15.html"><span class="lesson-number">15</span><span>SDD 是什么：先写规格，再写代码</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="16" href="16.html"><span class="lesson-number">16</span><span>从一句需求到 requirements.md</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="17" href="17.html"><span class="lesson-number">17</span><span>design.md 怎么写，AI 才不会补丁式开发</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="18" href="18.html"><span class="lesson-number">18</span><span>tasks.md 怎么拆：把复杂需求变成小 diff</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="19" href="19.html"><span class="lesson-number">19</span><span>OpenSpec 实战：把需求变更放进 repo</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="20" href="20.html"><span class="lesson-number">20</span><span>OpenSpec、Spec Kit 与轻量 SDD 怎么选</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="21" href="21.html"><span class="lesson-number">21</span><span>模块实战：用 OpenSpec CLI 推进一次真实产品需求</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 05</span>小步开发测试与调试闭环</summary><a class="lesson-link" data-lesson="22" href="22.html"><span class="lesson-number">22</span><span>计划先行：让 AI 先解释它准备怎么改</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="23" href="23.html"><span class="lesson-number">23</span><span>小步开发：为什么要限制 AI 一次改动范围</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="24" href="24.html"><span class="lesson-number">24</span><span>TDD + AI Coding：先让失败测试约束模型</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="25" href="25.html"><span class="lesson-number">25</span><span>系统化调试：让 AI 基于证据排障</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="26" href="26.html"><span class="lesson-number">26</span><span>前后端验证闭环：页面、接口、数据库和副作用怎么一起验</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="27" href="27.html"><span class="lesson-number">27</span><span>AI 说“测试失败无关”时，程序员该怎么判断</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="28" href="28.html"><span class="lesson-number">28</span><span>模块实战：用 AI 完成一次 CLI 交互改造</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 06</span>Skill Superpowers 与工作流固化</summary><a class="lesson-link" data-lesson="29" href="29.html"><span class="lesson-number">29</span><span>Skill 是什么：从提示词到可复用工作流</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="30" href="30.html"><span class="lesson-number">30</span><span>Skill 原理解析：它如何约束 Agent 行为</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="31" href="31.html"><span class="lesson-number">31</span><span>Superpowers 工作流拆解：把工程纪律变成 Skill 链</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="32" href="32.html"><span class="lesson-number">32</span><span>自定义 Skill：把你的经验固化成个人能力</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="33" href="33.html"><span class="lesson-number">33</span><span>外部工具接入：MCP 在 AI Coding 里到底有什么用</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="34" href="34.html"><span class="lesson-number">34</span><span>多 Agent 与自动化：什么时候拆，什么时候不要拆</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="35" href="35.html"><span class="lesson-number">35</span><span>模块实战：用 Superpowers 固化一次业务需求的调试和评审</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="36" href="36.html"><span class="lesson-number">36</span><span>模块实战：给 AI 接一个只读项目工具</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 07</span>综合实战与资产沉淀</summary><a class="lesson-link" data-lesson="37" href="37.html"><span class="lesson-number">37</span><span>综合实战：一个真实需求的 AI Coding 最佳实践</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="38" href="38.html"><span class="lesson-number">38</span><span>综合实战：从一次交付沉淀个人规则库</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 08</span>个人工程资产</summary><a class="lesson-link" data-lesson="39" href="39.html"><span class="lesson-number">39</span><span>从个人提效到个人工程系统</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="END" href="closing.html"><span class="lesson-number">·</span><span>写在专栏结束时：把 AI Coding 留在日常工程里</span><span class="lesson-state" aria-hidden="true"></span></a></details></nav><p class="sidebar-note">给清目标，保留证据，逐步交付。</p></aside><main class="reader-main" id="main-content"><div class="article-context"><span>AI Coding 底层心智</span><div class="reading-tools js-only"><div class="font-controls" role="group" aria-label="正文字号"><button type="button" data-font="-1" aria-label="减小正文字号">A−</button><span id="font-size-label" aria-live="polite">18</span><button type="button" data-font="1" aria-label="增大正文字号">A+</button></div><button type="button" class="focus-toggle" aria-pressed="false"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg><span>专注阅读</span></button></div></div><div class="mobile-context"><nav class="reading-route" aria-label="本篇路线"><details><summary>本篇路线</summary><div class="toc">
+<ul>
+<li><a href="#prompt-为什么不够">Prompt 为什么不够</a></li>
+<li><a href="#会写代码的人常常会低估流程">会写代码的人，常常会低估流程</a></li>
+<li><a href="#先区分两种-ai-coding">先区分两种 AI Coding</a></li>
+<li><a href="#门槛一任务判断">门槛一：任务判断</a></li>
+<li><a href="#把任务判断落成授权级别">把任务判断落成授权级别</a></li>
+<li><a href="#门槛二上下文选择">门槛二：上下文选择</a></li>
+<li><a href="#门槛三小步实现">门槛三：小步实现</a></li>
+<li><a href="#门槛四验证证据">门槛四：验证证据</a></li>
+<li><a href="#evidence">Evidence</a></li>
+<li><a href="#residual-risk">Residual Risk</a></li>
+<li><a href="#门槛五复用经验">门槛五：复用经验</a></li>
+<li><a href="#能力自测你现在卡在哪一层">能力自测：你现在卡在哪一层</a></li>
+<li><a href="#这件事怎么落到日常开发">这件事怎么落到日常开发</a></li>
+<li><a href="#跟着做一次小练习">跟着做一次小练习</a></li>
+<li><a href="#常见问题">常见问题</a></li>
+<li><a href="#先把底座搭起来">先把底座搭起来</a></li>
+<li><a href="#可复查资料">可复查资料</a></li>
+</ul>
+</div>
+</details></nav></div><article id="article-body"><h1 id="程序员用-ai-coding真正的门槛不是-prompt">程序员用 AI Coding，真正的门槛不是 Prompt</h1>
+<p>很多程序员第一次认真用 AI 写代码，都会经历一个很短的兴奋期。</p>
+<p>它能在几十秒里补完一个函数，能把一段报错解释得像模像样，能根据现有代码风格生成一组测试。你会觉得这东西确实能省时间。再过几天，另一个感受会冒出来：它也很容易把事情搞乱。</p>
+<p>它会漏掉关键文件，会把测试失败归因成历史问题，会顺手重构无关代码，会把一个局部需求扩成一片大 diff。最麻烦的是，它经常讲得很有把握，让你以为它真的理解了项目。</p>
+<p>所以程序员用 AI Coding，门槛不在于会不会写一句漂亮 prompt。</p>
+<p>门槛在工程控制：任务能不能分级，上下文能不能给准，diff 能不能收住，验证证据能不能留下来。</p>
+<p><img alt="程序员用 AI Coding 的真正门槛" src="../assets/content/docs/assets/diagrams/source/01-ai-coding-threshold.svg" /></p>
+<p>这张图的左边，是很多人默认走的聊天式开发；中间，是更适合真实项目的工程式开发；右边，是需要逐步补齐的核心能力。</p>
+<h2 id="prompt-为什么不够">Prompt 为什么不够</h2>
+<p>Prompt 有用，但它只是入口。</p>
+<p>比如你可以这样写：</p>
+<pre><code class="language-text">请你作为资深后端工程师，帮我修复订单状态回退的问题。要求代码简洁、考虑边界、补充测试。
+</code></pre>
+<p>这句话看起来很完整。它有角色，有任务，有质量要求。问题是，对真实代码库来说，它缺了最关键的东西：</p>
+<ul>
+<li>订单状态有哪些历史兼容逻辑？</li>
+<li>哪些状态流转不能改变？</li>
+<li>哪些文件是入口，哪些文件只是同名但无关？</li>
+<li>当前失败能不能稳定复现？</li>
+<li>修完以后跑哪个测试能证明问题解决？</li>
+<li>如果测试失败，怎么判断是不是本次改动导致？</li>
+</ul>
+<p>这些信息不在 prompt 里，AI 就只能猜。</p>
+<p>程序员会觉得“这些我心里有数”。但 AI 不知道。它只看到你给它的上下文、它自己读到的文件、工具返回的结果，以及对代码模式的推断。</p>
+<p>先记住一个事实：<strong>你脑子里的项目经验，如果没有变成上下文、规则、测试或验证记录，就不能稳定约束 AI。</strong></p>
+<h2 id="会写代码的人常常会低估流程">会写代码的人，常常会低估流程</h2>
+<p>不懂代码的人用 AI，经常会被卡在基础问题上：环境起不来、报错看不懂、依赖装不上。</p>
+<p>程序员的问题不一样。你知道怎么修，也知道 AI 生成的大概方向对不对，于是很容易跳过工程流程，直接让它开改。</p>
+<p>这反而危险。</p>
+<p>因为你会在脑子里自动补全很多缺失信息：这个接口不能改、这个 helper 要复用、这个测试环境要先起 Redis、这个字段历史上有兼容逻辑。你知道这些，但 AI 不知道。你越熟悉项目，越容易以为它也“应该知道”。</p>
+<p>真实项目里，AI 写错代码通常不是最严重的问题。最严重的是它在错误上下文里写出了看起来很合理的代码。</p>
+<p>比如：</p>
+<pre><code class="language-text">你让 AI 修复优惠券过期判断。
+AI 找到 CouponService，补了一个日期判断。
+测试也过了。
+
+但真实入口在 CouponAvailableQueryService。
+CouponService 只是老接口兼容层。
+它改对了一个局部文件，却没有改到真实调用路径。
+</code></pre>
+<p>这类错误靠更长的 prompt 不一定能解决。它需要代码地图、调用链、测试入口和任务上下文包。</p>
+<h2 id="先区分两种-ai-coding">先区分两种 AI Coding</h2>
+<p>我建议先把 AI Coding 分成两类。</p>
+<p>第一类是聊天式开发。</p>
+<p>它的流程大概是：</p>
+<pre><code class="language-text">描述需求
+让 AI 实现
+看结果
+继续让 AI 修
+</code></pre>
+<p>这种方式适合低风险任务。比如写一个脚本、补一个小函数、解释一段报错、生成一份临时 SQL。它快，成本低，不需要很重的流程。</p>
+<p>第二类是工程式开发。</p>
+<p>它的流程是：</p>
+<pre><code class="language-text">判断任务风险
+选择工具工作面
+准备上下文
+写计划或规格
+小步实现
+运行验证
+审查 diff
+沉淀规则
+</code></pre>
+<p>这种方式适合真实项目里的需求开发、bug 修复、前后端联调、老项目改造和代码审查。</p>
+<p>两者不是谁替代谁。关键是别拿聊天式开发去处理工程式任务。</p>
+<p>如果一个任务满足下面任意两条，就应该按工程式开发处理：</p>
+<ul>
+<li>需要改多个文件。</li>
+<li>涉及业务状态、权限、金额、数据一致性。</li>
+<li>需要兼容旧行为。</li>
+<li>需要补测试或改测试。</li>
+<li>失败后定位成本高。</li>
+<li>改错后回滚成本高。</li>
+<li>需要别人审查。</li>
+</ul>
+<h2 id="门槛一任务判断">门槛一：任务判断</h2>
+<p>让 AI 开始写代码之前，先问一个问题：</p>
+<blockquote>
+<p>这个任务到底能交给 AI 到什么程度？</p>
+</blockquote>
+<p>不是所有任务都能直接授权。</p>
+<p>可以按下面这张表判断：</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>任务</th>
+<th>AI 可以做</th>
+<th>人必须控制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>局部函数</td>
+<td>生成实现、补边界测试</td>
+<td>输入输出、异常语义</td>
+</tr>
+<tr>
+<td>陌生模块理解</td>
+<td>建代码地图、列调用链</td>
+<td>判断它是否读到关键路径</td>
+</tr>
+<tr>
+<td>Bug 排查</td>
+<td>分析日志、列假设、写复现脚本</td>
+<td>确认根因和修复策略</td>
+</tr>
+<tr>
+<td>跨模块需求</td>
+<td>写计划、拆任务、生成小 diff</td>
+<td>架构边界和兼容策略</td>
+</tr>
+<tr>
+<td>权限/金额/状态</td>
+<td>辅助列风险和测试点</td>
+<td>业务规则、上线决策</td>
+</tr>
+<tr>
+<td>重构</td>
+<td>拆小步、补回归测试</td>
+<td>外部行为不变和回滚路径</td>
+</tr>
+</tbody>
+</table></div>
+<p>这一步的价值很直接：它决定你应该给 AI 多少权限。</p>
+<p>有些任务可以让 AI 直接改代码。有些任务只能让 AI 先读文件、列影响面。有些任务可以让 AI 写测试，但修复策略要人先定。有些线上风险任务，AI 只能做分析助手。</p>
+<p>一个可靠的起手式是：</p>
+<pre><code class="language-text">先不要改代码。
+
+请你先判断这个任务适不适合交给 AI 实现：
+1. 这个任务属于局部改动、跨模块需求、bug 排查、重构，还是高风险业务改动？
+2. 你需要先读取哪些文件？请列出路径。
+3. 哪些行为不能改变？
+4. 如果要实现，建议拆成几个小步骤？
+5. 每一步用什么命令或测试证明完成？
+</code></pre>
+<p>这段话不会让 AI 变聪明，但会让它先暴露理解过程。</p>
+<h2 id="把任务判断落成授权级别">把任务判断落成授权级别</h2>
+<p>任务分级如果只停留在脑子里，对 Agent 没有约束力。真正要写给 Agent 的，是授权级别。</p>
+<p>可以把一次任务分成四档：</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>授权级别</th>
+<th>适用场景</th>
+<th>给 AI 的权限</th>
+<th>人要检查什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>只读分析</td>
+<td>线上事故、需求不清、业务规则未确认</td>
+<td>读文件、读日志、列事实和假设</td>
+<td>是否把猜测写成事实</td>
+</tr>
+<tr>
+<td>计划优先</td>
+<td>跨模块需求、状态机、权限、金额</td>
+<td>读仓库、列文件、写计划，不改代码</td>
+<td>文件是否读对，计划是否越界</td>
+</tr>
+<tr>
+<td>小步实现</td>
+<td>局部 bug、已有测试、影响范围可控</td>
+<td>按一个 task 修改，完成后停止</td>
+<td>diff 是否只服务这个 task</td>
+</tr>
+<tr>
+<td>自动执行</td>
+<td>文档、样例、局部机械同步</td>
+<td>直接改并验证</td>
+<td>命令输出和残余风险</td>
+</tr>
+</tbody>
+</table></div>
+<p>这个表的作用，是把“AI 能不能做”改成“AI 现在能做到哪一步”。</p>
+<p>例如订单状态回退问题，第一轮通常不该让 AI 直接实现。更合适的授权是：</p>
+<pre><code class="language-text">你现在只做计划优先模式。
+
+允许：
+- 读取订单状态流转相关文件。
+- 列出实际读取过的路径。
+- 整理现有状态迁移和测试覆盖。
+- 给出最小实现计划。
+
+不允许：
+- 修改代码。
+- 修改测试。
+- 推断业务规则。
+- 新增依赖或重构状态机。
+
+停止条件：
+- 发现状态规则需要业务确认。
+- 发现真实入口不止一个。
+- 发现现有测试和代码语义冲突。
+</code></pre>
+<p>这段约束看起来比一句 prompt 硬，但它符合真实开发。程序员不会把一个没确认业务规则的状态机任务直接交给新人改；AI 也一样。</p>
+<p>如果你不写授权级别，Agent 往往会默认自己可以继续往下做。它读到文件以后会改代码，测试失败后会继续修，修不动时会扩大范围。很多大 diff 就是这样长出来的。</p>
+<p>授权失败通常不是一句话就能看出来。它会表现成几种信号：Agent 没有读到真实入口却开始实现；计划里出现你没有要求的重构；测试失败后它直接修改断言；为了让命令通过新增依赖或调整配置。看到这些信号，不要继续追问“再修一下”，要把任务退回到只读分析或计划优先模式。</p>
+<h2 id="门槛二上下文选择">门槛二：上下文选择</h2>
+<p>AI Coding 的质量，很大程度取决于上下文。</p>
+<p>上下文不是把仓库全塞进去，也不是只贴一个需求描述。上下文要刚好覆盖当前任务。</p>
+<p>一个最小任务上下文包可以包括：</p>
+<pre><code class="language-markdown"># Task Context
+
+## Goal
+- 要改变什么行为？
+- 哪些行为不能改变？
+
+## Files
+- 入口：
+- 核心实现：
+- 测试：
+- 配置：
+- 历史兼容逻辑：
+
+## Constraints
+- 不新增依赖：
+- 不改公开 API：
+- 不改 generated 文件：
+- 不做顺手重构：
+
+## Done When
+- 哪些测试通过：
+- 哪个页面或接口验证：
+- 哪个 bug 不再复现：
+- diff 限制在哪些文件：
+</code></pre>
+<p>这个模板不复杂，但它能解决两个问题。</p>
+<p>第一，它让 AI 知道边界。</p>
+<p>第二，它逼你自己先想清楚任务。</p>
+<p>如果你写不出 <code>Done When</code>，就说明你还没定义完成。如果你列不出核心文件，就说明现在让 AI 改代码还太早。</p>
+<p>配套代码仓库 <a href="https://github.com/DavidDingXu/learn-ai-coding">DavidDingXu/learn-ai-coding</a> 的工具 module 里有一个最小工具，可以直接生成任务上下文包：</p>
+<pre><code class="language-bash">cd learn-ai-coding/ai-coding-workflow-kit
+node src/cli.js task-context \
+  --title &quot;修复订单状态回退问题&quot; \
+  --files &quot;src/order.ts,test/order.test.ts&quot; \
+  --constraints &quot;不改公开 API,不新增依赖&quot; \
+  --done &quot;npm test,人工验证支付回调&quot;
+</code></pre>
+<p>它不会替你理解业务，但能把一次 AI Coding 任务最容易漏掉的信息固定下来。</p>
+<h2 id="门槛三小步实现">门槛三：小步实现</h2>
+<p>AI 很容易一次改很多。</p>
+<p>它会觉得顺手整理命名、抽函数、改测试结构、删掉“重复逻辑”都是好事。对它来说，这些都是合理的代码改进。对真实项目来说，这些可能都是风险。</p>
+<p>所以要限制 diff。</p>
+<p>可以这样要求：</p>
+<pre><code class="language-text">这次只完成第一个小步骤。
+
+限制：
+- 只改计划中列出的文件。
+- 不做顺手重构。
+- 不新增依赖。
+- 不改公开 API。
+- 如果必须扩大范围，先停下来说明原因。
+
+完成后输出：
+- 改了哪些文件。
+- 每个文件为什么改。
+- 跑了什么验证。
+- 还有什么风险没覆盖。
+</code></pre>
+<p>小步不是慢。小步是为了让审查、测试和回滚变便宜。</p>
+<p>如果 AI 一次生成 800 行代码，你可能要花半小时才能判断它有没有越界。如果它一次只改 60 行，并且每个文件都有理由，审查就容易很多。</p>
+<p>程序员要控制的不是一次生成多少代码，而是每次改动是否能被检查。</p>
+<h2 id="门槛四验证证据">门槛四：验证证据</h2>
+<p>AI 说“已经修复”没有意义。</p>
+<p>你要看证据。</p>
+<p>一次改动至少要留下这些信息：</p>
+<pre><code class="language-markdown">## Baseline
+- 改前怎么复现问题？
+
+## Change Summary
+- 改了什么？
+
+## Verification Commands
+```bash
+npm test
+</code></pre>
+<h2 id="evidence">Evidence</h2>
+<ul>
+<li>PASS 多少测试？</li>
+<li>页面或接口怎么验证？</li>
+</ul>
+<h2 id="residual-risk">Residual Risk</h2>
+<ul>
+<li>哪些路径还没覆盖？</li>
+</ul>
+<pre><code>
+配套工程的工具 module 里也放了一个验证记录检查器：
+
+```bash
+cd learn-ai-coding/ai-coding-workflow-kit
+node src/cli.js verify-ledger --file examples/verification-ledger.pass.md
+</code></pre>
+<p>它会检查验证记录里有没有关键段落、命令块和通过信号。</p>
+<p>这不是为了形式化写文档，而是为了防止一个常见问题：AI 把“我认为修好了”包装成“已经完成”。</p>
+<p>如果没有 baseline，就不知道问题原来是否存在。
+如果没有命令，就不知道验证怎么做。
+如果没有通过信号，就不知道结果是否真实。
+如果没有残留风险，就不知道还有哪些路径没覆盖。</p>
+<h2 id="门槛五复用经验">门槛五：复用经验</h2>
+<p>如果你第二次提醒 AI 同一个规则，就应该考虑把它写下来。</p>
+<p>比如：</p>
+<ul>
+<li>这个项目用 <code>pnpm</code>，不要用 <code>npm</code>。</li>
+<li>前端改动必须打开页面验证。</li>
+<li>不要编辑 generated 文件。</li>
+<li>不要新增生产依赖，除非先确认。</li>
+<li>测试失败不能直接归因历史问题，必须先跑改前基线。</li>
+</ul>
+<p>这些规则可以写进 <code>AGENTS.md</code>、<code>CLAUDE.md</code>、Copilot instructions、Skill、脚本或 checklist。</p>
+<p>规则文件解决的是项目上下文。
+Skill 解决的是重复流程。
+脚本解决的是确定性动作。
+MCP 解决的是必要外部资源接入。
+多 Agent 解决的是可并行、可隔离的任务拆分。</p>
+<p>它们不是互相替代的概念，而是一条递进线。</p>
+<p>你先让 Agent 会做事，再约束它做对事；再把有效流程固化下来；再决定是否给它接外部资源；最后才考虑多 Agent。</p>
+<h2 id="能力自测你现在卡在哪一层">能力自测：你现在卡在哪一层</h2>
+<p>可以用这张表给自己打分。</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>能力</th>
+<th>低阶表现</th>
+<th>专业表现</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>任务判断</td>
+<td>看到需求就让 AI 改</td>
+<td>先判断风险和授权范围</td>
+</tr>
+<tr>
+<td>上下文选择</td>
+<td>贴需求或塞大量文件</td>
+<td>给代码地图和任务上下文包</td>
+</tr>
+<tr>
+<td>计划拆解</td>
+<td>接受 AI 一次性实现</td>
+<td>要求先计划，再小步改</td>
+</tr>
+<tr>
+<td>代码审查</td>
+<td>看结果能不能跑</td>
+<td>看 diff 是否越界</td>
+</tr>
+<tr>
+<td>测试验证</td>
+<td>接受“已修复”</td>
+<td>要求 baseline、命令、证据</td>
+</tr>
+<tr>
+<td>调试</td>
+<td>让 AI 连续猜</td>
+<td>复现、假设、验证逐步推进</td>
+</tr>
+<tr>
+<td>经验复用</td>
+<td>每次重新解释</td>
+<td>写进规则、Skill 或脚本</td>
+</tr>
+</tbody>
+</table></div>
+<p>如果你只能优先补三项，我建议补：</p>
+<ul>
+<li>任务判断。</li>
+<li>上下文选择。</li>
+<li>验证证据。</li>
+</ul>
+<p>这三项决定下限。工具技巧、框架和多 Agent 都是后面的事。</p>
+<h2 id="这件事怎么落到日常开发">这件事怎么落到日常开发</h2>
+<p>日常开发里，不需要每次都搞一套很重的流程。你可以先给自己定三个默认动作。</p>
+<p>第一个默认动作：让 AI 先说明它读了什么。</p>
+<p>很多 AI Coding 事故都和“以为它读了，其实没读”有关。让它输出实际读取过的文件路径，不是为了形式感，而是为了把理解范围暴露出来。它如果没读测试文件，就不要相信它对验证的判断；它如果没读调用入口，就不要相信它对影响面的判断。</p>
+<p>第二个默认动作：让 AI 先给计划，不要直接改。</p>
+<p>计划不是长篇方案。一个小需求可以只要 3 行计划：改哪个文件、为什么改、怎么验证。只要 AI 写不出这个计划，就说明它还没准备好进入实现。</p>
+<p>第三个默认动作：把“完成”改成证据。</p>
+<p>不要问“你修好了吗”。要问“你跑了什么命令，输出是什么，diff 是否只在计划范围内，还有哪些风险没覆盖”。这样问，AI 的回答才会从主观承诺变成可检查记录。</p>
+<p>这三个动作不会让流程变复杂。它们只是把程序员本来就在脑子里做的判断，提前放到台面上。</p>
+<p>如果你在团队里做 code review，也可以用同样的标准看 AI 生成的 PR：</p>
+<ul>
+<li>PR 描述里有没有任务边界？</li>
+<li>diff 是否出现无关重构？</li>
+<li>测试是否覆盖真实风险？</li>
+<li>失败路径有没有被解释清楚？</li>
+<li>是否有“AI 觉得无关”但没有证据的测试失败？</li>
+</ul>
+<p>一旦这样审查，你会发现 AI Coding 和普通开发并没有两套质量标准。AI 只是让代码生成速度变快了，但工程质量仍然要靠同一套东西：边界、测试、审查、验证和复盘。</p>
+<p>个人使用 AI Coding 时，也可以按 PR 的标准要求自己。哪怕没有真正提交 PR，也要能回答：这次改动为什么必要，哪些文件被改，哪些验证跑过，哪些风险没有覆盖。只要这些问题答不上来，说明任务还没有进入可交付状态。</p>
+<h2 id="跟着做一次小练习">跟着做一次小练习</h2>
+<p>找一个你最近真的要改的小需求。不要让 AI 直接实现。</p>
+<p>先让它做这件事：</p>
+<pre><code class="language-text">先不要改代码。
+
+请你根据当前仓库，帮我完成一次实现前检查：
+1. 列出你需要读取的文件路径。
+2. 判断这个任务属于低风险、中风险还是高风险。
+3. 写一个最多 4 步的小步计划。
+4. 每一步说明如何验证。
+5. 如果上下文不足，只提问题，不要猜。
+</code></pre>
+<p>然后你自己检查它的输出：</p>
+<ul>
+<li>它列的文件是否真的是关键路径？</li>
+<li>它有没有漏测试？</li>
+<li>它有没有把高风险任务说成低风险？</li>
+<li>它的验证方式是不是可执行命令？</li>
+<li>它有没有准备一次改太多？</li>
+</ul>
+<p>这一步练熟以后，再让 AI 写代码。</p>
+<p>这一轮做完再进入实现，AI 的输出审查成本会低很多。原因不在某句 prompt，而在于任务已经被放进了明确的工程流程。</p>
+<h2 id="常见问题">常见问题</h2>
+<h3 id="prompt-还重要吗">Prompt 还重要吗？</h3>
+<p>重要，但不要把它当全部。</p>
+<p>Prompt 负责表达当前任务。项目规则、上下文包、测试、验证记录和 Skill，负责承载长期稳定的工程约束。真实项目里，这几类东西要一起用。</p>
+<h3 id="我是不是每个小需求都要写规格">我是不是每个小需求都要写规格？</h3>
+<p>不用。</p>
+<p>局部、低风险、可快速验证的任务，可以直接走轻量流程：任务说明、相关文件、小 diff、跑测试。跨模块、影响业务状态、回滚成本高的任务，再进入规格驱动。</p>
+<h3 id="ai-写的大-diff-如果看起来很好要不要接受">AI 写的大 diff 如果看起来很好，要不要接受？</h3>
+<p>先拆。</p>
+<p>让 AI 解释每个文件为什么改，再把无关改动剥离出去。真正好的 AI Coding 结果，不只是代码能跑，还应该能被正常审查。</p>
+<h3 id="什么时候该写-skill">什么时候该写 Skill？</h3>
+<p>当一个流程重复出现，而且每次都要解释很多规则时。</p>
+<p>比如调试流程、代码审查流程、完成前验证流程、前端截图验证流程。这类流程适合沉淀成 Skill。一次性的任务背景不适合写 Skill，放在任务上下文包里就够了。</p>
+<h3 id="mcp-是不是也要早点学">MCP 是不是也要早点学？</h3>
+<p>不需要。</p>
+<p>先学会任务判断、上下文、验证和规则文件。等你遇到 AI 需要查文档、看 Issue、读只读数据、操作浏览器、访问代码索引时，再学 MCP 接入边界。MCP 的价值是安全接外部资源，不是自动让代码变好。</p>
+<h3 id="工程流程会不会限制-ai-的发挥">工程流程会不会限制 AI 的发挥？</h3>
+<p>会限制，而且应该限制。</p>
+<p>真实项目需要的是可审查的输出，不是最大化生成内容。AI 一次改很多文件，看起来像效率高，但 reviewer 看不懂、测试说不清、回滚切不开，最后还是返工。</p>
+<p>工程流程不是让 AI 少做事，而是让它在正确边界里做事。低风险任务可以放宽，高风险任务必须收紧。</p>
+<h2 id="先把底座搭起来">先把底座搭起来</h2>
+<p>程序员用 AI Coding，起点不是把 prompt 写得更漂亮。</p>
+<p>先把底座搭起来：判断任务风险，给对上下文，限制 diff，留下验证证据，把反复有效的经验沉淀下来。</p>
+<p>这些动作做稳以后，AI 才会从会写代码的聊天窗口，变成可以被约束、检查和复用的开发工具。</p>
+<h2 id="可复查资料">可复查资料</h2>
+<ul>
+<li>OpenAI Codex 最佳实践：<a href="https://developers.openai.com/codex/learn/best-practices">https://developers.openai.com/codex/learn/best-practices</a></li>
+<li>OpenAI Codex <code>AGENTS.md</code> 指南：<a href="https://developers.openai.com/codex/guides/agents-md">https://developers.openai.com/codex/guides/agents-md</a></li>
+<li>Anthropic Claude Code 最佳实践：<a href="https://www.anthropic.com/engineering/claude-code-best-practices">https://www.anthropic.com/engineering/claude-code-best-practices</a></li>
+<li>GitHub Copilot coding agent 任务说明：<a href="https://docs.github.com/en/copilot/tutorials/coding-agent/get-the-best-results">https://docs.github.com/en/copilot/tutorials/coding-agent/get-the-best-results</a></li>
+</ul></article><div class="practice-link"><a href="https://github.com/DavidDingXu/learn-ai-coding/blob/main/personal-productivity-app/README.md" target="_blank" rel="noopener"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5M14 4l-4 16"/></svg> 业务样例与测试 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></div><nav class="chapter-nav" aria-label="前后篇"><a href="00.html"><span>上一篇 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg></span><strong>程序员如何系统学习 AI Coding</strong></a><a href="02.html"><span>下一篇 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><strong>从聊天式开发到工程式开发</strong></a></nav><footer class="reader-footer">程序员 AI Coding 进阶实战 · <a href="../license.html">非商业使用</a><details class="community-mini"><summary>关注与交流 · 好好用 AI</summary><div class="community-section"><div><p>交流学习中的问题与实践心得。</p><p>代码问题和勘误，欢迎在 <a href="https://github.com/DavidDingXu/learn-ai-coding/issues" target="_blank" rel="noopener">GitHub 提交 Issue</a>。</p></div><a class="qr-link" href="../assets/wechat-official-account.jpg" target="_blank" rel="noopener" aria-label="查看好好用 AI 公众号二维码原图"><img src="../assets/wechat-official-account.jpg" alt="好好用 AI 微信公众号二维码" width="130" height="130" loading="lazy"><p class="qr-caption">微信扫码 · 点击查看原图</p></a></div></details></footer></main><aside class="context-sidebar" aria-label="本篇辅助导航"><div class="context-inner"><nav class="reading-route" aria-label="本篇路线"><details open><summary>本篇路线</summary><div class="toc">
+<ul>
+<li><a href="#prompt-为什么不够">Prompt 为什么不够</a></li>
+<li><a href="#会写代码的人常常会低估流程">会写代码的人，常常会低估流程</a></li>
+<li><a href="#先区分两种-ai-coding">先区分两种 AI Coding</a></li>
+<li><a href="#门槛一任务判断">门槛一：任务判断</a></li>
+<li><a href="#把任务判断落成授权级别">把任务判断落成授权级别</a></li>
+<li><a href="#门槛二上下文选择">门槛二：上下文选择</a></li>
+<li><a href="#门槛三小步实现">门槛三：小步实现</a></li>
+<li><a href="#门槛四验证证据">门槛四：验证证据</a></li>
+<li><a href="#evidence">Evidence</a></li>
+<li><a href="#residual-risk">Residual Risk</a></li>
+<li><a href="#门槛五复用经验">门槛五：复用经验</a></li>
+<li><a href="#能力自测你现在卡在哪一层">能力自测：你现在卡在哪一层</a></li>
+<li><a href="#这件事怎么落到日常开发">这件事怎么落到日常开发</a></li>
+<li><a href="#跟着做一次小练习">跟着做一次小练习</a></li>
+<li><a href="#常见问题">常见问题</a></li>
+<li><a href="#先把底座搭起来">先把底座搭起来</a></li>
+<li><a href="#可复查资料">可复查资料</a></li>
+</ul>
+</div>
+</details></nav></div></aside></div><dialog class="search-dialog" id="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label for="course-search" id="search-label"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>搜索课程</label><button class="icon-button" aria-label="关闭搜索"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></form><input id="course-search" type="search" placeholder="搜索概念、代码或问题…" autocomplete="off" spellcheck="false"><p class="search-status" id="search-status" role="status">搜索全部 42 篇文章。</p><div class="search-results" id="search-results"></div><footer>↑ ↓ 选择结果 <span>Enter 打开 · Esc 关闭</span></footer></dialog>
+<dialog class="image-viewer" id="image-viewer" aria-label="放大配图"><header><span>查看配图</span><div class="image-actions"><button type="button" id="image-size">原尺寸</button><button type="button" id="close-image" autofocus>关闭</button></div></header><div class="image-canvas"><img id="large-image" alt=""></div><footer><p id="image-description"></p><a id="original-image" target="_blank" rel="noopener">打开原图 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></footer></dialog><div class="toast" id="toast" role="status"></div></body></html>

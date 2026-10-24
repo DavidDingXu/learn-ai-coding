@@ -1,0 +1,874 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>任务上下文包：一次需求到底该给 AI 什么 · Learn AI Coding</title><meta name="description" content="从接手陌生代码库，到完成一次真实需求。沿着上下文、规格、实现、测试和复盘，建立可重复的 AI Coding 工作流。"><meta name="source-sha256" content="c647568ecd822b56d22278f8ecbd896396303e835f2c046fe72066ecc9879089">
+<link rel="canonical" href="https://daviddingxu.github.io/learn-ai-coding/course/12.html"><link rel="icon" href="../assets/brand.png">
+<script>try{const t=localStorage.getItem('haohai-course-theme');document.documentElement.dataset.theme=t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light'}catch(_){document.documentElement.dataset.theme='light'}</script>
+<link rel="stylesheet" href="../assets/site.css"><script defer src="../assets/search-index.js"></script><script defer src="../assets/site.js"></script></head><body class="article-page" data-root="../" data-page="12"><a class="skip-link" href="#main-content">跳到正文</a><header class="site-header"><div class="header-inner"><button class="icon-button menu-toggle js-only" type="button" aria-label="打开课程目录" aria-controls="course-sidebar" aria-expanded="false"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+<a class="brand" href="../index.html" aria-label="Learn AI Coding · 学习站首页"><img src="../assets/brand.png" alt="" width="36" height="36"><span><strong>Learn AI Coding</strong><small>程序员 AI Coding 进阶实战</small></span></a>
+<nav class="header-nav" aria-label="主导航"><a href="../index.html#curriculum">课程目录</a><a href="../index.html#downloads">离线阅读</a><a href="https://github.com/DavidDingXu/learn-ai-coding" target="_blank" rel="noopener">GitHub <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></nav>
+<div class="header-controls"><button class="icon-button theme-toggle js-only" type="button" aria-label="切换到深色主题" title="切换到深色主题"><span class="theme-light-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A9 9 0 0 1 9.5 3.5a9 9 0 1 0 11 11Z"/></svg></span><span class="theme-dark-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></span></button><button class="search-trigger js-only" type="button" aria-label="搜索课程"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg><span>搜索课程</span><kbd>⌘ K</kbd></button></div></div><div class="reading-progress" aria-hidden="true"><span id="reading-progress-bar"></span></div></header><div class="sidebar-scrim" hidden></div><div class="reader-layout"><aside class="course-sidebar" id="course-sidebar" aria-label="课程目录"><div class="sidebar-heading"><a href="../index.html#curriculum">课程目录</a><button class="icon-button menu-close js-only" type="button" aria-label="关闭课程目录"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><nav aria-label="全部文章"><details class="sidebar-stage"><summary><span class="stage-index">模块 00</span>导读与学习地图</summary><a class="lesson-link" data-lesson="INTRO" href="introduction.html"><span class="lesson-number">·</span><span>程序员 AI Coding 进阶实战</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="00" href="00.html"><span class="lesson-number">00</span><span>程序员如何系统学习 AI Coding</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 01</span>AI Coding 底层心智</summary><a class="lesson-link" data-lesson="01" href="01.html"><span class="lesson-number">01</span><span>程序员用 AI Coding，真正的门槛不是 Prompt</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="02" href="02.html"><span class="lesson-number">02</span><span>从聊天式开发到工程式开发</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="03" href="03.html"><span class="lesson-number">03</span><span>AI Coding 的底层工作模型</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="04" href="04.html"><span class="lesson-number">04</span><span>AI 最擅长和最不擅长的开发任务</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 02</span>程序员工具工作台</summary><a class="lesson-link" data-lesson="05" href="05.html"><span class="lesson-number">05</span><span>Codex、Claude Code、Cursor、Copilot 怎么分工</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="06" href="06.html"><span class="lesson-number">06</span><span>一个程序员的 AI Coding 工作台怎么搭</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="07" href="07.html"><span class="lesson-number">07</span><span>App、CLI、IDE 怎么切换完成一次真实改动</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage" open><summary><span class="stage-index">模块 03</span>上下文工程与代码库理解</summary><a class="lesson-link" data-lesson="08" href="08.html"><span class="lesson-number">08</span><span>上下文工程：为什么不是塞越多代码越好</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="09" href="09.html"><span class="lesson-number">09</span><span>代码地图不是手工文档：让 Agent 生成可检查的仓库导航</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="10" href="10.html"><span class="lesson-number">10</span><span>让 Agent 做代码搜索：怎样约束搜索目标、证据和停止条件</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="11" href="11.html"><span class="lesson-number">11</span><span>AGENTS.md / CLAUDE.md / Copilot Instructions</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="12" href="12.html" aria-current="page"><span class="lesson-number">12</span><span>任务上下文包：一次需求到底该给 AI 什么</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="13" href="13.html"><span class="lesson-number">13</span><span>上下文污染与上下文清理</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="14" href="14.html"><span class="lesson-number">14</span><span>模块实战：让 AI 接手一个陌生代码模块</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 04</span>SDD 与 OpenSpec 实战</summary><a class="lesson-link" data-lesson="15" href="15.html"><span class="lesson-number">15</span><span>SDD 是什么：先写规格，再写代码</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="16" href="16.html"><span class="lesson-number">16</span><span>从一句需求到 requirements.md</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="17" href="17.html"><span class="lesson-number">17</span><span>design.md 怎么写，AI 才不会补丁式开发</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="18" href="18.html"><span class="lesson-number">18</span><span>tasks.md 怎么拆：把复杂需求变成小 diff</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="19" href="19.html"><span class="lesson-number">19</span><span>OpenSpec 实战：把需求变更放进 repo</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="20" href="20.html"><span class="lesson-number">20</span><span>OpenSpec、Spec Kit 与轻量 SDD 怎么选</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="21" href="21.html"><span class="lesson-number">21</span><span>模块实战：用 OpenSpec CLI 推进一次真实产品需求</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 05</span>小步开发测试与调试闭环</summary><a class="lesson-link" data-lesson="22" href="22.html"><span class="lesson-number">22</span><span>计划先行：让 AI 先解释它准备怎么改</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="23" href="23.html"><span class="lesson-number">23</span><span>小步开发：为什么要限制 AI 一次改动范围</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="24" href="24.html"><span class="lesson-number">24</span><span>TDD + AI Coding：先让失败测试约束模型</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="25" href="25.html"><span class="lesson-number">25</span><span>系统化调试：让 AI 基于证据排障</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="26" href="26.html"><span class="lesson-number">26</span><span>前后端验证闭环：页面、接口、数据库和副作用怎么一起验</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="27" href="27.html"><span class="lesson-number">27</span><span>AI 说“测试失败无关”时，程序员该怎么判断</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="28" href="28.html"><span class="lesson-number">28</span><span>模块实战：用 AI 完成一次 CLI 交互改造</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 06</span>Skill Superpowers 与工作流固化</summary><a class="lesson-link" data-lesson="29" href="29.html"><span class="lesson-number">29</span><span>Skill 是什么：从提示词到可复用工作流</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="30" href="30.html"><span class="lesson-number">30</span><span>Skill 原理解析：它如何约束 Agent 行为</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="31" href="31.html"><span class="lesson-number">31</span><span>Superpowers 工作流拆解：把工程纪律变成 Skill 链</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="32" href="32.html"><span class="lesson-number">32</span><span>自定义 Skill：把你的经验固化成个人能力</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="33" href="33.html"><span class="lesson-number">33</span><span>外部工具接入：MCP 在 AI Coding 里到底有什么用</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="34" href="34.html"><span class="lesson-number">34</span><span>多 Agent 与自动化：什么时候拆，什么时候不要拆</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="35" href="35.html"><span class="lesson-number">35</span><span>模块实战：用 Superpowers 固化一次业务需求的调试和评审</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="36" href="36.html"><span class="lesson-number">36</span><span>模块实战：给 AI 接一个只读项目工具</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 07</span>综合实战与资产沉淀</summary><a class="lesson-link" data-lesson="37" href="37.html"><span class="lesson-number">37</span><span>综合实战：一个真实需求的 AI Coding 最佳实践</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="38" href="38.html"><span class="lesson-number">38</span><span>综合实战：从一次交付沉淀个人规则库</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 08</span>个人工程资产</summary><a class="lesson-link" data-lesson="39" href="39.html"><span class="lesson-number">39</span><span>从个人提效到个人工程系统</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="END" href="closing.html"><span class="lesson-number">·</span><span>写在专栏结束时：把 AI Coding 留在日常工程里</span><span class="lesson-state" aria-hidden="true"></span></a></details></nav><p class="sidebar-note">给清目标，保留证据，逐步交付。</p></aside><main class="reader-main" id="main-content"><div class="article-context"><span>上下文工程与代码库理解</span><div class="reading-tools js-only"><div class="font-controls" role="group" aria-label="正文字号"><button type="button" data-font="-1" aria-label="减小正文字号">A−</button><span id="font-size-label" aria-live="polite">18</span><button type="button" data-font="1" aria-label="增大正文字号">A+</button></div><button type="button" class="focus-toggle" aria-pressed="false"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg><span>专注阅读</span></button></div></div><div class="mobile-context"><nav class="reading-route" aria-label="本篇路线"><details><summary>本篇路线</summary><div class="toc">
+<ul>
+<li><a href="#任务上下文包不是-prd">任务上下文包不是 PRD</a></li>
+<li><a href="#一个坏输入长什么样">一个坏输入长什么样</a></li>
+<li><a href="#任务上下文包的八个部分">任务上下文包的八个部分</a></li>
+<li><a href="#用-agent-或工具生成草稿">用 Agent 或工具生成草稿</a></li>
+<li><a href="#草稿生成后怎么验收">草稿生成后怎么验收</a></li>
+<li><a href="#不同材料怎么合并进任务上下文">不同材料怎么合并进任务上下文</a></li>
+<li><a href="#任务上下文包和权限控制">任务上下文包和权限控制</a></li>
+<li><a href="#什么时候需要升级到-sdd-或-openspec">什么时候需要升级到 SDD 或 OpenSpec</a></li>
+<li><a href="#不同风险任务怎么调整上下文包">不同风险任务怎么调整上下文包</a></li>
+<li><a href="#agent-mode-是很多人漏掉的关键">Agent Mode 是很多人漏掉的关键</a></li>
+<li><a href="#任务上下文包如何和代码地图配合">任务上下文包如何和代码地图配合</a></li>
+<li><a href="#任务上下文包如何和项目规则配合">任务上下文包如何和项目规则配合</a></li>
+<li><a href="#任务上下文包放在哪里">任务上下文包放在哪里</a></li>
+<li><a href="#常见错误">常见错误</a></li>
+<li><a href="#一份高质量任务上下文包">一份高质量任务上下文包</a></li>
+<li><a href="#完成后怎么回收上下文">完成后怎么回收上下文</a></li>
+<li><a href="#任务上下文包怎么进入-pr">任务上下文包怎么进入 PR</a></li>
+<li><a href="#任务上下文包和-issue-的关系">任务上下文包和 issue 的关系</a></li>
+<li><a href="#任务上下文包的反例">任务上下文包的反例</a></li>
+<li><a href="#上下文包过期了怎么办">上下文包过期了怎么办</a></li>
+<li><a href="#常见问题">常见问题</a></li>
+<li><a href="#可以先实践的一件事">可以先实践的一件事</a></li>
+<li><a href="#可复查资料">可复查资料</a></li>
+</ul>
+</div>
+</details></nav></div><article id="article-body"><h1 id="任务上下文包一次需求到底该给-ai-什么">任务上下文包：一次需求到底该给 AI 什么</h1>
+<p>一次需求开始前，给 AI 的材料不是越多越好，也不是越少越好。</p>
+<p>真正要给的是一份能约束行动的任务上下文包：目标、范围、相关文件、禁止修改、已知证据、验证方式、开放问题和 Agent 授权级别。</p>
+<p>很多 AI Coding 失控，不是因为 Agent 不会写代码，而是因为任务开始时缺少合同。</p>
+<p>你只说：</p>
+<pre><code class="language-text">帮我修一下 session 过期后第一次提交失败的问题。
+</code></pre>
+<p>Agent 只能自己猜：是前端表单问题？请求封装问题？token 存储问题？登录接口问题？还是后端返回问题？它猜得快，改得也快，但方向不一定对。</p>
+<p>任务上下文包的目的，就是在实现前把这些判断显式化。它可以由 Agent 根据 issue、日志、代码搜索和上下文审计报告生成草稿，但硬约束、业务风险和授权级别必须由程序员确认。</p>
+<p><img alt="任务上下文包的组成" src="../assets/content/docs/assets/diagrams/source/12-task-context-package.svg" /></p>
+<h2 id="任务上下文包不是-prd">任务上下文包不是 PRD</h2>
+<p>PRD 讲需求背景、用户价值、功能范围。任务上下文包讲一次代码改动怎么安全开始。</p>
+<p>它不需要长。中等风险任务，一页就够。</p>
+<p>一份有效的任务上下文包要回答八个问题：</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>问题</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>要改变什么行为</td>
+<td>防止实现跑偏</td>
+</tr>
+<tr>
+<td>哪些行为不能变</td>
+<td>防止破坏兼容</td>
+</tr>
+<tr>
+<td>先读哪些文件</td>
+<td>防止乱搜和漏入口</td>
+</tr>
+<tr>
+<td>哪些文件暂时不改</td>
+<td>防止误改 demo、legacy、generated</td>
+</tr>
+<tr>
+<td>已知证据是什么</td>
+<td>区分事实和猜测</td>
+</tr>
+<tr>
+<td>怎么证明完成</td>
+<td>让验证在实现前出现</td>
+</tr>
+<tr>
+<td>还有哪些未确认问题</td>
+<td>防止 Agent 自行拍板</td>
+</tr>
+<tr>
+<td>Agent 当前授权级别</td>
+<td>控制它能否直接编辑</td>
+</tr>
+</tbody>
+</table></div>
+<p>这八个问题比“写一个好 prompt”更重要。</p>
+<h2 id="一个坏输入长什么样">一个坏输入长什么样</h2>
+<p>看一个常见输入：</p>
+<pre><code class="language-text">登录过期后提交表单失败，你帮我修一下。
+不要影响其他功能。
+</code></pre>
+<p>它的问题很多：</p>
+<ul>
+<li>“登录过期”没有复现路径。</li>
+<li>“提交表单”没有入口文件。</li>
+<li>“失败”没有错误日志。</li>
+<li>“不要影响其他功能”太空。</li>
+<li>没有验证命令。</li>
+<li>没有限制是否可以改登录接口。</li>
+<li>没说明是否可以新增依赖。</li>
+</ul>
+<p>Agent 看到这段话，会按自己搜到的第一条线索行动。</p>
+<p>更好的输入是：</p>
+<pre><code class="language-markdown"># Task Context
+
+## Objective
+
+session 过期后重新登录，第一次提交资料表单应该成功，不应出现重复错误 toast。
+
+## Files AI Should Inspect First
+
+- `src/forms/ProfileForm.tsx`: form submit entry.
+- `src/auth/request.ts`: HTTP 401 handling.
+- `test/auth-refresh.test.ts`: related auth refresh tests.
+
+## Constraints
+
+- Do not change login API contract.
+- Do not change token storage format.
+- Do not add runtime dependencies.
+- Do not swallow non-401 errors.
+
+## Evidence
+
+- Error log: `401 refresh token missing`.
+- Repro path: login -&gt; wait for session expiration -&gt; refresh page -&gt; submit form.
+
+## Done When
+
+- `npm test -- auth-refresh` passes.
+- `npm run typecheck` passes if request types changed.
+- Browser path passes: login -&gt; expire session -&gt; refresh -&gt; submit.
+
+## Agent Mode
+
+First inspect files and produce a plan. Do not edit before plan approval.
+</code></pre>
+<p>这份材料并不复杂，但它把 Agent 的行动空间限定住了。</p>
+<h2 id="任务上下文包的八个部分">任务上下文包的八个部分</h2>
+<p>第一部分：Objective。</p>
+<p>目标要写成行为，而不是愿望。</p>
+<p>差：</p>
+<pre><code class="language-text">优化登录体验。
+</code></pre>
+<p>好：</p>
+<pre><code class="language-text">session 过期后重新登录，第一次提交资料表单应该成功，不应出现重复错误 toast。
+</code></pre>
+<p>行为越具体，验证越容易。</p>
+<p>第二部分：Scope。</p>
+<p>范围要写候选文件和原因。</p>
+<pre><code class="language-markdown">## Files AI Should Inspect First
+
+- `src/forms/ProfileForm.tsx`: form submit entry.
+- `src/auth/request.ts`: HTTP 401 handling.
+- `test/auth-refresh.test.ts`: related tests.
+</code></pre>
+<p>不要只列路径。路径后面要写为什么相关。</p>
+<p>第三部分：Constraints。</p>
+<p>约束要写硬边界。</p>
+<pre><code class="language-markdown">## Constraints
+
+- Do not change login API contract.
+- Do not change token storage format.
+- Do not add runtime dependencies.
+- Do not edit generated files under `src/generated/`.
+</code></pre>
+<p>这比“不要影响其他功能”有效得多。</p>
+<p>第四部分：Known Evidence。</p>
+<p>证据是已经确认的事实，不是猜测。</p>
+<pre><code class="language-markdown">## Known Evidence
+
+- Error log: `401 refresh token missing`.
+- Current behavior: first submit fails after session refresh.
+- Refresh API itself returns 200 in local reproduction.
+</code></pre>
+<p>如果只是猜测，要标成假设：</p>
+<pre><code class="language-markdown">## Hypotheses
+
+- The original request may not be retried after refresh.
+- Concurrent refresh may drop pending submit.
+</code></pre>
+<p>事实和假设不能混。</p>
+<p>第五部分：Verification。</p>
+<p>验证要在实现前写。</p>
+<pre><code class="language-markdown">## Done When
+
+- `npm test -- auth-refresh` passes.
+- `npm run typecheck` passes.
+- Browser path passes: login -&gt; expire session -&gt; refresh -&gt; submit.
+</code></pre>
+<p>如果没有自动测试，也要写手动验证：</p>
+<pre><code class="language-markdown">- Manual check: Network shows refresh request followed by one retry of original submit.
+</code></pre>
+<p>第六部分：Open Questions。</p>
+<p>有不确定就写出来。</p>
+<pre><code class="language-markdown">## Open Questions
+
+- Should original request retry exactly once or follow global retry policy?
+- How should concurrent submits behave during refresh?
+</code></pre>
+<p>开放问题的价值是阻止 Agent 自己拍板。</p>
+<p>第七部分：Agent Mode。</p>
+<p>明确它当前能做什么。</p>
+<pre><code class="language-markdown">## Agent Mode
+
+- Inspect and plan only.
+- Do not edit before plan approval.
+- If scope must expand, stop and explain.
+</code></pre>
+<p>低风险任务可以写：</p>
+<pre><code class="language-markdown">Agent may implement directly, but must keep diff scoped and report commands.
+</code></pre>
+<p>第八部分：Context Sources。</p>
+<p>告诉 Agent 先读哪些长期资产。</p>
+<pre><code class="language-markdown">## Context Sources
+
+- Project rules: `AGENTS.md`
+- Code map: `docs/ai-coding/code-map.md`
+</code></pre>
+<p>这能把长期规则和单次任务接起来。</p>
+<h2 id="用-agent-或工具生成草稿">用 Agent 或工具生成草稿</h2>
+<p>任务上下文包不应该靠人从空白文档开始写。先让 Agent 根据搜索结果生成草稿，或者用配套工具生成骨架。</p>
+<p>配套代码仓库 <a href="https://github.com/DavidDingXu/learn-ai-coding">DavidDingXu/learn-ai-coding</a> 的工具 module 里有一个最小命令：</p>
+<pre><code class="language-bash">cd learn-ai-coding/ai-coding-workflow-kit
+node src/cli.js task-context \
+  --title &quot;修复 session 过期后首次提交失败&quot; \
+  --files &quot;src/auth/request.ts,src/forms/ProfileForm.tsx,test/auth-refresh.test.ts&quot;
+</code></pre>
+<p>当前输出会是：</p>
+<pre><code class="language-markdown"># Task Context: 修复 session 过期后首次提交失败
+
+## Goal
+
+- Describe the behavior change before asking AI to edit code.
+
+## Files AI Should Inspect First
+
+- src/auth/request.ts
+- src/forms/ProfileForm.tsx
+- test/auth-refresh.test.ts
+
+## Constraints
+
+- List APIs, dependencies, generated files, or behaviors that must not change.
+
+## Done When
+
+- List tests, commands, UI checks, or manual verification evidence.
+
+## Questions Before Coding
+
+- Which existing behavior must remain compatible?
+- Which test or command proves the change?
+- What should AI do if it needs to expand the diff?
+</code></pre>
+<p>这个命令不会替你判断业务，也不会自动知道风险。它的作用是让 Agent 和人都别忘了最关键的几个字段。</p>
+<p>复杂项目里，真正重要的是后续确认：</p>
+<ul>
+<li>目标行为。</li>
+<li>不能改变的接口和兼容规则。</li>
+<li>错误日志和复现步骤。</li>
+<li>验证命令。</li>
+<li>Agent 授权级别。</li>
+</ul>
+<p>工具和 Agent 生成草稿，程序员确认工程判断。</p>
+<h2 id="草稿生成后怎么验收">草稿生成后怎么验收</h2>
+<p>Agent 写出的任务上下文包，不能直接当合同。</p>
+<p>你至少要做一次验收。</p>
+<p>第一，看 Objective 是否是行为。</p>
+<p>“优化登录体验”不合格。
+“session 过期后重新登录，第一次提交资料表单应该成功”才合格。</p>
+<p>行为目标应该能被测试、页面路径、接口响应或日志证明。</p>
+<p>第二，看 Files 是否有理由。</p>
+<p>下面这种只列路径不合格：</p>
+<pre><code class="language-markdown">- `src/auth/request.ts`
+- `src/forms/ProfileForm.tsx`
+</code></pre>
+<p>要写成：</p>
+<pre><code class="language-markdown">- `src/auth/request.ts`
+  - reason: handles HTTP 401 and token refresh.
+- `src/forms/ProfileForm.tsx`
+  - reason: user-visible submit entry.
+</code></pre>
+<p>第三，看 Constraints 是否能阻止越界。</p>
+<p>“不要影响其他功能”不合格。
+“不改变登录 API contract，不改变 token storage format，不吞掉非 401 错误，不新增 runtime dependency”才有约束力。</p>
+<p>第四，看 Evidence 是否区分事实和假设。</p>
+<p>错误日志、复现路径、命令输出、截图是事实。
+“可能是 refresh 没重试”是假设。</p>
+<p>它们必须分开写。</p>
+<p>第五，看 Done When 是否能执行。</p>
+<p>“功能正常”不合格。
+“<code>npm test -- auth-refresh</code> 通过，浏览器路径 login -&gt; expire session -&gt; refresh -&gt; submit 通过，Network 显示 refresh 后原请求重试一次”才是可验证完成。</p>
+<p>第六，看 Agent Mode 是否明确。</p>
+<p>高风险任务不能只写任务上下文，还要写授权边界：</p>
+<pre><code class="language-markdown">## Agent Mode
+
+Inspect and plan only.
+Do not edit files before plan approval.
+If scope expands beyond auth request wrapper and profile form submit path, stop.
+</code></pre>
+<p>验收可以用下面这段话让 Agent 自检：</p>
+<pre><code class="language-text">请检查这份 Task Context 是否足以授权你进入实现。
+
+逐项回答：
+1. Objective 是否能被验证？
+2. Files 是否都写了用途和证据？
+3. Constraints 是否足够阻止越界？
+4. Evidence 和 Hypotheses 是否分开？
+5. Done When 是否包含可执行命令或操作路径？
+6. Agent Mode 是否明确说明你能不能编辑文件？
+
+如果任一项不满足，请只修订 Task Context，不要写代码。
+</code></pre>
+<p>这一步能避免很多“任务包写了，但还是乱改”的问题。</p>
+<h2 id="不同材料怎么合并进任务上下文">不同材料怎么合并进任务上下文</h2>
+<p>一次真实任务的材料经常来自多个地方。</p>
+<pre><code class="language-text">用户描述
+issue 评论
+错误日志
+截图
+代码搜索结果
+代码地图
+项目规则
+官方文档
+历史 PR
+</code></pre>
+<p>不要把这些材料按原样塞进上下文包。它们的可信度不同，用法也不同。</p>
+<p>可以按下面方式合并。</p>
+<p>用户描述进入 Objective 和 Open Questions。</p>
+<p>用户说“提交失败”，只能说明现象；不能直接说明根因。要把它写成目标和待确认问题：</p>
+<pre><code class="language-markdown">## Objective
+
+session 过期后重新登录，第一次提交资料表单应该成功。
+
+## Open Questions
+
+- submit failure is caused by frontend retry, backend 401, or token storage?
+</code></pre>
+<p>错误日志进入 Known Evidence。</p>
+<p>日志要带上下文，不要只贴一句：</p>
+<pre><code class="language-markdown">## Known Evidence
+
+- Browser Network: first submit returns 401.
+- Console log: `refresh token missing`.
+- Refresh endpoint returns 200 in local reproduction.
+</code></pre>
+<p>代码搜索结果进入 Files To Inspect First 和 Files Not To Edit Initially。</p>
+<pre><code class="language-markdown">## Files AI Should Inspect First
+
+- `src/auth/request.ts`
+  - evidence: contains 401 handling and refresh call.
+
+## Files Not To Edit Initially
+
+- `src/generated/api-client.ts`
+  - evidence: generated client; inspect only.
+</code></pre>
+<p>项目规则进入 Context Sources 和 Constraints。</p>
+<p>如果 <code>AGENTS.md</code> 写了不能新增依赖，就不要只在 Context Sources 里引用，要把本任务相关约束拉进 Constraints。</p>
+<p>官方文档进入 Reference，不直接覆盖项目事实。</p>
+<pre><code class="language-markdown">## Reference
+
+- Framework docs say retry middleware can wrap request calls.
+- Current project uses a custom request wrapper; follow current project contract first.
+</code></pre>
+<p>历史 PR 进入 Hypotheses 或 Background，不能直接变成当前事实。</p>
+<pre><code class="language-markdown">## Background
+
+- Historical PR suggests token storage changed in an earlier refactor.
+- Need current code confirmation before editing.
+</code></pre>
+<p>合并材料时，最重要的是保持层级。事实、假设、约束、参考资料不能混在一个段落里。</p>
+<h2 id="任务上下文包和权限控制">任务上下文包和权限控制</h2>
+<p>任务上下文包不是纯文档，它也是权限控制。</p>
+<p>同一个需求，不同上下文包会给 Agent 完全不同的权限。</p>
+<p>低风险写法：</p>
+<pre><code class="language-markdown">## Agent Mode
+
+Direct implement allowed.
+Keep diff limited to `src/pages/invoice/ListPage.tsx`.
+Run focused UI test or provide screenshot.
+</code></pre>
+<p>中风险写法：</p>
+<pre><code class="language-markdown">## Agent Mode
+
+Plan first.
+Human approves plan before editing.
+Implement one step at a time.
+</code></pre>
+<p>高风险写法：</p>
+<pre><code class="language-markdown">## Agent Mode
+
+Analysis only.
+Do not edit files.
+Do not suggest production execution commands.
+Output confirmed facts, hypotheses, and next verification action.
+</code></pre>
+<p>这里要明确一点：Agent Mode 不是礼貌提示，是任务边界。</p>
+<p>如果 Agent 在 Inspect only 模式下开始改文件，这不是“它很主动”，而是违反任务合同。应该停下来回滚或让它解释原因。</p>
+<h2 id="什么时候需要升级到-sdd-或-openspec">什么时候需要升级到 SDD 或 OpenSpec</h2>
+<p>任务上下文包适合一次改动开始前的约束，但不是所有复杂需求都应该停留在一页上下文里。</p>
+<p>下面这些信号说明该升级：</p>
+<ul>
+<li>需求会持续多天。</li>
+<li>需要改多个模块或多个仓库。</li>
+<li>涉及公开 API、状态机、权限、金额、数据迁移。</li>
+<li>需要多人 review。</li>
+<li>需要把当前行为和未来行为同时记录下来。</li>
+<li>任务会拆成多个可并行或可排期的小步骤。</li>
+</ul>
+<p>这时要从 Task Context 升级到规格驱动：</p>
+<pre><code class="language-text">requirements.md 讲清楚用户行为和验收条件。
+design.md 讲清楚技术取舍、兼容性和数据流。
+tasks.md 把实现拆成可验证的小 diff。
+OpenSpec changes/ 把拟议变更和当前系统行为分开管理。
+</code></pre>
+<p>不要把超大需求硬塞进一个任务上下文包。上下文包是启动合同，不是完整需求治理工具。</p>
+<h2 id="不同风险任务怎么调整上下文包">不同风险任务怎么调整上下文包</h2>
+<p>低风险任务可以很短。</p>
+<pre><code class="language-markdown"># Task Context
+
+## Objective
+
+把发票列表空状态文案从“暂无数据”改成“暂无发票”。
+
+## Files
+
+- `src/pages/invoice/ListPage.tsx`
+
+## Constraints
+
+- 不改查询逻辑。
+- 不改组件结构。
+
+## Done When
+
+- `git diff` only shows copy change.
+- 页面空状态显示正确。
+</code></pre>
+<p>中等风险任务要完整。</p>
+<pre><code class="language-markdown"># Task Context
+
+## Objective
+
+session 过期后重新登录，第一次提交资料表单应该成功。
+
+## Agent Mode
+
+Inspect and plan first. Human approves plan before editing.
+</code></pre>
+<p>高风险任务要更严格。</p>
+<pre><code class="language-markdown"># Task Context
+
+## Objective
+
+分析订单 paid 状态偶发回退原因。
+
+## Agent Mode
+
+Analysis only. Do not edit files.
+
+## Hard Constraints
+
+- Do not change order status transition logic.
+- Do not alter payment callback behavior.
+- Do not write migration scripts.
+
+## Required Output
+
+- Confirmed facts.
+- Excluded hypotheses.
+- Remaining hypotheses.
+- Next smallest verification action.
+- Questions for business owner.
+</code></pre>
+<p>同样叫任务上下文包，风险不同，授权级别不同。</p>
+<h2 id="agent-mode-是很多人漏掉的关键">Agent Mode 是很多人漏掉的关键</h2>
+<p>任务上下文包里一定要写 Agent Mode。</p>
+<p>常用模式有四种：</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>模式</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inspect only</td>
+<td>只读文件、搜索、整理事实</td>
+</tr>
+<tr>
+<td>Plan first</td>
+<td>先给计划，人确认后再实现</td>
+</tr>
+<tr>
+<td>Implement one step</td>
+<td>只执行计划中的一小步</td>
+</tr>
+<tr>
+<td>Direct implement</td>
+<td>低风险任务可直接实现</td>
+</tr>
+</tbody>
+</table></div>
+<p>例如：</p>
+<pre><code class="language-markdown">## Agent Mode
+
+Inspect only. Do not edit files.
+</code></pre>
+<p>或者：</p>
+<pre><code class="language-markdown">## Agent Mode
+
+Implement step 1 only. Stop after diff summary and verification result.
+</code></pre>
+<p>没有 Agent Mode，Agent 会默认自己决定行动级别。</p>
+<p>这在低风险任务里可能没问题，在中高风险任务里很危险。</p>
+<h2 id="任务上下文包如何和代码地图配合">任务上下文包如何和代码地图配合</h2>
+<p>代码地图是长期导航，任务上下文包是单次任务合同。</p>
+<p>代码地图告诉 Agent：</p>
+<pre><code class="language-text">auth 模块在哪里，测试在哪里，generated 不要改。
+</code></pre>
+<p>任务上下文包告诉 Agent：</p>
+<pre><code class="language-text">这次只修 session 过期后首次提交失败，先读这三个文件，不改 token 存储。
+</code></pre>
+<p>任务上下文包应该引用代码地图：</p>
+<pre><code class="language-markdown">## Context Sources
+
+- Code map: `docs/ai-coding/code-map.md`
+- Project rules: `AGENTS.md`
+</code></pre>
+<p>但不要复制整份地图。复制会造成过期和冲突。</p>
+<h2 id="任务上下文包如何和项目规则配合">任务上下文包如何和项目规则配合</h2>
+<p>项目规则写长期约束：</p>
+<pre><code class="language-markdown">- Do not add dependencies without approval.
+- Do not edit generated files.
+- Run focused tests for behavior changes.
+</code></pre>
+<p>任务上下文包写本次约束：</p>
+<pre><code class="language-markdown">- Do not change login API contract.
+- Do not change token storage format.
+- Verify expired-session submit path.
+</code></pre>
+<p>如果任务上下文和项目规则冲突，要先停下来。</p>
+<p>可以在任务包里写：</p>
+<pre><code class="language-markdown">## Conflict Handling
+
+If task instructions conflict with project rules, stop and explain the conflict before editing.
+</code></pre>
+<p>这条规则能防止 Agent 自己在冲突里选一边。</p>
+<h2 id="任务上下文包放在哪里">任务上下文包放在哪里</h2>
+<p>不用固定。</p>
+<p>可以放：</p>
+<ul>
+<li>issue 描述。</li>
+<li>PR 描述。</li>
+<li>本地 <code>docs/ai-coding/tasks/&lt;date&gt;-&lt;slug&gt;.md</code>。</li>
+<li>任务系统评论。</li>
+<li>Agent 对话第一条消息。</li>
+</ul>
+<p>关键是它要能被复查。</p>
+<p>如果是小任务，直接放对话里就行。
+如果是中高风险任务，建议落到文件或 issue 里。
+如果任务会拆多天，建议放仓库内文档，方便换对话和复盘。</p>
+<p>一个轻量目录可以是：</p>
+<pre><code class="language-text">docs/ai-coding/tasks/
+├── auth-refresh-submit.md
+└── order-status-rollback.md
+</code></pre>
+<p>任务结束后，不一定长期保留所有任务包。重要任务可以归档，普通任务可以只把规则和代码地图更新回长期资产。</p>
+<h2 id="常见错误">常见错误</h2>
+<p><strong>错误一：只写目标，不写不能改什么。</strong></p>
+<p>AI 很容易为了解决一个点改动接口、依赖或状态结构。约束必须写。</p>
+<p><strong>错误二：只写相关文件，不写为什么相关。</strong></p>
+<p>路径后面写一句用途。否则 Agent 不知道优先级。</p>
+<p><strong>错误三：把猜测写成事实。</strong></p>
+<p>“可能是 refresh 没重试”要写到 Hypotheses，不要写到 Known Evidence。</p>
+<p><strong>错误四：实现前不写验证。</strong></p>
+<p>验证必须前置。否则实现完成后，Agent 会挑最容易通过的命令证明自己。</p>
+<p><strong>错误五：不给 Agent 授权级别。</strong></p>
+<p>同一份上下文，Inspect only 和 Direct implement 的风险完全不同。</p>
+<h2 id="一份高质量任务上下文包">一份高质量任务上下文包</h2>
+<p>下面是一份可以直接迁移的版本：</p>
+<pre><code class="language-markdown"># Task Context: expired session first submit failure
+
+## Objective
+
+After session expiration and re-login, the first profile form submit should succeed.
+No duplicate error toast should appear.
+
+## Context Sources
+
+- Project rules: `AGENTS.md`
+- Code map: `docs/ai-coding/code-map.md`
+
+## Files AI Should Inspect First
+
+- `src/forms/ProfileForm.tsx`
+  - form submit entry
+- `src/auth/request.ts`
+  - HTTP 401 handling and retry behavior
+- `test/auth-refresh.test.ts`
+  - existing auth refresh tests
+
+## Files Not To Edit Initially
+
+- `src/auth/token-storage.ts`
+  - token storage format is out of scope
+- `src/generated/api-client.ts`
+  - generated file
+
+## Constraints
+
+- Do not change login API contract.
+- Do not change token storage format.
+- Do not add runtime dependencies.
+- Do not swallow non-401 errors.
+
+## Known Evidence
+
+- Error log: `401 refresh token missing`.
+- Repro path: login -&gt; wait for expiration -&gt; refresh page -&gt; submit form.
+
+## Hypotheses
+
+- Original request may not be retried after refresh.
+- Pending submit may be dropped during refresh.
+
+## Done When
+
+- Add or update regression test for expired-session submit.
+- `npm test -- auth-refresh` passes.
+- `npm run typecheck` passes if request types change.
+- Browser path passes: login -&gt; expire session -&gt; refresh -&gt; submit.
+
+## Open Questions
+
+- Should original request retry exactly once or follow global retry policy?
+- How should concurrent submits behave during refresh?
+
+## Agent Mode
+
+Inspect and plan first. Do not edit before plan approval.
+If scope must expand, stop and explain why.
+</code></pre>
+<p>这份材料已经足够让 Agent 开始侦察，但还没有授权它直接改。</p>
+<h2 id="完成后怎么回收上下文">完成后怎么回收上下文</h2>
+<p>任务结束后，任务上下文包不要原封不动塞进长期规则。</p>
+<p>要做一次回收：</p>
+<pre><code class="language-markdown">## Reuse After Completion
+
+- 是否新增项目规则？
+- 是否更新代码地图？
+- 是否沉淀验证命令？
+- 是否记录常见失败分类？
+- 是否有可复用测试模式？
+</code></pre>
+<p>例如这次任务结束后，可能只需要沉淀两条：</p>
+<pre><code class="language-markdown">AGENTS.md:
+- Do not swallow non-401 errors when changing auth retry logic.
+
+code-map.md:
+- Auth refresh tests: `npm test -- auth-refresh`
+</code></pre>
+<p>任务包本身可以归档，但长期资产只吸收稳定规则。</p>
+<h2 id="任务上下文包怎么进入-pr">任务上下文包怎么进入 PR</h2>
+<p>很多团队的问题不是没有上下文，而是上下文只留在 AI 对话里。</p>
+<p>如果这次改动需要 review，任务上下文包应该至少有一部分进入 PR 描述。</p>
+<p>可以压缩成下面这种格式：</p>
+<pre><code class="language-markdown">## Task
+
+session 过期后重新登录，第一次提交资料表单应该成功。
+
+## Constraints
+
+- 不改变登录 API contract。
+- 不改变 token storage format。
+- 不吞掉非 401 错误。
+
+## Files
+
+- `test/auth-refresh.test.ts`: regression coverage.
+- `src/auth/request.ts`: 401 refresh and retry path.
+
+## Verification
+
+- `npm test -- auth-refresh`: passed.
+- `npm run typecheck`: passed.
+- Browser path: login -&gt; expire session -&gt; refresh -&gt; submit, passed.
+
+## Residual Risk
+
+- 没有验证第三方 SSO staging path。
+</code></pre>
+<p>这不是把任务上下文包完整复制进 PR，而是把 reviewer 必须知道的边界带过去。</p>
+<p>reviewer 看到这几段，就能知道：</p>
+<ul>
+<li>这次要改什么。</li>
+<li>哪些行为不能改。</li>
+<li>为什么只改这些文件。</li>
+<li>用什么证明结果。</li>
+<li>哪些风险还没覆盖。</li>
+</ul>
+<p>AI 生成的 PR 最怕“代码很多，解释很少”。任务上下文包能把解释补回来。</p>
+<h2 id="任务上下文包和-issue-的关系">任务上下文包和 issue 的关系</h2>
+<p>issue 通常描述问题，任务上下文包描述如何安全开始改代码。</p>
+<p>一个 issue 可能是：</p>
+<pre><code class="language-markdown">用户反馈 session 过期后重新登录，第一次提交资料表单失败。
+</code></pre>
+<p>它还不是任务上下文包。你还需要补：</p>
+<pre><code class="language-markdown">## Engineering Context
+
+- suspected path:
+- constraints:
+- known evidence:
+- verification:
+- agent mode:
+</code></pre>
+<p>如果 issue 本身写得很好，可以直接把任务上下文包放在 issue 描述里。如果 issue 很长、讨论很多，建议在开始开发前由 Agent 生成一个精简 Task Context，并由人确认。</p>
+<p>不要让 Agent 直接读取几十条 issue 评论后开始实现。issue 评论里常常混有旧猜测、过期截图、被否定方案和无关讨论。先收敛成任务上下文包。</p>
+<h2 id="任务上下文包的反例">任务上下文包的反例</h2>
+<p>下面这份看起来完整，但不合格：</p>
+<pre><code class="language-markdown"># Task Context
+
+## Goal
+
+修复登录问题，提升用户体验。
+
+## Files
+
+- `src/auth/`
+- `src/forms/`
+
+## Constraints
+
+- 不要影响其他功能。
+
+## Done When
+
+- 功能正常。
+
+## Agent Mode
+
+请谨慎修改。
+</code></pre>
+<p>问题很具体：</p>
+<ul>
+<li>Goal 不是可验证行为。</li>
+<li>Files 是目录，不是入口和证据。</li>
+<li>Constraints 不可执行。</li>
+<li>Done When 没有命令或操作路径。</li>
+<li>Agent Mode 没有权限边界。</li>
+</ul>
+<p>把它改成合格版本：</p>
+<pre><code class="language-markdown"># Task Context
+
+## Objective
+
+session 过期后重新登录，第一次提交资料表单应该成功，不出现重复错误 toast。
+
+## Files AI Should Inspect First
+
+- `src/forms/ProfileForm.tsx`
+  - form submit entry.
+- `src/auth/request.ts`
+  - HTTP 401 handling and retry behavior.
+- `test/auth-refresh.test.ts`
+  - existing refresh tests.
+
+## Constraints
+
+- Do not change login API contract.
+- Do not change token storage format.
+- Do not add runtime dependencies.
+- Do not swallow non-401 errors.
+
+## Done When
+
+- Regression test covers expired-session first submit.
+- `npm test -- auth-refresh` passes.
+- Browser Network shows refresh followed by one retry of original submit.
+
+## Agent Mode
+
+Inspect and plan first. Do not edit before plan approval.
+</code></pre>
+<p>这才是一份可以授权 Agent 做侦察和计划的上下文。</p>
+<h2 id="上下文包过期了怎么办">上下文包过期了怎么办</h2>
+<p>任务拖得越久，上下文包越容易过期。</p>
+<p>常见过期信号：</p>
+<ul>
+<li>计划里的文件已经被别人改过。</li>
+<li>任务目标发生变化。</li>
+<li>测试命令变化。</li>
+<li>Agent 发现真实入口不是原来写的入口。</li>
+<li>新证据排除了原来的主要假设。</li>
+</ul>
+<p>上下文包过期时，不要直接在原文下面继续追加。先更新关键段落：</p>
+<pre><code class="language-markdown">## Context Update
+
+Date:
+
+Changed:
+- Original hypothesis `token storage missing` is excluded.
+- New confirmed fact: original submit request is not replayed.
+
+Current Next Action:
+- Add retry regression test before implementation.
+</code></pre>
+<p>如果变化很大，就生成新版本。不要让 Agent 同时读旧上下文和新上下文，然后自己判断哪个优先。</p>
+<p>上下文包不是越多越好。它必须保持当前有效。</p>
+<h2 id="常见问题">常见问题</h2>
+<p><strong>每个任务都要写任务上下文包吗？</strong></p>
+<p>不用。低风险小改可以写很短，甚至只写对话里的几行。中高风险任务建议写完整。</p>
+<p><strong>任务上下文包是不是会降低速度？</strong></p>
+<p>低风险任务可能会。但中高风险任务里，它减少的是返工和误改。写 5 分钟上下文，通常比清理一个大 diff 便宜。</p>
+<p><strong>可以让 AI 帮我写任务上下文包吗？</strong></p>
+<p>应该优先让 AI 写草稿。它可以根据 issue、日志、代码搜索结果和上下文审计报告整理材料。程序员不要把草稿当最终合同，重点确认硬约束、业务风险、验证命令和授权级别。</p>
+<p><strong>任务上下文包和 SDD 有什么区别？</strong></p>
+<p>任务上下文包更轻，适合一次改动开始前的上下文和约束。SDD 会进一步把需求、设计和任务拆成规格驱动流程，适合更复杂需求。</p>
+<p><strong>任务包里要不要贴代码片段？</strong></p>
+<p>尽量贴路径和搜索结果摘要，不要大段复制代码。让 Agent 去真实仓库读文件。只有外部系统、日志或无法访问材料才需要贴片段。</p>
+<h2 id="可以先实践的一件事">可以先实践的一件事</h2>
+<p>下次中等风险任务开始前，先写这五行：</p>
+<pre><code class="language-markdown">Objective:
+Files AI should inspect first:
+Constraints:
+Done when:
+Agent mode:
+</code></pre>
+<p>如果五行写不出来，就不要让 AI 实现。先让它帮你做侦察和澄清。</p>
+<p>任务上下文包的价值，是让 AI 在写代码前知道自己处在哪个边界里。项目规则解决长期约束，代码地图解决导航，任务上下文包解决本次任务合同。</p>
+<p>接下来会讲上下文污染与上下文清理。一次任务推进过程中，旧假设、失败尝试和无关材料会不断进入对话；如果不清理，Agent 很容易把已经被否定的内容当成事实继续执行。</p>
+<h2 id="可复查资料">可复查资料</h2>
+<ul>
+<li>OpenAI Codex 最佳实践：<a href="https://developers.openai.com/codex/learn/best-practices">https://developers.openai.com/codex/learn/best-practices</a></li>
+<li>OpenAI Codex <code>AGENTS.md</code> 指南：<a href="https://developers.openai.com/codex/guides/agents-md">https://developers.openai.com/codex/guides/agents-md</a></li>
+<li>Anthropic Claude Code memory：<a href="https://code.claude.com/docs/en/memory">https://code.claude.com/docs/en/memory</a></li>
+<li>GitHub Copilot repository instructions：<a href="https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/add-custom-instructions/add-repository-instructions">https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/add-custom-instructions/add-repository-instructions</a></li>
+</ul></article><div class="practice-link"><a href="https://github.com/DavidDingXu/learn-ai-coding/blob/main/ai-coding-workflow-kit/dev-process/01-module-onboarding.md" target="_blank" rel="noopener"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5M14 4l-4 16"/></svg> 陌生模块接手记录 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></div><nav class="chapter-nav" aria-label="前后篇"><a href="11.html"><span>上一篇 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg></span><strong>AGENTS.md / CLAUDE.md / Copilot Instructions</strong></a><a href="13.html"><span>下一篇 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><strong>上下文污染与上下文清理</strong></a></nav><footer class="reader-footer">程序员 AI Coding 进阶实战 · <a href="../license.html">非商业使用</a><details class="community-mini"><summary>关注与交流 · 好好用 AI</summary><div class="community-section"><div><p>交流学习中的问题与实践心得。</p><p>代码问题和勘误，欢迎在 <a href="https://github.com/DavidDingXu/learn-ai-coding/issues" target="_blank" rel="noopener">GitHub 提交 Issue</a>。</p></div><a class="qr-link" href="../assets/wechat-official-account.jpg" target="_blank" rel="noopener" aria-label="查看好好用 AI 公众号二维码原图"><img src="../assets/wechat-official-account.jpg" alt="好好用 AI 微信公众号二维码" width="130" height="130" loading="lazy"><p class="qr-caption">微信扫码 · 点击查看原图</p></a></div></details></footer></main><aside class="context-sidebar" aria-label="本篇辅助导航"><div class="context-inner"><nav class="reading-route" aria-label="本篇路线"><details open><summary>本篇路线</summary><div class="toc">
+<ul>
+<li><a href="#任务上下文包不是-prd">任务上下文包不是 PRD</a></li>
+<li><a href="#一个坏输入长什么样">一个坏输入长什么样</a></li>
+<li><a href="#任务上下文包的八个部分">任务上下文包的八个部分</a></li>
+<li><a href="#用-agent-或工具生成草稿">用 Agent 或工具生成草稿</a></li>
+<li><a href="#草稿生成后怎么验收">草稿生成后怎么验收</a></li>
+<li><a href="#不同材料怎么合并进任务上下文">不同材料怎么合并进任务上下文</a></li>
+<li><a href="#任务上下文包和权限控制">任务上下文包和权限控制</a></li>
+<li><a href="#什么时候需要升级到-sdd-或-openspec">什么时候需要升级到 SDD 或 OpenSpec</a></li>
+<li><a href="#不同风险任务怎么调整上下文包">不同风险任务怎么调整上下文包</a></li>
+<li><a href="#agent-mode-是很多人漏掉的关键">Agent Mode 是很多人漏掉的关键</a></li>
+<li><a href="#任务上下文包如何和代码地图配合">任务上下文包如何和代码地图配合</a></li>
+<li><a href="#任务上下文包如何和项目规则配合">任务上下文包如何和项目规则配合</a></li>
+<li><a href="#任务上下文包放在哪里">任务上下文包放在哪里</a></li>
+<li><a href="#常见错误">常见错误</a></li>
+<li><a href="#一份高质量任务上下文包">一份高质量任务上下文包</a></li>
+<li><a href="#完成后怎么回收上下文">完成后怎么回收上下文</a></li>
+<li><a href="#任务上下文包怎么进入-pr">任务上下文包怎么进入 PR</a></li>
+<li><a href="#任务上下文包和-issue-的关系">任务上下文包和 issue 的关系</a></li>
+<li><a href="#任务上下文包的反例">任务上下文包的反例</a></li>
+<li><a href="#上下文包过期了怎么办">上下文包过期了怎么办</a></li>
+<li><a href="#常见问题">常见问题</a></li>
+<li><a href="#可以先实践的一件事">可以先实践的一件事</a></li>
+<li><a href="#可复查资料">可复查资料</a></li>
+</ul>
+</div>
+</details></nav></div></aside></div><dialog class="search-dialog" id="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label for="course-search" id="search-label"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>搜索课程</label><button class="icon-button" aria-label="关闭搜索"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></form><input id="course-search" type="search" placeholder="搜索概念、代码或问题…" autocomplete="off" spellcheck="false"><p class="search-status" id="search-status" role="status">搜索全部 42 篇文章。</p><div class="search-results" id="search-results"></div><footer>↑ ↓ 选择结果 <span>Enter 打开 · Esc 关闭</span></footer></dialog>
+<dialog class="image-viewer" id="image-viewer" aria-label="放大配图"><header><span>查看配图</span><div class="image-actions"><button type="button" id="image-size">原尺寸</button><button type="button" id="close-image" autofocus>关闭</button></div></header><div class="image-canvas"><img id="large-image" alt=""></div><footer><p id="image-description"></p><a id="original-image" target="_blank" rel="noopener">打开原图 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></footer></dialog><div class="toast" id="toast" role="status"></div></body></html>

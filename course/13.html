@@ -1,0 +1,639 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>上下文污染与上下文清理 · Learn AI Coding</title><meta name="description" content="从接手陌生代码库，到完成一次真实需求。沿着上下文、规格、实现、测试和复盘，建立可重复的 AI Coding 工作流。"><meta name="source-sha256" content="2203f572853817cff0389834a054a4a89098d96e129d07ced6f7294c5e580f4d">
+<link rel="canonical" href="https://daviddingxu.github.io/learn-ai-coding/course/13.html"><link rel="icon" href="../assets/brand.png">
+<script>try{const t=localStorage.getItem('haohai-course-theme');document.documentElement.dataset.theme=t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light'}catch(_){document.documentElement.dataset.theme='light'}</script>
+<link rel="stylesheet" href="../assets/site.css"><script defer src="../assets/search-index.js"></script><script defer src="../assets/site.js"></script></head><body class="article-page" data-root="../" data-page="13"><a class="skip-link" href="#main-content">跳到正文</a><header class="site-header"><div class="header-inner"><button class="icon-button menu-toggle js-only" type="button" aria-label="打开课程目录" aria-controls="course-sidebar" aria-expanded="false"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+<a class="brand" href="../index.html" aria-label="Learn AI Coding · 学习站首页"><img src="../assets/brand.png" alt="" width="36" height="36"><span><strong>Learn AI Coding</strong><small>程序员 AI Coding 进阶实战</small></span></a>
+<nav class="header-nav" aria-label="主导航"><a href="../index.html#curriculum">课程目录</a><a href="../index.html#downloads">离线阅读</a><a href="https://github.com/DavidDingXu/learn-ai-coding" target="_blank" rel="noopener">GitHub <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></nav>
+<div class="header-controls"><button class="icon-button theme-toggle js-only" type="button" aria-label="切换到深色主题" title="切换到深色主题"><span class="theme-light-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A9 9 0 0 1 9.5 3.5a9 9 0 1 0 11 11Z"/></svg></span><span class="theme-dark-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></span></button><button class="search-trigger js-only" type="button" aria-label="搜索课程"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg><span>搜索课程</span><kbd>⌘ K</kbd></button></div></div><div class="reading-progress" aria-hidden="true"><span id="reading-progress-bar"></span></div></header><div class="sidebar-scrim" hidden></div><div class="reader-layout"><aside class="course-sidebar" id="course-sidebar" aria-label="课程目录"><div class="sidebar-heading"><a href="../index.html#curriculum">课程目录</a><button class="icon-button menu-close js-only" type="button" aria-label="关闭课程目录"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><nav aria-label="全部文章"><details class="sidebar-stage"><summary><span class="stage-index">模块 00</span>导读与学习地图</summary><a class="lesson-link" data-lesson="INTRO" href="introduction.html"><span class="lesson-number">·</span><span>程序员 AI Coding 进阶实战</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="00" href="00.html"><span class="lesson-number">00</span><span>程序员如何系统学习 AI Coding</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 01</span>AI Coding 底层心智</summary><a class="lesson-link" data-lesson="01" href="01.html"><span class="lesson-number">01</span><span>程序员用 AI Coding，真正的门槛不是 Prompt</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="02" href="02.html"><span class="lesson-number">02</span><span>从聊天式开发到工程式开发</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="03" href="03.html"><span class="lesson-number">03</span><span>AI Coding 的底层工作模型</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="04" href="04.html"><span class="lesson-number">04</span><span>AI 最擅长和最不擅长的开发任务</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 02</span>程序员工具工作台</summary><a class="lesson-link" data-lesson="05" href="05.html"><span class="lesson-number">05</span><span>Codex、Claude Code、Cursor、Copilot 怎么分工</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="06" href="06.html"><span class="lesson-number">06</span><span>一个程序员的 AI Coding 工作台怎么搭</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="07" href="07.html"><span class="lesson-number">07</span><span>App、CLI、IDE 怎么切换完成一次真实改动</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage" open><summary><span class="stage-index">模块 03</span>上下文工程与代码库理解</summary><a class="lesson-link" data-lesson="08" href="08.html"><span class="lesson-number">08</span><span>上下文工程：为什么不是塞越多代码越好</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="09" href="09.html"><span class="lesson-number">09</span><span>代码地图不是手工文档：让 Agent 生成可检查的仓库导航</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="10" href="10.html"><span class="lesson-number">10</span><span>让 Agent 做代码搜索：怎样约束搜索目标、证据和停止条件</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="11" href="11.html"><span class="lesson-number">11</span><span>AGENTS.md / CLAUDE.md / Copilot Instructions</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="12" href="12.html"><span class="lesson-number">12</span><span>任务上下文包：一次需求到底该给 AI 什么</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="13" href="13.html" aria-current="page"><span class="lesson-number">13</span><span>上下文污染与上下文清理</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="14" href="14.html"><span class="lesson-number">14</span><span>模块实战：让 AI 接手一个陌生代码模块</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 04</span>SDD 与 OpenSpec 实战</summary><a class="lesson-link" data-lesson="15" href="15.html"><span class="lesson-number">15</span><span>SDD 是什么：先写规格，再写代码</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="16" href="16.html"><span class="lesson-number">16</span><span>从一句需求到 requirements.md</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="17" href="17.html"><span class="lesson-number">17</span><span>design.md 怎么写，AI 才不会补丁式开发</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="18" href="18.html"><span class="lesson-number">18</span><span>tasks.md 怎么拆：把复杂需求变成小 diff</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="19" href="19.html"><span class="lesson-number">19</span><span>OpenSpec 实战：把需求变更放进 repo</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="20" href="20.html"><span class="lesson-number">20</span><span>OpenSpec、Spec Kit 与轻量 SDD 怎么选</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="21" href="21.html"><span class="lesson-number">21</span><span>模块实战：用 OpenSpec CLI 推进一次真实产品需求</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 05</span>小步开发测试与调试闭环</summary><a class="lesson-link" data-lesson="22" href="22.html"><span class="lesson-number">22</span><span>计划先行：让 AI 先解释它准备怎么改</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="23" href="23.html"><span class="lesson-number">23</span><span>小步开发：为什么要限制 AI 一次改动范围</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="24" href="24.html"><span class="lesson-number">24</span><span>TDD + AI Coding：先让失败测试约束模型</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="25" href="25.html"><span class="lesson-number">25</span><span>系统化调试：让 AI 基于证据排障</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="26" href="26.html"><span class="lesson-number">26</span><span>前后端验证闭环：页面、接口、数据库和副作用怎么一起验</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="27" href="27.html"><span class="lesson-number">27</span><span>AI 说“测试失败无关”时，程序员该怎么判断</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="28" href="28.html"><span class="lesson-number">28</span><span>模块实战：用 AI 完成一次 CLI 交互改造</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 06</span>Skill Superpowers 与工作流固化</summary><a class="lesson-link" data-lesson="29" href="29.html"><span class="lesson-number">29</span><span>Skill 是什么：从提示词到可复用工作流</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="30" href="30.html"><span class="lesson-number">30</span><span>Skill 原理解析：它如何约束 Agent 行为</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="31" href="31.html"><span class="lesson-number">31</span><span>Superpowers 工作流拆解：把工程纪律变成 Skill 链</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="32" href="32.html"><span class="lesson-number">32</span><span>自定义 Skill：把你的经验固化成个人能力</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="33" href="33.html"><span class="lesson-number">33</span><span>外部工具接入：MCP 在 AI Coding 里到底有什么用</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="34" href="34.html"><span class="lesson-number">34</span><span>多 Agent 与自动化：什么时候拆，什么时候不要拆</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="35" href="35.html"><span class="lesson-number">35</span><span>模块实战：用 Superpowers 固化一次业务需求的调试和评审</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="36" href="36.html"><span class="lesson-number">36</span><span>模块实战：给 AI 接一个只读项目工具</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 07</span>综合实战与资产沉淀</summary><a class="lesson-link" data-lesson="37" href="37.html"><span class="lesson-number">37</span><span>综合实战：一个真实需求的 AI Coding 最佳实践</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="38" href="38.html"><span class="lesson-number">38</span><span>综合实战：从一次交付沉淀个人规则库</span><span class="lesson-state" aria-hidden="true"></span></a></details><details class="sidebar-stage"><summary><span class="stage-index">模块 08</span>个人工程资产</summary><a class="lesson-link" data-lesson="39" href="39.html"><span class="lesson-number">39</span><span>从个人提效到个人工程系统</span><span class="lesson-state" aria-hidden="true"></span></a><a class="lesson-link" data-lesson="END" href="closing.html"><span class="lesson-number">·</span><span>写在专栏结束时：把 AI Coding 留在日常工程里</span><span class="lesson-state" aria-hidden="true"></span></a></details></nav><p class="sidebar-note">给清目标，保留证据，逐步交付。</p></aside><main class="reader-main" id="main-content"><div class="article-context"><span>上下文工程与代码库理解</span><div class="reading-tools js-only"><div class="font-controls" role="group" aria-label="正文字号"><button type="button" data-font="-1" aria-label="减小正文字号">A−</button><span id="font-size-label" aria-live="polite">18</span><button type="button" data-font="1" aria-label="增大正文字号">A+</button></div><button type="button" class="focus-toggle" aria-pressed="false"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg><span>专注阅读</span></button></div></div><div class="mobile-context"><nav class="reading-route" aria-label="本篇路线"><details><summary>本篇路线</summary><div class="toc">
+<ul>
+<li><a href="#上下文污染从哪里来">上下文污染从哪里来</a></li>
+<li><a href="#污染出现时的信号">污染出现时的信号</a></li>
+<li><a href="#清理上下文的核心动作">清理上下文的核心动作</a></li>
+<li><a href="#清理流程图">清理流程图</a></li>
+<li><a href="#什么时候应该开新对话">什么时候应该开新对话</a></li>
+<li><a href="#失败分类是上下文清理的一部分">失败分类是上下文清理的一部分</a></li>
+<li><a href="#一个真实清理案例">一个真实清理案例</a></li>
+<li><a href="#清理前后对比">清理前后对比</a></li>
+<li><a href="#上下文清理和-git-的关系">上下文清理和 Git 的关系</a></li>
+<li><a href="#上下文清理和-review-的关系">上下文清理和 review 的关系</a></li>
+<li><a href="#diff-变大时如何收缩">diff 变大时如何收缩</a></li>
+<li><a href="#事实整理表">事实整理表</a></li>
+<li><a href="#别把总结当清理">别把总结当清理</a></li>
+<li><a href="#长任务里的节奏控制">长任务里的节奏控制</a></li>
+<li><a href="#常见错误">常见错误</a></li>
+<li><a href="#一套可复用提示">一套可复用提示</a></li>
+<li><a href="#如何迁移到自己的项目">如何迁移到自己的项目</a></li>
+<li><a href="#可以先练的一次清理">可以先练的一次清理</a></li>
+<li><a href="#哪些清理结果要写回长期资产">哪些清理结果要写回长期资产</a></li>
+<li><a href="#什么时候清理也不够">什么时候清理也不够</a></li>
+<li><a href="#常见问题">常见问题</a></li>
+<li><a href="#可复查资料">可复查资料</a></li>
+</ul>
+</div>
+</details></nav></div><article id="article-body"><h1 id="上下文污染与上下文清理">上下文污染与上下文清理</h1>
+<p>AI Coding 做到一半，最危险的不是 Agent 不知道，而是它以为自己知道。</p>
+<p>排障开始时怀疑是缓存，后来日志证明不是；第一版计划准备改请求封装，后来发现真实入口在表单状态；前几轮测试失败是环境问题，后来又出现本次引入失败。对话越长，里面混入的猜测、旧方案、被否定结论、无关文件越多。</p>
+<p>如果不清理，Agent 会继续被这些材料影响。</p>
+<p>上下文污染不是抽象问题。它会直接导致误改文件、扩大范围、重复排错、把旧失败当成本次责任，甚至把已经排除的假设重新写进代码。</p>
+<p>程序员要学会在合适的节点让 Agent 停下来，重新整理事实。</p>
+<p><img alt="上下文污染来源" src="../assets/content/docs/assets/diagrams/source/13-context-pollution-sources.svg" /></p>
+<h2 id="上下文污染从哪里来">上下文污染从哪里来</h2>
+<p>第一类污染：未验证假设。</p>
+<p>比如：</p>
+<pre><code class="language-text">可能是 refresh token 没写入。
+可能是后端返回慢。
+可能是表单重复提交。
+</code></pre>
+<p>这些话在排障早期有价值，但它们不是事实。如果后来没有被分类，Agent 很容易把“可能”当成实现依据。</p>
+<p>第二类污染：被否定的旧结论。</p>
+<p>日志已经证明 refresh token 写入成功，但对话里保留了大量“token 没写入”的讨论。后续 Agent 仍可能回到 token storage 方向。</p>
+<p>第三类污染：过期计划。</p>
+<p>第一版计划说改 <code>src/auth/request.ts</code>，后面发现真实问题在 <code>src/forms/ProfileForm.tsx</code>。如果计划没更新，Agent 可能继续围绕旧文件工作。</p>
+<p>第四类污染：无关文件。</p>
+<p>搜索时读了 demo、legacy、generated、docs，它们进入上下文后，Agent 后面可能继续引用。尤其是 demo 和 docs，看起来很像生产逻辑。</p>
+<p>第五类污染：工具输出混杂。</p>
+<p>测试输出、lint 输出、环境报错、旧失败、本次失败混在一起，没有分类。Agent 看到红色输出就开始修，结果可能修错层。</p>
+<p>第六类污染：人类随口补充。</p>
+<p>“应该就是前端问题”“可能顺手重构一下”“这个模块本来就有点乱”。这些话如果不加边界，会改变 Agent 的目标。</p>
+<p>上下文污染的本质，是事实、假设、偏好、旧结论、无关材料混在一个窗口里。</p>
+<h2 id="污染出现时的信号">污染出现时的信号</h2>
+<p>出现下面这些信号，就该清理上下文。</p>
+<p>第一，Agent 开始引用已经被排除的原因。</p>
+<p>比如你已经确认不是缓存，它又说“我们可以清缓存试试”。</p>
+<p>第二，Agent 的计划和最新证据不一致。</p>
+<p>最新日志指向表单状态，它的计划还在改请求封装。</p>
+<p>第三，它无法解释为什么改某个文件。</p>
+<p>它只说“这个文件相关”，但说不出入口、调用点和验证命令。</p>
+<p>第四，测试失败后它直接继续改。</p>
+<p>没有先判断是 baseline、introduced、environment 还是 requirement conflict。</p>
+<p>第五，diff 越来越大。</p>
+<p>小 bug 变成跨模块重构，说明目标和边界已经被污染。</p>
+<p>第六，完成报告没有未验证风险。</p>
+<p>它把当前可见材料当成完整事实，说明上下文里缺少不确定性分类。</p>
+<p>这些信号出现时，不要继续喂更多上下文。先停。</p>
+<h2 id="清理上下文的核心动作">清理上下文的核心动作</h2>
+<p>清理不是把对话删掉，也不是让 Agent 重新总结一遍。</p>
+<p>清理要把当前材料分成五类：</p>
+<pre><code class="language-text">已确认事实
+已排除假设
+未验证假设
+当前硬约束
+下一步最小动作
+</code></pre>
+<p>可以直接这样要求：</p>
+<pre><code class="language-text">停止修改。
+
+请只基于当前证据整理上下文：
+1. 已确认事实。
+2. 已排除假设。
+3. 未验证假设。
+4. 当前硬约束。
+5. 当前 diff 涉及哪些文件。
+6. 下一步最小验证动作。
+
+不要继续写代码。
+不要把猜测写成事实。
+</code></pre>
+<p>这段话很适合在排障、测试失败、计划变化、大 diff 之前使用。</p>
+<p>整理后的输出应该像这样：</p>
+<pre><code class="language-markdown">## Confirmed Facts
+
+- First submit after session expiration returns 401.
+- Refresh request succeeds and returns a new token.
+- Original submit request is not retried.
+- Current diff only changes `test/auth-refresh.test.ts`.
+
+## Excluded Hypotheses
+
+- Token storage is not empty after refresh.
+- Backend submit endpoint is not returning 500.
+
+## Unverified Hypotheses
+
+- Request wrapper does not replay original request after refresh.
+- Concurrent submits may be dropped during refresh.
+
+## Constraints
+
+- Do not change login API contract.
+- Do not change token storage format.
+- Do not swallow non-401 errors.
+
+## Next Smallest Action
+
+- Read `src/auth/request.ts` and add one retry guard test before implementation.
+</code></pre>
+<p>这就是干净上下文。</p>
+<h2 id="清理流程图">清理流程图</h2>
+<p><img alt="上下文清理流程" src="../assets/content/docs/assets/diagrams/source/13-context-cleanup-flow.svg" /></p>
+<p>这个流程有三个关键点。</p>
+<p>第一，先停止编辑。</p>
+<p>只要还在继续改文件，污染就会扩散。清理时禁止写代码。</p>
+<p>第二，先分类，再决策。</p>
+<p>不要一边整理一边提出修复方案。先把事实和假设分清。</p>
+<p>第三，下一步必须小。</p>
+<p>清理后的下一步不应该是“大概重构一下”。它应该是一个最小验证动作或一小步实现。</p>
+<h2 id="什么时候应该开新对话">什么时候应该开新对话</h2>
+<p>不是每次污染都要开新对话。</p>
+<p>这些情况可以在当前对话里清理：</p>
+<ul>
+<li>任务仍然是同一个。</li>
+<li>diff 范围还小。</li>
+<li>主要问题是测试失败分类。</li>
+<li>只需要剔除一两个旧假设。</li>
+</ul>
+<p>这些情况建议开新对话：</p>
+<ul>
+<li>对话已经很长。</li>
+<li>早期猜测大量存在。</li>
+<li>任务从排障转成实现。</li>
+<li>任务从实现转成重构。</li>
+<li>多个失败尝试混在一起。</li>
+<li>Agent 反复回到已排除假设。</li>
+</ul>
+<p>开新对话时，不要把原对话全部复制过去。</p>
+<p>带一份交接包：</p>
+<pre><code class="language-markdown"># Handoff Context
+
+## Objective
+
+session 过期后重新登录，第一次提交资料表单应该成功。
+
+## Confirmed Facts
+
+- ...
+
+## Excluded Hypotheses
+
+- ...
+
+## Current Diff
+
+- `test/auth-refresh.test.ts`: added failing regression test.
+
+## Constraints
+
+- ...
+
+## Next Action
+
+- Inspect `src/auth/request.ts` and propose minimal implementation plan.
+
+## Do Not Use
+
+- Do not continue the earlier token-storage hypothesis.
+- Do not modify login API contract.
+</code></pre>
+<p>新对话需要的是整理后的事实，不是原始聊天记录。</p>
+<h2 id="失败分类是上下文清理的一部分">失败分类是上下文清理的一部分</h2>
+<p>测试失败后，最容易污染。</p>
+<p>一个命令失败，可能有很多原因：</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>说明</th>
+<th>处理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>baseline failure</td>
+<td>改前就失败</td>
+<td>记录基线，不作为本次引入</td>
+</tr>
+<tr>
+<td>introduced failure</td>
+<td>本次 diff 引入</td>
+<td>回到最小 diff 修复</td>
+</tr>
+<tr>
+<td>environment failure</td>
+<td>依赖、服务、密钥、端口问题</td>
+<td>不改业务代码，先处理环境</td>
+</tr>
+<tr>
+<td>requirement conflict</td>
+<td>测试期望和需求冲突</td>
+<td>停下来确认业务规则</td>
+</tr>
+<tr>
+<td>coverage gap</td>
+<td>命令通过但没覆盖关键路径</td>
+<td>补验证，不宣布完成</td>
+</tr>
+</tbody>
+</table></div>
+<p>可以直接给 Agent：</p>
+<pre><code class="language-text">测试失败后不要改代码。
+
+请先分类：
+- baseline failure
+- introduced failure
+- environment failure
+- requirement conflict
+- coverage gap
+
+说明证据和下一步最小动作。
+</code></pre>
+<p>如果没有这一步，Agent 很可能把环境问题改成业务代码，或者把旧失败算成自己要修的内容。</p>
+<h2 id="一个真实清理案例">一个真实清理案例</h2>
+<p>看一个更完整的过程。</p>
+<p>任务是：</p>
+<pre><code class="language-text">session 过期后重新登录，第一次提交资料表单失败。
+</code></pre>
+<p>第一轮，Agent 做了侦察：</p>
+<pre><code class="language-markdown">Files read:
+- `src/auth/request.ts`
+- `src/forms/ProfileForm.tsx`
+- `test/auth-refresh.test.ts`
+</code></pre>
+<p>它的初始假设是：</p>
+<pre><code class="language-markdown">Hypothesis:
+- refresh token may not be written to storage.
+</code></pre>
+<p>于是它准备改 <code>src/auth/token-storage.ts</code>。</p>
+<p>这时你让它先看日志和 Network。结果发现：</p>
+<pre><code class="language-markdown">Evidence:
+- refresh endpoint returns 200.
+- new access token appears in memory state.
+- original submit request is not replayed.
+</code></pre>
+<p>这个证据已经排除了“refresh token 没写入”的主要方向。可是如果不清理上下文，前面关于 token storage 的讨论仍然留在对话里。Agent 后续可能继续建议改 storage。</p>
+<p>这时应该停下来：</p>
+<pre><code class="language-text">停止修改。
+请重新整理上下文。
+把 token storage 相关判断按证据分类，不要继续沿旧假设实现。
+</code></pre>
+<p>整理结果应该变成：</p>
+<pre><code class="language-markdown">## Confirmed Facts
+
+- Refresh request succeeds.
+- New access token is available after refresh.
+- Original submit request is not replayed.
+
+## Excluded Hypotheses
+
+- Token storage is empty after refresh.
+- Refresh endpoint itself fails.
+
+## Unverified Hypotheses
+
+- Request wrapper refreshes token but does not retry the original request.
+- Submit handler may drop the pending request while refresh is running.
+
+## Active Constraints
+
+- Do not change token storage format.
+- Do not change login API contract.
+- Do not swallow non-401 errors.
+
+## Next Smallest Action
+
+- Add regression test for retrying original submit after successful refresh.
+</code></pre>
+<p>注意这个整理做了三件事。</p>
+<p>第一，它把 token storage 从候选修改路径里移出。不是因为它一定无关，而是当前证据不支持先改它。</p>
+<p>第二，它把下一步从“修 storage”改成“补 retry regression test”。这让任务回到可验证路径。</p>
+<p>第三，它保留了未验证假设。比如 submit handler 是否 drop pending request，还没有证据，不能当事实。</p>
+<p>这就是上下文清理的价值。它不是写总结，而是改变下一步动作。</p>
+<h2 id="清理前后对比">清理前后对比</h2>
+<p>污染状态下，Agent 的计划可能是：</p>
+<pre><code class="language-markdown">Plan:
+1. Refactor token storage to ensure refresh token is saved.
+2. Update request wrapper to read token from storage.
+3. Adjust ProfileForm submit error handling.
+4. Update tests.
+</code></pre>
+<p>看起来完整，但风险很高。它把三个方向混在一起：storage、request wrapper、form submit。任何一个方向错了，diff 都会变大。</p>
+<p>清理后，计划应该变成：</p>
+<pre><code class="language-markdown">Plan:
+1. Add failing test: refresh succeeds, original submit retries once.
+2. If test fails as expected, update request wrapper only.
+3. Run focused auth-refresh test.
+4. Use browser Network to confirm refresh followed by original submit retry.
+</code></pre>
+<p>差别在于：清理后的计划只保留当前证据支持的最小路径。</p>
+<p>一个程序员看 AI 的计划，不要只看它有没有步骤。要看每一步是否来自已确认事实，是否避开了已排除假设，是否能用命令或操作验证。</p>
+<h2 id="上下文清理和-git-的关系">上下文清理和 Git 的关系</h2>
+<p>清理上下文时，也要清理工作区认知。</p>
+<p>不是让 Agent 直接回滚，而是先看清楚当前 diff。</p>
+<pre><code class="language-bash">git status --short
+git diff --stat
+git diff
+</code></pre>
+<p>这三条命令分别回答：</p>
+<ul>
+<li>工作区有哪些改动。</li>
+<li>哪些文件改动最大。</li>
+<li>具体改了什么。</li>
+</ul>
+<p>然后让 Agent 做 diff 分类：</p>
+<pre><code class="language-text">请基于当前 git diff 分类：
+1. Directly related to current task.
+2. Possibly related but not yet proven.
+3. Refactor or cleanup.
+4. Out of scope.
+5. Should not decide without human review.
+
+不要执行 git checkout、reset 或删除文件。
+</code></pre>
+<p>这里必须强调：不要让 Agent 擅自 <code>git checkout -- .</code> 或 <code>git reset --hard</code>。真实工作区里可能有用户改动、上一轮已经确认的改动，或者其他任务残留。上下文清理先做分类，不做破坏性恢复。</p>
+<p>如果需要收缩 diff，可以让 Agent 输出建议：</p>
+<pre><code class="language-markdown">## Diff Shrink Proposal
+
+Keep:
+- `test/auth-refresh.test.ts`
+  - regression test for current bug.
+- `src/auth/request.ts`
+  - minimal retry-after-refresh implementation.
+
+Move to separate task:
+- `src/auth/error-message.ts`
+  - copy cleanup, not required for current bug.
+
+Discard candidate:
+- `src/auth/token-storage.ts`
+  - token storage hypothesis was excluded by Network evidence.
+</code></pre>
+<p>程序员确认后，再决定怎么处理这些文件。</p>
+<h2 id="上下文清理和-review-的关系">上下文清理和 review 的关系</h2>
+<p>如果一段 AI 生成的 PR 很难 review，通常不是 review 能力不够，而是上下文没有清理。</p>
+<p>PR 里应该能看到：</p>
+<pre><code class="language-markdown">## Confirmed Facts
+
+## Excluded Hypotheses
+
+## Change Scope
+
+## Verification
+
+## Residual Risk
+</code></pre>
+<p>如果 PR 描述只有：</p>
+<pre><code class="language-text">修复 session 过期后提交失败问题。
+</code></pre>
+<p>reviewer 就要从 diff 里反推上下文。这会非常低效。</p>
+<p>你可以在 review 前要求 Agent：</p>
+<pre><code class="language-text">请根据当前 diff 生成 review handoff。
+必须包含：
+- 本次任务目标。
+- 已确认事实。
+- 已排除假设。
+- 为什么这些文件被修改。
+- 验证命令和结果。
+- 未覆盖风险。
+</code></pre>
+<p>这份 handoff 可以直接放进 PR 描述，也可以作为自己 review 的检查材料。</p>
+<p>大厂代码审查里很重要的一点是：reviewer 不应该只看代码，还要看变更意图、验证证据和风险边界。AI Coding 也是同一套要求，只是更需要显式写出来。</p>
+<h2 id="diff-变大时如何收缩">diff 变大时如何收缩</h2>
+<p>上下文污染常常表现为 diff 变大。</p>
+<p>你可以让 Agent 做一次 diff 审查：</p>
+<pre><code class="language-text">停止继续实现。
+
+请基于当前 diff 做范围审查：
+1. 哪些改动直接服务本任务？
+2. 哪些改动是重构、清理或顺手修改？
+3. 哪些文件不应该在本任务里改？
+4. 如果要收缩到最小 diff，应该保留什么、撤回什么？
+
+不要执行撤回动作，只输出建议。
+</code></pre>
+<p>注意最后一句：不要执行撤回动作。</p>
+<p>因为工作区里可能有用户改动，Agent 不应该擅自还原。先让它分类，再由人决定怎么处理。</p>
+<p>diff 收缩的目标不是让代码更少，而是让每一行都能追溯到本次任务。</p>
+<h2 id="事实整理表">事实整理表</h2>
+<p>可以把下面这个表放进任务记录里：</p>
+<pre><code class="language-markdown"># Context Cleanup
+
+## Confirmed Facts
+
+-
+
+## Excluded Hypotheses
+
+-
+
+## Unverified Hypotheses
+
+-
+
+## Active Constraints
+
+-
+
+## Current Diff
+
+-
+
+## Verification State
+
+- Commands passed:
+- Commands failed:
+- Not run:
+
+## Next Smallest Action
+
+-
+</code></pre>
+<p>这张表最适合三个节点使用：</p>
+<ul>
+<li>长对话中段。</li>
+<li>测试失败后。</li>
+<li>准备开新对话前。</li>
+</ul>
+<h2 id="别把总结当清理">别把总结当清理</h2>
+<p>很多 Agent 会给出漂亮总结：</p>
+<pre><code class="language-text">我们已经分析了问题，并确定需要优化请求重试逻辑。接下来将完善 auth 模块并增强错误处理。
+</code></pre>
+<p>这不叫清理。</p>
+<p>清理必须可复查：</p>
+<ul>
+<li>哪些事实有证据。</li>
+<li>哪些假设已排除。</li>
+<li>哪些还没验证。</li>
+<li>当前 diff 是什么。</li>
+<li>下一步为什么最小。</li>
+</ul>
+<p>如果总结里没有分类，就让它重写：</p>
+<pre><code class="language-text">不要写概括性总结。
+请按 Confirmed / Excluded / Unverified / Constraints / Next Action 分类。
+</code></pre>
+<h2 id="长任务里的节奏控制">长任务里的节奏控制</h2>
+<p>中等以上任务建议固定三个清理点。</p>
+<p>第一个清理点：侦察后。</p>
+<pre><code class="language-text">读完入口、实现和测试后，整理已确认事实和缺失上下文。
+</code></pre>
+<p>第二个清理点：第一次验证失败后。</p>
+<pre><code class="language-text">分类失败类型，不直接继续改。
+</code></pre>
+<p>第三个清理点：完成前。</p>
+<pre><code class="language-text">整理命令、diff、未验证风险和需要沉淀的规则。
+</code></pre>
+<p>如果任务跨天，开新对话前再做一次交接包。</p>
+<h2 id="常见错误">常见错误</h2>
+<p><strong>错误一：继续补更多上下文。</strong></p>
+<p>污染时继续塞材料，常常让问题更乱。先分类，再补材料。</p>
+<p><strong>错误二：把猜测整理成事实。</strong></p>
+<p>“应该是请求没重试”要放 Unverified，不要放 Confirmed。</p>
+<p><strong>错误三：清理时继续改代码。</strong></p>
+<p>清理阶段只读、分类、计划。编辑会扩大不确定性。</p>
+<p><strong>错误四：开新对话带原始聊天记录。</strong></p>
+<p>原始聊天记录里有大量噪音。要带整理后的交接包。</p>
+<p><strong>错误五：完成前不写剩余风险。</strong></p>
+<p>没有剩余风险，通常说明验证边界没有说清。</p>
+<h2 id="一套可复用提示">一套可复用提示</h2>
+<p>排障中段：</p>
+<pre><code class="language-text">停止修改。
+请把当前上下文整理成：
+- Confirmed Facts
+- Excluded Hypotheses
+- Unverified Hypotheses
+- Active Constraints
+- Next Smallest Action
+不要写代码。
+</code></pre>
+<p>测试失败后：</p>
+<pre><code class="language-text">测试失败后不要改代码。
+先分类失败类型，并说明证据：
+- baseline
+- introduced
+- environment
+- requirement conflict
+- coverage gap
+</code></pre>
+<p>diff 变大时：</p>
+<pre><code class="language-text">请审查当前 diff：
+- 哪些改动服务本任务？
+- 哪些是无关重构或清理？
+- 哪些文件不应该改？
+- 如何收缩到最小 diff？
+不要执行撤回。
+</code></pre>
+<p>开新对话前：</p>
+<pre><code class="language-text">请生成新对话交接包：
+- Objective
+- Confirmed Facts
+- Excluded Hypotheses
+- Current Diff
+- Constraints
+- Next Action
+- Do Not Use
+</code></pre>
+<h2 id="如何迁移到自己的项目">如何迁移到自己的项目</h2>
+<p>先在任务记录里加一个小节：</p>
+<pre><code class="language-markdown">## Context Cleanup
+</code></pre>
+<p>每次遇到测试失败、计划变化或 diff 扩大时，就填一次。</p>
+<p>如果你使用仓库内任务文档，可以放：</p>
+<pre><code class="language-text">docs/ai-coding/tasks/&lt;task&gt;.md
+</code></pre>
+<p>如果只是轻量任务，直接在对话里要求 Agent 输出这张表也可以。</p>
+<p>关键是形成习惯：长任务不是一直往前推，而是定期把事实、假设和约束重新摆正。</p>
+<h2 id="可以先练的一次清理">可以先练的一次清理</h2>
+<p>找一个最近和 AI 反复改过的任务，不管最后有没有成功。</p>
+<p>不要继续让它写代码。只让它做一次清理：</p>
+<pre><code class="language-text">请根据当前对话和 diff，输出 Context Cleanup。
+
+必须包含：
+1. Confirmed Facts
+2. Excluded Hypotheses
+3. Unverified Hypotheses
+4. Active Constraints
+5. Current Diff
+6. Verification State
+7. Next Smallest Action
+
+不要继续修改文件。
+</code></pre>
+<p>然后你自己检查三件事：</p>
+<ul>
+<li>它有没有把猜测写进 Confirmed Facts。</li>
+<li>它有没有漏掉当前 diff 中的计划外文件。</li>
+<li>它给出的 Next Smallest Action 是否真的最小。</li>
+</ul>
+<p>如果这三件事都过了，再让它继续下一步。</p>
+<p>这个练习很适合老项目。老项目里问题不一定能马上修好，但先把事实整理干净，已经能减少一大半误改。</p>
+<h2 id="哪些清理结果要写回长期资产">哪些清理结果要写回长期资产</h2>
+<p>不是每次清理都要沉淀。</p>
+<p>只把会反复出现、能减少后续误判的内容写回去。</p>
+<p>适合写进 <code>AGENTS.md</code> 的，是长期规则：</p>
+<pre><code class="language-markdown">- Before editing after a test failure, classify the failure as baseline, introduced, environment, requirement conflict, or coverage gap.
+- Do not continue from excluded hypotheses.
+- Do not run destructive git commands to shrink diff without human approval.
+</code></pre>
+<p>适合写进代码地图的，是项目事实：</p>
+<pre><code class="language-markdown">- `src/generated/` is generated from OpenAPI; inspect only.
+- Auth refresh focused test: `npm test -- auth-refresh`.
+</code></pre>
+<p>适合写进 Skill 的，是重复流程：</p>
+<pre><code class="language-text">debug cleanup -&gt; classify evidence -&gt; shrink diff proposal -&gt; verification ledger
+</code></pre>
+<p>适合只留在任务记录里的，是本次特有事实：</p>
+<pre><code class="language-markdown">- This bug is not caused by token storage.
+- Network trace showed refresh success but original submit was not replayed.
+</code></pre>
+<p>这个区分很重要。把一次性事实写进长期规则，会污染后续任务；把长期规则只留在聊天里，下次还会重犯。</p>
+<h2 id="什么时候清理也不够">什么时候清理也不够</h2>
+<p>上下文清理只能解决“材料混乱”的问题，不能替你解决需求本身不清楚的问题。</p>
+<p>如果整理后发现这些情况，就不要继续让 Agent 实现：</p>
+<ul>
+<li>业务规则互相冲突。</li>
+<li>没有人能确认历史兼容行为。</li>
+<li>验证路径完全缺失。</li>
+<li>任务目标从 bug 修复变成架构调整。</li>
+<li>当前 diff 已经包含多类不相关变更。</li>
+<li>需要改生产数据、权限、金额或状态机。</li>
+</ul>
+<p>这时下一步不是再清理一遍，而是回到需求确认、方案设计或规格驱动。比如订单状态回退问题，如果整理后发现 paid、refunding、refunded、canceled 的状态规则没有人能确认，就应该暂停编码，先把状态合同写清楚。</p>
+<p>上下文清理的价值，是让你看清自己到底卡在哪里。有时它会把任务重新拉回最小实现；有时它会明确告诉你：这个任务已经不适合继续靠一段对话推进。</p>
+<p>清理输出还要能被另一个人接手。</p>
+<p>如果换一个 Agent 或 reviewer 读完清理记录，仍然不知道当前事实、当前 diff、验证状态和下一步动作，那这次清理只是重新总结了一遍聊天记录。真正有用的清理应该让人能立刻判断：继续、拆分、回滚，还是回到需求确认。</p>
+<p>可以把这条当成验收：清理记录能不能支撑一次交接。</p>
+<p>上下文工程到这里已经形成一条完整链路：代码地图让 Agent 知道从哪里开始，搜索让上下文可解释，项目规则约束长期行为，任务上下文包约束本次任务，上下文清理防止长任务跑偏。</p>
+<p>接下来进入 SDD 和 OpenSpec。复杂需求不能只靠上下文包，还需要把需求、设计和任务拆成可审查、可归档的规格合同。</p>
+<h2 id="常见问题">常见问题</h2>
+<p><strong>清理上下文是不是浪费时间？</strong></p>
+<p>如果只是改文案，确实没必要。清理适合长对话、测试失败、diff 扩大、假设变化和准备交接的时候。它省的是后面继续沿错误方向改的时间。</p>
+<p><strong>清理后一定要开新对话吗？</strong></p>
+<p>不一定。当前对话还短、diff 还小、只需要排除一两个假设时，可以在当前对话里继续。对话很长、早期假设很多、任务阶段变化明显时，再开新对话。</p>
+<p><strong>Agent 总结得很好，还需要按表格清理吗？</strong></p>
+<p>要看总结是否可复查。如果总结没有区分 Confirmed、Excluded、Unverified、Constraints 和 Next Action，它只是概括，不是清理。</p>
+<p><strong>清理时能不能让 Agent 自动回滚？</strong></p>
+<p>不要默认允许。先让它分类 diff，再由人决定保留、拆分还是回滚。真实工作区里可能有用户改动，不能让 Agent 擅自执行破坏性命令。</p>
+<p><strong>清理和 verification ledger 有什么关系？</strong></p>
+<p>清理发生在任务中段，目的是把事实和假设分开；verification ledger 发生在完成前，目的是记录命令、证据和剩余风险。两者都服务同一个目标：让 AI 的结论能被复查。</p>
+<h2 id="可复查资料">可复查资料</h2>
+<ul>
+<li>OpenAI Codex 最佳实践：<a href="https://developers.openai.com/codex/learn/best-practices">https://developers.openai.com/codex/learn/best-practices</a></li>
+<li>Anthropic Claude Code 最佳实践：<a href="https://www.anthropic.com/engineering/claude-code-best-practices">https://www.anthropic.com/engineering/claude-code-best-practices</a></li>
+<li>GitHub Copilot cloud agent 任务最佳实践：<a href="https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results">https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results</a></li>
+</ul></article><div class="practice-link"><a href="https://github.com/DavidDingXu/learn-ai-coding/blob/main/ai-coding-workflow-kit/dev-process/01-module-onboarding.md" target="_blank" rel="noopener"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5M14 4l-4 16"/></svg> 陌生模块接手记录 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></div><nav class="chapter-nav" aria-label="前后篇"><a href="12.html"><span>上一篇 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg></span><strong>任务上下文包：一次需求到底该给 AI 什么</strong></a><a href="14.html"><span>下一篇 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><strong>模块实战：让 AI 接手一个陌生代码模块</strong></a></nav><footer class="reader-footer">程序员 AI Coding 进阶实战 · <a href="../license.html">非商业使用</a><details class="community-mini"><summary>关注与交流 · 好好用 AI</summary><div class="community-section"><div><p>交流学习中的问题与实践心得。</p><p>代码问题和勘误，欢迎在 <a href="https://github.com/DavidDingXu/learn-ai-coding/issues" target="_blank" rel="noopener">GitHub 提交 Issue</a>。</p></div><a class="qr-link" href="../assets/wechat-official-account.jpg" target="_blank" rel="noopener" aria-label="查看好好用 AI 公众号二维码原图"><img src="../assets/wechat-official-account.jpg" alt="好好用 AI 微信公众号二维码" width="130" height="130" loading="lazy"><p class="qr-caption">微信扫码 · 点击查看原图</p></a></div></details></footer></main><aside class="context-sidebar" aria-label="本篇辅助导航"><div class="context-inner"><nav class="reading-route" aria-label="本篇路线"><details open><summary>本篇路线</summary><div class="toc">
+<ul>
+<li><a href="#上下文污染从哪里来">上下文污染从哪里来</a></li>
+<li><a href="#污染出现时的信号">污染出现时的信号</a></li>
+<li><a href="#清理上下文的核心动作">清理上下文的核心动作</a></li>
+<li><a href="#清理流程图">清理流程图</a></li>
+<li><a href="#什么时候应该开新对话">什么时候应该开新对话</a></li>
+<li><a href="#失败分类是上下文清理的一部分">失败分类是上下文清理的一部分</a></li>
+<li><a href="#一个真实清理案例">一个真实清理案例</a></li>
+<li><a href="#清理前后对比">清理前后对比</a></li>
+<li><a href="#上下文清理和-git-的关系">上下文清理和 Git 的关系</a></li>
+<li><a href="#上下文清理和-review-的关系">上下文清理和 review 的关系</a></li>
+<li><a href="#diff-变大时如何收缩">diff 变大时如何收缩</a></li>
+<li><a href="#事实整理表">事实整理表</a></li>
+<li><a href="#别把总结当清理">别把总结当清理</a></li>
+<li><a href="#长任务里的节奏控制">长任务里的节奏控制</a></li>
+<li><a href="#常见错误">常见错误</a></li>
+<li><a href="#一套可复用提示">一套可复用提示</a></li>
+<li><a href="#如何迁移到自己的项目">如何迁移到自己的项目</a></li>
+<li><a href="#可以先练的一次清理">可以先练的一次清理</a></li>
+<li><a href="#哪些清理结果要写回长期资产">哪些清理结果要写回长期资产</a></li>
+<li><a href="#什么时候清理也不够">什么时候清理也不够</a></li>
+<li><a href="#常见问题">常见问题</a></li>
+<li><a href="#可复查资料">可复查资料</a></li>
+</ul>
+</div>
+</details></nav></div></aside></div><dialog class="search-dialog" id="search-dialog" aria-labelledby="search-label"><form method="dialog" class="search-heading"><label for="course-search" id="search-label"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>搜索课程</label><button class="icon-button" aria-label="关闭搜索"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></form><input id="course-search" type="search" placeholder="搜索概念、代码或问题…" autocomplete="off" spellcheck="false"><p class="search-status" id="search-status" role="status">搜索全部 42 篇文章。</p><div class="search-results" id="search-results"></div><footer>↑ ↓ 选择结果 <span>Enter 打开 · Esc 关闭</span></footer></dialog>
+<dialog class="image-viewer" id="image-viewer" aria-label="放大配图"><header><span>查看配图</span><div class="image-actions"><button type="button" id="image-size">原尺寸</button><button type="button" id="close-image" autofocus>关闭</button></div></header><div class="image-canvas"><img id="large-image" alt=""></div><footer><p id="image-description"></p><a id="original-image" target="_blank" rel="noopener">打开原图 <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6-9 9M10 4H4v16h16v-6"/></svg></a></footer></dialog><div class="toast" id="toast" role="status"></div></body></html>

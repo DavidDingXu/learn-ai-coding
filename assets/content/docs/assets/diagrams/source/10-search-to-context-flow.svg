@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#ecfeff"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0891b2"/>
+    </marker>
+    <style>
+      .title { font: 700 46px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 24px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #475569; }
+      .node { fill: #ffffff; stroke: #67e8f9; stroke-width: 2; filter: url(#shadow); }
+      .final { fill: #164e63; filter: url(#shadow); }
+      .nodeTitle { font: 700 23px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .text { font: 400 18px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #334155; }
+      .finalTitle { font: 700 25px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #ffffff; }
+      .finalText { font: 400 19px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #cffafe; }
+      .line { stroke: #0891b2; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <text x="80" y="86" class="title">从代码搜索到任务上下文</text>
+  <text x="82" y="128" class="subtitle">让 Agent 搜索，并把过程收敛成可验收的 Search Summary。</text>
+
+  <rect x="95" y="250" width="220" height="130" rx="18" class="node"/>
+  <text x="132" y="300" class="nodeTitle">任务语言</text>
+  <text x="132" y="338" class="text">用户问题和现象</text>
+
+  <rect x="380" y="250" width="220" height="130" rx="18" class="node"/>
+  <text x="417" y="300" class="nodeTitle">关键词表</text>
+  <text x="417" y="338" class="text">函数、状态、错误码</text>
+
+  <rect x="665" y="250" width="220" height="130" rx="18" class="node"/>
+  <text x="702" y="300" class="nodeTitle">候选文件</text>
+  <text x="702" y="338" class="text">入口、实现、测试</text>
+
+  <rect x="950" y="250" width="220" height="130" rx="18" class="node"/>
+  <text x="987" y="300" class="nodeTitle">调用确认</text>
+  <text x="987" y="338" class="text">生产、测试、demo</text>
+
+  <rect x="1235" y="250" width="260" height="130" rx="18" class="final"/>
+  <text x="1282" y="300" class="finalTitle">任务上下文包</text>
+  <text x="1278" y="338" class="finalText">文件、约束、验证、问题</text>
+
+  <path d="M 315 315 L 380 315" class="line"/>
+  <path d="M 600 315 L 665 315" class="line"/>
+  <path d="M 885 315 L 950 315" class="line"/>
+  <path d="M 1170 315 L 1235 315" class="line"/>
+
+  <rect x="260" y="560" width="1080" height="118" rx="20" class="node"/>
+  <text x="312" y="612" class="nodeTitle">Search Summary 处理原则</text>
+  <text x="312" y="650" class="text">保留能解释入口、调用、测试和验证的材料；过滤 demo、generated、legacy 和未验证猜测。</text>
+</svg>

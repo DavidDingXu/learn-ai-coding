@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#fefce8"/>
+      <stop offset="100%" stop-color="#eff6ff"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/>
+    </marker>
+    <style>
+      .title { font: 700 46px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 24px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #475569; }
+      .task { fill: #ffffff; stroke: #bfdbfe; stroke-width: 2; filter: url(#shadow); }
+      .verify { fill: #dcfce7; stroke: #86efac; stroke-width: 2; filter: url(#shadow); }
+      .stop { fill: #fee2e2; stroke: #fca5a5; stroke-width: 2; filter: url(#shadow); }
+      .head { font: 700 23px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .text { font: 400 18px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #334155; }
+      .line { stroke: #2563eb; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <text x="80" y="86" class="title">tasks 依赖和验证关系</text>
+  <text x="82" y="128" class="subtitle">每个 task 都有前置依赖、验证命令和停止条件。</text>
+
+  <rect x="120" y="260" width="240" height="130" rx="18" class="task"/>
+  <text x="160" y="312" class="head">Task 1</text>
+  <text x="160" y="350" class="text">补行为测试</text>
+
+  <rect x="455" y="260" width="240" height="130" rx="18" class="task"/>
+  <text x="495" y="312" class="head">Task 2</text>
+  <text x="495" y="350" class="text">状态流转规则</text>
+
+  <rect x="790" y="260" width="240" height="130" rx="18" class="task"/>
+  <text x="830" y="312" class="head">Task 3</text>
+  <text x="830" y="350" class="text">接入退款创建</text>
+
+  <rect x="1125" y="260" width="240" height="130" rx="18" class="task"/>
+  <text x="1165" y="312" class="head">Task 4</text>
+  <text x="1165" y="350" class="text">异常路径处理</text>
+
+  <path d="M 360 325 L 455 325" class="line"/>
+  <path d="M 695 325 L 790 325" class="line"/>
+  <path d="M 1030 325 L 1125 325" class="line"/>
+
+  <rect x="455" y="560" width="300" height="130" rx="18" class="verify"/>
+  <text x="505" y="612" class="head">Verify</text>
+  <text x="505" y="650" class="text">focused test / typecheck / API check</text>
+
+  <rect x="865" y="560" width="300" height="130" rx="18" class="stop"/>
+  <text x="915" y="612" class="head">Stop if</text>
+  <text x="915" y="650" class="text">旧行为失败 / 范围扩大 / 需改接口</text>
+
+  <path d="M 575 390 C 580 470, 600 520, 605 560" class="line"/>
+  <path d="M 910 390 C 930 470, 980 520, 1015 560" class="line"/>
+</svg>

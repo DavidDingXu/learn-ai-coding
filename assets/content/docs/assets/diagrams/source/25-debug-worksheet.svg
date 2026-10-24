@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#fef2f2"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .title { font: 700 46px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 24px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #475569; }
+      .panel { fill: #ffffff; stroke: #fecaca; stroke-width: 2; filter: url(#shadow); }
+      .cell { fill: #fff7ed; stroke: #fed7aa; stroke-width: 1.5; }
+      .label { font: 700 25px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #111827; }
+      .small { font: 400 20px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #334155; }
+      .mono { font: 700 19px "SFMono-Regular", Menlo, Consolas, monospace; fill: #7c2d12; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <text x="80" y="86" class="title">Debug worksheet：让 AI 基于证据排障</text>
+  <text x="82" y="128" class="subtitle">不要让聊天记录承载调试过程，把每一轮假设和证据写下来。</text>
+
+  <rect x="90" y="190" width="1420" height="610" rx="18" class="panel"/>
+
+  <rect x="135" y="245" width="390" height="120" rx="14" class="cell"/>
+  <text x="165" y="292" class="label">1. Reproduction</text>
+  <text x="165" y="332" class="small">命令、输入、环境、是否稳定复现</text>
+
+  <rect x="605" y="245" width="390" height="120" rx="14" class="cell"/>
+  <text x="635" y="292" class="label">2. Evidence</text>
+  <text x="635" y="332" class="small">错误信息、日志、堆栈、截图、diff</text>
+
+  <rect x="1075" y="245" width="390" height="120" rx="14" class="cell"/>
+  <text x="1105" y="292" class="label">3. Boundary</text>
+  <text x="1105" y="332" class="small">从哪一层开始坏，哪一层仍然正常</text>
+
+  <rect x="135" y="420" width="390" height="120" rx="14" class="cell"/>
+  <text x="165" y="467" class="label">4. Hypothesis</text>
+  <text x="165" y="507" class="small">我认为 X 是根因，因为 Y</text>
+
+  <rect x="605" y="420" width="390" height="120" rx="14" class="cell"/>
+  <text x="635" y="467" class="label">5. Minimal Test</text>
+  <text x="635" y="507" class="small">只验证一个变量，不同时修多处</text>
+
+  <rect x="1075" y="420" width="390" height="120" rx="14" class="cell"/>
+  <text x="1105" y="467" class="label">6. Result</text>
+  <text x="1105" y="507" class="small">假设成立、失败，或需要更多数据</text>
+
+  <rect x="135" y="595" width="625" height="120" rx="14" class="cell"/>
+  <text x="165" y="642" class="label">7. Fix</text>
+  <text x="165" y="682" class="small">只修根因，保留失败用例和回归验证</text>
+
+  <rect x="840" y="595" width="625" height="120" rx="14" class="cell"/>
+  <text x="870" y="642" class="label">8. Verification</text>
+  <text x="870" y="682" class="mono">focused → module → affected integration</text>
+</svg>
